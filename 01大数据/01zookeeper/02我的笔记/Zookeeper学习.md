@@ -6,13 +6,13 @@
 
 结构图：观察者可以理解为客户端。
 
-![image-20200711105939626](Zookeeper学习.assets\image-20200711105939626.png)
+<img src="Zookeeper学习.assets\image-20200711105939626.png" alt="image-20200711105939626" style="zoom:80%;" />
 
 
 
 ## 1.1 特点
 
-![image-20200711110715061](Zookeeper学习.assets\image-20200711110715061.png)
+<img src="Zookeeper学习.assets\image-20200711110715061.png" alt="image-20200711110715061" style="zoom:80%;" />
 
 + Zookeeper：只有一个领导者（Leader）,多个跟随者（Follower）组成的集群。
 + 集群中只要有半数以上的节点能够存活，Zookeeper集群就能够正常工作。
@@ -23,7 +23,7 @@
 
 ## 1.2 数据结构
 
-![image-20200711111332088](Zookeeper学习.assets\image-20200711111332088.png)
+<img src="Zookeeper学习.assets\image-20200711111332088.png" alt="image-20200711111332088" style="zoom:80%;" />
 
 ​		Zookeeper数据模型的结构与Unix文件系统很类似，整体上可以看成是一棵树，每个节点称作一个ZNode（（即zookeeper node），一个znode可以有多个子节点。每个ZNode默认能够存储1MB的数据，每个ZNode都可以通过其路径唯一标识，比如/ns1/itcast/mysql/schema1/table1，此处ns-1、itcast、mysql、schema1、table1分别是 根节点、2级节点、3级节点以及4级节点；其中ns-1是itcast的父节点，itcast是ns-1的子 节点，itcast是mysql的父节点，mysql是itcast的子节点，以此类推。
 
@@ -122,7 +122,7 @@ numChildren = 2
 
 下载地址：https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html
 
-![image-20200711115625280](Zookeeper学习.assets\image-20200711115625280.png)
+<img src="Zookeeper学习.assets\image-20200711115625280.png" alt="image-20200711115625280" style="zoom:80%;" />
 
 ## 2.2 下载地址
 
@@ -237,7 +237,7 @@ create /hadoop "123456" --创建路径为hadoop的节点
 create -s /b "bbb"
 ```
 
-![image-20200712093640116](Zookeeper学习.assets\image-20200712093640116.png)
+<img src="Zookeeper学习.assets\image-20200712093640116.png" alt="image-20200712093640116" style="zoom:80%;" />
 
 3. 创建临时节点，临时节点会在会话过期后被删除：
 
@@ -251,7 +251,7 @@ create -e /tmp "tmp"
 
 4. 创建临时有序节点，临时节点会在会话过期后被删除：
 
-![image-20200712094042819](Zookeeper学习.assets\image-20200712094042819.png)
+<img src="Zookeeper学习.assets\image-20200712094042819.png" alt="image-20200712094042819" style="zoom:80%;" />
 
 #### 2、更改节点
 
@@ -288,7 +288,7 @@ delete /hadoop 1
 rmr path  --r:recursion(递归)
 ```
 
-![image-20200712095553783](Zookeeper学习.assets\image-20200712095553783.png)
+<img src="Zookeeper学习.assets\image-20200712095553783.png" alt="image-20200712095553783" style="zoom:80%;" />
 
 <img src="Zookeeper学习.assets\image-20200712095638890.png" alt="image-20200712095638890" style="zoom:80%;" />
 
@@ -491,7 +491,7 @@ Dzookeeper.DigestAuthenticationProvider.superDigest=super:xQJmxLMiHGwaqBvst5y6rk
     -cp "$CLASSPATH" $JVMFLAGS $ZOOMAIN "$ZOOCFG" > "$_ZOO_DAEMON_OUT" 2>&1 < /dev/null &
 ```
 
-![image-20200713000810794](Zookeeper学习.assets\image-20200713000810794.png)
+<img src="Zookeeper学习.assets\image-20200713000810794.png" alt="image-20200713000810794" style="zoom:80%;" />
 
 ​		复制完成之后，不知道为啥启动后会爆出这样的错误，我们需要重新复制即可设置成功，复制时不要调格式：
 
@@ -519,7 +519,7 @@ Dzookeeper.DigestAuthenticationProvider.superDigest=super:xQJmxLMiHGwaqBvst5y6rk
 
 <img src="Zookeeper学习.assets\image-20200713000655268.png" alt="image-20200713000655268" style="zoom:80%;" />
 
-![image-20200713000605123](Zookeeper学习.assets\image-20200713000605123.png)
+<img src="Zookeeper学习.assets\image-20200713000605123.png" alt="image-20200713000605123" style="zoom:80%;" />
 
 # 3 JavaAPI
 
