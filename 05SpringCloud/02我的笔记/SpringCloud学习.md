@@ -497,7 +497,7 @@ eureka:
 
 ​		微服务RPC远程服务调用的核心是**高可用**，因此我们需要搭建Eureka注册中心集群，实现负载均衡和故障容错（**互相注册，相互守望**）。
 
-![image-20200710213751807](SpringCloud学习.assets\image-20200710213751807.png)
+<img src="SpringCloud学习.assets\image-20200710213751807.png" alt="image-20200710213751807" style="zoom:80%;" />
 
 ### 3.3.1 集群环境搭建
 
@@ -540,7 +540,7 @@ eureka:
 
 输入地址：http://eureka7001.com:7001/,显示：
 
-![image-20200710222516903](SpringCloud学习.assets\image-20200710222516903.png)
+<img src="SpringCloud学习.assets\image-20200710222516903.png" alt="image-20200710222516903" style="zoom: 50%;" />
 
 输入地址：http://localhost/consumer/payment/get/5，能够完成正常查询。
 
@@ -597,7 +597,7 @@ eureka:
 
 此时输入：http://eureka7002.com:7002/，显示：
 
-![image-20200711085118751](SpringCloud学习.assets\image-20200711085118751.png)
+<img src="SpringCloud学习.assets\image-20200711085118751.png" alt="image-20200711085118751" style="zoom: 50%;" />
 
 ### 3.3.4 服务发现Discovery
 
@@ -642,7 +642,7 @@ eureka:
 
 控制台输出：
 
-![image-20200711091756809](SpringCloud学习.assets\image-20200711091756809.png)
+<img src="SpringCloud学习.assets\image-20200711091756809.png" alt="image-20200711091756809" style="zoom: 50%;" />
 
 ### 3.3.5 Eureka自我保护
 
@@ -652,7 +652,7 @@ eureka:
 
 ​		如果Eureka Server首页看到这段提时，说明Eureka 进入到了保护模式：
 
-![image-20200711092443912](SpringCloud学习.assets\image-20200711092443912.png)
+<img src="SpringCloud学习.assets\image-20200711092443912.png" alt="image-20200711092443912" style="zoom:67%;" />
 
 ​		一句话：某时刻某一个微服务不能用了，Eureka不会立即处理，依旧会对该微服务的信息进行保存，输入CAP里面的AP分支。
 
@@ -660,7 +660,7 @@ eureka:
 
 ​		默认情况下，如果EurekaServer在一定的时间内没有接收到某个微服务实例的心跳，EurekaServer将会注销该实例（默认90秒），但是当网络分区故障发生的时候（延时，卡顿，拥挤等），微服务和EurekaServer之间就无法正常通讯了，剔除行为就变得十分危险（微服务本身是健康的，不应该注销这个微服务）。Eureka通过自我保护模式来解决上述问题。
 
-![image-20200711093303369](SpringCloud学习.assets\image-20200711093303369.png)
+<img src="SpringCloud学习.assets\image-20200711093303369.png" alt="image-20200711093303369" style="zoom:80%;" />
 
 #### 2、禁止自我保护
 
@@ -689,7 +689,7 @@ eureka:
 
 先启动7001,后启动8001,输入网址：http://eureka7001.com:7001/，然后关闭8001,可以看到服务立即被剔除了。
 
-![image-20200711095924055](SpringCloud学习.assets\image-20200711095924055.png)
+<img src="SpringCloud学习.assets\image-20200711095924055.png" alt="image-20200711095924055" style="zoom:80%;" />
 
 #### 3、Eureka停更
 
