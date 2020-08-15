@@ -296,7 +296,7 @@ postman中输入http://localhost:8001/payment/create?serial=xiaopang，返回结
 
 ## 2.2 创建子模块Order
 
-![支付消费模块图2](SpringCloud学习.assets\支付消费模块图2.jpg)
+<img src="SpringCloud学习.assets\支付消费模块图2.jpg" style="zoom:80%;" />
 
 ​		因为这里是消费者类,主要是消费,那么就没有service和dao,需要调用payment模块的方法。并且这里还没有微服务的远程调用,那么如果要调用另外一个模块,则需要使用基本的api调用。
 
@@ -478,13 +478,13 @@ eureka:
 
 1. **测试**
 
-![image-20200710212728918](SpringCloud学习.assets\image-20200710212728918.png)
+<img src="SpringCloud学习.assets\image-20200710212728918.png" alt="image-20200710212728918" style="zoom:80%;" />
 
 网址输入：http://localhost/consumer/payment/get/5，能够正常显示查询到的信息。
 
 ## 3.3 Eureka集群
 
-![image-20200710213356545](SpringCloud学习.assets\image-20200710213356545.png)
+<img src="SpringCloud学习.assets\image-20200710213356545.png" alt="image-20200710213356545" style="zoom:80%;" />
 
 ​		
 
