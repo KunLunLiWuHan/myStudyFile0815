@@ -45,7 +45,7 @@
 + what:即资源Resources（如系统菜单，系统商品信息等）。
 + how:访问许可（Permission）。主体、资源和权限的关系如下图所示。
 
-![](Spring Security基础.assets/image-20200424161514511.png)
+<img src="Spring Security基础.assets/image-20200424161514511.png" style="zoom:80%;" />
 
 + 主体（用户id、账号、密码等）。
 + 资源（资源id,访问地址等）。
@@ -54,7 +54,7 @@
 + 角色和权限关系（角色id，权限id等）。
 + 主体和主体关系（主体id，主体id等）。三者之间关系如下：
 
-![image-20200424162101600](Spring Security基础.assets/image-20200424162101600.png)
+<img src="Spring Security基础.assets/image-20200424162101600.png" alt="image-20200424162101600" style="zoom:80%;" />
 
 ### 1.1.2 RBAC
 
@@ -78,7 +78,7 @@ if(主体.hasRole("总经理角色id")){
 
 RBAC是按照资源（或权限）进行授权。比如：用户必须拥有查询工资权限才可以查询员工工资信息等。
 
-![image-20200424164125540](Spring Security基础.assets/image-20200424164125540.png)
+<img src="Spring Security基础.assets/image-20200424164125540.png" alt="image-20200424164125540" style="zoom:80%;" />
 
 + 授权代码
 
@@ -331,7 +331,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 3. 输入网址：http://localhost:8080/login.html，在弹出的窗口中输入用户名和密码后进入下面界面：
 
-   ![image-20200518220455351](Spring Security基础.assets/image-20200518220455351.png)
+   <img src="Spring Security基础.assets/image-20200518220455351.png" alt="image-20200518220455351" style="zoom:80%;" />
 
 在网址上追加“hello”输出界面为：
 
@@ -874,11 +874,11 @@ create unique index ix_auth_username on authorities (username,authority);
 
 user表：
 
-![image-20200519230505764](Spring Security基础.assets/image-20200519230505764.png)
+<img src="Spring Security基础.assets/image-20200519230505764.png" alt="image-20200519230505764" style="zoom:80%;" />
 
 authorities表：
 
-![image-20200519230519436](Spring Security基础.assets/image-20200519230519436.png)
+<img src="Spring Security基础.assets/image-20200519230519436.png" alt="image-20200519230519436" style="zoom:80%;" />
 
 2. **config配置**
 
@@ -939,9 +939,11 @@ spring.datasource.url=jdbc:mysql://localhost:3306/test01?useUnicode=true&charact
 
 项目启动成功后，我们就可以看到数据库中自动添加了两个用户进来，并且用户都配置了角色。如下图：
 
-![image-20200519232351502](Spring Security基础.assets/image-20200519232351502.png)
+<img src="Spring Security基础.assets/image-20200519232351502.png" alt="image-20200519232351502" style="zoom:80%;" />
 
-![image-20200519232408297](Spring Security基础.assets/image-20200519232408297.png)
+
+
+<img src="Spring Security基础.assets/image-20200519232408297.png" alt="image-20200519232408297" style="zoom:80%;" />
 
 6. **测试**
 
