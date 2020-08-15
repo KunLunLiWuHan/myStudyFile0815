@@ -8,17 +8,17 @@
 
 大数据部门业务流程分析：
 
-![image-20200719173155491](D:\04桌面\Spring Boot学习\03学习文件\Hadoop学习.assets\image-20200719173155491.png)
+<img src="Hadoop学习.assets\image-20200719173155491.png" alt="image-20200719173155491" style="zoom:80%;" />
 
 大数据部门组织结构：
 
-![image-20200719173300432](D:\04桌面\Spring Boot学习\03学习文件\Hadoop学习.assets\image-20200719173300432.png)
+<img src="Hadoop学习.assets\image-20200719173300432.png" alt="image-20200719173300432" style="zoom:80%;" />
 
 ## 1、hadoop介绍
 
 ​		hadoop是一个由Apache基金会所开发的分布式系统基础架构，主要解决海量数据的存储和海量数据的分析计算问题。广义上来讲，hadoop通常指一个更宽泛的概念-Hadoop生态圈。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop学习.assets\image-20200719174023252.png" alt="image-20200719174023252" style="zoom:80%;" />
+<img src="Hadoop学习.assets\image-20200719174023252.png" alt="image-20200719174023252" style="zoom:80%;" />
 
 ## 1.1 课程介绍
 
@@ -119,7 +119,7 @@ Hadoop三大发行版本：Apache、Cloudera、Hortonworks。
 
 1、Hadoop1.x和Hadoop2.x的区别
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop学习.assets\image-20200719175054920.png" alt="image-20200719175054920" style="zoom:80%;" />
+<img src="Hadoop学习.assets\image-20200719175054920.png" alt="image-20200719175054920" style="zoom:80%;" />
 
 2、HDFS架构概述
 
@@ -135,7 +135,7 @@ HDFS（Hadoop Distributed File System）的架构概述如下：
 
 YARN主要由ResourceManager、NodeManager、ApplicationMaster和Container等组件构成，如下图所示。
 
-![image-20200719180806841](D:\04桌面\Spring Boot学习\03学习文件\Hadoop学习.assets\image-20200719180806841.png)
+![image-20200719180806841](Hadoop学习.assets\image-20200719180806841.png)
 
 4、MapReduce架构概述
 
@@ -145,11 +145,11 @@ MapReduce将计算过程分为两个阶段：Map和Reduce，如下图所示：
 
 （2）Reduce阶段对Map结果进行汇总
 
-![image-20200719181126286](D:\04桌面\Spring Boot学习\03学习文件\Hadoop学习.assets\image-20200719181126286.png)
+![image-20200719181126286](Hadoop学习.assets\image-20200719181126286.png)
 
 5、大数据技术生态体系
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop学习.assets\image-20200719181356604.png" alt="image-20200719181356604"  />
+<img src="Hadoop学习.assets\image-20200719181356604.png" alt="image-20200719181356604"  />
 
 图中涉及的技术名词解释如下：
 
@@ -182,7 +182,7 @@ MapReduce将计算过程分为两个阶段：Map和Reduce，如下图所示：
 
 推荐的系统项目架构如下：
 
-![image-20200719181717213](D:\04桌面\Spring Boot学习\03学习文件\Hadoop学习.assets\image-20200719181717213.png)
+![image-20200719181717213](Hadoop学习.assets\image-20200719181717213.png)
 
 # 2 安装和部署
 
@@ -222,7 +222,7 @@ source /etc/profile
 
 控制台输出：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop学习.assets\image-20200722153434828.png" alt="image-20200722153434828" style="zoom:80%;" />
+<img src="Hadoop学习.assets\image-20200722153434828.png" alt="image-20200722153434828" style="zoom:80%;" />
 
 （5）重启虚拟机
 
@@ -232,7 +232,7 @@ sudo reboot
 
 ### 3、Hadoop目录结构
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop学习.assets\image-20200722153941157.png" alt="image-20200722153941157" style="zoom:80%;" />
+<img src="Hadoop学习.assets\image-20200722153941157.png" alt="image-20200722153941157" style="zoom:80%;" />
 
 （1）bin目录：存放对Hadoop相关服务（HDFS,YARN）进行操作的脚本。
 
@@ -285,7 +285,7 @@ cat output/*
 
 output文件夹下有两个文件：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop学习.assets\image-20200722160150533.png" alt="image-20200722160150533" style="zoom:80%;" />
+<img src="Hadoop学习.assets\image-20200722160150533.png" alt="image-20200722160150533" style="zoom:80%;" />
 
 ### 2、官方WordCount案例
 
@@ -324,7 +324,7 @@ cat wcoutput/part-r-00000
 
 控制台输出对应单词的统计个数：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop学习.assets\image-20200722161012236.png" alt="image-20200722161012236" style="zoom: 80%;" />
+<img src="Hadoop学习.assets\image-20200722161012236.png" alt="image-20200722161012236" style="zoom: 80%;" />
 
 ## 3.2 伪分布运行模式
 
@@ -428,7 +428,7 @@ jps
 
 网址：http://hadoop101:50070/dfshealth.html#tab-overview
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop学习.assets\image-20200722170859560.png" alt="image-20200722170859560" style="zoom:80%;" />
+<img src="Hadoop学习.assets\image-20200722170859560.png" alt="image-20200722170859560" style="zoom:80%;" />
 
 注意：
 
@@ -459,7 +459,7 @@ clusterID=CID-b886f13f-f0dd-40c2-9f5a-7316f493a5a1
 bin/hdfs dfs -mkdir -p /user/zookeeper/input
 ```
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop学习.assets\image-20200722171601395.png" alt="image-20200722171601395" style="zoom:67%;" />
+<img src="Hadoop学习.assets\image-20200722171601395.png" alt="image-20200722171601395" style="zoom:67%;" />
 
 + （b）将测试文件内容上传到文件系统上
 
@@ -468,7 +468,7 @@ bin/hdfs dfs -mkdir -p /user/zookeeper/input
 bin/hdfs dfs -put wcinput/wc.input /user/zookeeper/input/
 ```
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop学习.assets\image-20200722171727848.png" alt="image-20200722171727848" style="zoom:80%;" />
+<img src="Hadoop学习.assets\image-20200722171727848.png" alt="image-20200722171727848" style="zoom:80%;" />
 
 + （c）查看上传的文件是否正确
 
@@ -476,7 +476,7 @@ bin/hdfs dfs -put wcinput/wc.input /user/zookeeper/input/
 bin/hdfs dfs -ls  /user/zookeeper/input/
 ```
 
-![image-20200722171759469](D:\04桌面\Spring Boot学习\03学习文件\Hadoop学习.assets\image-20200722171759469.png)
+![image-20200722171759469](Hadoop学习.assets\image-20200722171759469.png)
 
 + （d）运行MapReduce程序
 
@@ -498,7 +498,7 @@ hdfs dfs -get /user/zookeeper/output/part-r-00000 ./wcoutput/
 
 还可以在文件系统中进行查看：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop学习.assets\image-20200722172328577.png" alt="image-20200722172328577" style="zoom:80%;" />
+<img src="Hadoop学习.assets\image-20200722172328577.png" alt="image-20200722172328577" style="zoom:80%;" />
 
 ### 2、启动YARN并运行MapReduce程序
 
@@ -575,7 +575,7 @@ jps
 
 也可以通过YARN的浏览器页面查看，网址：http://hadoop101:8088/cluster
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop学习.assets\image-20200722181750018.png" alt="image-20200722181750018" style="zoom:67%;" />
+<img src="Hadoop学习.assets\image-20200722181750018.png" alt="image-20200722181750018" style="zoom:67%;" />
 
 （7）对集群进行操作
 
@@ -591,7 +591,7 @@ bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.2.jar wordco
 
 此时，我们可以在浏览器界面看到进度条变化：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop学习.assets\image-20200722182123009.png" alt="image-20200722182123009" style="zoom:80%;" />
+<img src="Hadoop学习.assets\image-20200722182123009.png" alt="image-20200722182123009" style="zoom:80%;" />
 
 ### 3、配置历史服务器
 
@@ -642,7 +642,7 @@ jps
 
 也可以通过浏览器查看JobHistory，网址：http://hadoop101:19888/jobhistory
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop学习.assets\image-20200722190937000.png" alt="image-20200722190937000" style="zoom:80%;" />
+<img src="Hadoop学习.assets\image-20200722190937000.png" alt="image-20200722190937000" style="zoom:80%;" />
 
 ### 4、配置日志的聚集
 
@@ -687,15 +687,15 @@ sbin/mr-jobhistory-daemon.sh stop historyserver
 
 （4）输入网址：http://hadoop101:8088/cluster，查看日志信息。
 
-![image-20200722192717084](D:\04桌面\Spring Boot学习\03学习文件\Hadoop学习.assets\image-20200722192717084.png)
+![image-20200722192717084](Hadoop学习.assets\image-20200722192717084.png)
 
 点击日志链接logs：
 
-![image-20200722192747209](D:\04桌面\Spring Boot学习\03学习文件\Hadoop学习.assets\image-20200722192747209.png)
+![image-20200722192747209](Hadoop学习.assets\image-20200722192747209.png)
 
 查看日志信息：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop学习.assets\image-20200722192822480.png" alt="image-20200722192822480" style="zoom:80%;" />
+<img src="Hadoop学习.assets\image-20200722192822480.png" alt="image-20200722192822480" style="zoom:80%;" />
 
 ##### 5、配置文件说明
 
@@ -736,7 +736,7 @@ sbin/mr-jobhistory-daemon.sh stop historyserver
 
 超大集群：联邦模式+高可用。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop学习.assets\image-20200725214818640.png" alt="image-20200725214818640" style="zoom:80%;" />
+<img src="Hadoop学习.assets\image-20200725214818640.png" alt="image-20200725214818640" style="zoom:80%;" />
 
 ### 3.3.1 编写集群分发脚本
 
@@ -811,7 +811,7 @@ rsync -rvl  $pdir/$fname   $user@hadoop$host:$pdir/$fname
 | HDFS | **NameNode**  DataNode | DataNode                     | **SecondaryNameNode**  DataNode |
 | YARN | NodeManager            | ResourceManager  NodeManager | NodeManager                     |
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop学习.assets\image-20200724233907309.png" alt="image-20200724233907309" style="zoom:80%;" />
+<img src="Hadoop学习.assets\image-20200724233907309.png" alt="image-20200724233907309" style="zoom:80%;" />
 
 1、HDFS分布式存储（一主多从，一助理）
 
@@ -1023,7 +1023,7 @@ jps
 
 也可以登录网址http://hadoop101:50070/dfshealth.html#tab-overview查看：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop学习.assets\image-20200722213131166.png" alt="image-20200722213131166" style="zoom:67%;" />
+<img src="Hadoop学习.assets\image-20200722213131166.png" alt="image-20200722213131166" style="zoom:67%;" />
 
 #### 4、SSH无密登录配置
 
@@ -1036,7 +1036,7 @@ ssh hadoop102(另一台电脑的ip地址)
 
 （2）免密登录原理
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop学习.assets\image-20200722222252544.png" alt="image-20200722222252544" style="zoom:80%;" />
+<img src="Hadoop学习.assets\image-20200722222252544.png" alt="image-20200722222252544" style="zoom:80%;" />
 
 + （a）首先是hadoop101生成公钥和私钥
 
@@ -1138,7 +1138,7 @@ hadoop103:DataNode、SecondaryNameNode
 
 web界面访问推荐使用：rescourcemanager主机名或ip：8088
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop学习.assets\image-20200722230720130.png" alt="image-20200722230720130" style="zoom:67%;" />
+<img src="Hadoop学习.assets\image-20200722230720130.png" alt="image-20200722230720130" style="zoom:67%;" />
 
 #### 6、集群基本测试
 
@@ -1157,11 +1157,11 @@ web浏览器上访问：
 
 namenode主机名或ip：50070
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop学习.assets\image-20200722232032255.png" alt="image-20200722232032255" style="zoom:80%;" />
+<img src="Hadoop学习.assets\image-20200722232032255.png" alt="image-20200722232032255" style="zoom:80%;" />
 
 细节显示：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop学习.assets\image-20200722232100497.png" alt="image-20200722232100497" style="zoom:80%;" />
+<img src="Hadoop学习.assets\image-20200722232100497.png" alt="image-20200722232100497" style="zoom:80%;" />
 
 （2）查看HDFS文件的存储路径
 
@@ -1179,13 +1179,13 @@ zookeeper
 zookeeper
 ```
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop学习.assets\image-20200722232344716.png" alt="image-20200722232344716" style="zoom:67%;" />
+<img src="Hadoop学习.assets\image-20200722232344716.png" alt="image-20200722232344716" style="zoom:67%;" />
 
 ### 3.3.3 集群时间同步
 
 ​		时间同步的方式：找一个机器，作为时间服务器，所有的机器与这台集群时间进行定时的同步，比如，每隔十分钟，同步一次时间。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop学习.assets\image-20200723101758376.png" alt="image-20200723101758376" style="zoom:80%;" />
+<img src="Hadoop学习.assets\image-20200723101758376.png" alt="image-20200723101758376" style="zoom:80%;" />
 
 1、时间服务器配置
 

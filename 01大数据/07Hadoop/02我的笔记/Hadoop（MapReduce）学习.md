@@ -40,7 +40,7 @@
 
 ## 3、MapReduce核心思想
 
-![image-20200724104935932](D:\04桌面\Spring Boot学习\03学习文件\Hadoop（MapReduce）学习.assets\image-20200724104935932.png)
+<img src="Hadoop（MapReduce）学习.assets\image-20200724104935932.png" alt="image-20200724104935932" style="zoom:80%;" />
 
 （1）分布式的运算程序往往需要分成至少2个阶段。
 
@@ -52,7 +52,7 @@
 
 ## 4、MapReduce进程
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop（MapReduce）学习.assets\image-20200724105042548.png" alt="image-20200724105042548" style="zoom:80%;" />
+<img src="Hadoop（MapReduce）学习.assets\image-20200724105042548.png" alt="image-20200724105042548" style="zoom:80%;" />
 
 ## 5、常用数据序列化类型
 
@@ -72,9 +72,9 @@
 
 用户编写的程序分成三个部分：Mapper、Reducer和Driver。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop（MapReduce）学习.assets\image-20200724105759260.png" alt="image-20200724105759260" style="zoom:80%;" />
+<img src="Hadoop（MapReduce）学习.assets\image-20200724105759260.png" alt="image-20200724105759260" style="zoom:80%;" />
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop（MapReduce）学习.assets\image-20200724105810836.png" alt="image-20200724105810836" style="zoom:80%;" />
+<img src="Hadoop（MapReduce）学习.assets\image-20200724105810836.png" alt="image-20200724105810836" style="zoom:80%;" />
 
 # 2 入门案例
 
@@ -82,7 +82,7 @@
 
 ​		在给定的文本文件中统计输出每一个单词出现的总次数。其中，输入数据为hello.txt文件，输出数据：统计文件中数据出现的次数。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop（MapReduce）学习.assets\image-20200724110524528.png" alt="image-20200724110524528" style="zoom:80%;" />
+<img src="Hadoop（MapReduce）学习.assets\image-20200724110524528.png" alt="image-20200724110524528" style="zoom:80%;" />
 
 ## 2、环境搭建
 
@@ -239,7 +239,7 @@ public class WordcountReducer extends Reducer<Text, IntWritable, Text, IntWritab
 }
 ```
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop（MapReduce）学习.assets\image-20200727085200570.png" alt="image-20200727085200570" style="zoom:67%;" />
+<img src="Hadoop（MapReduce）学习.assets\image-20200727085200570.png" alt="image-20200727085200570" style="zoom:67%;" />
 
 （3）编写Driver驱动类
 
@@ -417,13 +417,13 @@ map:
 
 ### 2.1 mapreduce编程套路
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop（MapReduce）学习.assets\image-20200727094712973.png" alt="image-20200727094712973" style="zoom:80%;" />
+<img src="Hadoop（MapReduce）学习.assets\image-20200727094712973.png" alt="image-20200727094712973" style="zoom:80%;" />
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop（MapReduce）学习.assets\image-20200727094749680.png" alt="image-20200727094749680" style="zoom:80%;" />
+<img src="Hadoop（MapReduce）学习.assets\image-20200727094749680.png" alt="image-20200727094749680" style="zoom:80%;" />
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop（MapReduce）学习.assets\image-20200727094831205.png" alt="image-20200727094831205" style="zoom:80%;" />
+<img src="Hadoop（MapReduce）学习.assets\image-20200727094831205.png" alt="image-20200727094831205" style="zoom:80%;" />
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop（MapReduce）学习.assets\image-20200727094912826.png" alt="image-20200727094912826" style="zoom:80%;" />
+<img src="Hadoop（MapReduce）学习.assets\image-20200727094912826.png" alt="image-20200727094912826" style="zoom:80%;" />
 
 ## 4、自定义类
 
@@ -615,9 +615,9 @@ public class FlowCount {
 
 ## 1、介绍
 
-![image-20200724154759584](D:\04桌面\Spring Boot学习\03学习文件\Hadoop（MapReduce）学习.assets\image-20200724154759584.png)
+![image-20200724154759584](Hadoop（MapReduce）学习.assets\image-20200724154759584.png)
 
-![image-20200724154827642](D:\04桌面\Spring Boot学习\03学习文件\Hadoop（MapReduce）学习.assets\image-20200724154827642.png)
+![image-20200724154827642](Hadoop（MapReduce）学习.assets\image-20200724154827642.png)
 
 
 
@@ -631,7 +631,7 @@ public class FlowCount {
 
 数据切片：数据切片只是在逻辑上对输入进行分片，并不会在磁盘上将其切分成片进行存储。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop（MapReduce）学习.assets\image-20200724155826935.png" alt="image-20200724155826935" style="zoom:80%;" />
+<img src="Hadoop（MapReduce）学习.assets\image-20200724155826935.png" alt="image-20200724155826935" style="zoom:80%;" />
 
 # 4 maptask的并行度
 
@@ -944,7 +944,7 @@ job.setOutputValueClass(NullWritable.class);
 
 # 6 分区讲解
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop（MapReduce）学习.assets\image-20200727230211071.png" alt="image-20200727230211071" style="zoom:80%;" />
+<img src="Hadoop（MapReduce）学习.assets\image-20200727230211071.png" alt="image-20200727230211071" style="zoom:80%;" />
 
 1、 引入reducetask的并行度。
 
@@ -985,9 +985,9 @@ part：分区；r：reducetask；00000：编号。
 
 Partitioner  -》 mapkey.hash % redcuetask个数。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop（MapReduce）学习.assets\image-20200727231746339.png" alt="image-20200727231746339" style="zoom:80%;" />
+<img src="Hadoop（MapReduce）学习.assets\image-20200727231746339.png" alt="image-20200727231746339" style="zoom:80%;" />
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop（MapReduce）学习.assets\image-20200727231824184.png" alt="image-20200727231824184" style="zoom:80%;" />
+<img src="Hadoop（MapReduce）学习.assets\image-20200727231824184.png" alt="image-20200727231824184" style="zoom:80%;" />
 
 ## 6.1 自定义分区
 
@@ -1119,7 +1119,7 @@ job.setPartitionerClass(FlowPartitioner.class);
 
 4、map输出的数据 key- value,reduce端接收的数据，仍然是键值对。每当循环遍历一个value的时候，value的指针发生变化指向下一个，此时，key的指针也执行下一个。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop（MapReduce）学习.assets\image-20200728103540498.png" alt="image-20200728103540498" style="zoom:80%;" />这是mapreduce中的对象重用问题，在reduce端key value底层对应了两个对象。
+<img src="Hadoop（MapReduce）学习.assets\image-20200728103540498.png" alt="image-20200728103540498" style="zoom:80%;" />这是mapreduce中的对象重用问题，在reduce端key value底层对应了两个对象。
 
 ## 7.1 自定义分组
 

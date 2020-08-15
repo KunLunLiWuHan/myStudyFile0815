@@ -76,7 +76,7 @@ echo "1" > myid
 
 ​		**错误1**：未知的名称或服务。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Zookeeper学习2.assets\image-20200715154607277.png" alt="image-20200715154607277" style="zoom:67%;" />
+<img src="Zookeeper学习2.assets\image-20200715154607277.png" alt="image-20200715154607277" style="zoom:67%;" />
 
 ​		在root权限下，使用下面指令，添加ip映射关系：
 
@@ -90,13 +90,13 @@ vim /etc/hosts
 192.168.10.103 hadoop103
 ```
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Zookeeper学习2.assets\image-20200715155123053.png" alt="image-20200715155123053" style="zoom:67%;" />
+<img src="Zookeeper学习2.assets\image-20200715155123053.png" alt="image-20200715155123053" style="zoom:67%;" />
 
 **错误2**：地址已在使用。
 
 我们需要检查端口2181的使用状态，将占用该端口的进程杀死。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Zookeeper学习2.assets\image-20200715155526764.png" alt="image-20200715155526764" style="zoom:67%;" />
+<img src="Zookeeper学习2.assets\image-20200715155526764.png" alt="image-20200715155526764" style="zoom:67%;" />
 
 ```ini
 #检查端口状态
@@ -145,7 +145,7 @@ String IP = "hadoop101:2181,hadoop102:2181,hadoop103:2181";
 
 ​		zab广播模式工作原理，通过类似两阶段提交协议的方式解决数据一致性：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Zookeeper学习2.assets\image-20200714101154594.png" alt="image-20200714101154594" style="zoom:67%;" />
+<img src="Zookeeper学习2.assets\image-20200714101154594.png" alt="image-20200714101154594" style="zoom:67%;" />
 
 1. leader从客户端收到一个写请求 
 2. leader生成一个新的事务并为这个事务生成一个唯一的ZXID 
@@ -208,9 +208,9 @@ peerType=observer
 server.3=192.168.60.130:2289:3389:observer
 ```
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Zookeeper学习2.assets\image-20200714104645760.png" alt="image-20200714104645760" style="zoom: 67%;" />
+<img src="Zookeeper学习2.assets\image-20200714104645760.png" alt="image-20200714104645760" style="zoom: 67%;" />
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Zookeeper学习2.assets\image-20200714104832305.png" alt="image-20200714104832305" style="zoom:67%;" />
+<img src="Zookeeper学习2.assets\image-20200714104832305.png" alt="image-20200714104832305" style="zoom:67%;" />
 
 ## 1.3 .zookeeperAPI连接集群
 

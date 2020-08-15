@@ -22,7 +22,7 @@
 
 3、不可变集合继承层次
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\scala学习3.assets\image-20200722084650983.png" alt="image-20200722084650983" style="zoom:80%;" />
+<img src="scala学习3.assets\image-20200722084650983.png" alt="image-20200722084650983" style="zoom:80%;" />
 
 小结：
 
@@ -55,7 +55,7 @@ object CollectionDemo01 {
 （7）IndexSeq 和 LinearSeq 的区别IndexSeq是通过索引来查找和定位，因此速度快，比如String就是一个索引集合，通过索引即可定位，LineaSeq 是线型的，即有头尾的概念，这种数据结构一般是通过遍历来查找，它的价值在于应用到一些。
 4、可变集合继承层次
 
-![timg](D:\04桌面\Spring Boot学习\03学习文件\scala学习3.assets\timg.jpg)
+![timg](scala学习3.assets\timg.jpg)
 
 ## 1.1 数组
 
@@ -229,7 +229,7 @@ object MultiplyArray {
 
 控制台输出结果：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\scala学习3.assets\image-20200722094313801.png" alt="image-20200722094313801" style="zoom:80%;" />
+<img src="scala学习3.assets\image-20200722094313801.png" alt="image-20200722094313801" style="zoom:80%;" />
 
 #### 4、Scala数组与Java的List的互转
 
@@ -1093,7 +1093,7 @@ object ReduceDemo01 {
 
 **reduceLefft(_ + _)**（接收一个函数时，也可以直接传入一个匿名函数；类似于Java中传入匿名对象）这个函数的执行逻辑如图：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\scala学习3.assets\image-20200802092801904.png" alt="image-20200802092801904" style="zoom:80%;" />
+<img src="scala学习3.assets\image-20200802092801904.png" alt="image-20200802092801904" style="zoom:80%;" />
 
 （2）分析下面的代码，并使用化简的方法求出List(1, 2, 3, 4 ,5)最小的值
 
@@ -1235,7 +1235,7 @@ object ZipDemo01 {
 + 拉链的本质就是两个集合的合并操作，合并后每个元素是一个 对偶元组。
 + 操作的规则如下图：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\scala学习3.assets\image-20200802102232926.png" alt="image-20200802102232926" style="zoom:80%;" />
+<img src="scala学习3.assets\image-20200802102232926.png" alt="image-20200802102232926" style="zoom:80%;" />
 
 + 如果两个集合个数不对应，会造成数据丢失。
 + 集合不限于List, 也可以是其它集合比如 Array。

@@ -6,7 +6,7 @@
 
 ​		Spark是MapReduce的替代方案，而且兼容HDFS、Hive，可融入Hadoop的生态系统，以弥补MapReduce的不足。
 
-![image-20200729085739092](D:\04桌面\Spring Boot学习\03学习文件\Spark学习.assets\image-20200729085739092.png)
+![image-20200729085739092](Spark学习.assets\image-20200729085739092.png)
 
 ## 1.1 Spark特点
 
@@ -104,13 +104,13 @@ log4j.rootCategory=WARN, console
 
 5、测试-读取文件
 
-![image-20200808113231316](D:\04桌面\Spring Boot学习\03学习文件\Spark学习.assets\image-20200808113231316.png)
+![image-20200808113231316](Spark学习.assets\image-20200808113231316.png)
 
 ## 2.2 集群安装
 
 1、架构图
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Spark学习.assets\图片.png" alt="图片" style="zoom:80%;" />
+<img src="Spark学习.assets\图片.png" alt="图片" style="zoom:80%;" />
 
 2、安装步骤
 
@@ -170,7 +170,7 @@ sbin/start-all.sh
 http://node-4:8080/
 ```
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Spark学习.assets\image-20200729144423554.png" alt="image-20200729144423554" style="zoom:80%;" />		
+<img src="Spark学习.assets\image-20200729144423554.png" alt="image-20200729144423554" style="zoom:80%;" />		
 
 ​		此外，也可以执行jps命令，主节点上（node-4,node-5）有Master进程，其他子节点上有Work进行。
 
@@ -274,7 +274,7 @@ sc.textFile("hdfs://node-4:9000/wc").flatMap(_.split(" ")).map((_, 1)).reduceByK
 
 目录结构
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Spark学习.assets\image-20200808202459925.png" alt="image-20200808202459925" style="zoom:50%;" />
+<img src="Spark学习.assets\image-20200808202459925.png" alt="image-20200808202459925" style="zoom:50%;" />
 
 1、导入依赖
 
@@ -356,11 +356,11 @@ object ScalaWordCount {
 
 控制台输出：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Spark学习.assets\image-20200808202612951.png" alt="image-20200808202612951" style="zoom:50%;" />
+<img src="Spark学习.assets\image-20200808202612951.png" alt="image-20200808202612951" style="zoom:50%;" />
 
 ## 2.5 Spark任务执行流程讲解
 
-![spark任务执行过程简介](D:\04桌面\Spring Boot学习\03学习文件\Spark学习.assets\spark任务执行过程简介.png)
+![spark任务执行过程简介](Spark学习.assets\spark任务执行过程简介.png)
 
 ## 2.6 Yarn和spark的对比
 
@@ -385,17 +385,17 @@ object ScalaWordCount {
 
 2、Java Io回顾
 
-![image-20200808172629625](D:\04桌面\Spring Boot学习\03学习文件\Spark学习.assets\image-20200808172629625.png)
+![image-20200808172629625](Spark学习.assets\image-20200808172629625.png)
 
 引入下面的IO：
 
-![image-20200808175134936](D:\04桌面\Spring Boot学习\03学习文件\Spark学习.assets\image-20200808175134936.png)
+![image-20200808175134936](Spark学习.assets\image-20200808175134936.png)
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Spark学习.assets\image-20200808174639042.png" alt="image-20200808174639042" style="zoom:80%;" />
+<img src="Spark学习.assets\image-20200808174639042.png" alt="image-20200808174639042" style="zoom:80%;" />
 
 3、RDD体现了装饰者设计模式（包装后有功能的扩展），将数据处理的逻辑进行封装（控制抽象，将封装好的逻辑传递给其他对象或函数）。
 
-![image-20200808175349475](D:\04桌面\Spring Boot学习\03学习文件\Spark学习.assets\image-20200808175349475.png)
+![image-20200808175349475](Spark学习.assets\image-20200808175349475.png)
 
 4、RDD属性
 
@@ -409,7 +409,7 @@ object ScalaWordCount {
 
 （5）一个列表，存储每个Partion的优先位置（preferred location）。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Spark学习.assets\image-20200808181232122.png" alt="image-20200808181232122" style="zoom: 67%;" />
+<img src="Spark学习.assets\image-20200808181232122.png" alt="image-20200808181232122" style="zoom: 67%;" />
 
 5、RDD的特点
 
@@ -421,25 +421,25 @@ object ScalaWordCount {
 
 ​		如果RDD是通过已有的文件系统构建，则compute函数是读取指定文件系统中的数据；如果RDD是通过其他RDD转换而来，则compute函数是执行转换逻辑将其他RDD的数据进行转换。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Spark学习.assets\image-20200808182045280.png" alt="image-20200808182045280" style="zoom: 67%;" />
+<img src="Spark学习.assets\image-20200808182045280.png" alt="image-20200808182045280" style="zoom: 67%;" />
 
 （2）只读
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Spark学习.assets\image-20200808182305128.png" alt="image-20200808182305128" style="zoom:80%;" />
+<img src="Spark学习.assets\image-20200808182305128.png" alt="image-20200808182305128" style="zoom:80%;" />
 
 ​		由一个RDD转换成另一个RDD，可以通过丰富的操作算子（解决问题其实就是将问题的初始状态，通过一系列的操作（算子）对问题状态进行转换，然后达到完成状态。spark中的算子分为两类：转换算子和行动算子。）来实现，不再像MapReduce那样只能写map和reduce了，如下图所示：
 
-​		<img src="D:\04桌面\Spring Boot学习\03学习文件\Spark学习.assets\image-20200808183208395.png" alt="image-20200808183208395" style="zoom:80%;" />
+​		<img src="Spark学习.assets\image-20200808183208395.png" alt="image-20200808183208395" style="zoom:80%;" />
 
 （3）依赖
 
 ​		依赖分为两种，一种是窄依赖，RDD之间是一一对应的；一种是宽依赖，下游RDD的每个分区与上游RDD（也称父RDD）的每个分区都有关，是多对多的关系。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Spark学习.assets\image-20200808183354611.png" alt="image-20200808183354611" style="zoom:80%;" />
+<img src="Spark学习.assets\image-20200808183354611.png" alt="image-20200808183354611" style="zoom:80%;" />
 
 （4）缓存
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Spark学习.assets\image-20200808183541324.png" alt="image-20200808183541324" style="zoom:80%;" />
+<img src="Spark学习.assets\image-20200808183541324.png" alt="image-20200808183541324" style="zoom:80%;" />
 
 ### 创建RDD
 
@@ -449,17 +449,17 @@ object ScalaWordCount {
 
 包括本地文件系统，还有Hadoop支持的数据集，比如HDFS,HBase等。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Spark学习.assets\image-20200807185555976.png" alt="image-20200807185555976" style="zoom:80%;" />2、从集合中创建
+<img src="Spark学习.assets\image-20200807185555976.png" alt="image-20200807185555976" style="zoom:80%;" />2、从集合中创建
 
 ​		将Driver的Scala集合通过并行化的方式编程RDD（做实验测试的时候用），Spark主要提供了两种函数：parallelize和makeRDD。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Spark学习.assets\image-20200807185658091.png" alt="image-20200807185658091" style="zoom:80%;" />
+<img src="Spark学习.assets\image-20200807185658091.png" alt="image-20200807185658091" style="zoom:80%;" />
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Spark学习.assets\image-20200807185959344.png" alt="image-20200807185959344" style="zoom:80%;" />
+<img src="Spark学习.assets\image-20200807185959344.png" alt="image-20200807185959344" style="zoom:80%;" />
 
 并行化的第二种方式makeRDD：
 
-![image-20200807190143371](D:\04桌面\Spring Boot学习\03学习文件\Spark学习.assets\image-20200807190143371.png)
+![image-20200807190143371](Spark学习.assets\image-20200807190143371.png)
 
 使用IDEA创建：
 
@@ -509,29 +509,29 @@ val listRDD: RDD[Int] = sc.makeRDD(List(1, 2, 3, 4),2)
 
 可以看到文件目录：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Spark学习.assets\image-20200808211847070.png" alt="image-20200808211847070" style="zoom:50%;" />
+<img src="Spark学习.assets\image-20200808211847070.png" alt="image-20200808211847070" style="zoom:50%;" />
 
 接下来我们来确认一下分区数为4个的原因：
 
 （1）、点击makeRDD
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Spark学习.assets\image-20200808211315985.png" alt="image-20200808211315985" style="zoom:80%;" />
+<img src="Spark学习.assets\image-20200808211315985.png" alt="image-20200808211315985" style="zoom:80%;" />
 
 (2)、点击并行度defaultParallelism
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Spark学习.assets\image-20200808211337622.png" alt="image-20200808211337622" style="zoom:80%;" />
+<img src="Spark学习.assets\image-20200808211337622.png" alt="image-20200808211337622" style="zoom:80%;" />
 
 (3)、taskScheduler.defaultParallelism
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Spark学习.assets\image-20200808211423779.png" alt="image-20200808211423779" style="zoom:67%;" />
+<img src="Spark学习.assets\image-20200808211423779.png" alt="image-20200808211423779" style="zoom:67%;" />
 
 (4)、查看抽象类具体实现
 
-![image-20200808211532698](D:\04桌面\Spring Boot学习\03学习文件\Spark学习.assets\image-20200808211532698.png)
+![image-20200808211532698](Spark学习.assets\image-20200808211532698.png)
 
 (5)、找到函数
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Spark学习.assets\image-20200808211643308.png" alt="image-20200808211643308" style="zoom:67%;" />
+<img src="Spark学习.assets\image-20200808211643308.png" alt="image-20200808211643308" style="zoom:67%;" />
 
 2、从外部存储中创建保存文件
 
@@ -548,11 +548,11 @@ val listRDD: RDD[Int] = sc.makeRDD(List(1, 2, 3, 4),2)
 
 （1）点击textFile
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Spark学习.assets\image-20200808212742595.png" alt="image-20200808212742595" style="zoom:80%;" />
+<img src="Spark学习.assets\image-20200808212742595.png" alt="image-20200808212742595" style="zoom:80%;" />
 
-![image-20200808212816777](D:\04桌面\Spring Boot学习\03学习文件\Spark学习.assets\image-20200808212816777.png)
+![image-20200808212816777](Spark学习.assets\image-20200808212816777.png)
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Spark学习.assets\image-20200808212845156.png" alt="image-20200808212845156" style="zoom: 80%;" />
+<img src="Spark学习.assets\image-20200808212845156.png" alt="image-20200808212845156" style="zoom: 80%;" />
 
 分区最少是两个，但是可以比2个多。
 
@@ -580,11 +580,11 @@ lines.saveAsTextFile("output2")
 
 **Driver和Excutor的关系**
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Spark学习.assets\image-20200808231755967.png" alt="image-20200808231755967" style="zoom:80%;" />
+<img src="Spark学习.assets\image-20200808231755967.png" alt="image-20200808231755967" style="zoom:80%;" />
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Spark学习.assets\image-20200808232009393.png" alt="image-20200808232009393" style="zoom:80%;" />
+<img src="Spark学习.assets\image-20200808232009393.png" alt="image-20200808232009393" style="zoom:80%;" />
 
-1、mapPartitionsWithIndex 	<img src="D:\04桌面\Spring Boot学习\03学习文件\Spark学习.assets\image-20200808224215682.png" alt="image-20200808224215682" style="zoom:80%;" />
+1、mapPartitionsWithIndex 	<img src="Spark学习.assets\image-20200808224215682.png" alt="image-20200808224215682" style="zoom:80%;" />
 
 ```scala
 val listRDD: RDD[Int] = sc.makeRDD(1 to 10)
@@ -620,13 +620,13 @@ value.collect().foreach(println)
 
 7、mapPartions(func)
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Spark学习.assets\image-20200808221026304.png" alt="image-20200808221026304" style="zoom:80%;" />
+<img src="Spark学习.assets\image-20200808221026304.png" alt="image-20200808221026304" style="zoom:80%;" />
 
 ​		下面是map和mapPartions的区别：
 
-![image-20200808221744471](D:\04桌面\Spring Boot学习\03学习文件\Spark学习.assets\image-20200808221744471.png)
+![image-20200808221744471](Spark学习.assets\image-20200808221744471.png)
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Spark学习.assets\image-20200808221922816.png" alt="image-20200808221922816" style="zoom:80%;" />
+<img src="Spark学习.assets\image-20200808221922816.png" alt="image-20200808221922816" style="zoom:80%;" />
 
 ```scala
 val lsitRDD: RDD[Int] = sc.makeRDD(1 to 10)
@@ -673,9 +673,9 @@ glomRDD.collect().foreach(array => {
 
 10、groupBy & filter
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Spark学习.assets\image-20200808235138346.png" alt="image-20200808235138346" style="zoom:80%;" />
+<img src="Spark学习.assets\image-20200808235138346.png" alt="image-20200808235138346" style="zoom:80%;" />
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Spark学习.assets\image-20200808235229414.png" alt="image-20200808235229414" style="zoom:80%;" />
+<img src="Spark学习.assets\image-20200808235229414.png" alt="image-20200808235229414" style="zoom:80%;" />
 
 ```scala
 val ListRDD: RDD[Int] = sc.makeRDD(List(1, 2, 3, 4, 5))

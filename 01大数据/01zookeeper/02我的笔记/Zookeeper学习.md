@@ -455,7 +455,7 @@ setAcl <path> digest:<user>:<password>:<acl>
 echo -n <user>:<password> | openssl dgst -binary -sha1 | openssl base64
 ```
 
-![image-20200712221332856](Zookeeper学习.assets\image-20200712221332856.png)
+<img src="Zookeeper学习.assets\image-20200712221332856.png" alt="image-20200712221332856" style="zoom:80%;" />
 
 <img src="Zookeeper学习.assets\image-20200712221538899.png" alt="image-20200712221538899" style="zoom:80%;" />
 

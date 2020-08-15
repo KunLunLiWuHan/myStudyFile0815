@@ -5,15 +5,15 @@
 1. 从云盘上将Redis压缩包下载下来，然后将其解压到自己电脑上的环境目录（D:\03Enviroment\06Redis\Redis-x64-3.2.100）就可以了。Redis十分的小，约为5M。
 2. 开启Redis,双击运行服务即可。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200620190518635.png" alt="image-20200620190518635" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200620190518635.png" alt="image-20200620190518635" style="zoom:80%;" />
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200620190539587.png" alt="image-20200620190539587" style="zoom: 67%;" />
+<img src="Redis学习.assets\image-20200620190539587.png" alt="image-20200620190539587" style="zoom: 67%;" />
 
 3. 使用Redis客户端连接Redis。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200620190934328.png" alt="image-20200620190934328" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200620190934328.png" alt="image-20200620190934328" style="zoom:80%;" />
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200620190917954.png" alt="image-20200620190917954" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200620190917954.png" alt="image-20200620190917954" style="zoom:80%;" />
 
 windows下开发确实简单，但是Redis推荐我们使用Linux去开发。
 
@@ -67,7 +67,7 @@ NoSQL
 
 ## 3、NoSQL数据库的四大分类和对比
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718101654040.png" alt="image-20200718101654040" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200718101654040.png" alt="image-20200718101654040" style="zoom:80%;" />
 
 ## 4、分布式数据库CAP原理
 
@@ -89,7 +89,7 @@ AP 大多数网站架构的选择
 CP Redis、Mongodb
 ```
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718110155890.png" alt="image-20200718110155890" style="zoom:67%;" />
+<img src="Redis学习.assets\image-20200718110155890.png" alt="image-20200718110155890" style="zoom:67%;" />
 
 **BASE**
 
@@ -158,7 +158,7 @@ Redis 与其他 key - value 缓存产品有以下三个特点：
 
    首先进入到redis-3.0.4目录下：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718151547920.png" alt="image-20200718151547920" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200718151547920.png" alt="image-20200718151547920" style="zoom:80%;" />
 
 ​		分别执行`make,make install`命令（目录：[zookeeper@hadoop101 redis-3.0.4]$ ）。
 
@@ -166,7 +166,7 @@ Redis 与其他 key - value 缓存产品有以下三个特点：
 
    默认为`usr/local/bin`：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718151936733.png" alt="image-20200718151936733" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200718151936733.png" alt="image-20200718151936733" style="zoom:80%;" />
 
 ​		配置文件说明：
 
@@ -183,17 +183,17 @@ Redis-server：Redis服务器启动命令
 
    （1）修改redis.conf文件将里面的`daemonize no` 改成 yes，让服务在后台启动。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718152312774.png" alt="image-20200718152312774" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200718152312774.png" alt="image-20200718152312774" style="zoom:80%;" />
 
 ​		（2）为了避免配置出错，将默认的`/opt/redis-3.0.4/redis.conf`拷贝到自己定义好的一个路径下，比如/myRedis中。
 
 ​		（3）启动Redis时，运行自定义的/myRedis中的配置文件。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718152914239.png" alt="image-20200718152914239" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200718152914239.png" alt="image-20200718152914239" style="zoom:80%;" />
 
 5. 连通测试
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718153020322.png" alt="image-20200718153020322" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200718153020322.png" alt="image-20200718153020322" style="zoom:80%;" />
 
 6. 关闭
 
@@ -203,11 +203,11 @@ Redis-server：Redis服务器启动命令
 redis-cli shutdown
 ```
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718153507733.png" alt="image-20200718153507733" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200718153507733.png" alt="image-20200718153507733" style="zoom:80%;" />
 
 ​		可以看出，redis的进程已经关闭：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718153526483.png" alt="image-20200718153526483" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200718153526483.png" alt="image-20200718153526483" style="zoom:80%;" />
 
 ​		（2）多实例关闭
 
@@ -241,7 +241,7 @@ Flushdb：
 Flushall；
 ```
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718161824894.png" alt="image-20200718161824894" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200718161824894.png" alt="image-20200718161824894" style="zoom:80%;" />
 
 # 3、Redis数据类型
 
@@ -277,7 +277,7 @@ Flushall；
 
 1. 常用命令
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718163321025.png" alt="image-20200718163321025" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200718163321025.png" alt="image-20200718163321025" style="zoom:80%;" />
 
 2. 案例
 
@@ -323,7 +323,7 @@ type key名
 
 1. 常用命令
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718164916165.png" alt="image-20200718164916165" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200718164916165.png" alt="image-20200718164916165" style="zoom:80%;" />
 
 2. 案例
 
@@ -357,9 +357,9 @@ getrange key名 范围1 范围2
 setrange key名 范围 具体值
 ```
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718165914876.png" alt="image-20200718165914876" style="zoom:67%;" />
+<img src="Redis学习.assets\image-20200718165914876.png" alt="image-20200718165914876" style="zoom:67%;" />
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718165921935.png" alt="image-20200718165921935" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200718165921935.png" alt="image-20200718165921935" style="zoom:80%;" />
 
 （4） setex/setnx
 
@@ -380,9 +380,9 @@ setnx key名 value值
 mset/msetnx key1名 value1 key2名 value2 ...
 ```
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718170840403.png" alt="image-20200718170840403" style="zoom:67%;" />
+<img src="Redis学习.assets\image-20200718170840403.png" alt="image-20200718170840403" style="zoom:67%;" />
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718170852116.png" alt="image-20200718170852116" style="zoom:67%;" />
+<img src="Redis学习.assets\image-20200718170852116.png" alt="image-20200718170852116" style="zoom:67%;" />
 
 （6）getset
 
@@ -391,15 +391,15 @@ mset/msetnx key1名 value1 key2名 value2 ...
 getset key名 value
 ```
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718171025003.png" alt="image-20200718171025003" style="zoom:67%;" />
+<img src="Redis学习.assets\image-20200718171025003.png" alt="image-20200718171025003" style="zoom:67%;" />
 
 ### 3、List命令
 
 1. 常用命令
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718171140861.png" alt="image-20200718171140861" style="zoom:67%;" />
+<img src="Redis学习.assets\image-20200718171140861.png" alt="image-20200718171140861" style="zoom:67%;" />
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718171155420.png" alt="image-20200718171155420" style="zoom:67%;" />
+<img src="Redis学习.assets\image-20200718171155420.png" alt="image-20200718171155420" style="zoom:67%;" />
 
 2. 案例
 
@@ -407,7 +407,7 @@ getset key名 value
 
 （1）lpush/rpush/lrange
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718171838090.png" alt="image-20200718171838090" style="zoom:67%;" />
+<img src="Redis学习.assets\image-20200718171838090.png" alt="image-20200718171838090" style="zoom:67%;" />
 
 （2）lpop/rpop
 
@@ -416,7 +416,7 @@ getset key名 value
 lpop list名
 ```
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718172255816.png" alt="image-20200718172255816" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200718172255816.png" alt="image-20200718172255816" style="zoom:80%;" />
 
 （3）lindex，按照索引下标获得元素(从上到下)
 
@@ -425,7 +425,7 @@ lpop list名
 lindex list名  下标索引
 ```
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718172627700.png" alt="image-20200718172627700" style="zoom:50%;" />
+<img src="Redis学习.assets\image-20200718172627700.png" alt="image-20200718172627700" style="zoom:50%;" />
 
 （4）llen
 
@@ -448,7 +448,7 @@ lrem list名 N（counts） value
 ltrim list名 起始索引 结束索引
 ```
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718173139455.png" alt="image-20200718173139455" style="zoom:67%;" />
+<img src="Redis学习.assets\image-20200718173139455.png" alt="image-20200718173139455" style="zoom:67%;" />
 
 （7） rpoplpush 源列表 目的列表
 
@@ -457,7 +457,7 @@ ltrim list名 起始索引 结束索引
 rpoplpush list1源列表 list2目的列表
 ```
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718173713052.png" alt="image-20200718173713052" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200718173713052.png" alt="image-20200718173713052" style="zoom:80%;" />
 
 （8） lset key index value
 
@@ -483,7 +483,7 @@ linsert list名 before/after value1 value12
 
 1. 常用命令
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718174416828.png" alt="image-20200718174416828" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200718174416828.png" alt="image-20200718174416828" style="zoom:80%;" />
 
 2. 案例
 
@@ -535,7 +535,7 @@ smove set1集合 set2集合 value(set1中的某个值)
 
 差集：在第一个set里面而不在后面任何一个set里面的项
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718180514598.png" alt="image-20200718180514598" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200718180514598.png" alt="image-20200718180514598" style="zoom:80%;" />
 
 同时，我们也理解了交集（sinter）和并集（sunion）的含义。
 
@@ -543,7 +543,7 @@ smove set1集合 set2集合 value(set1中的某个值)
 
 1. 常用命令
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718180757799.png" alt="image-20200718180757799" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200718180757799.png" alt="image-20200718180757799" style="zoom:80%;" />
 
 2. 案例
 
@@ -557,9 +557,9 @@ hset hash集合 key1 value1
 hget hash集合 key1
 ```
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718181141533.png" alt="image-20200718181141533" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200718181141533.png" alt="image-20200718181141533" style="zoom:80%;" />
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718181341382.png" alt="image-20200718181341382" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200718181341382.png" alt="image-20200718181341382" style="zoom:80%;" />
 
 （2）hlen
 
@@ -570,7 +570,7 @@ hlen hash集合
 
 （3）hexists
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718181532920.png" alt="image-20200718181532920" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200718181532920.png" alt="image-20200718181532920" style="zoom:80%;" />
 
 （4）**hkeys/hvals**
 
@@ -581,7 +581,7 @@ hkeys hash集合
 
 （5）hincrby/hincrbyfloat
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718181837667.png" alt="image-20200718181837667" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200718181837667.png" alt="image-20200718181837667" style="zoom:80%;" />
 
 （6）hsetnx
 
@@ -591,9 +591,9 @@ hkeys hash集合
 
 1. 常用
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718182033032.png" alt="image-20200718182033032" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200718182033032.png" alt="image-20200718182033032" style="zoom:80%;" />
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718182046996.png" alt="image-20200718182046996" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200718182046996.png" alt="image-20200718182046996" style="zoom:80%;" />
 
 2. 案例
 
@@ -601,7 +601,7 @@ hkeys hash集合
 
 （1） zadd/zrange
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718182912298.png" alt="image-20200718182912298" style="zoom: 67%;" />
+<img src="Redis学习.assets\image-20200718182912298.png" alt="image-20200718182912298" style="zoom: 67%;" />
 
 （2）zrangebyscore 
 
@@ -641,7 +641,7 @@ zscore zset score
 zrevrank zset集合 values
 ```
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718184209412.png" alt="image-20200718184209412" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200718184209412.png" alt="image-20200718184209412" style="zoom:80%;" />
 
 （6）zrevrange
 
@@ -650,7 +650,7 @@ zrevrank zset集合 values
 zrevrange zset集合 start stop(暂时不知道start啥意思)
 ```
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718184329902.png" alt="image-20200718184329902" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200718184329902.png" alt="image-20200718184329902" style="zoom:80%;" />
 
 （7） zrevrangebyscore 
 
@@ -659,7 +659,7 @@ zrevrange zset集合 start stop(暂时不知道start啥意思)
 zrevrangebyscore zset集合 score1 score2
 ```
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718184900658.png" alt="image-20200718184900658" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200718184900658.png" alt="image-20200718184900658" style="zoom:80%;" />
 
 # 4、解析配置文件
 
@@ -669,13 +669,13 @@ zrevrangebyscore zset集合 score1 score2
 
 2. 对大小写不敏感。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718203218556.png" alt="image-20200718203218556" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200718203218556.png" alt="image-20200718203218556" style="zoom:80%;" />
 
 ## 2、INCLUDES包含
 
    	可以通过includes包含，redis.conf可以作为总闸，包含其他。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718203334982.png" alt="image-20200718203334982" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200718203334982.png" alt="image-20200718203334982" style="zoom:80%;" />
 
 # 5、持久化
 
@@ -699,7 +699,7 @@ zrevrangebyscore zset集合 score1 score2
 
 ### 3、配置位置
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718211115400.png" alt="image-20200718211115400" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200718211115400.png" alt="image-20200718211115400" style="zoom:80%;" />
 
 ```ini
 1.DB是整个内存的压缩过的Snapshot，RDB的数据结构，可以配置复合的快照触发条件。
@@ -718,19 +718,19 @@ zrevrangebyscore zset集合 score1 score2
 
 ​	表示后台保存数据出错，前台写数据是否停止。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718213218865.png" alt="image-20200718213218865" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200718213218865.png" alt="image-20200718213218865" style="zoom:80%;" />
 
 ​	如果配置成no，表示你不在乎数据不一致或者有其他的手段发现和控制
 
 2.rdbcompression
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718213443982.png" alt="image-20200718213443982" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200718213443982.png" alt="image-20200718213443982" style="zoom:80%;" />
 
 ​		rdbcompression：对于存储到磁盘中的快照，可以设置是否进行压缩存储。如果是的话，redis会采用LZF算法进行压缩。如果你不想消耗CPU来进行压缩的话，可以设置为关闭此功能。
 
 3. rdbchecksum
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718213548028.png" alt="image-20200718213548028" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200718213548028.png" alt="image-20200718213548028" style="zoom:80%;" />
 
 ​		rdbchecksum：在存储快照后，还可以让redis使用CRC64算法来进行数据校验，但是这样做会增加大约10%的性能消耗，如果希望获取到最大的性能提升，可以关闭此功能。
 
@@ -738,9 +738,9 @@ zrevrangebyscore zset集合 score1 score2
 
 1. **配置文件中默认的快照配置**
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718213757193.png" alt="image-20200718213757193" style="zoom:67%;" />
+<img src="Redis学习.assets\image-20200718213757193.png" alt="image-20200718213757193" style="zoom:67%;" />
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718213806047.png" alt="image-20200718213806047" style="zoom:67%;" />
+<img src="Redis学习.assets\image-20200718213806047.png" alt="image-20200718213806047" style="zoom:67%;" />
 
 注意：我们需要将备份拷贝到另一台机器上，避免意外故障出现。
 
@@ -789,11 +789,11 @@ redis-cli config set save ""
 
 ### 2、配置位置
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718222136682.png" alt="image-20200718222136682" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200718222136682.png" alt="image-20200718222136682" style="zoom:80%;" />
 
 （1）Appendfsync
 
-![image-20200718223041668](D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718223041668.png)
+![image-20200718223041668](Redis学习.assets\image-20200718223041668.png)
 
 ```ini
 Always:同步持久化,每次发生数据变更会被立即记录到磁盘,性能较差但数据完整性比较好。
@@ -837,7 +837,7 @@ No:write后不会有fsync调用（从不同步），由操作系统自动调度�
 Redis-check-aof --fix appendonly.aof(文件)
 ```
 
-![image-20200718222552096](D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200718222552096.png)
+![image-20200718222552096](Redis学习.assets\image-20200718222552096.png)
 
 （4）恢复：重启redis然后重新加载。
 
@@ -888,27 +888,27 @@ Redis-check-aof --fix appendonly.aof(文件)
 
 **常用指令**
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200719080554644.png" alt="image-20200719080554644" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200719080554644.png" alt="image-20200719080554644" style="zoom:80%;" />
 
 ## 6.2 操作
 
 1. 正常执行
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200719081016450.png" alt="image-20200719081016450" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200719081016450.png" alt="image-20200719081016450" style="zoom:80%;" />
 
 2. 放弃执行
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200719081230462.png" alt="image-20200719081230462" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200719081230462.png" alt="image-20200719081230462" style="zoom:80%;" />
 
 3. 全体连坐
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200719081457409.png" alt="image-20200719081457409" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200719081457409.png" alt="image-20200719081457409" style="zoom:80%;" />
 
 4. 冤头债主
 
 ​		在操作的事务中没有异常错误，在运行的过程中报错对应的情况。即**Redis部分支持事务**。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200719081612433.png" alt="image-20200719081612433" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200719081612433.png" alt="image-20200719081612433" style="zoom:80%;" />
 
 ### 6.2.1 watch监控
 
@@ -924,15 +924,15 @@ Redis-check-aof --fix appendonly.aof(文件)
 
 （1）初始化信用卡可用余额和欠额
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200719083912768.png" alt="image-20200719083912768" style="zoom: 67%;" />
+<img src="Redis学习.assets\image-20200719083912768.png" alt="image-20200719083912768" style="zoom: 67%;" />
 
 （2）无加塞篡改，先监控再开启**multi**，保证两笔金额变动在同一个事务内。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200719084028728.png" alt="image-20200719084028728" style="zoom:67%;" />
+<img src="Redis学习.assets\image-20200719084028728.png" alt="image-20200719084028728" style="zoom:67%;" />
 
 （3）有加塞篡改，监控了key，如果key被修改了，后面的事务的执行会失效。我们需要在缓存中重新获取数据进行加载。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200719084243923.png" alt="image-20200719084243923" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200719084243923.png" alt="image-20200719084243923" style="zoom:80%;" />
 
 （4）unwatch 命令用于取消 WATCH 命令对所有 key 的监视。
 
@@ -968,11 +968,11 @@ Redis-check-aof --fix appendonly.aof(文件)
 
 ​		其中，订阅/发布消息图如下：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200719085210344.png" alt="image-20200719085210344" style="zoom:67%;" />
+<img src="Redis学习.assets\image-20200719085210344.png" alt="image-20200719085210344" style="zoom:67%;" />
 
 2. 常用命令
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200719085423524.png" alt="image-20200719085423524"  />
+<img src="Redis学习.assets\image-20200719085423524.png" alt="image-20200719085423524"  />
 
 3. 案例
 
@@ -1012,29 +1012,29 @@ slaveof 主库IP 主库端口
 
 （1）拷贝多个redis.conf文件
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200719100607163.png" alt="image-20200719100607163" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200719100607163.png" alt="image-20200719100607163" style="zoom:80%;" />
 
 （2）修改配置文件中参数
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200719100651533.png" alt="image-20200719100651533" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200719100651533.png" alt="image-20200719100651533" style="zoom:80%;" />
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200719100711554.png" alt="image-20200719100711554" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200719100711554.png" alt="image-20200719100711554" style="zoom:80%;" />
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200719100728924.png" alt="image-20200719100728924" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200719100728924.png" alt="image-20200719100728924" style="zoom:80%;" />
 
 ### 1、一主二仆
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200719104639519.png" alt="image-20200719104639519" style="zoom:67%;" />
+<img src="Redis学习.assets\image-20200719104639519.png" alt="image-20200719104639519" style="zoom:67%;" />
 
 1. 配置
 
 （1）启动三台Redis
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200719100951695.png" alt="image-20200719100951695" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200719100951695.png" alt="image-20200719100951695" style="zoom:80%;" />
 
 后台线程：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200719101014066.png" alt="image-20200719101014066" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200719101014066.png" alt="image-20200719101014066" style="zoom:80%;" />
 
 （2）使用slaveof命令将6380，6381端口的Redis变成仆人。
 
@@ -1044,7 +1044,7 @@ slaveof 主库IP 主库端口
 info replication
 ```
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200719101145215.png" alt="image-20200719101145215" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200719101145215.png" alt="image-20200719101145215" style="zoom:80%;" />
 
 2. 主从遇到的问题
 
@@ -1064,12 +1064,12 @@ info replication
 
 ### 2、薪火相传
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200719104739199.png" alt="image-20200719104739199" style="zoom:67%;" />
+<img src="Redis学习.assets\image-20200719104739199.png" alt="image-20200719104739199" style="zoom:67%;" />
 
 ​		上一个Slave可以是下一个slave的Master，Slave同样可以接收其它slaves的连接和同步请求，那么该slave作为了链条中下一个的master,
 可以有效减轻master的写压力。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200719105247593.png" alt="image-20200719105247593" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200719105247593.png" alt="image-20200719105247593" style="zoom:80%;" />
 
 命令：
 
@@ -1097,7 +1097,7 @@ SLAVEOF no one
 
 ​		使用上面的命令后，二者可以同步数据。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200719110150411.png" alt="image-20200719110150411" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200719110150411.png" alt="image-20200719110150411" style="zoom:80%;" />
 
 （2）情况2：在一仆二主的情况下，slave6380和slave6381都是slave。
 
@@ -1167,11 +1167,11 @@ sentinel monitor 被监控数据库名字(自己起名字) 127.0.0.1 6379 1
 ​		监控的主节点的名字、IP 和端口，最后一个count的意思是有几台 Sentinel 发现有问题，就会发生故障转移，例如 配置为2，代表至少有2个 Sentinel 节点认为主节点不可达，那么这个不可达的判定才是客观的。
 
 ​		count设置的越小，那么达到下线的条件越宽松，反之越严格。**一般建议将其设置为 Sentinel 节点的一半加1**。
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200719111612095.png" alt="image-20200719111612095" style="zoom: 50%;" />
+<img src="Redis学习.assets\image-20200719111612095.png" alt="image-20200719111612095" style="zoom: 50%;" />
 
 **/myRedis/sentinel.conf**配置文件图示：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200719113042854.png" alt="image-20200719113042854" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200719113042854.png" alt="image-20200719113042854" style="zoom:80%;" />
 
 3. 启动哨兵
 
@@ -1180,13 +1180,13 @@ sentinel monitor 被监控数据库名字(自己起名字) 127.0.0.1 6379 1
 Redis-sentinel /myredis/sentinel.conf 
 ```
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200719113417136.png" alt="image-20200719113417136" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200719113417136.png" alt="image-20200719113417136" style="zoom:80%;" />
 
 4. 投票新选
 
 ​		在原来的master6379挂掉之后，slave6380和slave6381需要重新进行投票选举。在启动哨兵的窗口我们可以看到下面的界面：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Redis学习.assets\image-20200719113545299.png" alt="image-20200719113545299" style="zoom:80%;" />
+<img src="Redis学习.assets\image-20200719113545299.png" alt="image-20200719113545299" style="zoom:80%;" />
 
 ​	如果之前的master重启回来，不会和master有冲突，会自动成为现在体系中的一个slave。
 

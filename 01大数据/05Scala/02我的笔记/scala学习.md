@@ -51,7 +51,7 @@ SCALA_HOME= D:\03Enviroment\11scala\01install\scala-2.11.8
 scala
 ```
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\scala学习.assets\image-20200719232839336.png" alt="image-20200719232839336" style="zoom:50%;" />
+<img src="scala学习.assets\image-20200719232839336.png" alt="image-20200719232839336" style="zoom:50%;" />
 
 ## 2.2 Linux下搭建开发环境
 
@@ -84,23 +84,23 @@ source /etc/profile
 [root@hadoop02 ~]# scala
 ```
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\scala学习.assets\image-20200720084551037.png" alt="image-20200720084551037" style="zoom:80%;" />
+<img src="scala学习.assets\image-20200720084551037.png" alt="image-20200720084551037" style="zoom:80%;" />
 
 ## 2.3 快速入门
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\scala学习.assets\image-20200720090225646.png" alt="image-20200720090225646" style="zoom:80%;" />
+<img src="scala学习.assets\image-20200720090225646.png" alt="image-20200720090225646" style="zoom:80%;" />
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\scala学习.assets\image-20200720090153271.png" alt="image-20200720090153271" style="zoom:80%;" />
+<img src="scala学习.assets\image-20200720090153271.png" alt="image-20200720090153271" style="zoom:80%;" />
 
 scala执行流程如下：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\scala学习.assets\image-20200720103503066.png" alt="image-20200720103503066" style="zoom:80%;" />
+<img src="scala学习.assets\image-20200720103503066.png" alt="image-20200720103503066" style="zoom:80%;" />
 
 1、IDEA开发Scala
 
 （1）搭建项目
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\scala学习.assets\image-20200720091002974.png" alt="image-20200720091002974" style="zoom:80%;" />
+<img src="scala学习.assets\image-20200720091002974.png" alt="image-20200720091002974" style="zoom:80%;" />
 
 ​		在增加scala框架的过程中，如果我们是第一次开发scala项目，上面的`use library`是空，我们需要将其目录配置到我们scala安装的主目录（D:\03Enviroment\11scala\01install\scala-2.11.8）即可。
 
@@ -302,7 +302,7 @@ class Dog{
 
 ​		Scala数据类型分为两大类 AnyVal(值类型) 和 AnyRef(引用类型)， 注意：不管是AnyVal还是AnyRef 都是对象。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\scala学习.assets\image-20200720152809166.png" alt="image-20200720152809166" style="zoom:80%;" />
+<img src="scala学习.assets\image-20200720152809166.png" alt="image-20200720152809166" style="zoom:80%;" />
 
 | 数据类型 | 描述                                                         |
 | -------- | ------------------------------------------------------------ |
@@ -1174,7 +1174,7 @@ println("i=" + i)
 
 它们的关系分析图如下：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\scala学习.assets\image-20200720223530852.png" alt="image-20200720223530852" style="zoom:80%;" />
+<img src="scala学习.assets\image-20200720223530852.png" alt="image-20200720223530852" style="zoom:80%;" />
 
 （1）在scala中，方法和函数几乎可以等同(比如他们的定义、使用、运行机制都一样的)，只是函数的使用方式更加的灵活多样。
 
@@ -1295,7 +1295,7 @@ n=3
 n=4
 ```
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\scala学习.assets\image-20200721100300012.png" alt="image-20200721100300012" style="zoom:67%;" />
+<img src="scala学习.assets\image-20200721100300012.png" alt="image-20200721100300012" style="zoom:67%;" />
 
 ### 6、函数注意事项
 

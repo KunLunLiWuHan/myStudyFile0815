@@ -8,37 +8,37 @@
 
 以管理员身份运行下面的文件，实现需要将放到联想杀毒软件的保护目录中。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200705103408858.png" alt="image-20200705103408858" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200705103408858.png" alt="image-20200705103408858" style="zoom:80%;" />
 
 基本上是傻瓜式安装，一步步点击，往下进行就可以了。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200705103746883.png" alt="image-20200705103746883" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200705103746883.png" alt="image-20200705103746883" style="zoom:80%;" />
 
 安装完成界面：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200705103854719.png" alt="image-20200705103854719" style="zoom:67%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200705103854719.png" alt="image-20200705103854719" style="zoom:67%;" />
 
 此时，不要进行运行该软件，将nssock.dll文件放到白名单中进行保护。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200705104952529.png" alt="image-20200705104952529" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200705104952529.png" alt="image-20200705104952529" style="zoom:80%;" />
 
 ## 1.2 连接到远程Linux主机
 
 1. 我们使用命令`ifconfig`找到Linux注解的ip地址：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200705105721177.png" alt="image-20200705105721177" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200705105721177.png" alt="image-20200705105721177" style="zoom:80%;" />
 
 2. 使用Xshell进行连接：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200705105859112.png" alt="image-20200705105859112" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200705105859112.png" alt="image-20200705105859112" style="zoom:80%;" />
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200705110124984.png" alt="image-20200705110124984" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200705110124984.png" alt="image-20200705110124984" style="zoom:80%;" />
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200705110200886.png" alt="image-20200705110200886" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200705110200886.png" alt="image-20200705110200886" style="zoom:80%;" />
 
 此时，Xshell界面如下。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200705110237397.png" alt="image-20200705110237397" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200705110237397.png" alt="image-20200705110237397" style="zoom:80%;" />
 
 # 2 XFtp5的安装
 
@@ -46,29 +46,29 @@
 
 ##  2.1 安装步骤
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200705143953992.png" alt="image-20200705143953992" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200705143953992.png" alt="image-20200705143953992" style="zoom:80%;" />
 
 同样，需要将安装文件nssock2.dll放到联想杀毒的保护名单中。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200705144243035.png" alt="image-20200705144243035" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200705144243035.png" alt="image-20200705144243035" style="zoom:80%;" />
 
 当运行时，是这个界面就说明Xftp5安装成功了。
 
 ## 2.2 配置
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200705144800263.png" alt="image-20200705144800263" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200705144800263.png" alt="image-20200705144800263" style="zoom:80%;" />
 
 由于我们使用root身份登录，连接完成后Linux就会切换到对应的那个目录下：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200705144933852.png" alt="image-20200705144933852" style="zoom:67%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200705144933852.png" alt="image-20200705144933852" style="zoom:67%;" />
 
 可以看到有乱码出现，我们需要配置一下：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200705145543513.png" alt="image-20200705145543513" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200705145543513.png" alt="image-20200705145543513" style="zoom:80%;" />
 
 传输文件：
 
-![image-20200705145914230](D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200705145914230.png)
+![image-20200705145914230](Xshell_XFtp5_SecureCRT安装.assets\image-20200705145914230.png)
 
 # 3 SecureCRT的安装
 
@@ -102,15 +102,15 @@ https://blog.csdn.net/weixin_41615494/article/details/79735869
 
 ## 3.2 配置
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200705150719227.png" alt="image-20200705150719227" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200705150719227.png" alt="image-20200705150719227" style="zoom:80%;" />
 
 在配置好进行连接之后，配置界面如下：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200705151411461.png" alt="image-20200705151411461" style="zoom:67%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200705151411461.png" alt="image-20200705151411461" style="zoom:67%;" />
 
 乱码问题的解决方法如下：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200705151321580.png" alt="image-20200705151321580" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200705151321580.png" alt="image-20200705151321580" style="zoom:80%;" />
 
 # 4 Java安装和配置
 
@@ -125,7 +125,7 @@ https://blog.csdn.net/weixin_41615494/article/details/79735869
 
 选择下载tar包：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200711171319255.png" alt="image-20200711171319255" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711171319255.png" alt="image-20200711171319255" style="zoom:80%;" />
 
 **安装JDK的步骤**
 
@@ -146,7 +146,7 @@ https://blog.csdn.net/weixin_41615494/article/details/79735869
 
 ## 1、上传软件到/opt/
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200711161116892.png" alt="image-20200711161116892" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711161116892.png" alt="image-20200711161116892" style="zoom:80%;" />
 
 ## 2、将文件解压缩到/opt/路径下
 
@@ -158,7 +158,7 @@ tar -zxvf jdk-8u251-linux-x64.tar.gz
 
 解压出来一个新目录：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200711162141127.png" alt="image-20200711162141127" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711162141127.png" alt="image-20200711162141127" style="zoom:80%;" />
 
 ## 3、配置环境变量
 
@@ -168,7 +168,7 @@ tar -zxvf jdk-8u251-linux-x64.tar.gz
 vim /etc/profile 
 ```
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200711162758327.png" alt="image-20200711162758327" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711162758327.png" alt="image-20200711162758327" style="zoom:80%;" />
 
 其中，`export`指令的作用是输出环境变量，让变量生效。
 
@@ -176,19 +176,19 @@ vim /etc/profile
 
 ​		如果运行级别为3，使用`logout`就可以；如果运行级别为5，注销后即可。这样的话，就可以在任何目录下可以使用`java`和`javac`有东西输出。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200711165207510.png" alt="image-20200711165207510" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711165207510.png" alt="image-20200711165207510" style="zoom:80%;" />
 
 ## 5、 测试是否输出成功。
 
 编写一个简单的hello.java,输出“hello world!”
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200711165820591.png" alt="image-20200711165820591" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711165820591.png" alt="image-20200711165820591" style="zoom:80%;" />
 
 # 5 Tomcat安装和配置
 
 下载网址：https://tomcat.apache.org/download-90.cgi
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200711171359066.png" alt="image-20200711171359066" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711171359066.png" alt="image-20200711171359066" style="zoom:80%;" />
 
 **安装步骤**
 
@@ -218,37 +218,37 @@ cd apach-tomcat-7.0.70/bin/
 
 ## 1、解压缩到/opt/路径下
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200711171539981.png" alt="image-20200711171539981" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711171539981.png" alt="image-20200711171539981" style="zoom:80%;" />
 
 ## 2、启动tomcat
 
 首先进入tomcat的bin目录。
 
-![image-20200711172340040](D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200711172340040.png)
+![image-20200711172340040](Xshell_XFtp5_SecureCRT安装.assets\image-20200711172340040.png)
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200711172421860.png" alt="image-20200711172421860" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711172421860.png" alt="image-20200711172421860" style="zoom:80%;" />
 
 然后在火狐浏览器中进行访问：http://localhost:8080，弹出下面界面：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200711172531220.png" alt="image-20200711172531220" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711172531220.png" alt="image-20200711172531220" style="zoom:80%;" />
 
 ## 3、开放端口
 
 使用本地是可以访问到tomcat的，但是我们希望外网也能访问tomcat，比如在windows的浏览器中访问tomcat。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200711173545355.png" alt="image-20200711173545355" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711173545355.png" alt="image-20200711173545355" style="zoom:80%;" />
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200711173431955.png" alt="image-20200711173431955" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711173431955.png" alt="image-20200711173431955" style="zoom:80%;" />
 
 重启防火墙：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200711173741111.png" alt="image-20200711173741111" style="zoom:67%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711173741111.png" alt="image-20200711173741111" style="zoom:67%;" />
 
 ## 4、测试是否成功
 
 windows浏览器上输入：http://192.168.10.130:8080/，显示：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200711173927031.png" alt="image-20200711173927031" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711173927031.png" alt="image-20200711173927031" style="zoom:80%;" />
 
 windows控制台输入：
 
@@ -258,7 +258,7 @@ telnet 192.168.10.130 8080
 
 可以进入下面的界面：
 
-![image-20200711174016019](D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200711174016019.png)
+![image-20200711174016019](Xshell_XFtp5_SecureCRT安装.assets\image-20200711174016019.png)
 
 # 6 Eclipse安装
 
@@ -281,29 +281,29 @@ https://archive.eclipse.org/technology/epp/downloads/release/luna/SR2/eclipse-je
 
 ## 1、解压
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200711214640956.png" alt="image-20200711214640956" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711214640956.png" alt="image-20200711214640956" style="zoom:80%;" />
 
 ## 2、 启动eclipse，配置`jre`和`server`
 
 启动方式：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200711214721798.png" alt="image-20200711214721798" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711214721798.png" alt="image-20200711214721798" style="zoom:80%;" />
 
 启动成功界面：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200711214829283.png" alt="image-20200711214829283" style="zoom:67%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711214829283.png" alt="image-20200711214829283" style="zoom:67%;" />
 
 ## 3、编写jsp页面，并测试
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200711220710061.png" alt="image-20200711220710061" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711220710061.png" alt="image-20200711220710061" style="zoom:80%;" />
 
 运行后显示：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200711221214849.png" alt="image-20200711221214849" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711221214849.png" alt="image-20200711221214849" style="zoom:80%;" />
 
 当运行代码时，可能会遇到端口被占用的情况，我们需要将apache关闭：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200711221446301.png" alt="image-20200711221446301" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711221446301.png" alt="image-20200711221446301" style="zoom:80%;" />
 
 # 7 Mysql的配置和安装
 
@@ -315,7 +315,7 @@ mysql安装时间很长。
 
 参考文档：https://www.cnblogs.com/xuange306/p/8301669.html
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200711201225080.png" alt="image-20200711201225080" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711201225080.png" alt="image-20200711201225080" style="zoom:80%;" />
 
 通过源代码安装高版本的5.6.48。
 
@@ -327,7 +327,7 @@ CentOS 7安装地址：https://www.cnblogs.com/chxuyuan/p/7707392.html。
 rpm -qa | grep mysql
 ```
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200711183123044.png" alt="image-20200711183123044" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711183123044.png" alt="image-20200711183123044" style="zoom:80%;" />
 
 2. 删除存在的mysql
 
@@ -342,11 +342,11 @@ rpm -e --nodeps mysql-libs	--强力删除模式，如果使用上面命令删除
 yum -y install make gcc-c++ cmake bison-devel ncurses-devel
 ```
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200711195956412.png" alt="image-20200711195956412" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711195956412.png" alt="image-20200711195956412" style="zoom:80%;" />
 
 4. 解压mysql文件
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200711201952690.png" alt="image-20200711201952690" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711201952690.png" alt="image-20200711201952690" style="zoom:80%;" />
 
 5.  编译安装（源码）
 
@@ -358,7 +358,7 @@ cmake -DCMAKE_INSTALL_PREFIX=/usr/local/mysql -DMYSQL_DATADIR=/usr/local/mysql/d
 
 报错：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200711204107615.png" alt="image-20200711204107615" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711204107615.png" alt="image-20200711204107615" style="zoom:80%;" />
 
 执行下面的命令：
 
@@ -392,13 +392,13 @@ useradd -g mysql mysql
 
 我们可以事先看看有没有下面的目录：/usr/local/mysql
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200711205821514.png" alt="image-20200711205821514" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711205821514.png" alt="image-20200711205821514" style="zoom:80%;" />
 
 ```ini
 chown -R mysql:mysql /usr/local/mysql --改变所有者和组
 ```
 
-​		<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200711210058507.png" alt="image-20200711210058507" style="zoom:80%;" />
+​		<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711210058507.png" alt="image-20200711210058507" style="zoom:80%;" />
 
 3. 初始化配置
 
@@ -409,7 +409,7 @@ cd /usr/local/mysql     --切换到安装目录下
 scripts/mysql_install_db --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data --user=mysql  -- 执行配置脚本
 ```
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200711210348996.png" alt="image-20200711210348996" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711210348996.png" alt="image-20200711210348996" style="zoom:80%;" />
 		注意：
 
 ​		(1)在启动MySQL服务时，会按照一定次序搜索`my.cnf`，先在/etc/目录下查找，找不到则会搜索"$basedir/my.cnf"，在本例中就是`/usr/local/mysql/my.cnf`，这是新版MySQL的配置文件的默认位置！
@@ -430,9 +430,9 @@ chkconfig mysql on         --配置其为自启动
 service mysql start			--手动启动MySQL一次
 ```
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200711212359780.png" alt="image-20200711212359780" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711212359780.png" alt="image-20200711212359780" style="zoom:80%;" />
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200711212534752.png" alt="image-20200711212534752" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711212534752.png" alt="image-20200711212534752" style="zoom:80%;" />
 
 
 
@@ -444,15 +444,15 @@ cd /usr/local/mysql/bin  --进入该目录下进行操作
 SET PASSWORD = PASSWORD('123');
 ```
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200711213447768.png" alt="image-20200711213447768" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711213447768.png" alt="image-20200711213447768" style="zoom:80%;" />
 
 添加环境变量：
 
 通过vim /etc/profile来添加：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200711213634347.png" alt="image-20200711213634347" style="zoom: 80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711213634347.png" alt="image-20200711213634347" style="zoom: 80%;" />
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Xshell_XFtp5_SecureCRT安装.assets\image-20200711213939358.png" alt="image-20200711213939358" style="zoom:80%;" />
+<img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711213939358.png" alt="image-20200711213939358" style="zoom:80%;" />
 
 
 

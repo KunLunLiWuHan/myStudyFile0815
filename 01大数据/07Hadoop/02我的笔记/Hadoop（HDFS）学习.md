@@ -40,7 +40,7 @@
 
 ​		假设集群3个节点，副本配置2个，有一个块的一个节点宕机了，会造成这个块的副本数低于配置的值，这个时候数据块会复制出来这个块的一个副本到另一个节点上。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop（HDFS）学习.assets\image-20200725223842097.png" alt="image-20200725223842097" style="zoom:80%;" />
+<img src="Hadoop（HDFS）学习.assets\image-20200725223842097.png" alt="image-20200725223842097" style="zoom:80%;" />
 
 ​		问题2：（集群节点 < 副本）
 
@@ -78,17 +78,17 @@
 
 ## 5、HDFS组成架构
 
-![image-20200723171515264](D:\04桌面\Spring Boot学习\03学习文件\Hadoop（HDFS）学习.assets\image-20200723171515264.png)
+![image-20200723171515264](Hadoop（HDFS）学习.assets\image-20200723171515264.png)
 
 （1）NameNode（nn）:就是Master，它是一个主管，管理者。
 
 ​		主要功能是存储元数据信息，所谓元数据就是：用于描述原始数据的数据，如下所示：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop（HDFS）学习.assets\image-20200725224442882.png" alt="image-20200725224442882" style="zoom:67%;" />
+<img src="Hadoop（HDFS）学习.assets\image-20200725224442882.png" alt="image-20200725224442882" style="zoom:67%;" />
 
 所以，这里的元数据就是指描述datanode上存储的真实的数据的数据（**存储数据块的对应关系**）。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop（HDFS）学习.assets\image-20200725225058681.png" alt="image-20200725225058681" style="zoom:67%;" />
+<img src="Hadoop（HDFS）学习.assets\image-20200725225058681.png" alt="image-20200725225058681" style="zoom:67%;" />
 
 里面的fsimage是核心的元数据信息。
 
@@ -98,7 +98,7 @@ namenode记录的元数据，包含3部分的内容：
 
 通过该目录树，我们可以查看文件系统中存储的文件内容。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop（HDFS）学习.assets\image-20200725230114892.png" alt="image-20200725230114892" style="zoom: 67%;" />
+<img src="Hadoop（HDFS）学习.assets\image-20200725230114892.png" alt="image-20200725230114892" style="zoom: 67%;" />
 
 （2）目录树中的文件（下面的文件会被切成两个块）和数据块的对应关系。
 
@@ -118,7 +118,7 @@ namenode记录的元数据，包含3部分的内容：
 
 ​		另一个功能就是接收客户端的读写请求，所谓客户端**，就是客户操作的窗口**。即客户端所有的读写请求，先经过namenode。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop（HDFS）学习.assets\image-20200725231500642.png" alt="image-20200725231500642" style="zoom:80%;" />
+<img src="Hadoop（HDFS）学习.assets\image-20200725231500642.png" alt="image-20200725231500642" style="zoom:80%;" />
 
 概述如下：
 
@@ -145,13 +145,13 @@ namenode记录的元数据，包含3部分的内容：
 + 辅助NameNode，分担其工作量，比如定期合并Fsimage和Edits，并推送到NameNode。
 + 在紧急的情况下，可辅助恢复NameNode。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop（HDFS）学习.assets\image-20200726101002045.png" alt="image-20200726101002045" style="zoom: 67%;" />
+<img src="Hadoop（HDFS）学习.assets\image-20200726101002045.png" alt="image-20200726101002045" style="zoom: 67%;" />
 
 ## 6、HDFS文件块大小
 
 ​		HDFS中的文件在物理上是分块存储（Block）的，块的大小可以通过配置参数（dfs.blocksize）来规定，默认大小在Hadoop2.x版本中是128M，老版本为64M。HDFS块的大小设置主要取决于磁盘传输速率。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop（HDFS）学习.assets\image-20200723175539238.png" alt="image-20200723175539238" style="zoom:80%;" />
+<img src="Hadoop（HDFS）学习.assets\image-20200723175539238.png" alt="image-20200723175539238" style="zoom:80%;" />
 
 ​		HDFS的块设置太小，会增加寻址时间，程序一直在找块的开始位置；反之，程序处理数据变慢。
 
@@ -285,7 +285,7 @@ hadoop fs -setrep 10 /xiaolun/kongming.txt
 
 ​		namenode的访问路径+需要访问的路径。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop（HDFS）学习.assets\image-20200726105415698.png" alt="image-20200726105415698" style="zoom:67%;" />
+<img src="Hadoop（HDFS）学习.assets\image-20200726105415698.png" alt="image-20200726105415698" style="zoom:67%;" />
 
 因此，当我们使用下面的命令进行查看目录，有这样的情况
 
@@ -422,11 +422,11 @@ public class HdfsClient {
 
 文件目录结构（主要用于说明加载配置文件的位置）：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop（HDFS）学习.assets\image-20200726155317220.png" alt="image-20200726155317220" style="zoom:80%;" />
+<img src="Hadoop（HDFS）学习.assets\image-20200726155317220.png" alt="image-20200726155317220" style="zoom:80%;" />
 
 在网址：http://hadoop101:50070/下有文件被创建：
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop（HDFS）学习.assets\image-20200723203001659.png" alt="image-20200723203001659" style="zoom:80%;" />
+<img src="Hadoop（HDFS）学习.assets\image-20200723203001659.png" alt="image-20200723203001659" style="zoom:80%;" />
 
 ## 3.3 API操作
 
@@ -561,7 +561,7 @@ for (FileStatus fileStatus : listStatus) {
 
 ### 1、剖析文件写入
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop（HDFS）学习.assets\image-20200723213131371.png" alt="image-20200723213131371" style="zoom:80%;" />
+<img src="Hadoop（HDFS）学习.assets\image-20200723213131371.png" alt="image-20200723213131371" style="zoom:80%;" />
 
 1、客户端通过`Distributed FileSystem`模块向`NameNode`请求上传文件，`NameNode`检查目标文件是否已存在，父目录是否存在。
 
@@ -581,9 +581,9 @@ for (FileStatus fileStatus : listStatus) {
 
 #### 1.1、文件上传流程
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop（HDFS）学习.assets\image-20200726182636114.png" alt="image-20200726182636114" style="zoom:80%;" />
+<img src="Hadoop（HDFS）学习.assets\image-20200726182636114.png" alt="image-20200726182636114" style="zoom:80%;" />
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop（HDFS）学习.assets\image-20200726182659673.png" alt="image-20200726182659673" style="zoom:80%;" />
+<img src="Hadoop（HDFS）学习.assets\image-20200726182659673.png" alt="image-20200726182659673" style="zoom:80%;" />
 
 1、文件上传中的问题
 
@@ -593,7 +593,7 @@ for (FileStatus fileStatus : listStatus) {
 
 #### 1.2、文件下载流程
 
-![image-20200726205318765](D:\04桌面\Spring Boot学习\03学习文件\Hadoop（HDFS）学习.assets\image-20200726205318765.png)
+![image-20200726205318765](Hadoop（HDFS）学习.assets\image-20200726205318765.png)
 
 1、文件读取的时候，发现某一个数据块的节点有故障。
 
@@ -621,7 +621,7 @@ for (FileStatus fileStatus : listStatus) {
 
 请求中需要修改元数据的时候，会发生写入操作。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop（HDFS）学习.assets\image-20200726210417493.png" alt="image-20200726210417493" style="zoom:80%;" />
+<img src="Hadoop（HDFS）学习.assets\image-20200726210417493.png" alt="image-20200726210417493" style="zoom:80%;" />
 
 （1）先将元数据写入到内存中，内存中永远是最新的，最全的元数据信息。
 
@@ -633,7 +633,7 @@ for (FileStatus fileStatus : listStatus) {
 
 （1）dfs.namenode.checkpoint.period（时间间隔：1h合并一次）和dfs.namenode.checkpoint.txns（日志数据条数达到100万）的配置。该条件满足一个就会触发元数据合并合作。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop（HDFS）学习.assets\image-20200726211521214.png" alt="image-20200726211521214" style="zoom:80%;" />
+<img src="Hadoop（HDFS）学习.assets\image-20200726211521214.png" alt="image-20200726211521214" style="zoom:80%;" />
 
 #### 1.6、元数据加载过程
 
@@ -665,11 +665,11 @@ fsimage_000000257
 
 节点距离：两个节点到达最近的共同祖先的距离总和。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop（HDFS）学习.assets\image-20200723214026760.png" alt="image-20200723214026760" style="zoom:80%;" />
+<img src="Hadoop（HDFS）学习.assets\image-20200723214026760.png" alt="image-20200723214026760" style="zoom:80%;" />
 
 ### 3、机架感知（副本存储节点选择）
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop（HDFS）学习.assets\image-20200723214612517.png" alt="image-20200723214612517" style="zoom:80%;" />
+<img src="Hadoop（HDFS）学习.assets\image-20200723214612517.png" alt="image-20200723214612517" style="zoom:80%;" />
 
 1、机架策略
 
@@ -685,7 +685,7 @@ fsimage_000000257
 
 当然，实际可能中，会遇到各种各样的情况，比如不同机房、不同机架等。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop（HDFS）学习.assets\image-20200726165106899.png" alt="image-20200726165106899" style="zoom:50%;" />
+<img src="Hadoop（HDFS）学习.assets\image-20200726165106899.png" alt="image-20200726165106899" style="zoom:50%;" />
 
 ### 4、负载均衡
 
@@ -713,7 +713,7 @@ fsimage_000000257
 
 读数据流程图：
 
-![image-20200723214930017](D:\04桌面\Spring Boot学习\03学习文件\Hadoop（HDFS）学习.assets\image-20200723214930017.png)
+![image-20200723214930017](Hadoop（HDFS）学习.assets\image-20200723214930017.png)
 
 1、客户端通过`Distributed FileSystem`向Nam`e`Node请求下载文件，`NameNode`通过查询元数据，找到文件块所在的`DataNode`地址。
 
@@ -743,7 +743,7 @@ fsimage_000000257
 
 2、NameNode工作机制
 
-![image-20200724084410430](D:\04桌面\Spring Boot学习\03学习文件\Hadoop（HDFS）学习.assets\image-20200724084410430.png)
+![image-20200724084410430](Hadoop（HDFS）学习.assets\image-20200724084410430.png)
 
  第一阶段：NameNode启动
 
@@ -787,7 +787,7 @@ fsimage_000000257
 
 ## 5.2 Fsimage和Edits解析
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop（HDFS）学习.assets\image-20200724085204048.png" alt="image-20200724085204048" style="zoom:80%;" />
+<img src="Hadoop（HDFS）学习.assets\image-20200724085204048.png" alt="image-20200724085204048" style="zoom:80%;" />
 
 1、查看Fsimage文件
 
@@ -874,7 +874,7 @@ sbin/hadoop-daemon.sh start namenode
 
 1、介绍
 
-![image-20200724092038807](D:\04桌面\Spring Boot学习\03学习文件\Hadoop（HDFS）学习.assets\image-20200724092038807.png)
+![image-20200724092038807](Hadoop（HDFS）学习.assets\image-20200724092038807.png)
 
 （1）集群启动的时候进入安全模式
 
@@ -941,7 +941,7 @@ rm -rf data/ logs/
 
 （1）datanode的主要作用就是负责存储真正的数据，每一个节点将对应的数据块存储到自己的本地。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop（HDFS）学习.assets\image-20200726085947070.png" alt="image-20200726085947070" style="zoom: 80%;" />
+<img src="Hadoop（HDFS）学习.assets\image-20200726085947070.png" alt="image-20200726085947070" style="zoom: 80%;" />
 
 里面的块池文件夹存储namenode管理的所有数据块信息。
 
@@ -949,7 +949,7 @@ rm -rf data/ logs/
 
 （2）测试：将数据合并
 
-![image-20200726091021433](D:\04桌面\Spring Boot学习\03学习文件\Hadoop（HDFS）学习.assets\image-20200726091021433.png)
+![image-20200726091021433](Hadoop（HDFS）学习.assets\image-20200726091021433.png)
 
 补充：>（覆盖）  >>（重定向）
 
@@ -961,7 +961,7 @@ cat	source >|>> destination
 
 ## 6.1 DataNode工作机制
 
-![image-20200724093500847](D:\04桌面\Spring Boot学习\03学习文件\Hadoop（HDFS）学习.assets\image-20200724093500847.png)
+![image-20200724093500847](Hadoop（HDFS）学习.assets\image-20200724093500847.png)
 
 
 
@@ -1002,7 +1002,7 @@ namenode存储元数据的时候，按照存储空间：
 
 （2）namenode确定一个datanode是否宕机需要的时间？
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop（HDFS）学习.assets\image-20200726162740132.png" alt="image-20200726162740132" style="zoom:80%;" />
+<img src="Hadoop（HDFS）学习.assets\image-20200726162740132.png" alt="image-20200726162740132" style="zoom:80%;" />
 
 ​		默认连续10次接收不到心跳（不间断的），namenode断定datanode可能宕机了（这中间这要有一次接收到了，namenode重新记录心跳）。然后，namenode主动向datanode发送检查，namenode会开启后台的守护进程，等待检查结果。默认检查两次，每次5分钟。
 
@@ -1020,7 +1020,7 @@ DataNode节点保证数据完整性的方法。
 
 ## 6.3 掉线时限参数设置
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\Hadoop（HDFS）学习.assets\image-20200724101806080.png" alt="image-20200724101806080" style="zoom:80%;" />
+<img src="Hadoop（HDFS）学习.assets\image-20200724101806080.png" alt="image-20200724101806080" style="zoom:80%;" />
 
 ​		需要注意的是`hdfs-site.xml` 配置文件中的heartbeat.recheck.interval的单位为毫秒，dfs.heartbeat.interval的单位为秒。
 

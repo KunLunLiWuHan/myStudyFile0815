@@ -356,7 +356,7 @@ com.xiaolun.chapter09.MySQL1@35bbe5e8 scala
 
 （2）隐式操作不能嵌套使用。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\scala学习4.assets\image-20200801212648497.png" alt="image-20200801212648497" style="zoom: 80%;" />
+<img src="scala学习4.assets\image-20200801212648497.png" alt="image-20200801212648497" style="zoom: 80%;" />
 
 # 3 模式匹配
 
@@ -1011,7 +1011,7 @@ object SalesDemo02 {
 }
 ```
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\scala学习4.assets\image-20200802180627952.png" alt="image-20200802180627952" style="zoom:80%;" />
+<img src="scala学习4.assets\image-20200802180627952.png" alt="image-20200802180627952" style="zoom:80%;" />
 
 ## 13、密封类
 
@@ -1019,4 +1019,4 @@ object SalesDemo02 {
 
 （2）密封就是不能在其他文件中定义子类。
 
-<img src="D:\04桌面\Spring Boot学习\03学习文件\scala学习4.assets\image-20200802180934665.png" alt="image-20200802180934665" style="zoom:80%;" />
+<img src="scala学习4.assets\image-20200802180934665.png" alt="image-20200802180934665" style="zoom:80%;" />
