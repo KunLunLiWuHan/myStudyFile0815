@@ -162,7 +162,7 @@ tar -zxvf jdk-8u251-linux-x64.tar.gz
 
 ## 3、配置环境变量
 
-进入下面的目录，然后在编辑模式下配置环境变量。
+1、进入下面的目录，然后在编辑模式下配置环境变量。
 
 ```ini
 vim /etc/profile 
@@ -171,6 +171,10 @@ vim /etc/profile
 <img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711162758327.png" alt="image-20200711162758327" style="zoom:80%;" />
 
 其中，`export`指令的作用是输出环境变量，让变量生效。
+
+2、Linux中PATH、CLASSPATH等环境变量配置格式详解。
+
+<img src="Xshell_XFtp5_SecureCRT安装.assets/image-20200816230349592.png" alt="image-20200816230349592" style="zoom:67%;" />
 
 ## 4、注销用户，让环境变量生效。
 
@@ -207,9 +211,9 @@ cd apach-tomcat-7.0.70/bin/
 3. 开放端口，这样外网才能访问tomcat
 
 ```ini
-	vim /etc/sysconfig/iptables
-	增加一行：A INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT
-	重启防火墙：service iptables restart
+vim /etc/sysconfig/iptables
+增加一行：A INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT
+重启防火墙：service iptables restart
 ```
 
 	4. 测试是否安装成功
@@ -234,7 +238,7 @@ cd apach-tomcat-7.0.70/bin/
 
 ## 3、开放端口
 
-使用本地是可以访问到tomcat的，但是我们希望外网也能访问tomcat，比如在windows的浏览器中访问tomcat。
+​		使用本地是可以访问到tomcat的，但是我们希望外网也能访问tomcat，比如在windows的浏览器中访问tomcat。
 
 <img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711173545355.png" alt="image-20200711173545355" style="zoom:80%;" />
 
@@ -260,11 +264,15 @@ telnet 192.168.10.130 8080
 
 ![image-20200711174016019](Xshell_XFtp5_SecureCRT安装.assets\image-20200711174016019.png)
 
+## 5、阿里云服务器上安装
+
+1、在默认情况下，Linux不会开放端口号，为了能够能够让外界访问，我们需要在安全组中设置一组规则，将8080端口开放。
+
+2、启动安装目录下的tomcat。
+
+3、使用ip+端口的形式进行访问阿里云服务器上的tomcat，如果出现图标，则表明tomcat安装成功。
+
 # 6 Eclipse安装
-
-下载地址：
-
-
 
 **安装步骤**
 
