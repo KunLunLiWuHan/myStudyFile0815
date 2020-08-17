@@ -358,82 +358,9 @@ student:
 
 + 引用（无名：引用内容不存在的默认值,`yml`文件和`properties`相互补充。
 
-#  5 日志处理
+# 5 处理Web静态资源
 
 ## 5.1 介绍
-
-Spring Boot默认选用slf4j,logback,同时帮我们配好了日志，我们直接使用即可。其日志级别：由低往高：
-
-  TRACE < DEBUG < INFOR < WARN < ERROR  < FATAL < OFF  
-
-Spring Boot默认的日志级别是INFOR (即只打印 INFOR 及之后级别的信息)；也可以自定义级别，只需要在全局配置文件中进行修改就可以：
-
-```properties
- logging.level.com.study.NewHelloWorld = warn  
-```
-
-+ `logging`.主配置所在的包 = warn,此时只输出`warn`及以上级别的信息。
-
-1. 输出控制台信息
-
-```properties
-logging.file=D：/spring.boot (绝对路径)，设置文件。
-logging.path = D:/log/ (放到log文件夹中)，默认文件名为：spring.log
-```
-
-+ 通过`logging.file=spring.boot`（相对于项目根目录） 可以将日志信息放到Spring Boot文件中
-
-2. 自定义日志格式
-
-日志输出内容元素具体如下：
-
-+ 时间日期：精确到毫秒
-+ 分隔符：标识实际日志的开始
-+ 线程名：方括号括起来。
-+ Logger名：通常使用源代码的类名。
-+ 日志内容
-
-其中，Spring Boot使用的默认日志框架为Logback，并用INFO级别输出到控制台。
-
-然后，日志依赖：该依赖内容就是Spring Boot默认的日志框架logback。
-
-其次，logging.path和logging.file不能同时配置，如若同时使用，则只有logging.file生效。
-
-格式：
-
-```properties
-logging.pattern.console=%d{yyyy-MM-dd} [%thread] %-5level %logger{50} - %msg%n
-```
-
-+ %d：日期时间（显示格式）
-+ %thread：线程名
-+  %-5level：显示日志级别（-5从左显示5个字符宽度）
-+ %logger{50}：设置日志长度
-+ %msg：日志消息
-+ %n回车
-
-3. 控制台代码 
-
-```java
-@RestController
-public class HelloWorldcontroller {
-//定义（import org.slf4j.Logger;）
-Logger logger =  LoggerFactory.getLogger(HelloWorldcontroller.class);
-
-//日志处理测试
-@GetMapping("testLog")
-public void testLog() {
-logger.debug("debug******");	//输出信息
-logger.info("info*******");
-}
-}
-```
-
-+ 可以发现，通过在网站输出信息，我们可以在控制台看到`logger`相应的`debug`和`info`信息。
-
-# 6 Spring Boot处理Web静态资源
-
-## 6.1 介绍
 
 Spring Boot提供了`spring-boot-starter-web`，为web开发予以支持，同时也提供了嵌入的`Tomcat`以及`springmvc`的依赖。
 
@@ -454,7 +381,7 @@ spring.resources.static-locations = classpath:/static/
 
 推荐：Spring Boot约定：Spring Boot将一些目录结构设置成静态资源存放目录，我们的静态资源直接放入到这些目录即可（`webapp`），位置在`ResourceProperties`类中的`CLASSPATH_RESOURCE_LOCATIONS`属性设置中存放着。
 
-## 6.2 WebMvcAutoConfiguration源码解读
+## 5.2 WebMvcAutoConfiguration源码解读
 
 `WebMvcAutoConfiguration`类中的welcomePageHandlerMapping()->getIndexHtml()->location+”index.html”,即任意一个静态资源目录的Index.html就是欢迎页，访问：http://localhost:8080/（地址）。
 
@@ -470,7 +397,7 @@ spring.resources.static-locations = classpath:/static/
 
 + 其他特定的文件（欢迎页、ico）,只需要根绝约定（index.icon,favicon.ico），放入该目录即可。
 
-## 6.3 自定义消息转换器
+## 5.3 自定义消息转换器
 
 ```java
 @Bean
@@ -487,7 +414,7 @@ public StringHttpMessageConverter stringHttpMessageConverter(){
 
 + 在以上目录存放资源文件后，访问时，http://localhost:8080/hello.html时，`hello.html`不需要加前缀，直接访问即可。
 
-#  7 整合外置tomcat及使用JSP开发
+#  6 整合外置tomcat及使用JSP开发
 
 以前的Spring Boot默认自带一个内置的tomcat，不需要打war包，直接通过jar包即可运行。但是，如果要整合jsp开发，就需要单独配置一个外置的tomcat，需要打war包。
 
@@ -515,7 +442,7 @@ public StringHttpMessageConverter stringHttpMessageConverter(){
 + 增加依赖。
 + 启动类继承Spring BootServletInitializer,重写configure方法。
 
-## 7.1 添加依赖
+## 6.1 添加依赖
 
 ```html
 <dependency>
@@ -529,13 +456,13 @@ public StringHttpMessageConverter stringHttpMessageConverter(){
 + 外置Tomcat为localhost为8081，所以外置apache访问端口号：http://localhost:8081/。
 + 电脑上apache安装地址：C:\Program Files\Apache Software Foundation\Tomcat 8.5。
 
-# 8 整合MongDB
+# 7 整合MongDB
 
-## 8.1 介绍
+## 7.1 介绍
 
 MongDB是一个基于分布式文件存储的数据库。由`C++`语言编写。介于关系数据库和非关系型数据库之间的产品。旨在为WEB应用提供可扩展的高性能数据存储方案。支持的数据结构非常松散，是类似`json`的`bson`格式。
 
-## 8.2 控制台操作
+## 7.2 控制台操作
 
 ```sql
 进入命令管理器，输入：mongo启动：MongDB
@@ -557,13 +484,13 @@ db.createUser({ //个人登录信息。
 })
 ```
 
-# 9 整合Neo4J
+# 8 整合Neo4J
 
-## 9.1 Neo4J介绍及安装
+## 8.1 Neo4J介绍及安装
 
 `Neo4J`是一个高性能的，`NOSQL`图形数据库，它是一个嵌入式、基于磁盘的、具备完全的事务特性的持久化引擎，但是他将结构化数据存储在网络上，而不表中。一个对象看成一个网络上的节点，节点之间有关系。
 
-## 9.2 Cypher语言的学习
+## 8.2 Cypher语言的学习
 
 1. 示例语句
 
@@ -582,7 +509,7 @@ where b.name = ‘tom’
 return b
 ```
 
-# 10  Spring Boot的事务管理
+# 9  Spring Boot的事务管理
 
 在Spring Boot中推荐使用@`Transactional`注解来声名事务。
 
@@ -590,7 +517,7 @@ return b
 
 事务使用在`service`上的，因为`servcie`上面是业务，主要是因为保证业务成功都成功。
 
-## 10.1 创建项目（Ecp）
+## 9.1 创建项目（Ecp）
 
 ```java
 @Transactional 
