@@ -454,10 +454,6 @@ spring.resources.static-locations = classpath:/static/
 
 推荐：Spring Boot约定：Spring Boot将一些目录结构设置成静态资源存放目录，我们的静态资源直接放入到这些目录即可（`webapp`），位置在`ResourceProperties`类中的`CLASSPATH_RESOURCE_LOCATIONS`属性设置中存放着。
 
-
-
- 
-
 ## 6.2 WebMvcAutoConfiguration源码解读
 
 `WebMvcAutoConfiguration`类中的welcomePageHandlerMapping()->getIndexHtml()->location+”index.html”,即任意一个静态资源目录的Index.html就是欢迎页，访问：http://localhost:8080/（地址）。
