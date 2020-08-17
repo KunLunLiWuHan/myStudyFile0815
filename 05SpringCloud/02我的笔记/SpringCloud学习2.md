@@ -130,9 +130,7 @@ public class PaymentController {
 ls /
 ```
 
-<img src="SpringCloud学习2.assets/image-20200817225634174.png" alt="image-20200817225634174" style="zoom:67%;" />
-
-`cloud-provider-payment8004`节点是临时节点。
+<img src="SpringCloud学习2.assets/image-20200817225634174.png" alt="image-20200817225634174" style="zoom:67%;" />`cloud-provider-payment8004`节点是临时节点。
 
 ## 3、服务消费者cloud-consumerzk-order80
 
@@ -433,7 +431,7 @@ CAP理论关注粒度是数据，而不是整体系统设计的策略。
 
 <img src="SpringCloud学习2.assets/image-20200817233733267.png" alt="image-20200817233733267" style="zoom:80%;" />
 
-<img src="SpringCloud学习2.assets/image-20200817233747052.png" alt="image-20200817233747052" style="zoom:67%;" />
+<img src="SpringCloud学习2.assets/image-20200817234843232.png" alt="image-20200817234843232" style="zoom:67%;" />
 
 | 组件名    | 语言 | CAP  | 服务器健康检查 | 对外保留接口 | SpringBoot集成 |
 | --------- | ---- | ---- | -------------- | ------------ | -------------- |
