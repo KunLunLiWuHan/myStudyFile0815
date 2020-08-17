@@ -77,7 +77,7 @@ public class PaymentController {
 
 （1）启动后遇到问题
 
-<img src="SpringCloud学习2.assets/image-20200817225044666.png" alt="image-20200817225044666" style="zoom:80%;" />
+<img src="SpringCloud学习2.assets/image-20200817101518444.png" alt="image-20200817101518444" style="zoom:80%;" />
 
 ​		这是因为我们服务器上使用的zookeeper的版本是3.4.10，而IDEA中导入的依赖中的版本是3.5.3，导致zookeeper版本jar包冲突。
 
