@@ -163,6 +163,7 @@ service iptables status
 
 ```http
 http://39.96.161.64/
+proxy_pass http://39.107.140.8:8080;
 ```
 
 <img src="Nginx学习.assets/image-20200818104133887.png" alt="image-20200818104133887" style="zoom: 50%;" />

@@ -172,6 +172,20 @@ vim /etc/profile
 
 其中，`export`指令的作用是输出环境变量，让变量生效。
 
+```SHEll
+#1、写入下面的内容
+JAVA_HOME=/opt/jdk1.8.0_251
+PATH=/opt/jdk1.8.0_251/bin:$PATH
+export JAVA_HOME PATH
+
+#2、保存退出后，使用下面的命令使文件生效
+#当复制另一个服务器标签，使用下面的指令时，当前的服务器配置并不会奏效。
+source /etc/profile 
+
+#3、输入下面的内容测试是否安装成功
+java -version
+```
+
 2、Linux中PATH、CLASSPATH等环境变量配置格式详解。
 
 <img src="Xshell_XFtp5_SecureCRT安装.assets/image-20200816230349592.png" alt="image-20200816230349592" style="zoom:67%;" />
@@ -266,11 +280,15 @@ telnet 192.168.10.130 8080
 
 ## 5、阿里云服务器上安装
 
-1、在默认情况下，Linux不会开放端口号，为了能够能够让外界访问，我们需要在安全组中设置一组规则，将8080端口开放。
+1、在默认情况下，Linux不会开放端口号，为了能够能够让外界访问，我们需要在安全组中设置一组规则，将8080端口开放。（应该不用开放防火墙就可以）
 
 2、启动安装目录下的tomcat。
 
+<img src="Xshell_XFtp5_SecureCRT安装.assets/image-20200818215527865.png" alt="image-20200818215527865" style="zoom: 67%;" />
+
 3、使用ip+端口的形式进行访问阿里云服务器上的tomcat，如果出现图标，则表明tomcat安装成功。
+
+<img src="Xshell_XFtp5_SecureCRT安装.assets/image-20200818215608170.png" alt="image-20200818215608170" style="zoom:67%;" />
 
 # 6 Eclipse安装
 
