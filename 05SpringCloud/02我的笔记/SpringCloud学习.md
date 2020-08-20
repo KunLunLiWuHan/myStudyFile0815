@@ -517,7 +517,7 @@ eureka:
 
 ### 3、消费微服务cloud-consumer-order80入驻Eureka Server
 
-该模块的注入和支付微服务（cloud-provider-payment8001）入驻Eureka Server的过程一致。
+​		该模块的注入和支付微服务（cloud-provider-payment8001）入驻Eureka Server的过程一致。
 
 测试
 
@@ -560,9 +560,11 @@ eureka:
 
 ​		实现不同的端口映射到同一个地址,其中cloud-eureka-Server7001是一号机，cloud-eureka-Server7001是二号机。通过端口不同，来模拟两台机器。
 
+注意：当上面的映射注销之后，会出现一些连接超时的错误。
+
 4、application.yml配置
 
-（1）cloud-eureka-Server7001/7002的配置
+（1）cloud-eureka-Server7001的配置
 
 ```yaml
 server:
