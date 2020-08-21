@@ -88,3 +88,296 @@
 
 ## 4、入门配置
 
+### 1、新建模块
+
+新建cloud-gateway-gateway9527模块，项目结构为：
+
+<img src="SpringCloud学习4.assets/image-20200821104345526.png" alt="image-20200821104345526" style="zoom:50%;" />
+
+1、添加pom
+
+```xml
+<dependencies>
+        <!--新增gateway-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.xiaolun.springcloud</groupId>
+            <artifactId>cloud-api-commons</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+```
+
+不需要添加web/actuator依赖。
+
+2、添加yml
+
+```yaml
+server:
+  port: 9527
+
+spring:
+  application:
+    name: cloud-gateway
+  cloud:
+  	#新增的网关配置
+    gateway:
+      routes: #路由可以配置多个
+        - id: payment_routh            #路由的ID，没有固定规则但要求唯一，建议配合服务名
+          uri: http://localhost:8001   #匹配后提供服务的路由地址
+          predicates:
+            - Path=/payment/get/**   #断言,路径相匹配的进行路由
+
+        - id: payment_routh2
+          uri: http://localhost:8001
+          predicates:
+            - Path=/payment/lb/**
+
+eureka:
+  instance:
+    hostname: cloud-gateway-service
+  client:
+    service-url:
+      register-with-eureka: true
+      fetch-registry: true
+      defaultZone: http://eureka7001.com:7001/eureka
+```
+
+​		新增的网关配置，可以在cloud-provider-payment8001的访问地址外面包含一层9527，避免暴露接口，进而实现实现URL地址中无8001端口。
+
+3、业务类无
+
+4、启动类
+
+```java
+@SpringBootApplication
+@EnableEurekaClient 
+public class GateWayMain9527 {
+	public static void main(String[] args) {
+		SpringApplication.run( GateWayMain9527.class,args);
+	}
+}
+```
+
+5、测试
+
+​		首先启动cloud-eureka-Server7001，然后启动cloud-provider-payment8001，最后启动cloud-gateway-gateway9527。
+
+​		在我们添加网关前，我们的输入网址：http://localhost:8001/payment/get/5，当我们添加网关后，输入网址为：http://localhost:9527/payment/get/5，可以将端口号8001换成9527。
+
+<img src="SpringCloud学习4.assets/image-20200821105354733.png" alt="image-20200821105354733" style="zoom:50%;" />
+
+访问说明：
+
+<img src="SpringCloud学习4.assets/image-20200821105726336.png" alt="image-20200821105726336" style="zoom: 50%;" />
+
+### 2、配置路由的两种方式
+
+1、方式1
+
+在配置文件yml中配置，参见前面步骤。
+
+2、方式2
+
+代码中注入RouteLocator的Bean。
+
+（1）需求
+
+通过9527网关访问到外网的百度新闻网址。
+
+（2）添加配置类GateWayConfig
+
+```java
+@Configuration
+public class GateWayConfig {
+	/**
+	 * 1、配置了一个id为 path_rote_xiaolun 的路由规则
+	 * 当访问地址http://localhost:9527/guonei时会
+	 * 自动转发地址到：http://www.baidu.com/guonei
+	 */
+	@Bean
+	public RouteLocator customRouteLocator(RouteLocatorBuilder routeLocatorBuilder) {
+		RouteLocatorBuilder.Builder routes = routeLocatorBuilder.routes();
+		routes.route("path_rote_xiaolun",
+				r -> r.path("/guonei").uri("http://news.baidu.com/guonei")).build();
+		return routes.build();
+	}
+}
+```
+
+项目结构：
+
+<img src="SpringCloud学习4.assets/image-20200821110631501.png" alt="image-20200821110631501" style="zoom:67%;" />
+
+## 5、配置动态路由
+
+​		默认情况下Gateway会根据注册中心的服务列表，以注册中心上微服务名为路径创建动态路由进行转发，从而实现动态路由的功能，即通过微服务名实现动态路由。
+
+1、示意图
+
+<img src="SpringCloud学习4.assets/image-20200821111010973.png" alt="image-20200821111010973" style="zoom:67%;" />
+
+2、修改yml-gateway配置
+
+```yaml
+spring:
+  application:
+    name: cloud-gateway
+  cloud:
+    gateway:
+      #第1处修改
+      discovery:
+        locator:
+          enabled: true  #开启从注册中心动态创建路由的功能，利用微服务名进行路由
+      routes: #路由可以配置多个
+        - id: payment_routh            #路由的ID，没有固定规则但要求唯一，建议配合服务名
+#          uri: http://localhost:8001   #匹配后提供服务的路由地址
+          #第2处修改：lb://serviceName是spring cloud gateway在微服务中自动为我们创建的负载均衡uri
+          uri: lb://cloud-payment-service
+          predicates:
+            - Path=/payment/get/**   #断言,路径相匹配的进行路由
+
+        - id: payment_routh2
+#          uri: http://localhost:8001
+          uri: lb://cloud-payment-service
+          predicates:
+            - Path=/payment/lb/**
+```
+
+3、测试
+
+​		首先启动cloud-eureka-Server7001，然后启动cloud-provider-payment8001/8002，最后启动cloud-gateway-gateway9527。
+
+浏览器输入：http://localhost:9527/payment/lb，有8001/8002两个端口切换。
+
+## 6、Predicate的使用
+
+1、介绍
+
+（1）启动我们的cloud-gateway-gateway9527，在控制台，会发现下面的配置：
+
+<img src="SpringCloud学习4.assets/image-20200821112318021.png" alt="image-20200821112318021" style="zoom:50%;" />
+
+（2）Route Predicate Factories
+
+<img src="SpringCloud学习4.assets/image-20200821112341149.png" alt="image-20200821112341149" style="zoom:67%;" />
+
+<img src="SpringCloud学习4.assets/image-20200821112438434.png" alt="image-20200821112438434" style="zoom:50%;" />
+
+​		说白了，Predicate就是为了实现一组匹配规则，让请求过来找到对应的Route进行处理。
+
+（3）常用的Route Predicate
+
+（a）After Route Predicate
+
+<img src="SpringCloud学习4.assets/image-20200821112612337.png" alt="image-20200821112612337" style="zoom:67%;" />
+
+我们可以通过下面的代码获取年份：
+
+```java
+ZonedDateTime zonedDateTime = ZonedDateTime.now();
+System.out.println(zonedDateTime);
+
+//输出
+- After=2020-03-08T10:59:34.102+08:00[Asia/Shanghai]
+```
+
+（b）Cookie Route Predicate
+
+​		该断言包含两个参数，一个是Cookie name，一个是正则表达式。路由规则会通过获取对应的Cookie name值和正则表达式进行匹配，如果匹配上会执行路由，反追不执行。
+
+```yaml
+- Cookie=username,xiaolun
+```
+
+​		下面我们通过curl的命令来进行微服务的调试。
+
+```
+curl  http://localhost:9527/payment/lb --cookie "username=xiaolun"
+```
+
+命令板打印输出：
+
+<img src="SpringCloud学习4.assets/image-20200821113759962.png" alt="image-20200821113759962" style="zoom:67%;" />
+
+## 7、Filter的使用
+
+### 1、介绍
+
+<img src="SpringCloud学习4.assets/image-20200821115319360.png" alt="image-20200821115319360" style="zoom:50%;" />
+
+（1）AddRequestParameter
+
+<img src="SpringCloud学习4.assets/image-20200821114038443.png" alt="image-20200821114038443" style="zoom:67%;" />
+
+### 2、自定义过滤器
+
+​		定义的是一个全局的GlobalFilter。实现全局日志记录和统一网关鉴权等功能。
+
+1、添加过滤器
+
+```java
+@Component
+@Slf4j
+public class MyLogGateWayFilter implements GlobalFilter, Ordered {
+	@Override
+	public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+
+		log.info("*********come in MyLogGateWayFilter: " + new Date());
+		String uname = exchange.getRequest().getQueryParams().getFirst("username");
+		if (StringUtils.isEmpty(uname)) {
+			log.info("*****用户名为Null 非法用户****");
+			exchange.getResponse().setStatusCode(HttpStatus.NOT_ACCEPTABLE);//给对方一个回应
+			return exchange.getResponse().setComplete();
+		}
+		return chain.filter(exchange); //续传下去
+	}
+
+	@Override //加载该过滤器的顺序，数字越小，优先级越高
+	public int getOrder() {
+		return 0;
+	}
+}
+```
+
+项目结构：
+
+<img src="SpringCloud学习4.assets/image-20200821115415359.png" alt="image-20200821115415359" style="zoom:50%;" />
+
+2、测试
+
+​		首先启动cloud-eureka-Server7001，然后启动cloud-provider-payment8001/8002，最后启动cloud-gateway-gateway9527。
+
+输入网址：http://localhost:9527/payment/lb?username=z3，能够正确访问（在Predicate的使用一章中，由于忘了关闭- Cookie=username,xiaolun，导致该请求一致无法响应，可见，过滤器是在路由指定好之后，即客户端进来之后进行再一次过滤），输入网址http://localhost:9527/payment/lb?u=z3不能够正确访问。
+
+<img src="SpringCloud学习4.assets/image-20200821115731056.png" alt="image-20200821115731056" style="zoom:67%;" />
