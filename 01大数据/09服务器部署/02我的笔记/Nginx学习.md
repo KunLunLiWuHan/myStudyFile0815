@@ -59,9 +59,7 @@ http://nginx.org/en/download.html
 
 ​		nginx是c语言开发，笔记中使用Centos6.9作为开发环境。
 
-​		
-
-为了安装nginx，我们还需要安装 prce-xx.tar.gz、openssl-xx.tar.gz和zlib-xx.tar.gz（prce-xx.tar.gz为了重写rewrite，zlib-xx.tar.gz为了gzip压缩）。
+​	为了安装nginx，我们还需要安装 prce-xx.tar.gz、openssl-xx.tar.gz和zlib-xx.tar.gz（prce-xx.tar.gz为了重写rewrite，zlib-xx.tar.gz为了gzip压缩）。
 
 2、安装pcre
 

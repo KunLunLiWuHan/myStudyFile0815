@@ -85,16 +85,6 @@ https://blog.csdn.net/weixin_41615494/article/details/79735869
 | ctrl+ shift + c |      复制      |
 | ctrl+ shift + v |      粘贴      |
 |    ctrl+tab     |  切换不同窗口  |
-|                 |                |
-|                 |                |
-|                 |                |
-|                 |                |
-|                 |                |
-|                 |                |
-
-
-
-
 
 ## 3.1 安装
 
@@ -341,6 +331,12 @@ mysql安装时间很长。
 
 参考文档：https://www.cnblogs.com/xuange306/p/8301669.html
 
+<img src="Xshell_XFtp5_SecureCRT安装.assets/image-20200824085144494.png" alt="image-20200824085144494" style="zoom:50%;" />
+
+<img src="Xshell_XFtp5_SecureCRT安装.assets/image-20200824085223436.png" alt="image-20200824085223436" style="zoom:50%;" />
+
+<img src="Xshell_XFtp5_SecureCRT安装.assets/image-20200824085248335.png" alt="image-20200824085248335" style="zoom:50%;" />
+
 <img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711201225080.png" alt="image-20200711201225080" style="zoom:80%;" />
 
 通过源代码安装高版本的5.6.48。
@@ -448,7 +444,7 @@ mv /etc/my.cnf /etc/my.cnf.bak  --没有该文件的话就不执行了。
 
 ​		4. 启动mysql
 
-​	启动 MySQL，添加服务，拷贝服务脚本到init.d目录，并设置开机启动（在`/usr/local/mysql`下执行]）。
+​		启动 MySQL，添加服务，拷贝服务脚本到init.d目录，并设置开机启动（在`/usr/local/mysql`下执行]）。
 
 ```ini
 cp support-files/mysql.server /etc/init.d/mysql
@@ -480,7 +476,9 @@ SET PASSWORD = PASSWORD('123');
 
 <img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711213939358.png" alt="image-20200711213939358" style="zoom:80%;" />
 
+也可以参照下面的博客进行安装：
 
+https://www.cnblogs.com/tianyamoon/p/9484828.html
 
 
 
