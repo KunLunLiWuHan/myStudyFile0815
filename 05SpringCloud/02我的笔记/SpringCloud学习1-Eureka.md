@@ -366,13 +366,25 @@ public class OrderController {
 
 ​		首先启动`cloud-provider-payment8001`，再启动`cloud-consumer-order80`。
 
-（1）插入数据网址：http://localhost/consumer/payment/create?serial=4，会遇到后端接收不到数据的情况，需要在接收的实体类中添加`@RequestBody`注解。
+（1）插入数据网址：
+
+```http
+http://localhost/consumer/payment/create?serial=4
+```
+
+会遇到后端接收不到数据的情况，需要在接收的实体类中添加`@RequestBody`注解。
 
 <img src="SpringCloud学习1-Eureka.assets/image-20200817211053494.png" alt="image-20200817211053494" style="zoom:67%;" />
 
 这是因为：@RequestBody用来接收前端传递给后端的json字符（以对象形式），@RequestPrama 用来接收单个字段，而非对象实体。
 
-（2）查询数据网址：http://localhost/consumer/payment/get/2，正常显示。
+（2）查询数据网址：
+
+```http
+http://localhost/consumer/payment/get/2
+```
+
+正常显示。
 
 注意：IDEA中现在有两个应用（80/8001端口）正在运行，需要开启下面的模式（RunDashBoard）。
 
@@ -487,7 +499,13 @@ public class EurekaMain7001 {
 
 ​		因此此时Eureka对应的是一个单机版的配置，所以此时只启动cloud-eureka-Server7001模块进行如下的测试。
 
-输入网址：http://localhost:7001/，当弹出下面的界面表示自己配置成功。
+输入下面的网址：
+
+```http
+http://localhost:7001/
+```
+
+当弹出下面的界面表示自己配置成功。
 
 <img src="SpringCloud学习1-Eureka.assets\image-20200710210516155.png" alt="image-20200710210516155" style="zoom:80%;" />
 
@@ -523,7 +541,13 @@ eureka:
 
 <img src="SpringCloud学习1-Eureka.assets\image-20200710212728918.png" alt="image-20200710212728918" style="zoom:80%;" />
 
-​		网址输入：http://localhost/consumer/payment/get/5，能够正常显示查询到的信息。
+​		网址输入：
+
+```http
+http://localhost/consumer/payment/get/5
+```
+
+能够正常显示查询到的信息。
 
 ## 3.3 Eureka集群
 
@@ -560,7 +584,7 @@ eureka:
 
 ​		实现不同的端口映射到同一个地址,其中cloud-eureka-Server7001是一号机，cloud-eureka-Server7001是二号机。通过端口不同，来模拟两台机器。
 
-注意：当上面的映射注销之后，会出现一些连接超时的错误。
+注意：当上面的域名映射注释之后，会出现一些连接超时的错误。
 
 4、application.yml配置
 
@@ -598,15 +622,27 @@ eureka:
 
 5、测试
 
-​		输入地址：http://localhost:7001/，指向7002这个服务注册中心；输入http://eureka7002.com:7002/，发现指向7001这个服务注册中心。
+​		输入下面的网址：
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200710220928437.png" alt="image-20200710220928437" style="zoom: 67%;" />
+```http
+http://localhost:7001/
+```
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200710220957443.png" alt="image-20200710220957443" style="zoom:80%;" />
+指向7002这个服务注册中心；输入下面的网址：
+
+```http
+http://eureka7002.com:7002/
+```
+
+发现指向7001这个服务注册中心。
+
+<img src="SpringCloud学习1-Eureka.assets\image-20200710220928437.png" alt="image-20200710220928437" style="zoom: 50%;" />
+
+<img src="SpringCloud学习1-Eureka.assets\image-20200710220957443.png" alt="image-20200710220957443" style="zoom: 50%;" />
 
 ### 3.3.2 订单支付两微服务注册到Eureka集群中
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200710221341719.png" alt="image-20200710221341719" style="zoom:80%;" />
+<img src="SpringCloud学习1-Eureka.assets\image-20200710221341719.png" alt="image-20200710221341719" style="zoom: 50%;" />
 
 1、主要修改cloud-consumer-order80和cloud-provider-payment8001这两个模块中的yml文件，将单机版的入驻地址改成集群版的。
 
@@ -683,7 +719,13 @@ eureka:
       prefer-ip-address: true #访问路径可以显示IP地址
 ```
 
-​		此时输入：http://eureka7002.com:7002/，（此时仍然是Eureka的集群模式，cloud-eureka-Server7001和cloud-eureka-Server7002在同时启动）显示：
+​		输入下面的网址：
+
+```http
+http://eureka7002.com:7002/
+```
+
+（此时仍然是Eureka的集群模式，cloud-eureka-Server7001和cloud-eureka-Server7002在同时启动）显示：
 
 <img src="SpringCloud学习1-Eureka.assets\image-20200711085118751.png" alt="image-20200711085118751" style="zoom: 50%;" />
 

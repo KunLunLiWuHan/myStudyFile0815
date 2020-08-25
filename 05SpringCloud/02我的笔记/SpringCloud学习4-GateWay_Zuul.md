@@ -10,17 +10,17 @@
 
 2、概述
 
-<img src="SpringCloud学习4-GateWay.assets/image-20200820224005450.png" alt="image-20200820224005450" style="zoom:80%;" />
+<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200820224005450.png" alt="image-20200820224005450" style="zoom:80%;" />
 
-<img src="SpringCloud学习4-GateWay.assets/image-20200820224020739.png" alt="image-20200820224020739" style="zoom:80%;" />
+<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200820224020739.png" alt="image-20200820224020739" style="zoom:80%;" />
 
-<img src="SpringCloud学习4-GateWay.assets/image-20200820224035066.png" alt="image-20200820224035066" style="zoom:67%;" />
+<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200820224035066.png" alt="image-20200820224035066" style="zoom:67%;" />
 
 总结：Spring Cloud Gateway 使用的Webflux中的reactor-netty响应式编程组件，底层使用了Netty通讯框架
 
 源码结构：
 
-<img src="SpringCloud学习4-GateWay.assets/image-20200820224146599.png" alt="image-20200820224146599" style="zoom:67%;" />
+<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200820224146599.png" alt="image-20200820224146599" style="zoom:67%;" />
 
 2、作用
 
@@ -28,39 +28,39 @@
 
 微服务架构中网关位置：
 
-<img src="SpringCloud学习4-GateWay.assets/image-20200820224302425.png" alt="image-20200820224302425" style="zoom:80%;" />
+<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200820224302425.png" alt="image-20200820224302425" style="zoom:80%;" />
 
 3、选择GateWay的原因
 
 （1）neflix不太靠谱，zuul2.0一直跳票,迟迟不发布
 
-<img src="SpringCloud学习4-GateWay.assets/image-20200820224451355.png" alt="image-20200820224451355" style="zoom:67%;" />
+<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200820224451355.png" alt="image-20200820224451355" style="zoom:67%;" />
 
 （2）SpringCloud Gateway具有如下特性
 
-<img src="SpringCloud学习4-GateWay.assets/image-20200820224515503.png" alt="image-20200820224515503" style="zoom:67%;" />
+<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200820224515503.png" alt="image-20200820224515503" style="zoom:67%;" />
 
 （3）SpringCloud Gateway与Zuul的区别
 
-<img src="SpringCloud学习4-GateWay.assets/image-20200820224556320.png" alt="image-20200820224556320" style="zoom:67%;" />
+<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200820224556320.png" alt="image-20200820224556320" style="zoom:67%;" />
 
 4、Zuul1.x模型
 
-<img src="SpringCloud学习4-GateWay.assets/image-20200820224639932.png" alt="image-20200820224639932" style="zoom:67%;" />
+<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200820224639932.png" alt="image-20200820224639932" style="zoom:67%;" />
 
-<img src="SpringCloud学习4-GateWay.assets/image-20200820224658138.png" alt="image-20200820224658138" style="zoom:80%;" />
+<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200820224658138.png" alt="image-20200820224658138" style="zoom:80%;" />
 
 5、GateWay模型
 
 （1）WebFlux介绍
 
-<img src="SpringCloud学习4-GateWay.assets/image-20200820224825273.png" alt="image-20200820224825273" style="zoom:67%;" />
+<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200820224825273.png" alt="image-20200820224825273" style="zoom:67%;" />
 
-<img src="SpringCloud学习4-GateWay.assets/image-20200820224840516.png" alt="image-20200820224840516" style="zoom:67%;" />
+<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200820224840516.png" alt="image-20200820224840516" style="zoom:67%;" />
 
 （2）说明
 
-<img src="SpringCloud学习4-GateWay.assets/image-20200820224924987.png" alt="image-20200820224924987" style="zoom:67%;" />
+<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200820224924987.png" alt="image-20200820224924987" style="zoom:67%;" />
 
 ## 2、三大核心概念
 
@@ -72,15 +72,15 @@
 
 4、总体
 
-<img src="SpringCloud学习4-GateWay.assets/image-20200820225101712.png" alt="image-20200820225101712" style="zoom:80%;" />
+<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200820225101712.png" alt="image-20200820225101712" style="zoom:80%;" />
 
 ## 3、工作流程
 
 1、官网总结
 
-<img src="SpringCloud学习4-GateWay.assets/image-20200820230813575.png" alt="image-20200820230813575" style="zoom:80%;" />
+<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200820230813575.png" alt="image-20200820230813575" style="zoom:80%;" />
 
-<img src="SpringCloud学习4-GateWay.assets/image-20200820230833420.png" alt="image-20200820230833420" style="zoom:67%;" />
+<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200820230833420.png" alt="image-20200820230833420" style="zoom:67%;" />
 
 2、核心逻辑
 
@@ -92,7 +92,7 @@
 
 新建cloud-gateway-gateway9527模块，项目结构为：
 
-<img src="SpringCloud学习4-GateWay.assets/image-20200821104345526.png" alt="image-20200821104345526" style="zoom:50%;" />
+<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200821104345526.png" alt="image-20200821104345526" style="zoom:50%;" />
 
 1、添加pom
 
@@ -193,13 +193,25 @@ public class GateWayMain9527 {
 
 ​		首先启动cloud-eureka-Server7001，然后启动cloud-provider-payment8001，最后启动cloud-gateway-gateway9527。
 
-​		在我们添加网关前，我们的输入网址：http://localhost:8001/payment/get/5，当我们添加网关后，输入网址为：http://localhost:9527/payment/get/5，可以将端口号8001换成9527。
+​		在我们添加网关前，我们的输入网址如下：
 
-<img src="SpringCloud学习4-GateWay.assets/image-20200821105354733.png" alt="image-20200821105354733" style="zoom:50%;" />
+```http
+http://localhost:8001/payment/get/5
+```
+
+当我们添加网关后，输入网址如下：
+
+```http
+http://localhost:9527/payment/get/5
+```
+
+可以将端口号8001换成9527。
+
+<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200821105354733.png" alt="image-20200821105354733" style="zoom:50%;" />
 
 访问说明：
 
-<img src="SpringCloud学习4-GateWay.assets/image-20200821105726336.png" alt="image-20200821105726336" style="zoom: 50%;" />
+<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200821105726336.png" alt="image-20200821105726336" style="zoom: 50%;" />
 
 ### 2、配置路由的两种方式
 
@@ -237,7 +249,7 @@ public class GateWayConfig {
 
 项目结构：
 
-<img src="SpringCloud学习4-GateWay.assets/image-20200821110631501.png" alt="image-20200821110631501" style="zoom:67%;" />
+<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200821110631501.png" alt="image-20200821110631501" style="zoom:67%;" />
 
 ## 5、配置动态路由
 
@@ -245,7 +257,7 @@ public class GateWayConfig {
 
 1、示意图
 
-<img src="SpringCloud学习4-GateWay.assets/image-20200821111010973.png" alt="image-20200821111010973" style="zoom:67%;" />
+<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200821111010973.png" alt="image-20200821111010973" style="zoom:67%;" />
 
 2、修改yml-gateway配置
 
@@ -278,7 +290,13 @@ spring:
 
 ​		首先启动cloud-eureka-Server7001，然后启动cloud-provider-payment8001/8002，最后启动cloud-gateway-gateway9527。
 
-浏览器输入：http://localhost:9527/payment/lb，有8001/8002两个端口切换。
+​		浏览器输入下面的网址：
+
+```http
+http://localhost:9527/payment/lb
+```
+
+此时，有8001/8002两个端口切换。
 
 ## 6、Predicate的使用
 
@@ -286,13 +304,13 @@ spring:
 
 （1）启动我们的cloud-gateway-gateway9527，在控制台，会发现下面的配置：
 
-<img src="SpringCloud学习4-GateWay.assets/image-20200821112318021.png" alt="image-20200821112318021" style="zoom:50%;" />
+<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200821112318021.png" alt="image-20200821112318021" style="zoom:50%;" />
 
 （2）Route Predicate Factories
 
-<img src="SpringCloud学习4-GateWay.assets/image-20200821112341149.png" alt="image-20200821112341149" style="zoom:67%;" />
+<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200821112341149.png" alt="image-20200821112341149" style="zoom:67%;" />
 
-<img src="SpringCloud学习4-GateWay.assets/image-20200821112438434.png" alt="image-20200821112438434" style="zoom:50%;" />
+<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200821112438434.png" alt="image-20200821112438434" style="zoom:50%;" />
 
 ​		说白了，Predicate就是为了实现一组匹配规则，让请求过来找到对应的Route进行处理。
 
@@ -300,7 +318,7 @@ spring:
 
 （a）After Route Predicate
 
-<img src="SpringCloud学习4-GateWay.assets/image-20200821112612337.png" alt="image-20200821112612337" style="zoom:67%;" />
+<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200821112612337.png" alt="image-20200821112612337" style="zoom:67%;" />
 
 我们可以通过下面的代码获取年份：
 
@@ -328,17 +346,17 @@ curl  http://localhost:9527/payment/lb --cookie "username=xiaolun"
 
 命令板打印输出：
 
-<img src="SpringCloud学习4-GateWay.assets/image-20200821113759962.png" alt="image-20200821113759962" style="zoom:67%;" />
+<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200821113759962.png" alt="image-20200821113759962" style="zoom:67%;" />
 
 ## 7、Filter的使用
 
 ### 1、介绍
 
-<img src="SpringCloud学习4-GateWay.assets/image-20200821115319360.png" alt="image-20200821115319360" style="zoom:50%;" />
+<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200821115319360.png" alt="image-20200821115319360" style="zoom:50%;" />
 
 （1）AddRequestParameter
 
-<img src="SpringCloud学习4-GateWay.assets/image-20200821114038443.png" alt="image-20200821114038443" style="zoom:67%;" />
+<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200821114038443.png" alt="image-20200821114038443" style="zoom:67%;" />
 
 ### 2、自定义过滤器
 
@@ -372,7 +390,7 @@ public class MyLogGateWayFilter implements GlobalFilter, Ordered {
 
 项目结构：
 
-<img src="SpringCloud学习4-GateWay.assets/image-20200821115415359.png" alt="image-20200821115415359" style="zoom:50%;" />
+<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200821115415359.png" alt="image-20200821115415359" style="zoom:50%;" />
 
 2、测试
 
@@ -380,4 +398,187 @@ public class MyLogGateWayFilter implements GlobalFilter, Ordered {
 
 输入网址：http://localhost:9527/payment/lb?username=z3，能够正确访问（在Predicate的使用一章中，由于忘了关闭- Cookie=username,xiaolun，导致该请求一致无法响应，可见，过滤器是在路由指定好之后，即客户端进来之后进行再一次过滤），输入网址http://localhost:9527/payment/lb?u=z3不能够正确访问。
 
-<img src="SpringCloud学习4-GateWay.assets/image-20200821115731056.png" alt="image-20200821115731056" style="zoom:67%;" />
+<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200821115731056.png" alt="image-20200821115731056" style="zoom:67%;" />
+
+# 2 Zuul
+
+## 1、介绍
+
+1、概述
+
+<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200825221905024.png" alt="image-20200825221905024" style="zoom:67%;" />
+
+2、网址
+
+```http
+https://github.com/Netflix/zuul/wiki
+```
+
+## 2、路由基本配置
+
+新建项目：cloud-Zuul-gateway9528
+
+项目结构：
+
+<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200825222412658.png" alt="image-20200825222412658" style="zoom:67%;" />
+
+1、添加pom
+
+```xml
+<dependencies>
+        <!-- zuul路由网关 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+        <!-- actuator监控 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- 热部署插件 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+```
+
+2、添加yml
+
+```yaml
+server:
+  port: 9528
+
+spring:
+  application:
+    name: microservicecloud-zuul-gateway
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka
+  instance:
+    instance-id: gateway-9528.com
+    prefer-ip-address: true
+
+
+zuul:
+#  ignored-services: cloud-payment-service
+  prefix: /xiaolun
+  ignored-services: "*"
+  routes:
+    mydept.serviceId: cloud-payment-service
+    mydept.path: /mydept/**
+```
+
+3、主启动类
+
+```java
+package com.xiaolun;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
+
+@SpringBootApplication
+@EnableZuulProxy
+public class ZuulMain9528 {
+   public static void main(String[] args) {
+      SpringApplication.run(ZuulMain9528.class, args);
+   }
+}
+```
+
+4、测试
+
+​		依次启动cloud-eureka-Server7001、cloud-provider-payment8001（服务提供类）、cloud-Zuul-gateway9528（路由）。
+
+​		当我们不用路由的时候，输入网址如下：
+
+```http
+http://localhost:8001/payment/get/5
+```
+
+<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200825222736942.png" alt="image-20200825222736942" style="zoom: 67%;" />
+
+​		当我们启用路由的时候，输入网址如下：
+
+```http
+http://myzuul.com:9528/cloud-payment-service/payment/get/5
+```
+
+​		`cloud-payment-service`是cloud-provider-payment8001的yml配置中的服务名称：
+
+```yaml
+spring:
+  application:
+    name: cloud-payment-service  #服务名称
+```
+
+注：
+
+​		cloud-eureka-Server7001的浏览器显示中服务名称为大写，但是在启用路由请求的时候，要和cloud-provider-payment8001配置的服务名称保持一致，不然会报错404的错误。
+
+## 3、路由映射规则
+
+在路由简单配置中遇到的问题如下：
+
+1、服务名称 cloud-payment-service暴露，我们在loud-Zuul-gateway9528添加下面的配置，使用其他地址来代替原有地址。
+
+```yml
+zuul:
+  #表示只能使用mydept路径访问，原路径cloud-payment-service失效。
+# ignored-services: cloud-payment-service
+# ignored-services: "*" # 统一配置
+  routes:
+    mydept.serviceId: cloud-payment-service
+    mydept.path: /mydept/**
+```
+
+此时访问网址：
+
+```http
+#错误（ignored-services配置所导致）
+http://myzuul.com:9528/cloud-payment-service/payment/get/5
+
+#正确
+http://myzuul.com:9528/mydept/payment/get/5
+```
+
+2、我们可以在路径中加上前缀`/xiaolun`
+
+```yml
+zuul:
+#  ignored-services: cloud-payment-service
+  prefix: /xiaolun
+  ignored-services: "*"
+  routes:
+    mydept.serviceId: cloud-payment-service
+    mydept.path: /mydept/**
+```
+
+此时访问网址：
+
+```http
+http://myzuul.com:9528/xiaolun/mydept/payment/get/5
+```
+
+注：
+
+​		虽然我们在代码中添加了热部署，但是当我们在zuul中对于一些代码的改动，Java的加载不是很成功，需要重启IDEA才能将改动的代码生效。
