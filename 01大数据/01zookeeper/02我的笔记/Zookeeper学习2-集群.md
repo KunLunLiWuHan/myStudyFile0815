@@ -1,6 +1,6 @@
 # 1 zookeeper集群搭建
 
-​		单机环境下，jdk、zookeeper 安装完毕，基于一台虚拟机，进行zookeeper伪集群搭建，zookeeper集群中包含3个节点，节点对外提供服务端口号分别为2181、 2182、2183。
+单机环境下，jdk、zookeeper 安装完毕，基于一台虚拟机，进行zookeeper伪集群搭建，zookeeper集群中包含3个节点，节点对外提供服务端口号分别为2181、 2182、2183。
 
 1. 基于zookeeper-3.4.10复制三份zookeeper安装好的服务器文件，目录名称分别为 zookeeper2181、zookeeper2182、zookeeper2183。
 
@@ -12,18 +12,18 @@ cp ‐r zookeeper‐3.4.10 zookeeper2181（2，3）
 
 2. 修改（zookeeper2181）服务器对应配置文件。
 
-​		（2.1）首先我们需在路径/home/zookeeper/software/zookeeper-3.4.10/conf下，使用下面的命令拷贝一下配置文件:
+（2.1）首先我们需在路径/home/zookeeper/software/zookeeper-3.4.10/conf下，使用下面的命令拷贝一下配置文件:
 
 ```ini
 cp zoo_sample.cfg zoo.cfg
 ```
 
-​		（2.2）对配置文件zoo.cfg进行更改：
+（2.2）对配置文件zoo.cfg进行更改：
 
 + 伪集群配置信息
 
 ```ini
-#服务器对应端口号
+#服务器对应端口号，三个不同的端口
 clientPort=2181（2，3）
 
 #数据快照文件所在路径
@@ -31,11 +31,14 @@ dataDir=/home/zookeeper01/zookeeper2181（2，3）/zoo_data
 dataLogDir=/home/zookeeper01/zookeeper2181（2，3）/zoo_log
 
 #伪集群配置信息
-#server.A=B:C:D
-    #A：是一个数字，表示这个是服务器的编号
-    #B：是这个服务器的ip地址
-    #C：Zookeeper服务器之间的通信端口
-    #D：Leader选举的端口
+#服务器名称和地址：集群信息（服务器编号，服务器地址，LF通信端口，选举端口）
+#server.A=YYY:C:D
+    #A：是一个数字，表示服务器的编号
+    #YYY：表示服务器的ip地址
+    #C：LF通信端口，表示该服务器与集群中的leader交换信息的端口
+    #D：Leader选举端口,表示选举新leader时服务器间相互通信的端口（当leader挂掉时，其余服务器会相互通信，选举出新的leader） 
+    
+#一般来说，集群中每一个服务器的A/B端口都是一样的。但是，当说采用的是伪集群时，IP地址都一样，只能对A端口和B端口不一样。
 server.1=192.168.10.129:2287:3387
 server.2=192.168.10.129:2288:3388
 server.3=192.168.10.129:2289:3389
@@ -55,7 +58,7 @@ server.2=hadoop102:2888:3888
 server.3=hadoop103:2888:3888
 ```
 
-​		（2.3）我们需要在在配置的基础上添加配置文件，比如：在集群下，添加配置文件为：zoo_data（/home/zookeeper/software/zookeeper-3.4.10/zoo_data）、zoo_log。
+（2.3）我们需要在配置的基础上添加配置文件，比如：在集群下，添加配置文件为：zoo_data（/home/zookeeper/software/zookeeper-3.4.10/zoo_data）、zoo_log。
 
 3. 在 上一步 dataDir 指定的目录下，创建 myid 文件，然后在该文件添加上一步 server 配置的对应 A 数字。
 
@@ -76,9 +79,9 @@ echo "1" > myid
 
 ​		**错误1**：未知的名称或服务。
 
-<img src="Zookeeper学习2.assets\image-20200715154607277.png" alt="image-20200715154607277" style="zoom:67%;" />
+<img src="Zookeeper学习2-集群.assets\image-20200715154607277.png" alt="image-20200715154607277" style="zoom:67%;" />
 
-​		在root权限下，使用下面指令，添加ip映射关系：
+在root权限下，使用下面指令，添加ip映射关系：
 
 ```ini
 vim /etc/hosts
@@ -90,13 +93,13 @@ vim /etc/hosts
 192.168.10.103 hadoop103
 ```
 
-<img src="Zookeeper学习2.assets\image-20200715155123053.png" alt="image-20200715155123053" style="zoom:67%;" />
+<img src="Zookeeper学习2-集群.assets\image-20200715155123053.png" alt="image-20200715155123053" style="zoom:67%;" />
 
 **错误2**：地址已在使用。
 
 我们需要检查端口2181的使用状态，将占用该端口的进程杀死。
 
-<img src="Zookeeper学习2.assets\image-20200715155526764.png" alt="image-20200715155526764" style="zoom:67%;" />
+<img src="Zookeeper学习2-集群.assets\image-20200715155526764.png" alt="image-20200715155526764" style="zoom:67%;" />
 
 ```ini
 #检查端口状态
@@ -124,7 +127,7 @@ netstat -alnp | grep 2181
 
 登录后，可以在三个服务器端创建/获取节点进行测试。
 
-​		在IDEA中，使用下面集群的方式进行登录测试：
+在IDEA中，使用下面集群的方式进行登录测试：
 
 ```java
 String IP = "hadoop101:2181,hadoop102:2181,hadoop103:2181";
@@ -132,9 +135,9 @@ String IP = "hadoop101:2181,hadoop102:2181,hadoop103:2181";
 
 ## 1.1 一致性协议:zab协议
 
-​		zab协议 的全称是 Zookeeper Atomic Broadcast （zookeeper原子广播）。 zookeeper 是通过 zab协议来保证分布式事务的最终一致性。
+zab协议 的全称是 Zookeeper Atomic Broadcast （zookeeper原子广播）。zookeeper 是通过 zab协议来保证分布式事务的最终一致性。
 
-​		基于zab协议，zookeeper集群中的角色主要有以下三类，如下表所示：
+基于zab协议，zookeeper集群中的角色主要有以下三类，如下表所示：
 
 |             角色             |                             描述                             |
 | :--------------------------: | :----------------------------------------------------------: |
@@ -145,7 +148,7 @@ String IP = "hadoop101:2181,hadoop102:2181,hadoop103:2181";
 
 ​		zab广播模式工作原理，通过类似两阶段提交协议的方式解决数据一致性：
 
-<img src="Zookeeper学习2.assets\image-20200714101154594.png" alt="image-20200714101154594" style="zoom:67%;" />
+<img src="Zookeeper学习2-集群.assets\image-20200714101154594.png" alt="image-20200714101154594" style="zoom:67%;" />
 
 1. leader从客户端收到一个写请求 
 2. leader生成一个新的事务并为这个事务生成一个唯一的ZXID 
@@ -208,9 +211,9 @@ peerType=observer
 server.3=192.168.60.130:2289:3389:observer
 ```
 
-<img src="Zookeeper学习2.assets\image-20200714104645760.png" alt="image-20200714104645760" style="zoom: 67%;" />
+<img src="Zookeeper学习2-集群.assets\image-20200714104645760.png" alt="image-20200714104645760" style="zoom: 67%;" />
 
-<img src="Zookeeper学习2.assets\image-20200714104832305.png" alt="image-20200714104832305" style="zoom:67%;" />
+<img src="Zookeeper学习2-集群.assets\image-20200714104832305.png" alt="image-20200714104832305" style="zoom:67%;" />
 
 ## 1.3 .zookeeperAPI连接集群
 
@@ -785,9 +788,9 @@ public void tra1() throws Exception {
 
 ## 2.2 zookeeper四字监控命令
 
-​		zooKeeper支持某些特定的四字命令与其的交互。它们大多是查询命令，用来 获取 zooKeeper服务的当前状态及相关信息。
+zooKeeper支持某些特定的四字命令与其的交互。它们大多是查询命令，用来 获取 zooKeeper服务的当前状态及相关信息。
 
-​		用户在客户端可以通过 `telnet` （没有安装，暂时无效）或 `nc` 向 `zooKeeper`提交相应的命令。 zooKeeper常用四字命令见下表所示：
+用户在客户端可以通过 `telnet` （没有安装，暂时无效）或 `nc` 向 `zooKeeper`提交相应的命令。 zooKeeper常用四字命令见下表所示：
 
 | 命令 |                             描述                             |
 | :--: | :----------------------------------------------------------: |

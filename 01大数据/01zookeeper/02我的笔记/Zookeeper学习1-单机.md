@@ -6,13 +6,11 @@
 
 结构图：观察者可以理解为客户端。
 
-<img src="Zookeeper学习.assets\image-20200711105939626.png" alt="image-20200711105939626" style="zoom:80%;" />
-
-
+<img src="Zookeeper学习1-单机.assets\image-20200711105939626.png" alt="image-20200711105939626" style="zoom:80%;" />
 
 ## 1.1 特点
 
-<img src="Zookeeper学习.assets\image-20200711110715061.png" alt="image-20200711110715061" style="zoom:80%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200711110715061.png" alt="image-20200711110715061" style="zoom:80%;" />
 
 + Zookeeper：只有一个领导者（Leader）,多个跟随者（Follower）组成的集群。
 + 集群中只要有半数以上的节点能够存活，Zookeeper集群就能够正常工作。
@@ -23,7 +21,7 @@
 
 ## 1.2 数据结构
 
-<img src="Zookeeper学习.assets\image-20200711111332088.png" alt="image-20200711111332088" style="zoom:80%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200711111332088.png" alt="image-20200711111332088" style="zoom:80%;" />
 
 ​		Zookeeper数据模型的结构与Unix文件系统很类似，整体上可以看成是一棵树，每个节点称作一个ZNode（（即zookeeper node），一个znode可以有多个子节点。每个ZNode默认能够存储1MB的数据，每个ZNode都可以通过其路径唯一标识，比如/ns1/itcast/mysql/schema1/table1，此处ns-1、itcast、mysql、schema1、table1分别是 根节点、2级节点、3级节点以及4级节点；其中ns-1是itcast的父节点，itcast是ns-1的子 节点，itcast是mysql的父节点，mysql是itcast的子节点，以此类推。
 
@@ -86,7 +84,7 @@ numChildren = 2
 
 ​		在分布式环境下，经常需要对应用/服务进行统一命名，便于识别。例如：IP不容易记住，而域名容易记住。
 
-<img src="Zookeeper学习.assets\image-20200711111939429.png" alt="image-20200711111939429" style="zoom:80%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200711111939429.png" alt="image-20200711111939429" style="zoom:80%;" />
 
 ### 2、统一配置管理
 
@@ -99,7 +97,7 @@ numChildren = 2
 
 ​		可将配置信息写入Zookeeper上的一个ZNode，各个客服端服务器监听这个ZNode，一旦ZNode中的数据被修改，Zookeeper将通知到各个客户端配置。
 
-<img src="Zookeeper学习.assets\image-20200711112530522.png" alt="image-20200711112530522" style="zoom:80%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200711112530522.png" alt="image-20200711112530522" style="zoom:80%;" />
 
 ### 3、统一集群管理
 
@@ -108,13 +106,13 @@ numChildren = 2
 
 ​		可将节点信息写入Zookeeper上的一个ZNode，监听这个ZNode可以实时获取它的实时状态变化。
 
-<img src="Zookeeper学习.assets\image-20200711112934810.png" alt="image-20200711112934810" style="zoom:80%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200711112934810.png" alt="image-20200711112934810" style="zoom:80%;" />
 
 ### 4、软负载均衡
 
 ​		在Zookeeper中记录每台服务器的访问数，让访问数最少的服务器去处理最新的客户端请求。
 
-<img src="Zookeeper学习.assets\image-20200711113215723.png" alt="image-20200711113215723" style="zoom:80%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200711113215723.png" alt="image-20200711113215723" style="zoom:80%;" />
 
 # 2 安装和下载
 
@@ -122,7 +120,7 @@ numChildren = 2
 
 下载地址：https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html
 
-<img src="Zookeeper学习.assets\image-20200711115625280.png" alt="image-20200711115625280" style="zoom:80%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200711115625280.png" alt="image-20200711115625280" style="zoom:80%;" />
 
 ## 2.2 下载地址
 
@@ -130,7 +128,7 @@ numChildren = 2
 
 下载网址：https://zookeeper.apache.org/releases.html。
 
-<img src="Zookeeper学习.assets\image-20200711113803762.png" alt="image-20200711113803762" style="zoom:80%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200711113803762.png" alt="image-20200711113803762" style="zoom:80%;" />
 
 ### 2.2.1 单机安装
 
@@ -152,7 +150,7 @@ passwd zookeeper
 java -version
 ```
 
-<img src="Zookeeper学习.assets\image-20200712081945854.png" alt="image-20200712081945854" style="zoom:80%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200712081945854.png" alt="image-20200712081945854" style="zoom:80%;" />
 
 3. zookeeper使用zookeeper-3.4.10.tar.gz，上传并解压
 
@@ -221,7 +219,7 @@ create [-s] [-e] path data #其中-s 为有序节点，-e 临时节点
 ./zkCli.sh 
 ```
 
-<img src="Zookeeper学习.assets\image-20200712093026749.png" alt="image-20200712093026749" style="zoom:80%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200712093026749.png" alt="image-20200712093026749" style="zoom:80%;" />
 
 1. 创建持久化节点并写入数据：
 
@@ -229,7 +227,7 @@ create [-s] [-e] path data #其中-s 为有序节点，-e 临时节点
 create /hadoop "123456" --创建路径为hadoop的节点
 ```
 
-<img src="Zookeeper学习.assets\image-20200712093341885.png" alt="image-20200712093341885" style="zoom:80%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200712093341885.png" alt="image-20200712093341885" style="zoom:80%;" />
 
 2. 创建持久化有序节点，此时创建的节点名为指定节点名 + 自增序号
 
@@ -237,7 +235,7 @@ create /hadoop "123456" --创建路径为hadoop的节点
 create -s /b "bbb"
 ```
 
-<img src="Zookeeper学习.assets\image-20200712093640116.png" alt="image-20200712093640116" style="zoom:80%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200712093640116.png" alt="image-20200712093640116" style="zoom:80%;" />
 
 3. 创建临时节点，临时节点会在会话过期后被删除：
 
@@ -245,13 +243,13 @@ create -s /b "bbb"
 create -e /tmp "tmp"
 ```
 
-<img src="Zookeeper学习.assets\image-20200712093850414.png" alt="image-20200712093850414" style="zoom:80%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200712093850414.png" alt="image-20200712093850414" style="zoom:80%;" />
 
 ​		使用命令`quit`退出之后，重新登录后，临时节点不存在，取不到数据。
 
 4. 创建临时有序节点，临时节点会在会话过期后被删除：
 
-<img src="Zookeeper学习.assets\image-20200712094042819.png" alt="image-20200712094042819" style="zoom:80%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200712094042819.png" alt="image-20200712094042819" style="zoom:80%;" />
 
 #### 2、更改节点
 
@@ -264,7 +262,7 @@ set /hadoop "345" --更改节点的数据
 set /hadoop "3456" 1 
 ```
 
-<img src="Zookeeper学习.assets\image-20200712094612993.png" alt="image-20200712094612993" style="zoom:80%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200712094612993.png" alt="image-20200712094612993" style="zoom:80%;" />
 
 #### 3、删除节点
 
@@ -280,7 +278,7 @@ delete path [version]
 delete /hadoop 1
 ```
 
-<img src="Zookeeper学习.assets\image-20200712094839667.png" alt="image-20200712094839667" style="zoom:80%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200712094839667.png" alt="image-20200712094839667" style="zoom:80%;" />
 
 ​		要想删除某个节点及其所有后代节点，可以使用递归删除，命令为 
 
@@ -288,9 +286,9 @@ delete /hadoop 1
 rmr path  --r:recursion(递归)
 ```
 
-<img src="Zookeeper学习.assets\image-20200712095553783.png" alt="image-20200712095553783" style="zoom:80%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200712095553783.png" alt="image-20200712095553783" style="zoom:80%;" />
 
-<img src="Zookeeper学习.assets\image-20200712095638890.png" alt="image-20200712095638890" style="zoom:80%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200712095638890.png" alt="image-20200712095638890" style="zoom:80%;" />
 
 #### 4、查看节点
 
@@ -302,15 +300,15 @@ get path
 
 ​		可以使用 stat 命令查看节点状态，它的返回值和 get 命令类似，但不会返回节点数据。
 
-<img src="Zookeeper学习.assets\image-20200712100825223.png" alt="image-20200712100825223" style="zoom:80%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200712100825223.png" alt="image-20200712100825223" style="zoom:80%;" />
 
 #### 6、查看节点列表
 
-​		查看节点列表有 ls path 和 ls2 path 两个命令，后者是前者的增强，不仅可 以查看指定路径下的所有节点，还可以查看当前节点的信息。
+​		查看节点列表有 ls path 和 ls2 path 两个命令，后者是前者的增强，不仅可以查看指定路径下的所有节点，还可以查看当前节点的信息。
 
-<img src="Zookeeper学习.assets\image-20200712101042158.png" alt="image-20200712101042158" style="zoom:80%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200712101042158.png" alt="image-20200712101042158" style="zoom:80%;" />
 
-<img src="Zookeeper学习.assets\image-20200712101107993.png" alt="image-20200712101107993" style="zoom:80%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200712101107993.png" alt="image-20200712101107993" style="zoom:80%;" />
 
 #### 7、监听器
 
@@ -322,9 +320,9 @@ stat path [watch]
 ls\ls2 path [watch]
 ```
 
-​		使用 get path [watch] 注册的监听器能够在**节点内容**发生改变的时候，向客 户端发出通知。需要注意的是 zookeeper 的触发器是一次性的 (One-time trigger)，即触发一次后就会立即失效。
+​		使用 get path [watch] 注册的监听器能够在**节点内容**发生改变的时候，向客户端发出通知。需要注意的是 zookeeper 的触发器是一次性的 (One-time trigger)，即触发一次后就会立即失效。
 
-<img src="Zookeeper学习.assets\image-20200712102029163.png" alt="image-20200712102029163" style="zoom:80%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200712102029163.png" alt="image-20200712102029163" style="zoom:80%;" />
 
 ​		使用 stat path [watch] 注册的监听器能够在**节点状态**发生改变的时候，向客 户端发出通知。
 
@@ -397,7 +395,7 @@ setAcl /test2 ip:192.168.60.130:crwda
 setAcl <path> world:anyone:<acl>
 ```
 
-<img src="Zookeeper学习.assets\image-20200712144051751.png" alt="image-20200712144051751" style="zoom:80%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200712144051751.png" alt="image-20200712144051751" style="zoom:80%;" />
 
 2. ip授权模式
 
@@ -417,15 +415,15 @@ setAcl <path> ip:<ip>:<acl>
 
 ​		主要原因是权限不够，我们使用下面的命令，为所有人增加读写执行权限。
 
-<img src="Zookeeper学习.assets\image-20200712163500261.png" alt="image-20200712163500261" style="zoom:80%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200712163500261.png" alt="image-20200712163500261" style="zoom:80%;" />
 
 连接同一个zookeeper:
 
-<img src="Zookeeper学习.assets\image-20200712213352397.png" alt="image-20200712213352397" style="zoom:80%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200712213352397.png" alt="image-20200712213352397" style="zoom:80%;" />
 
 为两台服务器进行授权：
 
-<img src="Zookeeper学习.assets\image-20200712213737747.png" alt="image-20200712213737747" style="zoom:80%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200712213737747.png" alt="image-20200712213737747" style="zoom:80%;" />
 
 通过上面我们可以发现：同一个节点可以同时使用多种模式授权，授权格式如上。
 
@@ -439,7 +437,7 @@ addauth digest <user>:<password>
 setAcl <path> auth:<user>:<acl>
 ```
 
-<img src="Zookeeper学习.assets\image-20200712215455661.png" alt="image-20200712215455661" style="zoom:80%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200712215455661.png" alt="image-20200712215455661" style="zoom:80%;" />
 
 4. Digest授权模式
 
@@ -455,9 +453,9 @@ setAcl <path> digest:<user>:<password>:<acl>
 echo -n <user>:<password> | openssl dgst -binary -sha1 | openssl base64
 ```
 
-<img src="Zookeeper学习.assets\image-20200712221332856.png" alt="image-20200712221332856" style="zoom:80%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200712221332856.png" alt="image-20200712221332856" style="zoom:80%;" />
 
-<img src="Zookeeper学习.assets\image-20200712221538899.png" alt="image-20200712221538899" style="zoom:80%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200712221538899.png" alt="image-20200712221538899" style="zoom:80%;" />
 
 ##### 1.5 acl 超级管理员
 
@@ -491,11 +489,11 @@ Dzookeeper.DigestAuthenticationProvider.superDigest=super:xQJmxLMiHGwaqBvst5y6rk
     -cp "$CLASSPATH" $JVMFLAGS $ZOOMAIN "$ZOOCFG" > "$_ZOO_DAEMON_OUT" 2>&1 < /dev/null &
 ```
 
-<img src="Zookeeper学习.assets\image-20200713000810794.png" alt="image-20200713000810794" style="zoom:80%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200713000810794.png" alt="image-20200713000810794" style="zoom:80%;" />
 
 ​		复制完成之后，不知道为啥启动后会爆出这样的错误，我们需要重新复制即可设置成功，复制时不要调格式：
 
-<img src="Zookeeper学习.assets\image-20200712232651768.png" alt="image-20200712232651768" style="zoom:67%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200712232651768.png" alt="image-20200712232651768" style="zoom:67%;" />
 
 ​		**注**：设置完成之后，需要重新启动，超级管理员功能才能够生效。
 
@@ -503,23 +501,23 @@ Dzookeeper.DigestAuthenticationProvider.superDigest=super:xQJmxLMiHGwaqBvst5y6rk
 
 1. 添加完成之后，我们使用zookeeper用户去启动zookeeper应用，遇到下面的问题（此时防火墙已经关闭）：
 
-<img src="Zookeeper学习.assets\image-20200712225141371.png" alt="image-20200712225141371" style="zoom:80%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200712225141371.png" alt="image-20200712225141371" style="zoom:80%;" />
 
 有可能2181端口被占用，我们需要将进程全部杀死：
 
-<img src="Zookeeper学习.assets\image-20200712225247872.png" alt="image-20200712225247872" style="zoom:80%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200712225247872.png" alt="image-20200712225247872" style="zoom:80%;" />
 
 2. 如果还是启动不了，进行下面的方法：到zookeeper-3.4.10的data目录下，version-2文件夹和zookeeper_server.pid两个文件删除。
 
-   <img src="Zookeeper学习.assets\image-20200712234520231.png" alt="image-20200712234520231" style="zoom:80%;" />
+   <img src="Zookeeper学习1-单机.assets\image-20200712234520231.png" alt="image-20200712234520231" style="zoom:80%;" />
 
 然后就可以正常启动了。
 
 测试案例：
 
-<img src="Zookeeper学习.assets\image-20200713000655268.png" alt="image-20200713000655268" style="zoom:80%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200713000655268.png" alt="image-20200713000655268" style="zoom:80%;" />
 
-<img src="Zookeeper学习.assets\image-20200713000605123.png" alt="image-20200713000605123" style="zoom:80%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200713000605123.png" alt="image-20200713000605123" style="zoom:80%;" />
 
 # 3 JavaAPI
 
@@ -539,16 +537,17 @@ ZooKeeper(String connectionString, int sessionTimeout, Watcher watcher)
 ```
 
 + connectionString - zookeeper主机 
-+ sessionTimeout - 会话超时（以毫秒为单位) watcher - 实现“监视器”对象。
++ sessionTimeout - 会话超时（以毫秒为单位)
++  watcher - 实现“监视器”对象。
 + zookeeper集合通过监视器对象返回连接状态。
 
 项目结构：
 
-<img src="Zookeeper学习.assets\image-20200713090115739.png" alt="image-20200713090115739" style="zoom:50%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200713090115739.png" alt="image-20200713090115739" style="zoom:50%;" />
 
 1. 事先需要将jar包导进去：
 
-<img src="Zookeeper学习.assets\image-20200713090206329.png" alt="image-20200713090206329" style="zoom:50%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200713090206329.png" alt="image-20200713090206329" style="zoom:50%;" />
 
 ```java
 public class ZkConnection {
@@ -580,7 +579,7 @@ public class ZkConnection {
 
 控制台输出：
 
-<img src="Zookeeper学习.assets\image-20200713090002774.png" alt="image-20200713090002774" style="zoom:80%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200713090002774.png" alt="image-20200713090002774" style="zoom:80%;" />
 
 ## 3.2 新增节点
 
@@ -1000,23 +999,23 @@ ctx)
 
 ## 4.1 watcher介绍
 
-​		zookeeper提供了数据的发布/订阅功能，多个订阅者可同时监听某一特定主题对象，当该主题对象的自身状态发生变化时(例如节点内容改变、节点下的子节点列表改变 等)，会实时、主动通知所有订阅者。 
+zookeeper提供了数据的发布/订阅功能，多个订阅者可同时监听某一特定主题对象，当该主题对象的自身状态发生变化时(例如节点内容改变、节点下的子节点列表改变 等)，会实时、主动通知所有订阅者。 
 
-​		zookeeper采用了`Watcher`机制实现数据的发布/订阅功能。该机制在被订阅对象发生变化时会异步通知客户端，因此客户端不必在`Watcher`注册后轮询阻塞，从而减轻 客户端压力。 
+zookeeper采用了`Watcher`机制实现数据的发布/订阅功能。该机制在被订阅对象发生变化时会异步通知客户端，因此客户端不必在`Watcher`注册后轮询阻塞，从而减轻 客户端压力。 
 
-​		`watcher`机制实际上与观察者模式类似，也可看作是一种观察者模式在分布式场 景下的实现方式。
+`watcher`机制实际上与观察者模式类似，也可看作是一种观察者模式在分布式场 景下的实现方式。
 
 ### 4.1.1 watcher架构
 
-​		Watcher实现由三个部分组成：
+Watcher实现由三个部分组成：
 
 + Zookeeper服务端 
 + Zookeeper客户端 
 + 客户端的ZKWatchManager对象
 
-​		客户端首先将`Watcher`注册到服务端，同时将`Watcher`对象保存到客户端的`Watch`管理器中。当ZooKeeper服务端监听的数据状态发生变化时，服务端会主动通知客户端， 接着客户端的`Watch`管理器会触发相关`Watcher`来回调相应处理逻辑，从而完成整体的数据发布/订阅流程。
+客户端首先将`Watcher`注册到服务端，同时将`Watcher`对象保存到客户端的`Watch`管理器中。当ZooKeeper服务端监听的数据状态发生变化时，服务端会主动通知客户端， 接着客户端的`Watch`管理器会触发相关`Watcher`来回调相应处理逻辑，从而完成整体的数据发布/订阅流程。
 
-<img src="Zookeeper学习.assets\image-20200713105946718.png" alt="image-20200713105946718" style="zoom:80%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200713105946718.png" alt="image-20200713105946718" style="zoom:80%;" />
 
 ### 4.1.2 watcher特性
 
@@ -1029,13 +1028,13 @@ ctx)
 
 ### 4.1.3 watcher接口设计
 
-​		Watcher是一个接口，任何实现了Watcher接口的类就是一个新的Watcher。 Watcher内部包含了两个枚举类：KeeperState、EventType
+Watcher是一个接口，任何实现了Watcher接口的类就是一个新的Watcher。 Watcher内部包含了两个枚举类：KeeperState、EventType
 
-<img src="Zookeeper学习.assets\image-20200713110253908.png" alt="image-20200713110253908" style="zoom:80%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200713110253908.png" alt="image-20200713110253908" style="zoom:80%;" />
 
 + **Watcher通知状态(KeeperState)**
 
-​		KeeperState是客户端与服务端**连接状态**发生变化时对应的通知类型。路径为 org.apache.zookeeper.Watcher.Event.KeeperState，是一个枚举类，其枚举属性 如下：
+KeeperState是客户端与服务端**连接状态**发生变化时对应的通知类型。路径为 org.apache.zookeeper.Watcher.Event.KeeperState，是一个枚举类，其枚举属性 如下：
 
 |   枚举属性    |           描述           |
 | :-----------: | :----------------------: |
@@ -1046,7 +1045,7 @@ ctx)
 
 + **Watcher事件类型(EventType)**
 
-​		EventType是**数据节点(znode)**发生变化时对应的通知类型。当EventType发生变化时，KeeperState永远处于SyncConnected通知状态下；当KeeperState发生变化时， EventType永远为None。其路径为org.apache.zookeeper.Watcher.Event.EventType， 是一个枚举类，枚举属性如下：
+EventType是**数据节点(znode)**发生变化时对应的通知类型。当EventType发生变化时，KeeperState永远处于SyncConnected通知状态下；当KeeperState发生变化时， EventType永远为None。其路径为org.apache.zookeeper.Watcher.Event.EventType， 是一个枚举类，枚举属性如下：
 
 |      枚举类型       |                            描述                            |
 | :-----------------: | :--------------------------------------------------------: |
@@ -1056,15 +1055,15 @@ ctx)
 |   NodeDataChanged   | Watcher监听的数据节点内容发生变更时(无论内容数据 是否变化) |
 | NodeChildrenChanged |        Watcher监听的数据节点的子节点列表发生变更时         |
 
-​		注：客户端接收到的相关事件通知中只包含状态及类型等信息，不包括节点变化前后的具体内容，变化前的数据需业务自身存储，变化后的数据需调用get等方法重新获取。
+注：客户端接收到的相关事件通知中只包含状态及类型等信息，不包括节点变化前后的具体内容，变化前的数据需业务自身存储，变化后的数据需调用get等方法重新获取。
 
-​		**process**方法是`Watcher`接口中的一个回调方法，当ZooKeeper向客户端发送一个Watcher事件通知时，客户端就会对相应的process方法进行回调，从而实现对事件的处理，只要程序在运行，process就会一直监听来自zookeeper端的状态变化。
+**process**方法是`Watcher`接口中的一个回调方法，当ZooKeeper向客户端发送一个Watcher事件通知时，客户端就会对相应的process方法进行回调，从而实现对事件的处理，只要程序在运行，process就会一直监听来自zookeeper端的状态变化。
 
 ### 4.1.4 捕获相应的事件
 
-​		上面讲到zookeeper客户端连接的状态和zookeeper对znode节点监听的事件类型，下面我们来讲解如何建立zookeeper的watcher监听。在zookeeper中采用 `zk.getChildren(path, watch)、zk.exists(path, watch)、zk.getData(path, watcher, stat`) 这样的方式为某个znode注册监听。
+上面讲到zookeeper客户端连接的状态和zookeeper对znode节点监听的事件类型，下面我们来讲解如何建立zookeeper的watcher监听。在zookeeper中采用 `zk.getChildren(path, watch)、zk.exists(path, watch)、zk.getData(path, watcher, stat`) 这样的方式为某个znode注册监听。
 
-​		下表以node-x节点为例，说明调用的注册方法和可监听事件间的关系：
+下表以node-x节点为例，说明调用的注册方法和可监听事件间的关系：
 
 |             注册方式             | Created | ChildrenChanged | Changed | Deleted |
 | :------------------------------: | :-----: | :-------------: | :-----: | :-----: |
@@ -1473,9 +1472,9 @@ public void watcherGetChild4() throws Exception {
 
 ### 5、配置中心案例
 
-​		工作中有这样的一个场景: 数据库用户名和密码信息放在一个配置文件中，应用 读取该配置文件，配置文件信息放入缓存。 
+工作中有这样的一个场景: 数据库用户名和密码信息放在一个配置文件中，应用 读取该配置文件，配置文件信息放入缓存。 
 
-​		若数据库的用户名和密码改变时候，还需要重新加载缓存，比较麻烦，通过 ZooKeeper可以轻松完成，当数据库发生变化时自动完成缓存同步。 
+若数据库的用户名和密码改变时候，还需要重新加载缓存，比较麻烦，通过 ZooKeeper可以轻松完成，当数据库发生变化时自动完成缓存同步。 
 
 设计思路： 
 
@@ -1567,9 +1566,9 @@ public class MyConfigCenter implements Watcher {
 
 ### 6、生成分布式唯一ID
 
-​		在过去的单库单表型系统中，通常可以使用数据库字段自带的`auto_increment` 属性来自动为每条记录生成一个唯一的ID。
+在过去的单库单表型系统中，通常可以使用数据库字段自带的`auto_increment` 属性来自动为每条记录生成一个唯一的ID。
 
-​		但是分库分表后，就无法在依靠数据库的 `auto_increment`属性来唯一标识一条记录了。此时我们就可以用zookeeper在分布式环境下生成全局唯一ID。
+但是分库分表后，就无法在依靠数据库的 `auto_increment`属性来唯一标识一条记录了。此时我们就可以用zookeeper在分布式环境下生成全局唯一ID。
 
 设计思路： 
 
@@ -1667,7 +1666,7 @@ public class GloballyUniqueId implements Watcher {
 
 **项目结构**
 
-<img src="Zookeeper学习.assets\image-20200713182046629.png" alt="image-20200713182046629" style="zoom:80%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200713182046629.png" alt="image-20200713182046629" style="zoom:80%;" />
 
 
 
@@ -1831,4 +1830,4 @@ public class TicketSeller {
 
 + 控制台测试输出
 
-<img src="Zookeeper学习.assets\image-20200713182429012.png" alt="image-20200713182429012" style="zoom:80%;" />
+<img src="Zookeeper学习1-单机.assets\image-20200713182429012.png" alt="image-20200713182429012" style="zoom:80%;" />
