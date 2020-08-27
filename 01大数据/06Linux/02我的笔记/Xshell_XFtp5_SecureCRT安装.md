@@ -406,6 +406,7 @@ cat /etc/group		--查看用户组列表
 如果没有的话，使用下面的命令进行创建：
 
 ```ini
+#创建mysql用户，并将其加入mysql组中。原始passwd：mysql
 groupadd mysql
 useradd -g mysql mysql
 ```
@@ -424,7 +425,7 @@ chown -R mysql:mysql /usr/local/mysql --改变所有者和组
 
 3. 初始化配置
 
-​		需要进入到安装路径(再执行下面的指令)，执行初始化配置脚本，创建系统自带的数据库和表。
+需要进入到安装路径(再执行下面的指令)，执行初始化配置脚本，创建系统自带的数据库和表。
 
 ```ini
 cd /usr/local/mysql     --切换到安装目录下
@@ -434,17 +435,17 @@ scripts/mysql_install_db --basedir=/usr/local/mysql --datadir=/usr/local/mysql/d
 <img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711210348996.png" alt="image-20200711210348996" style="zoom:80%;" />
 		注意：
 
-​		(1)在启动MySQL服务时，会按照一定次序搜索`my.cnf`，先在/etc/目录下查找，找不到则会搜索"$basedir/my.cnf"，在本例中就是`/usr/local/mysql/my.cnf`，这是新版MySQL的配置文件的默认位置！
+(1)在启动MySQL服务时，会按照一定次序搜索`my.cnf`，先在/etc/目录下查找，找不到则会搜索"$basedir/my.cnf"，在本例中是`/usr/local/mysql/my.cnf`，这是新版MySQL的配置文件的默认位置！
 
-​		(2)在CentOS 6.8 版操作系统的最小安装完成后，在/etc/目录下会存在一个`my.cnf`，需要将此文件更名为其他的名字，如：`/etc/my.cnf.bak`，否则，该文件会干扰源码安装的MySQL的正确配置，造成无法启动。
+(2)在CentOS 6.8 版操作系统的最小安装完成后，在/etc/目录下会存在一个`my.cnf`，需要将此文件更名为其他的名字，如：`/etc/my.cnf.bak`，否则，该文件会干扰源码安装的MySQL的正确配置，造成无法启动。
 
 ```ini
 mv /etc/my.cnf /etc/my.cnf.bak  --没有该文件的话就不执行了。
 ```
 
-​		4. 启动mysql
+4. 启动mysql
 
-​		启动 MySQL，添加服务，拷贝服务脚本到init.d目录，并设置开机启动（在`/usr/local/mysql`下执行]）。
+启动 MySQL，添加服务，拷贝服务脚本到init.d目录，并设置开机启动（在`/usr/local/mysql`下执行）。
 
 ```ini
 cp support-files/mysql.server /etc/init.d/mysql
@@ -455,8 +456,6 @@ service mysql start			--手动启动MySQL一次
 <img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711212359780.png" alt="image-20200711212359780" style="zoom:80%;" />
 
 <img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711212534752.png" alt="image-20200711212534752" style="zoom:80%;" />
-
-
 
 5. 修改root密码
 
