@@ -323,7 +323,9 @@ https://archive.eclipse.org/technology/epp/downloads/release/luna/SR2/eclipse-je
 
 # 7 Mysql的配置和安装
 
-## 7.1 安装
+## 1、安装
+
+**注：以第二种教程为准。**
 
 mysql安装时间很长。
 
@@ -346,7 +348,15 @@ CentOS 7安装地址：https://www.cnblogs.com/chxuyuan/p/7707392.html。
 1. 使用下面的命令检查是否安装有MySQL Server
 
 ```ini
+#方法1
 rpm -qa | grep mysql
+
+#方法2 查看后台服务进程
+service mysql status
+ps -ef|grep mysql
+
+#方法3 查看mysql安装的版本信息
+mysqladmin --version
 ```
 
 <img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711183123044.png" alt="image-20200711183123044" style="zoom:80%;" />
@@ -394,7 +404,7 @@ yum -y install openssl-devel --安装openssl-devel
 make && make install --整个过程需要30分钟左右
 ```
 
-## 7.2 配置
+## 2、配置
 
 1. 查看是否有mysql用户及用户组
 
@@ -451,6 +461,11 @@ mv /etc/my.cnf /etc/my.cnf.bak  --没有该文件的话就不执行了。
 cp support-files/mysql.server /etc/init.d/mysql
 chkconfig mysql on         --配置其为自启动
 service mysql start			--手动启动MySQL一次
+
+#方法1 通过下面指令查看服务自启动列表
+chkconfig --list|grep mysql
+#方法2 进入底层界面查看,看到[*]mysql表示开机自启
+ntsysv
 ```
 
 <img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711212359780.png" alt="image-20200711212359780" style="zoom:80%;" />
@@ -475,19 +490,69 @@ SET PASSWORD = PASSWORD('123');
 
 <img src="Xshell_XFtp5_SecureCRT安装.assets\image-20200711213939358.png" alt="image-20200711213939358" style="zoom:80%;" />
 
-也可以参照下面的博客进行安装：
+以下面的博客进行安装为准：
 
 https://www.cnblogs.com/tianyamoon/p/9484828.html
 
+## 3、修改字符集
 
+1、查看自己数据库的字符集
 
+（1）测试新建数据库的编码
 
+```sql
+create database db01;
+use db01;
+create table user(id int not null,name varchar(20));
+insert into user values(1,'z3');
+insert into user values(2,'李四');
+select *from user;
+```
 
+<img src="Xshell_XFtp5_SecureCRT安装.assets/image-20200828113507969.png" alt="image-20200828113507969" style="zoom:67%;" />
 
+上面的例子中中文没有乱码
 
+（2）查看数据库的字符集：
 
+```sql
+show variables like '%char%';
+```
 
+<img src="Xshell_XFtp5_SecureCRT安装.assets/image-20200828113654797.png" alt="image-20200828113654797" style="zoom:67%;" />
 
+（3）没有乱码，主要是在/etc/my.cnf中添加下面配置的原因
 
+```ini
+[client]
+default-character-set=utf8
 
+[mysqld]
+##数据库默认字符集 
+character_set_server=utf8
+#由bug，会报错，添加注释
+#character_set_client=utf8
+collation-server=utf8_general_ci
+```
 
+## 4、配置文件介绍
+
+1、二进制文件log.bin
+
+主要实现主从复制。
+
+2、错误日志log-error
+
+默认是关闭的，记录严重的警告和错误信息，每次启动和关闭的详细信息等。
+
+3、查询日志log
+
+默认关闭，记录查询的sql语句，如果开启会降低mysql的整体性能，因为记录日志也是需要消耗资源的。
+
+4、数据文件
+
+frm文件：存放表结构。
+
+myd文件：存放表数据。
+
+myi文件：存放表索引。

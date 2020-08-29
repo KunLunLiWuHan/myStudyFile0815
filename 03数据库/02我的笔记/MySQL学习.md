@@ -533,7 +533,7 @@ WHERE `name` LIKE '%志%';
 
 -- 查询gradeid为（1，3，4）的学生。
 SELECT `name`,`gradeid` FROM `student`
-WHERE `gradeid为（1，3，4）的学生。` in(1,3,4);
+WHERE `gradeid为（1，3，4）的学生` in(1,3,4);
 -- 查询gradeid中数据为空的学生。
 SELECT `name`,`gradeid` FROM `student`
 WHERE `gradeid`= '' OR `gradeid`IS NULL ;
