@@ -316,7 +316,7 @@ $ cd ~/.ssh
 ssh-keygen -t rsa -C 3493826518@qq.com
 ```
 
-​		成功的话会在~/下生成.ssh文件夹，进去，打开id_rsa.pub，复制里面的key。
+成功的话会在~/下生成.ssh文件夹，进去，打开id_rsa.pub，复制里面的key。
 
 ### 3、粘贴id_rsa.pub内容到Github
 
@@ -334,6 +334,9 @@ ssh-keygen -t rsa -C 3493826518@qq.com
 
 ```bash
 ssh -T git@github.com
+
+#注意：前面有多余的空格时，会曝出下面的错误：
+bash: $'\302\226ssh': command not found
 ```
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134335.png" alt="image-20200814094557843" style="zoom:80%;" />
