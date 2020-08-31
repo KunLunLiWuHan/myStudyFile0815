@@ -12,13 +12,13 @@
 
 ​		正向代理：如果把局域网外的 Internet 想象成一个巨大的资源库，则局域网中的客户端要访问 Internet，则需要通过代理服务器来访问，这种代理服务就称为正向代理。 
 
-<img src="Nginx学习.assets/image-20200818090104312.png" alt="image-20200818090104312" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831164722.png" alt="image-20200818090104312" style="zoom:67%;" />
 
 ​		在客户端（浏览器）配置代理服务器，通过代理服务器进行互联网的访问。
 
 ​		反向代理和正向代理的区别，参考网址：https://www.cnblogs.com/taostaryu/p/10547132.html。
 
-<img src="Nginx学习.assets/image-20200818090716585.png" alt="image-20200818090716585" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831164723.png" alt="image-20200818090716585" style="zoom:50%;" />
 
 ​		正向代理中，proxy和client同属一个LAN，对server透明；反向代理中，proxy和server同属一个LAN，对client透明。
 
@@ -28,7 +28,7 @@
 
 ​		反向代理，其实客户端对代理是无感知的，因为客户端不需要任何配置就可以访问，我们只需要将请求发送到反向代理服务器， 由反向代理服务器去选择目标服务器获取数据后， 再返回给客户端， 此时反向代理服务器和目标服务器对外就是一个服务器， 暴露的是代理服务器地址，隐藏了真实服务器 IP 地址。
 
-<img src="Nginx学习.assets/image-20200818090814544.png" alt="image-20200818090814544" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831164724.png" alt="image-20200818090814544" style="zoom:67%;" />
 
 ## 5、负载均衡
 
@@ -37,13 +37,13 @@
 ​		首先想到的可能是升级服务器的配置， 比如提高 CPU 执行频率， 加大内存等提高机器的物理性能来解决此问题， 但是我们知道摩尔定律的日益失效， 硬件的性能提升已经不能满足日益提升的需求了。最明显的一个例子，天猫双十一当天，某个热销商品的瞬时访问量是极其庞大的，那么类似上面的系统架构，将机器都增加到现有的顶级物理配置，都是不能够满足需求的。 
 ​		上面的分析我们去掉了增加服务器物理配置来解决问题的办法， 也就是说纵向解决问题的办法行不通了， 那么横向增加服务器的数量呢？这时候集群的概念产生了， 单个服务器解决不了，我们增加服务器的数量，然后将请求分发到各个服务器上，将原先请求集中到单个服务器上的情况改为将请求分发到多个服务器上， 将负载分发到不同的服务器， 也就是我们所说的负载均衡。 
 
-<img src="Nginx学习.assets/image-20200818091010956.png" alt="image-20200818091010956" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831164725.png" alt="image-20200818091010956" style="zoom:67%;" />
 
 ## 6、动静分离
 
 ​		为了加快网站的解析速度， 可以把动态页面和静态页面由不同的服务器来解析， 加快解析速度。降低原来单个服务器的压力。 
 
-<img src="Nginx学习.assets/image-20200818091207916.png" alt="image-20200818091207916" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831164726.png" alt="image-20200818091207916" style="zoom:67%;" />
 
 # 2 Nginx部署
 
@@ -55,7 +55,7 @@
 http://nginx.org/en/download.html
 ```
 
-<img src="Nginx学习.assets/image-20200819144650234.png" alt="image-20200819144650234" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831164727.png" alt="image-20200819144650234" style="zoom:50%;" />
 
 ​		nginx是c语言开发，笔记中使用Centos6.9作为开发环境。
 
@@ -130,7 +130,7 @@ make && make install
 
 ​		在nginx中（conf/nginx.conf），服务器的监听端口默认为80,因此，我们要在防火墙中开放该端口
 
-<img src="Nginx学习.assets/image-20200818104513643.png" alt="image-20200818104513643" style="zoom: 67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831164728.png" alt="image-20200818104513643" style="zoom: 67%;" />
 
 （1）查看防火墙中开放的端口号
 
@@ -147,7 +147,7 @@ service iptables status
 -A INPUT -i eth0 -s 224.0.0.18 -j ACCEPT
 ```
 
-<img src="Nginx学习.assets/image-20200818102925929.png" alt="image-20200818102925929" style="zoom: 67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831164729.png" alt="image-20200818102925929" style="zoom: 67%;" />
 
 （2）设置开放端口号80并保存
 
@@ -161,7 +161,7 @@ service iptables status
 
 此时在`/etc/sysconfig/iptables`中会有如下的配置：
 
-<img src="Nginx学习.assets/image-20200818103132561.png" alt="image-20200818103132561" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831164730.png" alt="image-20200818103132561" style="zoom:67%;" />
 
 在云服务器上不用配置了，在本地虚拟中还是配置一下吧。
 
@@ -184,7 +184,7 @@ service iptables status
  ps -ef| grep nginx
 ```
 
-<img src="Nginx学习.assets/image-20200818103629352.png" alt="image-20200818103629352" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831164731.png" alt="image-20200818103629352" style="zoom:50%;" />
 
 此外，我们也可以通过下面的网址来查看nginx是否启动（默认端口80）：
 
@@ -193,7 +193,7 @@ http://39.96.161.64/
 proxy_pass http://39.107.140.8:8080;
 ```
 
-<img src="Nginx学习.assets/image-20200818104133887.png" alt="image-20200818104133887" style="zoom: 50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831164732.png" alt="image-20200818104133887" style="zoom: 50%;" />
 
 2、停止nginx
 
@@ -319,7 +319,7 @@ localhost对应的是本机，即39.96.164.64服务器。
 
 ​		输入网址：39.96.164.64，浏览器显示：
 
-<img src="Nginx学习.assets/image-20200819143426412.png" alt="image-20200819143426412" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831164733.png" alt="image-20200819143426412" style="zoom:67%;" />
 
 ​		不过浏览器的网址是39.96.164.64，不是39.107.140.8，即实现了反向代理。
 
@@ -351,7 +351,7 @@ localhost对应的是本机，即39.96.164.64服务器。
 
 3、按照下图更改配置
 
-<img src="Nginx学习.assets/image-20200819100103985.png" alt="image-20200819100103985" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831164734.png" alt="image-20200819100103985" style="zoom:67%;" />
 
 4、重新加载和启动Nginx。
 
@@ -363,7 +363,7 @@ localhost对应的是本机，即39.96.164.64服务器。
 
 输入网址：http://39.96.161.64:10000/，浏览器输出：
 
-<img src="Nginx学习.assets/image-20200819102358872.png" alt="image-20200819102358872" style="zoom: 50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831164735.png" alt="image-20200819102358872" style="zoom: 50%;" />
 
 此时，原先的80端口失效，访问不到。（禁用缓存，效果更佳）。
 
@@ -434,11 +434,11 @@ b.html
 
 （1）输入网址：http://a.test.com/a.html，显示：
 
-<img src="Nginx学习.assets/image-20200819101527053.png" alt="image-20200819101527053" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831164736.png" alt="image-20200819101527053" style="zoom:67%;" />
 
 （2）输入网址：http://b.test.com/b.html，显示：
 
-<img src="Nginx学习.assets/image-20200819101558085.png" alt="image-20200819101558085" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831164737.png" alt="image-20200819101558085" style="zoom:67%;" />
 
 （3）输入网址：http://a.test.com/a,找不到，只有上面两个网址可以找到相应的网址。
 
@@ -509,7 +509,7 @@ location[ = | ~ | ~* |^~ ]/uri/{...}
 
 输入网址：http://39.96.161.64/demo.html，浏览器显示：
 
-<img src="Nginx学习.assets/image-20200819153953266.png" alt="image-20200819153953266" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831164738.png" alt="image-20200819153953266" style="zoom:80%;" />
 
 3、路径匹配
 
@@ -545,7 +545,7 @@ server {
 
 输入网址：http://39.96.161.64/static_css/demo.html，浏览器输出：
 
-<img src="Nginx学习.assets/image-20200819160023138.png" alt="image-20200819160023138" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831164739.png" alt="image-20200819160023138" style="zoom:50%;" />
 
 由于/static_css符合当前的location，所以当前location被匹配，访问的是
 
@@ -575,7 +575,7 @@ location ~\.(jpg|png|gif){
 
 2、在两台 `tomcat` 里面 `webapps`目录中，创建名称是`edu`文件夹，在`edu`文件夹中创建页面 `a.html` 。其中39.96.161.64/39.107.140.8中a.html中分别为为8080/8081，重新启动tomcat。
 
-<img src="Nginx学习.assets/image-20200819164547645.png" alt="image-20200819164547645" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831164740.png" alt="image-20200819164547645" style="zoom:80%;" />
 
 3、修改配置文件nginx.conf
 
@@ -615,7 +615,7 @@ http {
 
 输入网址：http://39.96.161.64/edu/a.html，浏览器显示：
 
-<img src="Nginx学习.assets/image-20200819164947339.png" alt="image-20200819164947339" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831164741.png" alt="image-20200819164947339" style="zoom:67%;" />
 
 ## 2、服务分配策略
 
@@ -670,7 +670,7 @@ upstream myserver{
 
 ​		假设我这里设置 3d，表示在这 3 天之内访问这个 URL，发送一个请求，比对服务器该文件最后更新时间没有变化，则不会从服务器抓取，返回状态码 304，如果有修改，则直接从服务器重新下载，返回状态码 200。 
 
-<img src="Nginx学习.assets/image-20200819170056208.png" alt="image-20200819170056208" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831164742.png" alt="image-20200819170056208" style="zoom:67%;" />
 
 ## 2、测试
 
@@ -686,7 +686,7 @@ upstream myserver{
 
 `I am alive`这样的信息时，它就释放服务IP地址，这样主服务器就可以再次提供负载均衡服务。
 
-<img src="Nginx学习.assets/image-20200819204821648.png" alt="image-20200819204821648" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831164743.png" alt="image-20200819204821648" style="zoom:80%;" />
 
 本测试的高可用环境如下：
 
