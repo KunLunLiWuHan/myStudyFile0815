@@ -12,11 +12,11 @@ Swagger是世界上最流行的Api框架，Restful API文档在线自动生成�
 
 1. 创建项目
 
-<img src="Swagger学习.assets/image-20200508170757284.png" alt="image-20200508170757284" style="zoom: 67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130221.png" alt="image-20200508170757284" style="zoom: 67%;" />
 
 通过上面的原始信息的书写，再删除一些无效的结构，保留下面一个干净的项目结构：
 
-<img src="Swagger学习.assets/image-20200508173557663.png" alt="image-20200508173557663" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130222.png" alt="image-20200508173557663" style="zoom:80%;" />
 
 
 
@@ -65,7 +65,7 @@ public class SwaggerConfig {
 
 访问swagger文档：http://localhost:8080/swagger-ui.html，会弹出这样的界面：
 
-<img src="Swagger学习.assets/image-20200508175347367.png" alt="image-20200508175347367" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130223.png" alt="image-20200508175347367" style="zoom:67%;" />
 
 # 2 配置Swagger
 
@@ -109,7 +109,7 @@ public class UserController {
 
 **该步骤下的项目结构**
 
-<img src="Swagger学习.assets\image-20200625112842620.png" alt="image-20200625112842620" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130224.png" alt="image-20200625112842620" style="zoom:80%;" />
 
 1. 配置Swagger的bean实例Docket。
 
@@ -147,7 +147,7 @@ public class SwaggerConfig {
 
 + 访问：http://localhost:8080/swagger-ui.html，会弹出这样的界面：
 
-<img src="Swagger学习.assets/image-20200508210247136.png" alt="image-20200508210247136" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130225.png" alt="image-20200508210247136" style="zoom:50%;" />
 
 经过测试，经过上面的配置确实能够显示上面的信息，但是当加入其他的代码时，显示的信息有可能不一定显示。
 
@@ -170,7 +170,7 @@ public class SwaggerConfig {
 
 + 前端界面输出结果如下，再经过上面的配置后，确实能够过滤`hello`路径下的接口。
 
-<img src="Swagger学习.assets\image-20200625113405468.png" alt="image-20200625113405468" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130226.png" alt="image-20200625113405468" style="zoom:80%;" />
 
 ```ini
  /**
@@ -259,11 +259,11 @@ spring.profiles.active=dev
 +  `boolean flag = environment.acceptsProfiles(profiles);`核心代码，在dev环境中返回true。
 +  在项目中新建两个环境配置文件。
 
-<img src="Swagger学习.assets\image-20200625120224014.png" alt="image-20200625120224014" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130227.png" alt="image-20200625120224014" style="zoom:80%;" />
 
 + 当使用`prod`环境进行测试时，不能进行访问，前端界面如下。
 
-<img src="Swagger学习.assets\image-20200625120117315.png" alt="image-20200625120117315" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130228.png" alt="image-20200625120117315" style="zoom:80%;" />
 
 ##  2.3 分组
 
@@ -293,7 +293,7 @@ public class SwaggerConfig {
 + 通过写不同的Bean来配置多个分组，我们可以在前端界面的“选择一个规格”选项进行选择，从而可以给用户展示不同的界面。
 + 访问：http://localhost:8081/swagger-ui.html，控制台输出：
 
-<img src="Swagger学习.assets/image-20200508224620541.png" alt="image-20200508224620541" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130229.png" alt="image-20200508224620541" style="zoom:80%;" />
 
 ## 2.4 全局参数配置
 
@@ -316,7 +316,7 @@ public Docket docket(){
 
 + 前端界面输出：
 
-<img src="Swagger学习.assets\image-20200625152525716.png" alt="image-20200625152525716" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130230.png" alt="image-20200625152525716" style="zoom:80%;" />
 
 ## 2.5 接口和参数配置
 
@@ -371,11 +371,11 @@ tags--可以重新分组
 
 + 前端界面输出
 
-<img src="Swagger学习.assets\image-20200625153135586.png" alt="image-20200625153135586" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130231.png" alt="image-20200625153135586" style="zoom:80%;" />
 
-<img src="Swagger学习.assets\image-20200625153759226.png" alt="image-20200625153759226" style="zoom:80%;" />![image-20200625153825856](Swagger学习.assets\image-20200625153825856.png)
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130232.png" alt="image-20200625153759226" style="zoom:80%;" />![image-20200625153825856](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130233.png)
 
-![image-20200625153825856](Swagger学习.assets\image-20200625153825856-1593159329492.png)
+![image-20200625153825856](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130234.png)
 
 ### 2.5.1 实体信息配置
 
@@ -437,15 +437,15 @@ hidden–隐藏
 
 + 前端界面
 
-<img src="Swagger学习.assets\image-20200625155410178.png" alt="image-20200625155410178" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130235.png" alt="image-20200625155410178" style="zoom:80%;" />
 
 
 
-<img src="Swagger学习.assets\image-20200625155522401.png" alt="image-20200625155522401" style="zoom: 67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130236.png" alt="image-20200625155522401" style="zoom: 67%;" />
 
 
 
-<img src="Swagger学习.assets\image-20200625155522401-1593159349716.png" alt="image-20200625155522401" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130237.png" alt="image-20200625155522401" style="zoom:67%;" />
 
 #    3 NumberFormatException异常
 
@@ -499,7 +499,7 @@ private String username;
         </dependency>
 ```
 
-<img src="Swagger学习.assets\image-20200625161636438.png" alt="image-20200625161636438" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130238.png" alt="image-20200625161636438" style="zoom:80%;" />
 
 ```java
 //高版本中的源码

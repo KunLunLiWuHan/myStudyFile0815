@@ -4,7 +4,7 @@
 
 1、项目开发流程
 
-![image-20200803111333080](scala学习-项目.assets\image-20200803111333080.png)
+![image-20200803111333080](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831133904.png)
 
 2、需求分析
 
@@ -34,7 +34,7 @@ Actor 模型用于解决下面的问题：
 
 ### 1、Actor模型
 
-<img src="scala学习-项目.assets\image-20200804153829472.png" alt="image-20200804153829472"  />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831133905.png" alt="image-20200804153829472"  />
 
 1、Actor模型及其说明
 
@@ -48,7 +48,7 @@ Actor 模型用于解决下面的问题：
 
 （5）怎么处理消息是由接收消息的Actor决定的，发送消息Actor可以等待回复，也可以异步处理（类似ajax）。
 
-<img src="scala学习-项目.assets\image-20200804155235911.png" alt="image-20200804155235911" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831133906.png" alt="image-20200804155235911" style="zoom:67%;" />
 
 （6）ActorSystem 的职责是负责创建并管理其创建的 Actor， ActorSystem 是单例的(可以ActorSystem是一个工厂，专门创建Actor)，一个 JVM 进程中有一个即可，而 Acotr 是可以有多个的。
 
@@ -60,7 +60,7 @@ Actor 模型用于解决下面的问题：
 
 ### 2、Actor模型工作机制
 
-<img src="scala学习-项目.assets\image-20200804155630562.png" alt="image-20200804155630562" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831133907.png" alt="image-20200804155630562" style="zoom:80%;" />
 
 （1）A Actor 如果想给自己发消息，就通过A ActorRef。
 
@@ -100,7 +100,7 @@ receive 方法 {
 
 2、Actor通讯机制
 
-![image-20200804165940878](scala学习-项目.assets\image-20200804165940878.png)
+![image-20200804165940878](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831133908.png)
 
 3、创建项目
 
@@ -264,7 +264,7 @@ object SayHelloActorDemo {
 
 代码运行讲解：
 
-![image-20200804170206386](scala学习-项目.assets\image-20200804170206386.png)
+![image-20200804170206386](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831133909.png)
 
 小结
 
@@ -292,7 +292,7 @@ object SayHelloActorDemo {
 
 ### 2、Actor通讯机制
 
-![image-20200804170807533](scala学习-项目.assets\image-20200804170807533.png)
+![image-20200804170807533](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831133910.png)
 
 ### 3、创建项目
 
@@ -402,7 +402,7 @@ Actor 的receive 方法被调用的理解：
 
 模型 (推荐tcp/ip协议3卷)。
 
-![image-20200804173447467](scala学习-项目.assets\image-20200804173447467.png)
+![image-20200804173447467](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831133911.png)
 
 2、ip地址
 
@@ -444,11 +444,11 @@ Actor 的receive 方法被调用的理解：
 
 （d）可以使用 `netstat –anb` 来查看监听端口的`pid`,在结合任务管理器关闭不安全的端口。
 
-<img src="scala学习-项目.assets\image-20200804174551798.png" alt="image-20200804174551798" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831133912.png" alt="image-20200804174551798" style="zoom:80%;" />
 
 4、socket编程中客户端和服务器的网络分布
 
-![image-20200804174610083](scala学习-项目.assets\image-20200804174610083.png)
+![image-20200804174610083](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831133913.png)
 
 ### 2、小黄鸡客服
 
@@ -462,11 +462,11 @@ Actor 的receive 方法被调用的理解：
 
 #### 2、网络拓扑图
 
-<img src="scala学习-项目.assets\image-20200804175107340.png" alt="image-20200804175107340" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831133914.png" alt="image-20200804175107340" style="zoom:80%;" />
 
 #### 3、程序架构图
 
-<img src="scala学习-项目.assets\image-20200804180058898.png" alt="image-20200804180058898" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831133915.png" alt="image-20200804180058898" style="zoom:80%;" />
 
 #### 4、创建项目
 
@@ -609,7 +609,7 @@ object CustomerActor extends App {
 
 控制台输出：
 
-<img src="scala学习-项目.assets\image-20200804212706109.png" alt="image-20200804212706109" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831133916.png" alt="image-20200804212706109" style="zoom:80%;" />
 
 ## 6、Spark Master Worker进行通讯
 
@@ -621,7 +621,7 @@ object CustomerActor extends App {
 
 ### 2、需求
 
-<img src="scala学习-项目.assets\image-20200804213014159.png" alt="image-20200804213014159" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831133917.png" alt="image-20200804213014159" style="zoom:67%;" />
 
 （1）worker注册到Master, Master完成注册，并回复worker注册成功。
 
@@ -635,13 +635,13 @@ object CustomerActor extends App {
 
 ### 3、程序框架图
 
-<img src="scala学习-项目.assets\image-20200804213859360.png" alt="image-20200804213859360" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831133918.png" alt="image-20200804213859360" style="zoom:80%;" />
 
 ### 4、创建项目
 
 项目结构：
 
-<img src="scala学习-项目.assets\image-20200804224627119.png" alt="image-20200804224627119" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831133919.png" alt="image-20200804224627119" style="zoom:80%;" />
 
 1、SparkMaster
 
@@ -853,15 +853,15 @@ Master和Worker的启动参数在运行时指定，而不是固定写在程序�
 
 （1）找到对应的Master的配置。
 
-<img src="scala学习-项目.assets\image-20200804224819220.png" alt="image-20200804224819220" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831133920.png" alt="image-20200804224819220" style="zoom:80%;" />
 
-![image-20200804224839239](scala学习-项目.assets\image-20200804224839239.png)
+![image-20200804224839239](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831133921.png)
 
 
 
 （2）填入启动参数后保存
 
-![image-20200804225010841](scala学习-项目.assets\image-20200804225010841.png)
+![image-20200804225010841](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831133922.png)
 
 ```ini
 #Master的启动参数
@@ -880,9 +880,9 @@ SparkMaster01
 
 5、控制台输出：
 
-<img src="scala学习-项目.assets\image-20200804225230835.png" alt="image-20200804225230835" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831133923.png" alt="image-20200804225230835" style="zoom:80%;" />
 
-![image-20200804225254295](scala学习-项目.assets\image-20200804225254295.png)
+![image-20200804225254295](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831133924.png)
 
 # 3 WordCount讲解
 

@@ -4,11 +4,11 @@
 
 （1）锁的定义
 
-<img src="MySQL学习高级3-锁_主从复制.assets/image-20200829225052018.png" alt="image-20200829225052018" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831125224.png" alt="image-20200829225052018" style="zoom:80%;" />
 
 （2）举例
 
-<img src="MySQL学习高级3-锁_主从复制.assets/image-20200829225123898.png" alt="image-20200829225123898" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831125225.png" alt="image-20200829225123898" style="zoom:80%;" />
 
 （3）锁的分类
 
@@ -62,7 +62,7 @@ show open tables;
 unlock tables;
 ```
 
-<img src="MySQL学习高级3-锁_主从复制.assets/image-20200830143326887.png" alt="image-20200830143326887" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831125226.png" alt="image-20200830143326887" style="zoom:80%;" />
 
 （2）开启两个session，在session1中对mylock表加读锁，在session2中对mylock进行一些操作。
 
@@ -79,7 +79,7 @@ update mylock set name = 'a2' where id = 1;
 select * from book;
 ```
 
-<img src="MySQL学习高级3-锁_主从复制.assets/image-20200830144535736.png" alt="image-20200830144535736" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831125227.png" alt="image-20200830144535736" style="zoom:80%;" />
 
 （2）在session2中可以对mylock进行查询操作，也可以对book表进行查询，写操作，但是不能对mylock表进行写操作，此时会发生阻塞：
 
@@ -99,15 +99,15 @@ lock table mylock write;
 
 对于session1:
 
-<img src="MySQL学习高级3-锁_主从复制.assets/image-20200830145309904.png" alt="image-20200830145309904" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831125228.png" alt="image-20200830145309904" style="zoom:67%;" />
 
 对于session2，可以读其他表，但是对mylock表读/写的权力都被剥夺，此时会处于阻塞状态，同样在session1解锁时阻塞会执行：
 
-<img src="MySQL学习高级3-锁_主从复制.assets/image-20200830145353131.png" alt="image-20200830145353131" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831125229.png" alt="image-20200830145353131" style="zoom:67%;" />
 
 4、总结
 
-<img src="MySQL学习高级3-锁_主从复制.assets/image-20200830145743251.png" alt="image-20200830145743251" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831125230.png" alt="image-20200830145743251" style="zoom:80%;" />
 
 结合上表,所以对MyISAM表进行操作,会有以下情况: 
 
@@ -125,7 +125,7 @@ lock table mylock write;
  show status like 'table%';
 ```
 
-<img src="MySQL学习高级3-锁_主从复制.assets/image-20200830150552433.png" alt="image-20200830150552433" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831125231.png" alt="image-20200830150552433" style="zoom:67%;" />
 
 下面两个状态变量记录MySQL内部表级锁定的情况，现说明如下：
 
@@ -150,37 +150,37 @@ InnoDB与MyISAM的最大不同的两点：
 
 2、事务辑器ACID属性
 
-<img src="MySQL学习高级3-锁_主从复制.assets/image-20200830151538787.png" alt="image-20200830151538787" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831125232.png" alt="image-20200830151538787" style="zoom:80%;" />
 
 3、并发事务处理带来的问题
 
 （1）更新丢失（Lost Update）
 
-<img src="MySQL学习高级3-锁_主从复制.assets/image-20200830151946464.png" alt="image-20200830151946464" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831125233.png" alt="image-20200830151946464" style="zoom:80%;" />
 
 （2）脏读（Dirty Reads）
 
 事务A读取到了事务B已修改但尚未提交的数据。
 
-<img src="MySQL学习高级3-锁_主从复制.assets/image-20200830152106743.png" alt="image-20200830152106743" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831125234.png" alt="image-20200830152106743" style="zoom:80%;" />
 
 （3）不可重复读（Non-Repeatable Reads）
 
 事务A读取到了事务B已经提交的数据。
 
-<img src="MySQL学习高级3-锁_主从复制.assets/image-20200830152308587.png" alt="image-20200830152308587" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831125235.png" alt="image-20200830152308587" style="zoom:80%;" />
 
 （4）幻读（Phantom Reads）
 
 事务A读取到了事务B提交的新增数据。
 
-![image-20200830152421148](MySQL学习高级3-锁_主从复制.assets/image-20200830152421148.png)
+![image-20200830152421148](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831125236.png)
 
 脏读是事务B里面修改了数据，幻读是事务B里面新增了数据。
 
 4、事务隔离级别
 
-<img src="MySQL学习高级3-锁_主从复制.assets/image-20200830152623521.png" alt="image-20200830152623521" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831125237.png" alt="image-20200830152623521" style="zoom:80%;" />
 
 通过下面的指令查看当前数据库的事务隔离级别：
 
@@ -188,7 +188,7 @@ InnoDB与MyISAM的最大不同的两点：
 show variables like 'tx_isolation';
 ```
 
-<img src="MySQL学习高级3-锁_主从复制.assets/image-20200830153335575.png" alt="image-20200830153335575" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831125238.png" alt="image-20200830153335575" style="zoom:80%;" />
 
 ### 2、案例
 
@@ -268,13 +268,13 @@ UPDATE test_innodb_lock SET a=41 WHERE b=4006;
 update test_innodb_lock set b='9001'  where a=9;
 ```
 
-<img src="MySQL学习高级3-锁_主从复制.assets/image-20200830160422964.png" alt="image-20200830160422964" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831125239.png" alt="image-20200830160422964" style="zoom:80%;" />
 
 ### 4、间隙锁危害
 
 1、介绍
 
-<img src="MySQL学习高级3-锁_主从复制.assets/image-20200830160606089.png" alt="image-20200830160606089" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831125240.png" alt="image-20200830160606089" style="zoom:80%;" />
 
 2、操作
 
@@ -291,7 +291,7 @@ update test_innodb_lock set b='0830' where a>1 and a<6;
  insert into test_innodb_lock values(2,'2000');
 ```
 
-<img src="MySQL学习高级3-锁_主从复制.assets/image-20200830161104641.png" alt="image-20200830161104641" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831125241.png" alt="image-20200830161104641" style="zoom:67%;" />
 
 ### 5、锁定一行步骤
 
@@ -314,13 +314,13 @@ select * from test_innodb_lock where a=8 for update;
 commit;
 ```
 
-<img src="MySQL学习高级3-锁_主从复制.assets/image-20200830161625540.png" alt="image-20200830161625540" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831125242.png" alt="image-20200830161625540" style="zoom:80%;" />
 
 ### 6、总结
 
 1、分析
 
-<img src="MySQL学习高级3-锁_主从复制.assets/image-20200830161930705.png" alt="image-20200830161930705" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831125243.png" alt="image-20200830161930705" style="zoom:80%;" />
 
 2、查看行锁状态
 
@@ -330,19 +330,19 @@ commit;
  show status like 'innodb_row_lock%';
 ```
 
-<img src="MySQL学习高级3-锁_主从复制.assets/image-20200830162104959.png" alt="image-20200830162104959" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831125244.png" alt="image-20200830162104959" style="zoom:80%;" />
 
 状态变量分析如下：
 
-<img src="MySQL学习高级3-锁_主从复制.assets/image-20200830162137342.png" alt="image-20200830162137342" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831125245.png" alt="image-20200830162137342" style="zoom:80%;" />
 
 3、优化建议
 
-<img src="MySQL学习高级3-锁_主从复制.assets/image-20200830162157005.png" alt="image-20200830162157005" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831125246.png" alt="image-20200830162157005" style="zoom:80%;" />
 
 ## 4、页锁
 
-![image-20200830162219862](MySQL学习高级3-锁_主从复制.assets/image-20200830162219862.png)
+![image-20200830162219862](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831125247.png)
 
 了解一下即可。
 
@@ -356,7 +356,7 @@ https://www.cnblogs.com/xuekun/p/9517161.html
 
 1、复制的基本原理
 
-<img src="MySQL学习高级3-锁_主从复制.assets/image-20200830171852511.png" alt="image-20200830171852511" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831125248.png" alt="image-20200830171852511" style="zoom:80%;" />
 
 复制的最大问题是：延时。
 
@@ -438,7 +438,7 @@ show master status;
 
 （3）记录下File和Position的值
 
-<img src="MySQL学习高级3-锁_主从复制.assets/image-20200830173132974.png" alt="image-20200830173132974" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831125249.png" alt="image-20200830173132974" style="zoom:67%;" />
 
 执行完此步骤后，不要再操作主服务器MySQL，防止主服务器状态值变换。
 
@@ -463,7 +463,7 @@ show slave status\G
 
 如果状态变量Slave_IO_Running和Slave_SQL_Running都为Yes，说明主从配置成功。
 
-<img src="MySQL学习高级3-锁_主从复制.assets/image-20200830173906713.png" alt="image-20200830173906713" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831125250.png" alt="image-20200830173906713" style="zoom:67%;" />
 
 注：
 
@@ -493,7 +493,7 @@ insert into dog values(1,'li3');
 
 （2）在从服务器中执行查询操作，查看自己是否备份在主服务器中新创建的数据库。
 
-<img src="MySQL学习高级3-锁_主从复制.assets/image-20200830174259396.png" alt="image-20200830174259396" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831125251.png" alt="image-20200830174259396" style="zoom:80%;" />
 
 9、停止从服务复制功能
 

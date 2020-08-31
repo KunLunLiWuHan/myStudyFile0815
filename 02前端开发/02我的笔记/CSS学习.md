@@ -18,7 +18,7 @@ CSS3.0 圆角，阴影，动画等。
 
 **项目结构**
 
-<img src="CSS学习.assets\image-20200706221652094.png" alt="image-20200706221652094" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831125446.png" alt="image-20200706221652094" style="zoom:80%;" />
 
 1. **html界面**
 
@@ -66,11 +66,11 @@ h1{
 
 控制台输出：
 
-<img src="CSS学习.assets\image-20200706221823386.png" alt="image-20200706221823386" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831125447.png" alt="image-20200706221823386" style="zoom:80%;" />
 
 审查代码：
 
-<img src="CSS学习.assets\image-20200706221856796.png" alt="image-20200706221856796" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831125448.png" alt="image-20200706221856796" style="zoom:80%;" />
 
 ## 1.2 CSS三种导入方式
 
@@ -292,7 +292,7 @@ h1{
 
 边框：border，有三个属性：粗细，样式，颜色。
 
-<img src="CSS学习.assets\image-20200707165747974.png" alt="image-20200707165747974" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831125449.png" alt="image-20200707165747974" style="zoom:80%;" />
 
 计算公式：外边距+内边距+边框+内容。
 
@@ -381,7 +381,7 @@ h1{
 
 控制台输出：
 
-<img src="CSS学习.assets\image-20200707201552144.png" alt="image-20200707201552144" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831125450.png" alt="image-20200707201552144" style="zoom:80%;" />
 
 # 4 定位
 

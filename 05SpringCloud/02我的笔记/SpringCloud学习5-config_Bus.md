@@ -4,19 +4,19 @@
 
 （1）分布式系统面临的问题
 
-<img src="SpringCloud学习5-config_Bus.assets/image-20200821115936393.png" alt="image-20200821115936393" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112037.png" alt="image-20200821115936393" style="zoom:67%;" />
 
 （2）config是什么
 
-<img src="SpringCloud学习5-config_Bus.assets/image-20200821120009728.png" alt="image-20200821120009728" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112038.png" alt="image-20200821120009728" style="zoom:67%;" />
 
 （3）操作
 
-<img src="SpringCloud学习5-config_Bus.assets/image-20200821120053815.png" alt="image-20200821120053815" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112039.png" alt="image-20200821120053815" style="zoom:67%;" />
 
 （4）作用
 
-<img src="SpringCloud学习5-config_Bus.assets/image-20200821120121502.png" alt="image-20200821120121502" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112040.png" alt="image-20200821120121502" style="zoom:67%;" />
 
 （5）与Github整合配置
 
@@ -26,7 +26,7 @@
 
 https://cloud.spring.io/spring-cloud-static/spring-cloud-config/2.2.1.RELEASE/reference/html/
 
-<img src="SpringCloud学习5-config_Bus.assets/image-20200821120223258.png" alt="image-20200821120223258" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112041.png" alt="image-20200821120223258" style="zoom:67%;" />
 
 ## 2、Config服务端配置与测试
 
@@ -48,7 +48,7 @@ D:\03Enviroment\02IDEA\02Code\cloud2020Git
 
 项目结构：
 
-<img src="SpringCloud学习5-config_Bus.assets/image-20200821150928941.png" alt="image-20200821150928941" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112042.png" alt="image-20200821150928941" style="zoom:67%;" />
 
 1、添加pom
 
@@ -150,7 +150,7 @@ public class ConfigCenterMain3344 {
 
 1、官网
 
-<img src="SpringCloud学习5-config_Bus.assets/image-20200821152016234.png" alt="image-20200821152016234" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112043.png" alt="image-20200821152016234" style="zoom:67%;" />
 
 2、方式1-推荐使用
 
@@ -205,7 +205,7 @@ http://config-3344.com:3344/config/dev/master
 
 项目结构：
 
-<img src="SpringCloud学习5-config_Bus.assets/image-20200821152644164.png" alt="image-20200821152644164" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112044.png" alt="image-20200821152644164" style="zoom:67%;" />
 
 1、添加pom
 
@@ -259,7 +259,7 @@ http://config-3344.com:3344/config/dev/master
 
 （1）介绍
 
-<img src="SpringCloud学习5-config_Bus.assets/image-20200821152812311.png" alt="image-20200821152812311" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112045.png" alt="image-20200821152812311" style="zoom:67%;" />
 
 （2）内容
 
@@ -314,13 +314,13 @@ public class ConfigClientController {
 
 注意，此时的`${config.info}`对应Github配置文件中config-dev.yml文件（只是我设定的是这个文件，也可以为其他），不然在启动该模块的时候加载会报错。
 
-<img src="SpringCloud学习5-config_Bus.assets/image-20200821153423140.png" alt="image-20200821153423140" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112046.png" alt="image-20200821153423140" style="zoom:67%;" />
 
 5、测试
 
 ​		启动cloud-eureka-Server7001，然后cloud-config-center-3344，最后启动cloud-config-client-3355，首先输入网址：http://config-3344.com:3344/master/config-dev.yml为cloud-config-center-3344做自测，然后客户端cloud-config-client-3355输入网址：http://localhost:3355/configInfo来访问cloud-config-center-3344，可以从从Github上获取配置内容。
 
-<img src="SpringCloud学习5-config_Bus.assets/image-20200821153729551.png" alt="image-20200821153729551" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112047.png" alt="image-20200821153729551" style="zoom:50%;" />
 
 ## 4、Config客户端之动态刷新
 
@@ -365,7 +365,7 @@ curl -X POST "http://localhost:3355/actuator/refresh"
 
 ​		启动cloud-eureka-Server7001，然后cloud-config-center-3344，最后启动cloud-config-client-3355。运维人员修改Github，然后进行第4步的刷新cloud-config-client-3355操作（访问http://localhost:3355/configInfo），在客户端cloud-config-client-3355能够刷新到最新配置内容，避免了服务的重启。
 
-<img src="SpringCloud学习5-config_Bus.assets/image-20200821154943723.png" alt="image-20200821154943723" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112048.png" alt="image-20200821154943723" style="zoom:80%;" />
 
 存在的问题：
 
@@ -383,7 +383,7 @@ Spring Cloud Bus配合Spring Cloud Config使用可以实现配置的动态刷新
 
 （2）概述
 
-<img src="SpringCloud学习5-config_Bus.assets/image-20200821160310303.png" alt="image-20200821160310303" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112049.png" alt="image-20200821160310303" style="zoom:50%;" />
 
 
 
@@ -391,13 +391,13 @@ Bus支持两种消息代理：RabbitMQ和Kafka。
 
 （3）作用
 
-<img src="SpringCloud学习5-config_Bus.assets/image-20200821160459176.png" alt="image-20200821160459176" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112050.png" alt="image-20200821160459176" style="zoom:80%;" />
 
 
 
 （4）总线介绍
 
-<img src="SpringCloud学习5-config_Bus.assets/image-20200821160601399.png" alt="image-20200821160601399" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112051.png" alt="image-20200821160601399" style="zoom:80%;" />
 
 B站视频：
 
@@ -413,11 +413,11 @@ https://www.bilibili.com/video/av55976700?from=search&seid=15010075915728605208
 
 步骤：
 
-<img src="SpringCloud学习5-config_Bus.assets/image-20200821162919794.png" alt="image-20200821162919794" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112052.png" alt="image-20200821162919794" style="zoom:50%;" />
 
-<img src="SpringCloud学习5-config_Bus.assets/image-20200821162941226.png" alt="image-20200821162941226" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112053.png" alt="image-20200821162941226" style="zoom:50%;" />
 
-<img src="SpringCloud学习5-config_Bus.assets/image-20200821163007212.png" alt="image-20200821163007212" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112054.png" alt="image-20200821163007212" style="zoom:50%;" />
 
 只需要注意安装的路径就可以了，其他为Next。
 
@@ -429,7 +429,7 @@ https://www.bilibili.com/video/av55976700?from=search&seid=15010075915728605208
 
 （1）安装
 
-<img src="SpringCloud学习5-config_Bus.assets/image-20200821163130586.png" alt="image-20200821163130586" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112055.png" alt="image-20200821163130586" style="zoom:67%;" />
 
 （2）进入RabbitMQ安装目录下的sbin目录
 
@@ -443,7 +443,7 @@ D:\03Enviroment\16rabbitMQ\01install\rabbitmq_server-3.7.14\sbin
 rabbitmq-plugins enable rabbitmq_management
 ```
 
-<img src="SpringCloud学习5-config_Bus.assets/image-20200821163318746.png" alt="image-20200821163318746" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112056.png" alt="image-20200821163318746" style="zoom:67%;" />
 
 （3）启动RabbitMQ，在浏览器中输入下面的网址进行访问
 
@@ -451,9 +451,9 @@ rabbitmq-plugins enable rabbitmq_management
 http://localhost:15672/
 ```
 
-<img src="SpringCloud学习5-config_Bus.assets/image-20200821163455196.png" alt="image-20200821163455196" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112057.png" alt="image-20200821163455196" style="zoom:50%;" />
 
-<img src="SpringCloud学习5-config_Bus.assets/image-20200821163802580.png" alt="image-20200821163802580" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112058.png" alt="image-20200821163802580" style="zoom:67%;" />
 
 （4）输入默认的账号密码并登录即可
 
@@ -469,17 +469,17 @@ guest guest
 
 项目结构如下：
 
-<img src="SpringCloud学习5-config_Bus.assets/image-20200821180023662.png" alt="image-20200821180023662" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112059.png" alt="image-20200821180023662" style="zoom:50%;" />
 
 2、设计思想
 
 （1）利用消息总线触发一个客户端/bus/refresh,而刷新所有客户端的配置
 
-<img src="SpringCloud学习5-config_Bus.assets/image-20200821180214431.png" alt="image-20200821180214431" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112100.png" alt="image-20200821180214431" style="zoom:50%;" />
 
 （2）利用消息总线触发一个服务端ConfigServer的/bus/refresh端点,而刷新所有客户端的配置（推荐）
 
-<img src="SpringCloud学习5-config_Bus.assets/image-20200821180332467.png" alt="image-20200821180332467" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112101.png" alt="image-20200821180332467" style="zoom:50%;" />
 
 （3）推荐原因
 
@@ -620,4 +620,4 @@ curl -X POST "http://localhost:3344/actuator/bus-refresh/config-client:3355"
 
 ## 5、总结
 
-<img src="SpringCloud学习5-config_Bus.assets/image-20200821182349542.png" alt="image-20200821182349542" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112102.png" alt="image-20200821182349542" style="zoom:67%;" />

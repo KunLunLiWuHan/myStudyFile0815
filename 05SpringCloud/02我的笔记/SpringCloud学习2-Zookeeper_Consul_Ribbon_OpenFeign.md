@@ -2,7 +2,7 @@
 
 ## 1、介绍
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200711100730926.png" alt="image-20200711100730926" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111308.png" alt="image-20200711100730926" style="zoom:67%;" />
 
 作用
 
@@ -18,7 +18,7 @@
 
 1、项目结构
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200817224410715.png" alt="image-20200817224410715" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111309.png" alt="image-20200817224410715" style="zoom:67%;" />
 
 2、添加yml文件
 
@@ -77,11 +77,11 @@ public class PaymentController {
 
 （1）启动后遇到问题
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200817101518444.png" alt="image-20200817101518444" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111022.png" alt="image-20200817101518444" style="zoom: 50%;" />
 
 ​		这是因为我们服务器上使用的zookeeper的版本是3.4.10，而IDEA中导入的依赖中的版本是3.5.3，导致zookeeper版本jar包冲突。
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200817225351688.png" alt="image-20200817225351688" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111023.png" alt="image-20200817225351688" style="zoom:80%;" />
 
 （2）解决方法
 
@@ -130,7 +130,7 @@ public class PaymentController {
 ls /
 ```
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200817225634174.png" alt="image-20200817225634174" style="zoom:67%;" />`cloud-provider-payment8004`节点是临时节点。
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111024.png" alt="image-20200817225634174" style="zoom:67%;" />`cloud-provider-payment8004`节点是临时节点。
 
 ## 3、服务消费者cloud-consumerzk-order80
 
@@ -138,7 +138,7 @@ ls /
 
 1、项目结构
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200817230023634.png" alt="image-20200817230023634" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111025.png" alt="image-20200817230023634" style="zoom:67%;" />
 
 2、添加yml文件
 
@@ -211,17 +211,17 @@ public class OrderZKController {
 
 （1）查看阿里云服务器的zookeeper的节点
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200817230538582.png" alt="image-20200817230538582" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111026.png" alt="image-20200817230538582" style="zoom: 50%;" />
 
 （2）输入网址：http://localhost:8004/payment/zk
 
 会在网页上返回一个端口和一串流水号。
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200817231032580.png" alt="image-20200817231032580" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111027.png" alt="image-20200817231032580" style="zoom:80%;" />
 
 （3）输入网址：http://localhost/consumer/payment/zk
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200817231502460.png" alt="image-20200817231502460" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111028.png" alt="image-20200817231502460" style="zoom:80%;" />
 
 # 2 Consul服务注册和发现
 
@@ -233,7 +233,7 @@ public class OrderZKController {
 
 下载网址：https://www.consul.io/downloads.html
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200817231701528.png" alt="image-20200817231701528" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111029.png" alt="image-20200817231701528" style="zoom: 50%;" />
 
 2、作用
 
@@ -255,7 +255,7 @@ public class OrderZKController {
 consul --version
 ```
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200817232019096.png" alt="image-20200817232019096" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111030.png" alt="image-20200817232019096" style="zoom:67%;" />
 
 2、使用开发模式启动
 
@@ -269,7 +269,7 @@ consul agent -dev
 
 （3）结果页面
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200817232215825.png" alt="image-20200817232215825" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111031.png" alt="image-20200817232215825" style="zoom:67%;" />
 
 ## 3、服务提供者cloud-providerconsul-payment8006
 
@@ -277,7 +277,7 @@ consul agent -dev
 
 1、项目结构
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200817232337382.png" alt="image-20200817232337382" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111032.png" alt="image-20200817232337382" style="zoom:50%;" />
 
 2、添加yml文件
 
@@ -331,7 +331,7 @@ public class PaymentController {
 
 ​		输入网址：http://localhost:8006/payment/consul，将会有一个端口号+ 一串流水号；输入网址：http://localhost:8500将会弹出下面的界面：
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200817232546649.png" alt="image-20200817232546649" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111033.png" alt="image-20200817232546649" style="zoom: 50%;" />
 
 ## 4、服务消费者cloud-consumerconsul-order80
 
@@ -339,7 +339,7 @@ public class PaymentController {
 
 1、项目结构
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200817232737391.png" alt="image-20200817232737391" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111034.png" alt="image-20200817232737391" style="zoom:67%;" />
 
 2、添加yml文件
 
@@ -409,7 +409,7 @@ public class OrderConsulController {
 
 （1）输入网址：http://localhost:8500，将会弹出下面的界面：
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200817233015020.png" alt="image-20200817233015020" style="zoom: 67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111035.png" alt="image-20200817233015020" style="zoom: 67%;" />
 
 （2）输入网址：http://localhost/consumer/payment/consul，将会获得
 
@@ -429,9 +429,9 @@ CAP理论关注粒度是数据，而不是整体系统设计的策略。
 
 2、分析
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200817233733267.png" alt="image-20200817233733267" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111036.png" alt="image-20200817233733267" style="zoom:80%;" />
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200817234843232.png" alt="image-20200817234843232" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111037.png" alt="image-20200817234843232" style="zoom:67%;" />
 
 | 组件名    | 语言 | CAP  | 服务器健康检查 | 对外保留接口 | SpringBoot集成 |
 | --------- | ---- | ---- | -------------- | ------------ | -------------- |
@@ -441,21 +441,21 @@ CAP理论关注粒度是数据，而不是整体系统设计的策略。
 
 （1）AP(Eureka)
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200817233600030.png" alt="image-20200817233600030" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111038.png" alt="image-20200817233600030" style="zoom:80%;" />
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200817233607656.png" alt="image-20200817233607656" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111039.png" alt="image-20200817233607656" style="zoom: 67%;" />
 
 （2）CP(Zookeeper/Consul)
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200817233634551.png" alt="image-20200817233634551" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111040.png" alt="image-20200817233634551" style="zoom:80%;" />
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200817233647176.png" alt="image-20200817233647176" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111041.png" alt="image-20200817233647176" style="zoom:80%;" />
 
 # 3 Ribbon负载均衡服务调用
 
 ## 1、介绍
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200820083732769.png" alt="image-20200820083732769" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111042.png" alt="image-20200820083732769" style="zoom:80%;" />
 
 1、官网资料
 
@@ -463,25 +463,25 @@ CAP理论关注粒度是数据，而不是整体系统设计的策略。
 
 目前Ribbon也进入维护阶段：
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200820083848170.png" alt="image-20200820083848170" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111043.png" alt="image-20200820083848170" style="zoom:80%;" />
 
 替代方案：
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200820084009441.png" alt="image-20200820084009441" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111044.png" alt="image-20200820084009441" style="zoom:80%;" />
 
 2、作用
 
 （1）负载均衡
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200820084102765.png" alt="image-20200820084102765" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111045.png" alt="image-20200820084102765" style="zoom:80%;" />
 
 （a）集中式LB
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200820084157828.png" alt="image-20200820084157828" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111046.png" alt="image-20200820084157828" style="zoom:80%;" />
 
 （b）进程式LB
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200820084240600.png" alt="image-20200820084240600" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111047.png" alt="image-20200820084240600" style="zoom:80%;" />
 
 （2）总结
 
@@ -493,15 +493,15 @@ CAP理论关注粒度是数据，而不是整体系统设计的策略。
 
 ​		Ribbon其实就是一个软负载均衡的客户端组件，他可以和其他所需请求的客户端结合使用，和eureka结合只是其中的一个实例。
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200820084959642.png" alt="image-20200820084959642" style="zoom: 50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111048.png" alt="image-20200820084959642" style="zoom: 50%;" />
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200820085017075.png" alt="image-20200820085017075" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111049.png" alt="image-20200820085017075" style="zoom:67%;" />
 
 2、pom文件
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200820085338979.png" alt="image-20200820085338979" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111050.png" alt="image-20200820085338979" style="zoom:50%;" />
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200820085351457.png" alt="image-20200820085351457" style="zoom: 50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111051.png" alt="image-20200820085351457" style="zoom: 50%;" />
 
 3、RestTemplate的使用
 
@@ -509,23 +509,23 @@ CAP理论关注粒度是数据，而不是整体系统设计的策略。
 
 https://docs.spring.io/spring-framework/docs/5.2.2.RELEASE/javadoc-api/org/springframework/web/client/RestTemplate.html
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200820085727229.png" alt="image-20200820085727229" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111052.png" alt="image-20200820085727229" style="zoom:67%;" />
 
 （2）getForObject方法/getForEntity方法
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200820085745989.png" alt="image-20200820085745989" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111053.png" alt="image-20200820085745989" style="zoom:67%;" />
 
 （3）postForObject/postForEntity
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200820085833394.png" alt="image-20200820085833394" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111054.png" alt="image-20200820085833394" style="zoom:67%;" />
 
 ## 3、Ribbon核心组件IRule
 
 1、根据特定算法从服务列表中选取一个要访问的服务。
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200820090333139.png" alt="image-20200820090333139" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111055.png" alt="image-20200820090333139" style="zoom:67%;" />
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200820090348766.png" alt="image-20200820090348766" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111056.png" alt="image-20200820090348766" style="zoom:80%;" />
 
 2、如何替换
 
@@ -533,13 +533,13 @@ https://docs.spring.io/spring-framework/docs/5.2.2.RELEASE/javadoc-api/org/sprin
 
 配置细节：
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200820102909584.png" alt="image-20200820102909584" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111057.png" alt="image-20200820102909584" style="zoom:67%;" />
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200820102929250.png" alt="image-20200820102929250" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111058.png" alt="image-20200820102929250" style="zoom:80%;" />
 
 （2）新建package-com.xiaolun.myrule
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200820103023940.png" alt="image-20200820103023940" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111059.png" alt="image-20200820103023940" style="zoom:80%;" />
 
 （3）添加规则类
 
@@ -576,7 +576,7 @@ public class OrderMain80 {
 
 1、原理
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200820103408449.png" alt="image-20200820103408449" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111100.png" alt="image-20200820103408449" style="zoom:80%;" />
 
 2、手写算法
 
@@ -598,7 +598,7 @@ public class OrderMain80 {
 
 （b）创建LoadBalancer接口
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200820104857726.png" alt="image-20200820104857726" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111101.png" alt="image-20200820104857726" style="zoom:67%;" />
 
 ```java
 public interface LoadBalancer {
@@ -662,7 +662,7 @@ private DiscoveryClient discoveryClient;
 
 输入网址：http://localhost/consumer/payment/lb，浏览器输出：
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200820105142930.png" alt="image-20200820105142930" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111102.png" alt="image-20200820105142930" style="zoom:80%;" />
 
 端口8001/8002可以交替变换，即实现了负载均衡。
 
@@ -672,7 +672,7 @@ private DiscoveryClient discoveryClient;
 
 1、概述
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200820105358611.png" alt="image-20200820105358611" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111103.png" alt="image-20200820105358611" style="zoom:80%;" />
 
 ​		Feign是一个声明式的web服务客户端，让编写web服务客户端变得非常容易，只需创建一个接口并在接口上添加注解即可。
 
@@ -680,11 +680,11 @@ GitHub：https://github.com/spring-cloud/spring-cloud-openfeign
 
 2、作用
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200820105421099.png" alt="image-20200820105421099" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111104.png" alt="image-20200820105421099" style="zoom:80%;" />
 
 3、Feign和OpenFeign的区别
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200820105522759.png" alt="image-20200820105522759" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111105.png" alt="image-20200820105522759" style="zoom:50%;" />
 
 ## 2、OpenFeign使用步骤
 
@@ -692,7 +692,7 @@ GitHub：https://github.com/spring-cloud/spring-cloud-openfeign
 
 项目结构：
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200820112843704.png" alt="image-20200820112843704" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111106.png" alt="image-20200820112843704" style="zoom:67%;" />
 
 1、新建cloud-consumer-feign-order80，Feign在消费端使用。
 
@@ -773,7 +773,7 @@ public class OrderFeignController {
 
 ​		先启动2个eureka集群cloud-eureka-Server7001/7002，再启动2个微服务cloud-provider-payment8001/8002，最后启动cloud-consumer-feign-order80启动，输入地址：http://localhost/consumer/payment/get/5，
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200820113647003.png" alt="image-20200820113647003" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111107.png" alt="image-20200820113647003" style="zoom:67%;" />
 
 ​		可以发现`Feign`自带负载均衡配置项，上图中的端口号8001/8002来回切换。
 
@@ -781,7 +781,7 @@ public class OrderFeignController {
 
 ​		`cloud-consumer-feign-order80`模块此时作为消费者，当客户端输入地址后，地址首先会进入到`cloud-consumer-feign-order80`模块中`controller`中，即`OrderFeignController`的方法，执行完成后，该方法会到接口类`PaymentFeignService`中执行`@GetMapping`的方法，这样通过`OpenFeign`就可以调用`cloud-provider-payment8001/8002`，即消费者到服务者之间的网路就打通了。
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200820114749976.png" alt="image-20200820114749976" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111108.png" alt="image-20200820114749976" style="zoom:80%;" />
 
 ## 3、超时控制
 
@@ -821,15 +821,15 @@ public String paymentFeignTimeout(){
 
 ​		先启动2个eureka集群cloud-eureka-Server7001/7002，再启动2个微服务cloud-provider-payment8001/8002，最后启动cloud-consumer-feign-order80启动，输入地址：http://localhost/consumer/payment/feign/timeout，会有下面的错误界面
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200820144238384.png" alt="image-20200820144238384" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111109.png" alt="image-20200820144238384" style="zoom:67%;" />
 
 2、超时问题的解决
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200820143336511.png" alt="image-20200820143336511" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111110.png" alt="image-20200820143336511" style="zoom:67%;" />
 
 ​		所以，我们需要在yml文件中开启超时的配置信息。因为OpenFeign默认支持Ribbon，如下图所示：
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200820144338334.png" alt="image-20200820144338334" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111111.png" alt="image-20200820144338334" style="zoom:67%;" />
 
 ​		我们只需要在yml文件中添加如下的配置即可开启OpenFeign客户端超时控制：
 
@@ -848,17 +848,17 @@ ribbon:
 
 1、介绍
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200820144702027.png" alt="image-20200820144702027" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111112.png" alt="image-20200820144702027" style="zoom:80%;" />
 
 日志级别:
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200820144732569.png" alt="image-20200820144732569" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111113.png" alt="image-20200820144732569" style="zoom:80%;" />
 
 2、日志打印的配置
 
 （1）目录结构
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200820144823293.png" alt="image-20200820144823293" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111114.png" alt="image-20200820144823293" style="zoom:50%;" />
 
 （2）在com.xiaolun.config下配置日志bean
 
@@ -885,4 +885,4 @@ logging:
 
 （4）后台日志查看
 
-<img src="SpringCloud学习2-Zookeeper_Consul_Ribbon_OpenFeign.assets/image-20200820145032605.png" alt="image-20200820145032605" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111115.png" alt="image-20200820145032605" style="zoom:50%;" />

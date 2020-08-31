@@ -287,7 +287,7 @@ class Bird extends Animal {
 class Moon {}
 ```
 
-<img src="scala学习-泛型.assets\image-20200804100144598.png" alt="image-20200804100144598" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831133803.png" alt="image-20200804100144598" style="zoom:80%;" />
 
 可以看出将子类引用交给父类去处理。
 

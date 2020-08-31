@@ -14,7 +14,7 @@ https://github.com/alibaba/Sentinel/wiki/%E4%BB%8B%E7%BB%8D
 
 一句话解释，之前我们讲解过的Hystrix。
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824113522899.png" alt="image-20200824113522899" style="zoom:33%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112547.png" alt="image-20200824113522899" style="zoom:33%;" />
 
 3、下载
 
@@ -22,7 +22,7 @@ https://github.com/alibaba/Sentinel/releases
 
 4、作用
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824113610714.png" alt="image-20200824113610714" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112548.png" alt="image-20200824113610714" style="zoom:50%;" />
 
 5、操作
 
@@ -46,7 +46,7 @@ https://spring-cloud-alibaba-group.github.io/github-pages/greenwich/spring-cloud
 
 前台8080+后台。
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824141838988.png" alt="image-20200824141838988" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112549.png" alt="image-20200824141838988" style="zoom:67%;" />
 
 2、下载网址
 
@@ -62,7 +62,7 @@ https://github.com/alibaba/Sentinel/releases
 java -jar sentinel-dashboard-1.7.0.jar 
 ```
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824142107978.png" alt="image-20200824142107978" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112550.png" alt="image-20200824142107978" style="zoom:50%;" />
 
 4、访问sentinel管理界面
 
@@ -78,7 +78,7 @@ http://localhost:8080
 
 项目结构：
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824142413739.png" alt="image-20200824142413739" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112551.png" alt="image-20200824142413739" style="zoom:50%;" />
 
 1、添加pom
 
@@ -208,17 +208,17 @@ http://localhost:8401/testA
 http://localhost:8401/testB
 ```
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824142652349.png" alt="image-20200824142652349" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112552.png" alt="image-20200824142652349" style="zoom:50%;" />
 
 ## 4 流控规则
 
 ### 1、基本介绍
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824143031892.png" alt="image-20200824143031892" style="zoom: 50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112553.png" alt="image-20200824143031892" style="zoom: 50%;" />
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824142748726.png" alt="image-20200824142748726" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112554.png" alt="image-20200824142748726" style="zoom:50%;" />
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824142757442.png" alt="image-20200824142757442" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112555.png" alt="image-20200824142757442" style="zoom:50%;" />
 
 ### 2、直接（默认）
 
@@ -226,7 +226,7 @@ http://localhost:8401/testB
 
 系统默认为：直接快速失败（QPS）。
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824143340245.png" alt="image-20200824143340245" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112556.png" alt="image-20200824143340245" style="zoom:50%;" />
 
 对于上图的配置，如果我们在1S秒内快速点击后访问下面的网址：
 
@@ -244,7 +244,7 @@ Blocked by Sentinel (flow limiting)
 
 （2）线程数直接快速失败
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824144650210.png" alt="image-20200824144650210" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112557.png" alt="image-20200824144650210" style="zoom:50%;" />
 
 controller的修改：
 
@@ -278,13 +278,13 @@ http://localhost:8401/testA
 
 第二个请求会失效。
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824144624476.png" alt="image-20200824144624476" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112558.png" alt="image-20200824144624476" style="zoom:67%;" />
 
 ### 3、关联
 
 （1）当关联的资源达到阈值时，就限流自己。配置如下：
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824150354667.png" alt="image-20200824150354667" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112559.png" alt="image-20200824150354667" style="zoom:50%;" />
 
 （2）配置postman
 
@@ -292,15 +292,15 @@ http://localhost:8401/testA
 
 （a）postman里新建多线程集合组
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824151422843.png" alt="image-20200824151422843" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112600.png" alt="image-20200824151422843" style="zoom:50%;" />
 
 （b）将访问地址添加进新线程组
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824151607915.png" alt="image-20200824151607915" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112601.png" alt="image-20200824151607915" style="zoom:50%;" />
 
 （c）配置线程并启动
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824151756602.png" alt="image-20200824151756602" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112602.png" alt="image-20200824151756602" style="zoom:50%;" />
 
 （3）此时
 
@@ -326,9 +326,9 @@ https://github.com/alibaba/Sentinel/wiki/%E9%99%90%E6%B5%81---%E5%86%B7%E5%90%AF
 
 ​		默认coldFactor为3，即请求QPS从threshold/3开始，经预热时长逐渐升至设定的QPS阈值。
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824152110153.png" alt="image-20200824152110153" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112603.png" alt="image-20200824152110153" style="zoom:67%;" />
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824152147209.png" alt="image-20200824152147209" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112604.png" alt="image-20200824152147209" style="zoom:67%;" />
 
 （2）源码
 
@@ -336,11 +336,11 @@ https://github.com/alibaba/Sentinel/wiki/%E9%99%90%E6%B5%81---%E5%86%B7%E5%90%AF
 com.alibaba.csp.sentinel.slots.block.flow.controller.WarmUpController
 ```
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824152234024.png" alt="image-20200824152234024" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112605.png" alt="image-20200824152234024" style="zoom:50%;" />
 
 （3）配置
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824152303171.png" alt="image-20200824152303171" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112606.png" alt="image-20200824152303171" style="zoom:50%;" />
 
 （4）测试
 
@@ -354,7 +354,7 @@ http://localhost:8401/testB
 
 （5）应用场景
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824152817477.png" alt="image-20200824152817477" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112607.png" alt="image-20200824152817477" style="zoom:50%;" />
 
 ### 5、排队等待
 
@@ -362,9 +362,9 @@ http://localhost:8401/testB
 
 匀速排队，阈值必须设置为QPS。
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824152844805.png" alt="image-20200824152844805" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112608.png" alt="image-20200824152844805" style="zoom:50%;" />
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824152916899.png" alt="image-20200824152916899" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112609.png" alt="image-20200824152916899" style="zoom:67%;" />
 
 （2）源码
 
@@ -374,11 +374,11 @@ com.alibaba.csp.sentinel.slots.block.flow.controller.RateLimiterController
 
 （3）sentinel配置
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824153222518.png" alt="image-20200824153222518" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112610.png" alt="image-20200824153222518" style="zoom:50%;" />
 
 （4）postman配置
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824153806850.png" alt="image-20200824153806850" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112611.png" alt="image-20200824153806850" style="zoom: 50%;" />
 
 （5）修改controller
 
@@ -401,7 +401,7 @@ public class FlowLimitController {
 
 控制台输出
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824153948861.png" alt="image-20200824153948861" style="zoom: 50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112612.png" alt="image-20200824153948861" style="zoom: 50%;" />
 
 ## 5 降级
 
@@ -409,7 +409,7 @@ public class FlowLimitController {
 
 1、基本介绍
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824154107317.png" alt="image-20200824154107317" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112613.png" alt="image-20200824154107317" style="zoom:67%;" />
 
 Sentinel的断路器是没有半开状态的。半开的状态系统自动去检测是否请求有异常，没有异常就关闭断路器恢复使用，有异常则继续打开断路器不可用。具体可以参考Hystrix。
 
@@ -417,9 +417,9 @@ Sentinel的断路器是没有半开状态的。半开的状态系统自动去检
 
 1、介绍
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824163900299.png" alt="image-20200824163900299" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112614.png" alt="image-20200824163900299" style="zoom:50%;" />
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824163905783.png" alt="image-20200824163905783" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112615.png" alt="image-20200824163905783" style="zoom:50%;" />
 
 2、代码测试
 
@@ -440,11 +440,11 @@ Sentinel的断路器是没有半开状态的。半开的状态系统自动去检
 
 （2）配置sentinel
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824170532576.png" alt="image-20200824170532576" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112616.png" alt="image-20200824170532576" style="zoom:80%;" />
 
 1.8.0sentinel的配置如下：
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824174816143.png" alt="image-20200824174816143" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112617.png" alt="image-20200824174816143" style="zoom:67%;" />
 
 （3）jmeter压测
 
@@ -462,15 +462,15 @@ Blocked by Sentinel (flow limiting)
 
 （4）结论
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824171008197.png" alt="image-20200824171008197" style="zoom: 80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112618.png" alt="image-20200824171008197" style="zoom: 80%;" />
 
 ### 3、异常比例
 
 1、介绍
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824171127238.png" alt="image-20200824171127238" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112619.png" alt="image-20200824171127238" style="zoom:67%;" />
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824171133796.png" alt="image-20200824171133796" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112620.png" alt="image-20200824171133796" style="zoom:67%;" />
 
 2、代码测试
 
@@ -488,9 +488,9 @@ public String testD()
 
 （2）配置sentinel
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824171433026.png" alt="image-20200824171433026" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112621.png" alt="image-20200824171433026" style="zoom:67%;" />
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824172747935.png" alt="image-20200824172747935" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112622.png" alt="image-20200824172747935" style="zoom:50%;" />
 
 （3）jmeter压测
 
@@ -502,7 +502,7 @@ http://localhost:8401/testD
 
 （4）结论
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824171516855.png" alt="image-20200824171516855" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112623.png" alt="image-20200824171516855" style="zoom:67%;" />
 
 ### 4、异常数
 
@@ -510,9 +510,9 @@ http://localhost:8401/testD
 
 异常数是按照分钟统计的。
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824173955805.png" alt="image-20200824173955805" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112624.png" alt="image-20200824173955805" style="zoom:80%;" />
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824174003229.png" alt="image-20200824174003229" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112625.png" alt="image-20200824174003229" style="zoom:67%;" />
 
 2、代码测试
 
@@ -530,17 +530,17 @@ public String testE()
 
 （2）配置
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824174152598.png" alt="image-20200824174152598" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112626.png" alt="image-20200824174152598" style="zoom:50%;" />
 
 1.8版本变成下面这样的：
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824174238705.png" alt="image-20200824174238705" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112627.png" alt="image-20200824174238705" style="zoom:67%;" />
 
 ## 6 热点key限流
 
 1、介绍
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824181542130.png" alt="image-20200824181542130" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112628.png" alt="image-20200824181542130" style="zoom:50%;" />
 
 2、官网
 
@@ -586,7 +586,7 @@ Blocked by Sentinel (flow limiting)
 
 （2）sentinel配置
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824182715353.png" alt="image-20200824182715353" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112629.png" alt="image-20200824182715353" style="zoom:50%;" />
 
 （3）测试
 
@@ -608,7 +608,7 @@ http://localhost:8401/testHotKey
 
 （1）sentinel配置
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824183046869.png" alt="image-20200824183046869" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112630.png" alt="image-20200824183046869" style="zoom:67%;" />
 
 热点参数的注意点，参数必须是基本类型或者String。
 
@@ -638,11 +638,11 @@ http://localhost:8401/testHotKey
 
 浏览器界面：
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824183414553.png" alt="image-20200824183414553" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112631.png" alt="image-20200824183414553" style="zoom:50%;" />
 
 解释如下：
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824183431613.png" alt="image-20200824183431613" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112632.png" alt="image-20200824183431613" style="zoom:50%;" />
 
 ## 7 系统规则
 
@@ -656,9 +656,9 @@ https://github.com/alibaba/Sentinel/wiki/%E7%B3%BB%E7%BB%9F%E8%87%AA%E9%80%82%E5
 
 2、各参数配置说明
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824183529107.png" alt="image-20200824183529107" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112633.png" alt="image-20200824183529107" style="zoom:50%;" />
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824183654315.png" alt="image-20200824183654315" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112634.png" alt="image-20200824183654315" style="zoom:50%;" />
 
 ## 8 @SentinelResource配置
 
@@ -682,7 +682,7 @@ https://github.com/alibaba/Sentinel/wiki/%E7%B3%BB%E7%BB%9F%E8%87%AA%E9%80%82%E5
 
 项目结构：
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824214030435.png" alt="image-20200824214030435" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112635.png" alt="image-20200824214030435" style="zoom:50%;" />
 
 ```java
 @RestController
@@ -703,7 +703,7 @@ public class RateLimitController {
 
 对资源名称进行限流。
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824214806114.png" alt="image-20200824214806114" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112636.png" alt="image-20200824214806114" style="zoom:50%;" />
 
 ​		疯狂点击，超过设定的流控阈值（限流发送），将会返回了自己定义的限流处理信息。
 
@@ -723,7 +723,7 @@ http://localhost:8401/byResource
 @SentinelResource(value = "byResource")
 ```
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824215932085.png" alt="image-20200824215932085" style="zoom: 50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112637.png" alt="image-20200824215932085" style="zoom: 50%;" />
 
 ### 2、按照Url地址限流+后续处理
 
@@ -742,7 +742,7 @@ public CommonResult byUrl()
 
 ​		通过访问的URL来限流，会返回Sentinel自带默认的限流处理信息。
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824215345995.png" alt="image-20200824215345995" style="zoom: 50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112638.png" alt="image-20200824215345995" style="zoom: 50%;" />
 
 （3）测试
 
@@ -754,11 +754,11 @@ http://localhost:8401/rateLimit/byUrl
 
 浏览器输出：
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824215651873.png" alt="image-20200824215651873" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112639.png" alt="image-20200824215651873" style="zoom:50%;" />
 
 ### 3、兜底方法遇到的问题
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824220050025.png" alt="image-20200824220050025" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112640.png" alt="image-20200824220050025" style="zoom:50%;" />
 
 ### 4、客户自定义限流处理逻辑
 
@@ -766,7 +766,7 @@ http://localhost:8401/rateLimit/byUrl
 
 项目结构：
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824221709020.png" alt="image-20200824221709020" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112641.png" alt="image-20200824221709020" style="zoom:50%;" />
 
 
 
@@ -799,11 +799,11 @@ public CommonResult customerBlockHandler() {
 
 对应规则：
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824221628615.png" alt="image-20200824221628615" style="zoom: 50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112642.png" alt="image-20200824221628615" style="zoom: 50%;" />
 
 3、Sentinel控制台配置
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824221920947.png" alt="image-20200824221920947" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112643.png" alt="image-20200824221920947" style="zoom:50%;" />
 
 4、使用下面的网址进行测试
 
@@ -811,11 +811,11 @@ public CommonResult customerBlockHandler() {
 http://localhost:8401/rateLimit/customerBlockHandler
 ```
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824222002047.png" alt="image-20200824222002047" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112644.png" alt="image-20200824222002047" style="zoom:50%;" />
 
 5、更多注解属性说明
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824222020977.png" alt="image-20200824222020977" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112645.png" alt="image-20200824222020977" style="zoom:80%;" />
 
 Sentinel主要有三个核心API
 
@@ -829,7 +829,7 @@ SphU定义资源；Tracer定义统计；ContextUtil定义了上下文。
 
 项目结构：
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824225716466.png" alt="image-20200824225716466" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112646.png" alt="image-20200824225716466" style="zoom:50%;" />
 
 1、添加pom
 
@@ -946,7 +946,7 @@ http://localhost:9003/paymentSQL/1
 
 项目结构：
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824230126375.png" alt="image-20200824230126375" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112647.png" alt="image-20200824230126375" style="zoom:50%;" />
 
 1、添加pom
 
@@ -1112,7 +1112,7 @@ http://localhost:84/consumer/fallback/1
 @SentinelResource(value = "fallback",fallback = "handlerFallback")
 ```
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824230823065.png" alt="image-20200824230823065" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112648.png" alt="image-20200824230823065" style="zoom:67%;" />
 
 （3）只配置blockHandler
 
@@ -1122,11 +1122,11 @@ http://localhost:84/consumer/fallback/1
 
 此时，sentinel需要进行下面的配置：
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824231015039.png" alt="image-20200824231015039" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112649.png" alt="image-20200824231015039" style="zoom:50%;" />
 
 ​		当刚开始点击的时候，会有error报错信息，之后快速点击，触发的Sentinel的降级规则，会被异常处理接管：
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824231908951.png" alt="image-20200824231908951" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112650.png" alt="image-20200824231908951" style="zoom:67%;" />
 
 （4）fallback和blockHandler都配置
 
@@ -1134,7 +1134,7 @@ http://localhost:84/consumer/fallback/1
 @SentinelResource(value = "fallback", fallback = "handlerFallback", blockHandler = "blockHandler")
 ```
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824232012033.png" alt="image-20200824232012033" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112651.png" alt="image-20200824232012033" style="zoom:67%;" />
 
 （5）忽略属性
 
@@ -1142,7 +1142,7 @@ http://localhost:84/consumer/fallback/1
 @SentinelResource(value = "fallback", fallback = "handlerFallback", blockHandler = "blockHandler",exceptionsToIgnore = {IllegalArgumentException.class})
 ```
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200824232149044.png" alt="image-20200824232149044" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112652.png" alt="image-20200824232149044" style="zoom:50%;" />
 
 注意：
 
@@ -1156,7 +1156,7 @@ http://localhost:84/consumer/fallback/1
 
 目录结构：
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200825001043468.png" alt="image-20200825001043468" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112653.png" alt="image-20200825001043468" style="zoom:50%;" />
 
 1、添加pom依赖
 
@@ -1265,17 +1265,17 @@ http://localhost:84/consumer/paymentSQL/5
 
 cloudalibaba-consumer-nacos-order84会自动降级，不会报错
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200825000701788.png" alt="image-20200825000701788" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112654.png" alt="image-20200825000701788" style="zoom:50%;" />
 
 ​		当，故意关闭cloudalibaba-provider-payment9003微服务提供者，同样输入上面的网址，此时cloudalibaba-consumer-nacos-order84消费侧会自动降级，不会被耗死。
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200825000346608.png" alt="image-20200825000346608" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112655.png" alt="image-20200825000346608" style="zoom:50%;" />
 
 ### 3、熔断框架比较
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200825000749570.png" alt="image-20200825000749570" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112656.png" alt="image-20200825000749570" style="zoom:67%;" />
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200825000759740.png" alt="image-20200825000759740" style="zoom: 67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112657.png" alt="image-20200825000759740" style="zoom: 67%;" />
 
 ## 10 规则持久化
 
@@ -1338,7 +1338,7 @@ management:
 
 （3）添加nacos配置逻辑
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200825002242594.png" alt="image-20200825002242594" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112658.png" alt="image-20200825002242594" style="zoom:50%;" />
 
 内容解析：
 
@@ -1356,7 +1356,7 @@ management:
 ]
 ```
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200825002311923.png" alt="image-20200825002311923" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112659.png" alt="image-20200825002311923" style="zoom:50%;" />
 
 （4）测试
 
@@ -1368,10 +1368,10 @@ http://localhost:8401/rateLimit/byUrl
 
 发现流控规则已存在，快速点击时，该规则也奏效。
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200825002510369.png" alt="image-20200825002510369" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112700.png" alt="image-20200825002510369" style="zoom:50%;" />
 
 ​		停止cloudalibaba-sentinel-service8401模块，再次查看流控规则时，发现该规则消失。当我们再次启动该模块的时候，其规则会再次出现（多访问一下上面网址），规则也没有变。
 
 主要原因是，其保存到了数据库中：
 
-<img src="SpringCloud学习8-Sentinel.assets/image-20200825002804891.png" alt="image-20200825002804891" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112701.png" alt="image-20200825002804891" style="zoom:67%;" />

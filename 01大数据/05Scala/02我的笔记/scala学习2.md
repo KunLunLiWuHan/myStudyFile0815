@@ -1,4 +1,4 @@
-# 1 面向对象编程
+# 面向对象编程
 
 ## 1.1 介绍
 
@@ -101,7 +101,7 @@ class Emp extends Person{
 
 内存布局如下：
 
-<img src="scala学习2.assets\image-20200721181341265.png" alt="image-20200721181341265" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831133341.png" alt="image-20200721181341265" style="zoom:80%;" />
 
 ```scala
 //p1更改name属性的值时，p2拿到的值会改变。
@@ -470,7 +470,7 @@ package com.xiaolun {
 
 （1）Java访问修饰符
 
-<img src="scala学习2.assets\image-20200721215015395.png" alt="image-20200721215015395" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831133342.png" alt="image-20200721215015395" style="zoom:80%;" />
 
 + 公开级别:用public 修饰,对外公开。
 
@@ -603,7 +603,7 @@ var map = new HashMap()
 
 ​		实际上就是把一类事物的共有的属性和行为提取出来，形成一个物理模型(模板)。这种研究问题的方法称为抽象。
 
-<img src="scala学习2.assets\image-20200721222605029.png" alt="image-20200721222605029" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831133343.png" alt="image-20200721222605029" style="zoom:80%;" />
 
 ## 2、封装
 
@@ -1141,7 +1141,7 @@ abstract class Monster {
 
 ### 9、继承层级
 
-![image-20200731180536507](scala学习2.assets\image-20200731180536507.png)
+![image-20200731180536507](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831133344.png)
 
 继承层级图小结
 
@@ -1210,7 +1210,7 @@ object ScalaPerson {
 }
 ```
 
-<img src="scala学习2.assets\image-20200731183404541.png" alt="image-20200731183404541" style="zoom: 67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831133345.png" alt="image-20200731183404541" style="zoom: 67%;" />
 
 ## 3、伴生对象小结
 
@@ -1293,7 +1293,7 @@ class 类名 implements 接口名1，接口2
 
 ​		Scala语言中，采用特质`trait`（特征）来代替接口的概念，也就是说，多个类具有相同的特征（特征）时，就可以将这个特质（特征）独立出来，采用关键字`trait`声明。 理解trait 等价于`(interface + abstract class)`。
 
-![image-20200801095645113](scala学习2.assets\image-20200801095645113.png)
+![image-20200801095645113](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831133346.png)
 
 ## 3、特质（trait）快速入门
 
@@ -1331,7 +1331,7 @@ class  类名   extends   父类   with  特质1   with   特质2   with 特质3
 
 （3）入门案例
 
-![image-20200801101327966](scala学习2.assets\image-20200801101327966.png)
+![image-20200801101327966](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831133347.png)
 
 ```scala
 object TraitDemo02 {
@@ -1418,7 +1418,7 @@ class Sheep extends Trait01 {
 }
 ```
 
-<img src="scala学习2.assets\image-20200801103939945.png" alt="image-20200801103939945" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831133348.png" alt="image-20200801103939945" style="zoom:80%;" />
 
 ## 5、动态混入
 
@@ -1486,7 +1486,7 @@ abstract class MySQL3_ {
 
 案例：分析叠加特质时，对象的构建顺序，和执行方法的顺序
 
-<img src="scala学习2.assets\image-20200801151847062.png" alt="image-20200801151847062" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831133349.png" alt="image-20200801151847062" style="zoom:50%;" />
 
 ```scala
 object AddTraits {

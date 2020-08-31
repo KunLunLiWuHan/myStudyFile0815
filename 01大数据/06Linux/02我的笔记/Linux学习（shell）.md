@@ -18,9 +18,9 @@
 
 4、Shell脚本
 
-​		Shell 脚本（shell script），是一种为shell编写的脚本程序。
+Shell 脚本（shell script），是一种为shell编写的脚本程序。
 
-​		其实作为命令语言互动式的解释和执行用户的输入命令只是shell功能的一个方面。
+其实作为命令语言互动式的解释和执行用户的输入命令只是shell功能的一个方面。
 ​		shell还能用来进行程序设计，它提供了定义变量和参数的手段以及丰富的程序控制结构。
 ​		类似于Dos系统中的批处理文件，称为shell script。
 
@@ -30,7 +30,7 @@
 env | more
 ```
 
-<img src="Linux学习（shell）.assets/image-20200827092644188.png" alt="image-20200827092644188" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831131644.png" alt="image-20200827092644188" style="zoom:80%;" />
 
 ## 1.1 快速入门
 
@@ -74,7 +74,7 @@ chmod u+x myShell.sh
 sh myShell.sh
 ```
 
-<img src="Linux学习（shell）.assets\image-20200724203529871.png" alt="image-20200724203529871" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831131645.png" alt="image-20200724203529871" style="zoom:80%;" />
 
 ## 1.2 shell变量
 
@@ -95,7 +95,7 @@ echo "user=$USER"
 
 输出结果：
 
-<img src="Linux学习（shell）.assets\image-20200724204310747.png" alt="image-20200724204310747" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831131646.png" alt="image-20200724204310747" style="zoom:80%;" />
 
 2、Shell变量的定义
 
@@ -125,7 +125,7 @@ unset A
 echo "A=$A"
 ```
 
-<img src="Linux学习（shell）.assets\image-20200724205211638.png" alt="image-20200724205211638" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831131647.png" alt="image-20200724205211638" style="zoom:80%;" />
 
 + 声明静态的变量。
 
@@ -165,7 +165,7 @@ echo $RESULT2
 
 控制台输出结果：
 
-<img src="Linux学习（shell）.assets\image-20200724210445090.png" alt="image-20200724210445090" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831131648.png" alt="image-20200724210445090" style="zoom:80%;" />
 
 注：多行注释语法
 
@@ -189,7 +189,7 @@ source 配置文件
 echo 变量名
 ```
 
-<img src="Linux学习（shell）.assets\image-20200724211551034.png" alt="image-20200724211551034" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831131649.png" alt="image-20200724211551034" style="zoom:80%;" />
 
 2、案例
 
@@ -266,7 +266,7 @@ echo "参数个数=$#"
 
 注意，要为该文件添加可执行权限。
 
-<img src="Linux学习（shell）.assets\image-20200724213516170.png" alt="image-20200724213516170" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831131650.png" alt="image-20200724213516170" style="zoom:80%;" />
 
 ## 1.5 预定义变量
 
@@ -299,7 +299,7 @@ echo "最后的进程号=$!"
 echo "执行的值=$?"
 ```
 
-![image-20200724214440257](Linux学习（shell）.assets\image-20200724214440257.png)
+![image-20200724214440257](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831131651.png)
 
 ## 1.6 运算符
 
@@ -337,7 +337,7 @@ RESULT3=`expr $TEMP \* 4`
 echo "result3=$RESULT3"
 ```
 
-![image-20200724215511725](Linux学习（shell）.assets\image-20200724215511725.png)
+![image-20200724215511725](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831131652.png)
 
 （2）请求出命令行的两个参数[整数]的和。
 
@@ -660,7 +660,7 @@ basename [pathname] [suffix]
 
 直接在控制台写入下面的命令：
 
-<img src="Linux学习（shell）.assets\image-20200803160122138.png" alt="image-20200803160122138"  />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831131653.png" alt="image-20200803160122138"  />
 
 ### 2、dirname 
 
@@ -677,7 +677,7 @@ dirname 文件绝对路径
 
 返回`/home/zookeeper/a.txt`的`/home/zookeeper`部分。
 
-![image-20200803160413757](Linux学习（shell）.assets\image-20200803160413757.png)
+![image-20200803160413757](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831131654.png)
 
 ## 1.11 自定义函数
 

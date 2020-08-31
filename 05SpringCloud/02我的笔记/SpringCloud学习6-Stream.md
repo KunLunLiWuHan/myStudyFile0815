@@ -2,11 +2,11 @@
 
 ## 1、介绍
 
-<img src="SpringCloud学习6-Stream.assets/image-20200821185516133.png" alt="image-20200821185516133" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112116.png" alt="image-20200821185516133" style="zoom:50%;" />
 
 1、概述
 
-<img src="SpringCloud学习6-Stream.assets/image-20200821184329938.png" alt="image-20200821184329938" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112117.png" alt="image-20200821184329938" style="zoom:67%;" />
 
 一句话：屏蔽底层消息中间件的差异，降低切换版本，统一消息的编程模型。
 
@@ -14,9 +14,9 @@
 
 英文官网：https://spring.io/projects/spring-cloud-stream#overview
 
-<img src="SpringCloud学习6-Stream.assets/image-20200821184434632.png" alt="image-20200821184434632" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112118.png" alt="image-20200821184434632" style="zoom:67%;" />
 
-<img src="SpringCloud学习6-Stream.assets/image-20200821184445888.png" alt="image-20200821184445888" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112119.png" alt="image-20200821184445888" style="zoom:50%;" />
 
 API网址：https://cloud.spring.io/spring-cloud-static/spring-cloud-stream/3.0.1.RELEASE/reference/html/
 
@@ -24,7 +24,7 @@ API网址：https://cloud.spring.io/spring-cloud-static/spring-cloud-stream/3.0.
 
 3、标准MQ
 
-<img src="SpringCloud学习6-Stream.assets/image-20200821184645092.png" alt="image-20200821184645092" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112120.png" alt="image-20200821184645092" style="zoom:67%;" />
 
 （1）生产者/消费者之间靠消息媒介传递信息内容-Message。
 
@@ -36,15 +36,15 @@ API网址：https://cloud.spring.io/spring-cloud-static/spring-cloud-stream/3.0.
 
 （1）Stream可以统一底层差异
 
-<img src="SpringCloud学习6-Stream.assets/image-20200821184831492.png" alt="image-20200821184831492" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112121.png" alt="image-20200821184831492" style="zoom:67%;" />
 
-<img src="SpringCloud学习6-Stream.assets/image-20200821184846330.png" alt="image-20200821184846330" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112122.png" alt="image-20200821184846330" style="zoom:50%;" />
 
 （2）Binder
 
-<img src="SpringCloud学习6-Stream.assets/image-20200821184927435.png" alt="image-20200821184927435" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112123.png" alt="image-20200821184927435" style="zoom:67%;" />
 
-<img src="SpringCloud学习6-Stream.assets/image-20200821184954721.png" alt="image-20200821184954721" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112124.png" alt="image-20200821184954721" style="zoom:80%;" />
 
 INPUT对应于消费者,OUTPUT对应于生产者。
 
@@ -54,9 +54,9 @@ Topic主题进行广播：在RabbitMQ就是Exchange，在kafka中就是Topic。
 
 5、Cloud Stream标准流程套路
 
-<img src="SpringCloud学习6-Stream.assets/image-20200821185156608.png" alt="image-20200821185156608" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112125.png" alt="image-20200821185156608" style="zoom:50%;" />
 
-<img src="SpringCloud学习6-Stream.assets/image-20200821185205177.png" alt="image-20200821185205177" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112126.png" alt="image-20200821185205177" style="zoom:50%;" />
 
 （1）Binder
 
@@ -72,7 +72,7 @@ Topic主题进行广播：在RabbitMQ就是Exchange，在kafka中就是Topic。
 
 6、编码API和常用注解
 
-<img src="SpringCloud学习6-Stream.assets/image-20200821185331374.png" alt="image-20200821185331374" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112127.png" alt="image-20200821185331374" style="zoom:50%;" />
 
 ## 2、案例说明
 
@@ -82,7 +82,7 @@ Topic主题进行广播：在RabbitMQ就是Exchange，在kafka中就是Topic。
 
 项目结构
 
-<img src="SpringCloud学习6-Stream.assets/image-20200821221950900.png" alt="image-20200821221950900" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112128.png" alt="image-20200821221950900" style="zoom:50%;" />
 
 1、添加pom
 
@@ -241,7 +241,7 @@ public class SendMessageController {
 
 项目结构：
 
-<img src="SpringCloud学习6-Stream.assets/image-20200821222632239.png" alt="image-20200821222632239" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112129.png" alt="image-20200821222632239" style="zoom:50%;" />
 
 1、添加pom
 
@@ -381,7 +381,7 @@ public class ReceiveMessageListenerController {
 
 输入网址：http://localhost:8801/sendMessag，可以看到cloud-stream-rabbitmq-consumer8802/8803接收到了消息。但是出现了重复消费的问题（对于同一份数据，二者都消费即接收），我们只希望一份数据只要一个服务消费就好了，cloud-stream-rabbitmq-consumer8802/8803之间应该是竞争的关系。
 
-<img src="SpringCloud学习6-Stream.assets/image-20200821223559178.png" alt="image-20200821223559178" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112130.png" alt="image-20200821223559178" style="zoom:67%;" />
 
 ## 3、分组消费与持久化
 
@@ -389,7 +389,7 @@ public class ReceiveMessageListenerController {
 
 生产实际案例如下：
 
-<img src="SpringCloud学习6-Stream.assets/image-20200821223715099.png" alt="image-20200821223715099" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112131.png" alt="image-20200821223715099" style="zoom:50%;" />
 
 ​		微服务应用放置于同一个group中，就能够保证消息只会被其中一个应用消费一次。不同的组是可以消费的，同一个组内会发生竞争关系，只有其中一个可以消费。
 
@@ -405,7 +405,7 @@ public class ReceiveMessageListenerController {
 
 ​		在cloud-eureka-Server7001、cloud-stream-rabbitmq-provider8801、cloud-stream-rabbitmq-consumer8802/8803正常运行过程中，停止8802/8803（类似宕机），并去除掉8802的yml文件的分组属性group:xiaolunA，然后cloud-stream-rabbitmq-provider8801先发送4条消息到rabbitmq，然后再启动cloud-stream-rabbitmq-consumer8802，可以看到8802没有接收宕机后的数据，cloud-stream-rabbitmq-consumer8803在后台打印出来的rabbitmq中的数据（这是由于分组的作用）。
 
-<img src="SpringCloud学习6-Stream.assets/image-20200821224613875.png" alt="image-20200821224613875" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112132.png" alt="image-20200821224613875" style="zoom:67%;" />
 
 # 2  SpringCloud Sleuth分布式请求链路追踪
 
@@ -413,7 +413,7 @@ public class ReceiveMessageListenerController {
 
 （1）出现该技术的原因
 
-<img src="SpringCloud学习6-Stream.assets/image-20200821224751783.png" alt="image-20200821224751783" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112133.png" alt="image-20200821224751783" style="zoom:67%;" />
 
 （2）概述
 
@@ -421,7 +421,7 @@ public class ReceiveMessageListenerController {
 
 Spring Cloud Sleuth提供了一套完整的服务跟踪的解决方案，在分布式系统中提供追踪解决方案并且兼容支持了zipkin。
 
-<img src="SpringCloud学习6-Stream.assets/image-20200821224849579.png" alt="image-20200821224849579" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112134.png" alt="image-20200821224849579" style="zoom:50%;" />
 
 ## 2、搭建链路监控步骤
 
@@ -431,7 +431,7 @@ Spring Cloud Sleuth提供了一套完整的服务跟踪的解决方案，在分�
 
 ​		网址：https://dl.bintray.com/openzipkin/maven/io/zipkin/java/zipkin-server/，我们找到zipkin-server-2.12.9.exec.jar下载即可。
 
-<img src="SpringCloud学习6-Stream.assets/image-20200821225213672.png" alt="image-20200821225213672" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112135.png" alt="image-20200821225213672" style="zoom:67%;" />
 
 2、运行jar
 
@@ -444,17 +444,17 @@ java -jar zipkin-server-2.12.9-exec.jar
 
 ​		控制台面板输出一个箭头标志。我们访问：http://localhost:9411/zipkin/会有下面的界面：
 
-<img src="SpringCloud学习6-Stream.assets/image-20200821225502857.png" alt="image-20200821225502857" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112136.png" alt="image-20200821225502857" style="zoom:50%;" />
 
 3、术语
 
 （1）完整的调用链路
 
-<img src="SpringCloud学习6-Stream.assets/image-20200821225545179.png" alt="image-20200821225545179" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112137.png" alt="image-20200821225545179" style="zoom:67%;" />
 
 转换成下面的：
 
-<img src="SpringCloud学习6-Stream.assets/image-20200821225617519.png" alt="image-20200821225617519" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112138.png" alt="image-20200821225617519" style="zoom:50%;" />
 
 （2）名词解释
 

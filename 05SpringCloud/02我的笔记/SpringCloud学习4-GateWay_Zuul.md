@@ -10,17 +10,17 @@
 
 2、概述
 
-<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200820224005450.png" alt="image-20200820224005450" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111832.png" alt="image-20200820224005450" style="zoom:80%;" />
 
-<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200820224020739.png" alt="image-20200820224020739" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111833.png" alt="image-20200820224020739" style="zoom:80%;" />
 
-<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200820224035066.png" alt="image-20200820224035066" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111834.png" alt="image-20200820224035066" style="zoom:67%;" />
 
 总结：Spring Cloud Gateway 使用的Webflux中的reactor-netty响应式编程组件，底层使用了Netty通讯框架
 
 源码结构：
 
-<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200820224146599.png" alt="image-20200820224146599" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111835.png" alt="image-20200820224146599" style="zoom:67%;" />
 
 2、作用
 
@@ -28,39 +28,39 @@
 
 微服务架构中网关位置：
 
-<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200820224302425.png" alt="image-20200820224302425" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111836.png" alt="image-20200820224302425" style="zoom:80%;" />
 
 3、选择GateWay的原因
 
 （1）neflix不太靠谱，zuul2.0一直跳票,迟迟不发布
 
-<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200820224451355.png" alt="image-20200820224451355" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111837.png" alt="image-20200820224451355" style="zoom:67%;" />
 
 （2）SpringCloud Gateway具有如下特性
 
-<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200820224515503.png" alt="image-20200820224515503" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111838.png" alt="image-20200820224515503" style="zoom:67%;" />
 
 （3）SpringCloud Gateway与Zuul的区别
 
-<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200820224556320.png" alt="image-20200820224556320" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111839.png" alt="image-20200820224556320" style="zoom:67%;" />
 
 4、Zuul1.x模型
 
-<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200820224639932.png" alt="image-20200820224639932" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111840.png" alt="image-20200820224639932" style="zoom:67%;" />
 
-<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200820224658138.png" alt="image-20200820224658138" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111841.png" alt="image-20200820224658138" style="zoom:80%;" />
 
 5、GateWay模型
 
 （1）WebFlux介绍
 
-<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200820224825273.png" alt="image-20200820224825273" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111842.png" alt="image-20200820224825273" style="zoom:67%;" />
 
-<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200820224840516.png" alt="image-20200820224840516" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111843.png" alt="image-20200820224840516" style="zoom:67%;" />
 
 （2）说明
 
-<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200820224924987.png" alt="image-20200820224924987" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111844.png" alt="image-20200820224924987" style="zoom:67%;" />
 
 ## 2、三大核心概念
 
@@ -72,15 +72,15 @@
 
 4、总体
 
-<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200820225101712.png" alt="image-20200820225101712" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111845.png" alt="image-20200820225101712" style="zoom:80%;" />
 
 ## 3、工作流程
 
 1、官网总结
 
-<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200820230813575.png" alt="image-20200820230813575" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111846.png" alt="image-20200820230813575" style="zoom:80%;" />
 
-<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200820230833420.png" alt="image-20200820230833420" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111847.png" alt="image-20200820230833420" style="zoom:67%;" />
 
 2、核心逻辑
 
@@ -92,7 +92,7 @@
 
 新建cloud-gateway-gateway9527模块，项目结构为：
 
-<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200821104345526.png" alt="image-20200821104345526" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111848.png" alt="image-20200821104345526" style="zoom:50%;" />
 
 1、添加pom
 
@@ -207,11 +207,11 @@ http://localhost:9527/payment/get/5
 
 可以将端口号8001换成9527。
 
-<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200821105354733.png" alt="image-20200821105354733" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111849.png" alt="image-20200821105354733" style="zoom:50%;" />
 
 访问说明：
 
-<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200821105726336.png" alt="image-20200821105726336" style="zoom: 50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111850.png" alt="image-20200821105726336" style="zoom: 50%;" />
 
 ### 2、配置路由的两种方式
 
@@ -249,7 +249,7 @@ public class GateWayConfig {
 
 项目结构：
 
-<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200821110631501.png" alt="image-20200821110631501" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111851.png" alt="image-20200821110631501" style="zoom:67%;" />
 
 ## 5、配置动态路由
 
@@ -257,7 +257,7 @@ public class GateWayConfig {
 
 1、示意图
 
-<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200821111010973.png" alt="image-20200821111010973" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111852.png" alt="image-20200821111010973" style="zoom:67%;" />
 
 2、修改yml-gateway配置
 
@@ -304,13 +304,13 @@ http://localhost:9527/payment/lb
 
 （1）启动我们的cloud-gateway-gateway9527，在控制台，会发现下面的配置：
 
-<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200821112318021.png" alt="image-20200821112318021" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111853.png" alt="image-20200821112318021" style="zoom:50%;" />
 
 （2）Route Predicate Factories
 
-<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200821112341149.png" alt="image-20200821112341149" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111854.png" alt="image-20200821112341149" style="zoom:67%;" />
 
-<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200821112438434.png" alt="image-20200821112438434" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111855.png" alt="image-20200821112438434" style="zoom:50%;" />
 
 ​		说白了，Predicate就是为了实现一组匹配规则，让请求过来找到对应的Route进行处理。
 
@@ -318,7 +318,7 @@ http://localhost:9527/payment/lb
 
 （a）After Route Predicate
 
-<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200821112612337.png" alt="image-20200821112612337" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111856.png" alt="image-20200821112612337" style="zoom:67%;" />
 
 我们可以通过下面的代码获取年份：
 
@@ -346,17 +346,17 @@ curl  http://localhost:9527/payment/lb --cookie "username=xiaolun"
 
 命令板打印输出：
 
-<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200821113759962.png" alt="image-20200821113759962" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111857.png" alt="image-20200821113759962" style="zoom:67%;" />
 
 ## 7、Filter的使用
 
 ### 1、介绍
 
-<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200821115319360.png" alt="image-20200821115319360" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111858.png" alt="image-20200821115319360" style="zoom:50%;" />
 
 （1）AddRequestParameter
 
-<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200821114038443.png" alt="image-20200821114038443" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111859.png" alt="image-20200821114038443" style="zoom:67%;" />
 
 ### 2、自定义过滤器
 
@@ -390,7 +390,7 @@ public class MyLogGateWayFilter implements GlobalFilter, Ordered {
 
 项目结构：
 
-<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200821115415359.png" alt="image-20200821115415359" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111900.png" alt="image-20200821115415359" style="zoom:50%;" />
 
 2、测试
 
@@ -398,7 +398,7 @@ public class MyLogGateWayFilter implements GlobalFilter, Ordered {
 
 输入网址：http://localhost:9527/payment/lb?username=z3，能够正确访问（在Predicate的使用一章中，由于忘了关闭- Cookie=username,xiaolun，导致该请求一致无法响应，可见，过滤器是在路由指定好之后，即客户端进来之后进行再一次过滤），输入网址http://localhost:9527/payment/lb?u=z3不能够正确访问。
 
-<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200821115731056.png" alt="image-20200821115731056" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111901.png" alt="image-20200821115731056" style="zoom:67%;" />
 
 # 2 Zuul
 
@@ -406,7 +406,7 @@ public class MyLogGateWayFilter implements GlobalFilter, Ordered {
 
 1、概述
 
-<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200825221905024.png" alt="image-20200825221905024" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111902.png" alt="image-20200825221905024" style="zoom:67%;" />
 
 2、网址
 
@@ -420,7 +420,7 @@ https://github.com/Netflix/zuul/wiki
 
 项目结构：
 
-<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200825222412658.png" alt="image-20200825222412658" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111903.png" alt="image-20200825222412658" style="zoom:67%;" />
 
 1、添加pom
 
@@ -515,7 +515,7 @@ public class ZuulMain9528 {
 http://localhost:8001/payment/get/5
 ```
 
-<img src="SpringCloud学习4-GateWay_Zuul.assets/image-20200825222736942.png" alt="image-20200825222736942" style="zoom: 67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111904.png" alt="image-20200825222736942" style="zoom: 67%;" />
 
 ​		当我们启用路由的时候，输入网址如下：
 

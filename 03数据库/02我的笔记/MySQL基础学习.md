@@ -20,7 +20,7 @@
 1. 将压缩包解压到我的安装目录。D:\03Enviroment\05mysql\01install
 2. 修改环境变量path。
 
-<img src="MySQL基础学习.assets\image-20200620090642704.png" alt="image-20200620090642704" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831114440.png" alt="image-20200620090642704" style="zoom:80%;" />
 
 3. 在D:\03Enviroment\05mysql\01install\mysql-8.0.19下新建核心配置文件my.ini。
 
@@ -38,11 +38,11 @@ skip-grant-tables
 
 4. 启动**管理员模式**的`cmd`（我们此时要向注册表里面注册服务），并将目录切换到mysql的bin目录，然后输入下面的命令进行安装。
 
-<img src="MySQL基础学习.assets\image-20200620092249458.png" alt="image-20200620092249458" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831114441.png" alt="image-20200620092249458" style="zoom:80%;" />
 
 不过在执行这个安装语句时，弹出缺少组件报错信息：
 
-<img src="MySQL基础学习.assets\image-20200620092349555.png" alt="image-20200620092349555" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831114442.png" alt="image-20200620092349555" style="zoom:67%;" />
 
 我们运行云盘中的“微软常用运行库合集”后即可解决。
 
@@ -51,7 +51,7 @@ skip-grant-tables
 mysqld -install
 ```
 
-<img src="MySQL基础学习.assets\image-20200620100555532.png" alt="image-20200620100555532" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831114443.png" alt="image-20200620100555532" style="zoom:67%;" />
 
 5. 初始化文件
 
@@ -65,9 +65,9 @@ myaqld --initialize-insecure --user=mysql
 net start mysql
 ```
 
- <img src="MySQL基础学习.assets\image-20200620101851253.png" alt="image-20200620101851253" style="zoom:67%;" />
+ <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831114444.png" alt="image-20200620101851253" style="zoom:67%;" />
 
-<img src="MySQL基础学习.assets\image-20200620101741118.png" alt="image-20200620101741118" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831114445.png" alt="image-20200620101741118" style="zoom:80%;" />
 
 使用下面的命令，进入mysql管理界面修改密码（密码可为空）
 
@@ -86,7 +86,7 @@ update mysql.user set authentication_string=password('123') where user='root' an
 alter user 'root'@'localhost' IDENTIFIED BY '123';
 ```
 
-<img src="MySQL基础学习.assets\image-20200620104641689.png" alt="image-20200620104641689" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831114446.png" alt="image-20200620104641689" style="zoom:67%;" />
 
 8. 刷新权限
 
@@ -109,7 +109,7 @@ net start mysql
 
 按照下图进行操作：
 
-<img src="MySQL基础学习.assets\image-20200620105514100.png" alt="image-20200620105514100" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831114447.png" alt="image-20200620105514100" style="zoom:80%;" />
 
 最后使用`exit`命令退出就可以了。
 
@@ -119,7 +119,7 @@ net start mysql
 
 1. 首先安装云盘压缩包中的navicat。
 
-<img src="MySQL基础学习.assets\image-20200620113012315.png" alt="image-20200620113012315" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831114448.png" alt="image-20200620113012315" style="zoom:80%;" />
 
 2. 在安装完毕之后，点击上图的第二个文件，选中navicat安装目录下的exe文件，打开即可。
 
@@ -380,7 +380,7 @@ CREATE TABLE IF NOT EXISTS `student` (
 
 + Navicat界面显示
 
-![image-20200510092402206](MySQL基础学习.assets/image-20200510092402206.png)
+![image-20200510092402206](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831114449.png)
 
 + 子表（学生表）的外键，必须是主表（年级表）的主键。
 
@@ -620,7 +620,7 @@ VALUES ('2','1','信息技术'),
 
 + 数据库显示
 
-![image-20200512112110594](MySQL基础学习.assets/image-20200512112110594.png)
+![image-20200512112110594](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831114450.png)
 
 + 父类表
 
@@ -660,7 +660,7 @@ WHERE a.`categoryid` = b.`pid`;
 
 + 控制台输出：
 
-![image-20200512113414231](MySQL基础学习.assets/image-20200512113414231.png)
+![image-20200512113414231](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831114451.png)
 
 ### 2.9.5 分页和排序
 
@@ -708,7 +708,7 @@ WHERE `studentNo` = (
 )
 ```
 
-+ ![image-20200518110849024](MySQL基础学习.assets/image-20200518110849024.png)
++ ![image-20200518110849024](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831114452.png)
 + 解决方法：添加关键字`ANY`
 
 ```sql
@@ -790,15 +790,15 @@ SELECT *FROM `testmd5` WHERE `name` = 'wangwu' AND `pwd`= MD5('123');
 
 + 加密后输出：
 
-![image-20200518114004995](MySQL基础学习.assets/image-20200518114004995.png)
+![image-20200518114004995](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831114453.png)
 
 + 密码那一项在设计表结构时，如果长度较小，出现的问题如下：
 
-![image-20200518113816820](MySQL基础学习.assets/image-20200518113816820.png)
+![image-20200518113816820](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831114454.png)
 
 + 插入记录时加密：
 
-![image-20200518114254759](MySQL基础学习.assets/image-20200518114254759.png)
+![image-20200518114254759](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831114455.png)
 
 # 3 规范设计一个数据库
 
@@ -837,19 +837,19 @@ SELECT *FROM `testmd5` WHERE `name` = 'wangwu' AND `pwd`= MD5('123');
 + 第一范式（1NF）
   + 要求数据库表的每一列都是不可分割的原子数据项。
 
-![image-20200512093731143](MySQL基础学习.assets/image-20200512093731143.png)
+![image-20200512093731143](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831114456.png)
 
 + 第二范式（2NF）
   + 满足第一范式。
   + 每张表只做一件事情（需要确保数据库表中的每一列都和主键相关，而不能只与主键的某一部分相关（主要针对联合主键而言）。）。
 
-![image-20200512094525286](MySQL基础学习.assets/image-20200512094525286.png)
+![image-20200512094525286](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831114457.png)
 
 + 第三范式（3NF）
   + 满足第二范式。
   + 确保数据表中的每一列数据都和主键直接相关，而不能间接相关。
 
-![image-20200512095100671](MySQL基础学习.assets/image-20200512095100671.png)
+![image-20200512095100671](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831114458.png)
 
 3. 规范性和性能的均衡问题
 
@@ -982,7 +982,7 @@ http://blog.codinglabs.org/articles/theory-of-mysql-index.html6
 
 **数据库驱动**
 
-<img src="MySQL基础学习.assets/image-20200615220510921.png" alt="image-20200615220510921" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831114459.png" alt="image-20200615220510921" style="zoom:80%;" />
 
 程序会通过数据库驱动和数据库进行信息交互。
 
@@ -990,7 +990,7 @@ sun公司为了简化开发人员对于数据库的操作，提供了统一的�
 
 对于开发人员，我们只需要掌握JDBC的操作即可。
 
-<img src="MySQL基础学习.assets/image-20200615220907821.png" alt="image-20200615220907821" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831114500.png" alt="image-20200615220907821" style="zoom:80%;" />
 
 ## 6.1 第一个JDBC程序
 

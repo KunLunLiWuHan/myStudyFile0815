@@ -8,13 +8,13 @@
 
 复杂分布式体系结构中的应用程序有数十个依赖关系，每个依赖关系在某个时候不可避免地失败。
 
-<img src="SpringCloud学习3-Hystrix.assets/image-20200820155139706.png" alt="image-20200820155139706" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111523.png" alt="image-20200820155139706" style="zoom:67%;" />
 
-<img src="SpringCloud学习3-Hystrix.assets/image-20200820155211411.png" alt="image-20200820155211411" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111524.png" alt="image-20200820155211411" style="zoom:80%;" />
 
 （2）Hystrix概述
 
-<img src="SpringCloud学习3-Hystrix.assets/image-20200820155400019.png" alt="image-20200820155400019" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111525.png" alt="image-20200820155400019" style="zoom:80%;" />
 
 （3）作用
 
@@ -28,7 +28,7 @@ https://github.com/Netflix/Hystrix/wiki/How-To-Use
 
 https://github.com/Netflix/Hystrix
 
-<img src="SpringCloud学习3-Hystrix.assets/image-20200820155548307.png" alt="image-20200820155548307" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111526.png" alt="image-20200820155548307" style="zoom:80%;" />
 
 2、重要概念
 
@@ -60,7 +60,7 @@ https://github.com/Netflix/Hystrix
 
 项目结构：
 
-<img src="SpringCloud学习3-Hystrix.assets/image-20200820161243888.png" alt="image-20200820161243888" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111527.png" alt="image-20200820161243888" style="zoom:50%;" />
 
 1、添加pom
 
@@ -166,7 +166,7 @@ public class PaymentController {
 
 （1）开启Jmeter，来20000个并发压死8001，20000个请求都去访问paymentInfo_TimeOut服务。  
 
-<img src="SpringCloud学习3-Hystrix.assets/image-20200820161640997.png" alt="image-20200820161640997" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111528.png" alt="image-20200820161640997" style="zoom:67%;" />
 
 （2）再来一个访问：http://localhost:8001/payment/hystrix/ok/5/http://localhost:8001/payment/hystrix/timeout/5
 
@@ -270,7 +270,7 @@ public class OrderHystrixController {
 
 ​		同样，在高并发的情况下，消费者cloud-consumer-feign-hystrix-order80再去访问上面的网址时，会处于转圈等待状态或者消费端报超时错误。
 
-<img src="SpringCloud学习3-Hystrix.assets/image-20200820163338776.png" alt="image-20200820163338776" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111529.png" alt="image-20200820163338776" style="zoom:80%;" />
 
 （2）故障的原因
 
@@ -348,13 +348,13 @@ public class PaymentService {
 }
 ```
 
-<img src="SpringCloud学习3-Hystrix.assets/image-20200820191229510.png" alt="image-20200820191229510" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111530.png" alt="image-20200820191229510" style="zoom:50%;" />
 
 3、测试
 
 ​		先启动cloud-eureka-Server7001，再启动cloud-provider-hystrix-payment8001，输入网址http://localhost:8001/payment/hystrix/ok/5，正常显示，输入网址http://localhost:8001/payment/hystrix/timeout/5，会进行异常处理（服务降级）界面的返回。
 
-<img src="SpringCloud学习3-Hystrix.assets/image-20200820191722977.png" alt="image-20200820191722977" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111531.png" alt="image-20200820191722977" style="zoom:50%;" />
 
 ​		在业务类中制造了两个异常：
 
@@ -432,7 +432,7 @@ public class OrderHystrixController {
 
 ​		先启动cloud-eureka-Server7001，再启动cloud-provider-hystrix-payment8001，最后启动cloud-consumer-feign-hystrix-order80，输入网址：http://localhost/consumer/payment/hystrix/timeout/5，浏览器显示：
 
-<img src="SpringCloud学习3-Hystrix.assets/image-20200820202149957.png" alt="image-20200820202149957" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111532.png" alt="image-20200820202149957" style="zoom:80%;" />
 
 在客户端可以实现服务的降级。
 
@@ -485,17 +485,17 @@ public class OrderHystrixController {
 
 （1）全局代码配置的说明
 
-<img src="SpringCloud学习3-Hystrix.assets/image-20200820203751490.png" alt="image-20200820203751490" style="zoom: 50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111533.png" alt="image-20200820203751490" style="zoom: 50%;" />
 
 （2）@DefaultProperties的说明
 
-<img src="SpringCloud学习3-Hystrix.assets/image-20200820204029288.png" alt="image-20200820204029288" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111534.png" alt="image-20200820204029288" style="zoom:67%;" />
 
 2、测试
 
 ​		先启动cloud-eureka-Server7001，再启动cloud-provider-hystrix-payment8001，最后启动cloud-consumer-feign-hystrix-order80，输入网址：http://localhost/consumer/payment/hystrix/timeout/5，浏览器显示：
 
-<img src="SpringCloud学习3-Hystrix.assets/image-20200820204135278.png" alt="image-20200820204135278" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111535.png" alt="image-20200820204135278" style="zoom:67%;" />
 
 ### 5、通配服务降级
 
@@ -517,7 +517,7 @@ public class OrderHystrixController {
 
 项目结构
 
-<img src="SpringCloud学习3-Hystrix.assets/image-20200820210551308.png" alt="image-20200820210551308" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111536.png" alt="image-20200820210551308" style="zoom:50%;" />
 
 （1）添加实现PaymentFeignClientService接口的PaymentFallbackService类
 
@@ -562,11 +562,11 @@ public interface PaymentHystrixService {
 
 ​		先启动cloud-eureka-Server7001，再启动cloud-provider-hystrix-payment8001，最后启动cloud-consumer-feign-hystrix-order80，输入网址：http://localhost/consumer/payment/hystrix/ok/31，浏览器可以正常显示，故意关闭服务提供者cloud-provider-hystrix-payment8001，浏览器显示：
 
-<img src="SpringCloud学习3-Hystrix.assets/image-20200820210931428.png" alt="image-20200820210931428" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111537.png" alt="image-20200820210931428" style="zoom:67%;" />
 
 ​		此时服务端cloud-provider-hystrix-payment8001已经down了，但是我们做了服务降级处理，让客户端在服务端不可用时也会获得提示信息，而不会挂起（用户重试等操作）耗死服务器。
 
-<img src="SpringCloud学习3-Hystrix.assets/image-20200820211131458.png" alt="image-20200820211131458" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111538.png" alt="image-20200820211131458" style="zoom:50%;" />
 
 ## 4、服务熔断
 
@@ -574,7 +574,7 @@ public interface PaymentHystrixService {
 
 断路器：就是家里的保险丝。
 
-<img src="SpringCloud学习3-Hystrix.assets/image-20200820211320113.png" alt="image-20200820211320113" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111539.png" alt="image-20200820211320113" style="zoom:67%;" />
 
 论文：https://martinfowler.com/bliki/CircuitBreaker.html
 
@@ -610,7 +610,7 @@ public String paymentCircuitBreaker_fallback(@PathVariable("id") Integer id) {
 
 配置该参数的原因（同时也是官网的步骤）：
 
-<img src="SpringCloud学习3-Hystrix.assets/image-20200820212915781.png" alt="image-20200820212915781" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111540.png" alt="image-20200820212915781" style="zoom:67%;" />
 
 2、修改com.xiaolun.springcloud.controller.PaymentController
 
@@ -630,7 +630,7 @@ public String paymentCircuitBreaker(@PathVariable("id") Integer id) {
 
 ​		先启动cloud-eureka-Server7001，再启动cloud-provider-hystrix-payment8001，输入正确网址：http://localhost:8001/payment/circuit/31，浏览器端能够正常显示，输入错误地址：http://localhost:8001/payment/circuit/-31，浏览器显示：
 
-<img src="SpringCloud学习3-Hystrix.assets/image-20200820213332479.png" alt="image-20200820213332479" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111541.png" alt="image-20200820213332479" style="zoom:80%;" />
 
 ​		首先经过多次输入错误地址后，然后慢慢输入正确的地址，发现刚开始不满足条件，就算是正确的访问地址也不能进行访问，需要慢慢的恢复链路。
 
@@ -646,7 +646,7 @@ public String paymentCircuitBreaker(@PathVariable("id") Integer id) {
 
 2、断路器开始起作用的情况
 
-<img src="SpringCloud学习3-Hystrix.assets/image-20200820213639942.png" alt="image-20200820213639942" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111542.png" alt="image-20200820213639942" style="zoom:80%;" />
 
 3、熔断器开启或者关闭的条件
 
@@ -662,23 +662,23 @@ public String paymentCircuitBreaker(@PathVariable("id") Integer id) {
 
 4、断路器打开之后
 
-<img src="SpringCloud学习3-Hystrix.assets/image-20200820213847570.png" alt="image-20200820213847570" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111543.png" alt="image-20200820213847570" style="zoom:80%;" />
 
 5、All配置
 
-<img src="SpringCloud学习3-Hystrix.assets/image-20200820214028703.png" alt="image-20200820214028703" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111544.png" alt="image-20200820214028703" style="zoom:80%;" />
 
-<img src="SpringCloud学习3-Hystrix.assets/image-20200820214139768.png" alt="image-20200820214139768" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111146.png" alt="image-20200820214139768" style="zoom:80%;" />
 
-<img src="SpringCloud学习3-Hystrix.assets/image-20200820214203693.png" alt="image-20200820214203693" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111545.png" alt="image-20200820214203693" style="zoom:80%;" />
 
-<img src="SpringCloud学习3-Hystrix.assets/image-20200820214221844.png" alt="image-20200820214221844" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111546.png" alt="image-20200820214221844" style="zoom:80%;" />
 
 ## 5、服务监控hystrixDashboard
 
 ### 1、概述
 
-<img src="SpringCloud学习3-Hystrix.assets/image-20200820214350794.png" alt="image-20200820214350794" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111547.png" alt="image-20200820214350794" style="zoom:80%;" />
 
 ### 2、新建仪表盘9001
 
@@ -686,7 +686,7 @@ public String paymentCircuitBreaker(@PathVariable("id") Integer id) {
 
 项目结构：
 
-<img src="SpringCloud学习3-Hystrix.assets/image-20200820220851607.png" alt="image-20200820220851607" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111548.png" alt="image-20200820220851607" style="zoom:50%;" />
 
 1、添加pom
 
@@ -775,7 +775,7 @@ public class HystrixDashboardMain9001 {
 
 不然，就会报出下面的错误：
 
-<img src="SpringCloud学习3-Hystrix.assets/image-20200820220211562.png" alt="image-20200820220211562" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111549.png" alt="image-20200820220211562" style="zoom:80%;" />
 
 5、测试
 
@@ -791,14 +791,14 @@ public class HystrixDashboardMain9001 {
 
 （2）整图说明1
 
-<img src="SpringCloud学习3-Hystrix.assets/image-20200820221037379.png" alt="image-20200820221037379" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111550.png" alt="image-20200820221037379" style="zoom:80%;" />
 
 （3）整图说明2
 
-<img src="SpringCloud学习3-Hystrix.assets/image-20200820221104557.png" alt="image-20200820221104557" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111551.png" alt="image-20200820221104557" style="zoom:80%;" />
 
 2、application.yml小叶子形状消失的解决方法。
 
-<img src="SpringCloud学习3-Hystrix.assets/image-20200820221554743.png" alt="image-20200820221554743" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111552.png" alt="image-20200820221554743" style="zoom:50%;" />
 
-<img src="SpringCloud学习3-Hystrix.assets/image-20200820221739162.png" alt="image-20200820221739162" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111553.png" alt="image-20200820221739162" style="zoom:50%;" />

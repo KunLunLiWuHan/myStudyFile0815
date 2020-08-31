@@ -287,7 +287,7 @@ public class Test02 {
 
 + 当将另一个项目中的相同的包复制到该项目下时，会发生找不到相应的包的错误，需要进行更新操作，具体参考解决问题标签（“spring boot”下）。
 
-<img src="Mybatis学习.assets/image-20200618182035765.png" alt="image-20200618182035765" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831113529.png" alt="image-20200618182035765" style="zoom:80%;" />
 
 + 上面这个图片反映的是`mapper.xml`文佳的位置，以及对应的在properties文件中配置的位置。
 
@@ -1905,7 +1905,7 @@ INSERT INTO `teacher` VALUES ('1', '秦老师');
 
 **项目整体结构**
 
-<img src="Mybatis学习.assets/image-20200605002608234.png" alt="image-20200605002608234" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831113530.png" alt="image-20200605002608234" style="zoom:80%;" />
 
 ## 3.2 多对一的处理
 
@@ -1919,7 +1919,7 @@ select s.id,s.name,t.name  from student s,teacher t where s.tid = t.id;
 
 使用sql命令后的控制台结果：
 
-<img src="Mybatis学习.assets/image-20200605002508323.png" alt="image-20200605002508323" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831113531.png" alt="image-20200605002508323" style="zoom:80%;" />
 
 1. **创建实体类**
 
@@ -2274,11 +2274,11 @@ Mybatis中包含了一个非常强大的查询缓存特性，它可以非常方�
 
 3. **查看输出日志**
 
-<img src="Mybatis学习.assets/image-20200609180125152.png" alt="image-20200609180125152" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831113532.png" alt="image-20200609180125152" style="zoom:80%;" />
 
 **缓存失效的情况：**
 
-![image-20200609180550357](Mybatis学习.assets/image-20200609180550357.png)
+![image-20200609180550357](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831113533.png)
 
 **总结：**
 
@@ -2335,7 +2335,7 @@ Mybatis中包含了一个非常强大的查询缓存特性，它可以非常方�
     }
 ```
 
-![image-20200609181758935](Mybatis学习.assets/image-20200609181758935.png)
+![image-20200609181758935](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831113534.png)
 
 + 报错问题
 
@@ -2346,7 +2346,7 @@ java.io.NotSerializableException: com.xiaolun.pojo.User
 
 ## 4.3 缓存原理
 
-<img src="Mybatis学习.assets/image-20200609182049834.png" alt="image-20200609182049834" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831113535.png" alt="image-20200609182049834" style="zoom:80%;" />
 
 ## 4.5 自定义缓存Ehcache
 

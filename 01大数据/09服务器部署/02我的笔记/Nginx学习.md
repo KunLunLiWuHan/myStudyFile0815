@@ -203,7 +203,7 @@ proxy_pass http://39.107.140.8:8080;
 
 3、重新加载nginx
 
-​		针对nginx中conf/nginx.conf文件改动后，不使用重启操作，使用重新加载操作来完成系统的重启。
+针对nginx中conf/nginx.conf文件改动后，不使用重启操作，使用重新加载操作来完成系统的重启。
 
 ```shell
 ./sbin/nginx -s reload 
@@ -690,25 +690,25 @@ upstream myserver{
 
 本测试的高可用环境如下：
 
-（1）两台Nginx，一主一备：39.96.161.64和39.107.140.8。
+（1）两台Nginx，一主一备：192.168.10.101和192.168.10.102。
 
-（2）一台tomcat服务器：39.107.140.8。
+（2）一台tomcat服务器：192.168.10.101。
 
 ## 2、Keepalived+nginx实现主从模式
 
 1、介绍
 
-​		`keepalived`是集群管理中保证集群高可用的一个服务组件，可以用来防止单点故障。
+`keepalived`是集群管理中保证集群高可用的一个服务组件，可以用来防止单点故障。
 
-​		`keepalived`的作用是检测web服务器的状态，如果有一台web服务器死机，或工作出现故障，`keepalived`将检测到，并将单点故障的web服务器从系统中剔除，当web服务器工作正常后`keepalived`自动将web服务器加入到服务器群中，这些工作全部自动完成，不需要人工干预，需要人工做的就是修复故障的web服务器。
+`keepalived`的作用是检测web服务器的状态，如果有一台web服务器死机，或工作出现故障，`keepalived`将检测到，并将单点故障的web服务器从系统中剔除，当web服务器工作正常后`keepalived`自动将web服务器加入到服务器群中，这些工作全部自动完成，不需要人工干预，需要人工做的就是修复故障的web服务器。
 
 2、工作原理
 
-​		`keepalived`是以虚拟路由冗余协议（VRRP：Virtual Router Redundancy Protocol）协议为实现基础的。
+`keepalived`是以虚拟路由冗余协议（VRRP：Virtual Router Redundancy Protocol）协议为实现基础的。
 
-​		该协议可以认为是实现路由器高可用的协议，即将N台提供相同功能的路由去组成一个路由器组，这个组里面有一个master和多个backup，master上面有一个对外提供服务vip(该路由器所在局域网内其他机器默认路由为该vip)，master会发组播，当backup收不到VRRP包时就认为master宕机了，这时就需要根据VRRP的优先级来选举一个backup当master.
+该协议可以认为是实现路由器高可用的协议，即将N台提供相同功能的路由去组成一个路由器组，这个组里面有一个master和多个backup，master上面有一个对外提供服务vip(该路由器所在局域网内其他机器默认路由为该vip)，master会发组播，当backup收不到VRRP包时就认为master宕机了，这时就需要根据VRRP的优先级来选举一个backup当master.
 
-​		`keepalived`主要有三个模块，分别是core、check和VRRP。core模块为`keepalived`的核心，主要负责进程的启动、维护以及全局配置文件的加载和解析，check模块负责健康检查，包括常见的各种检查方式。VRRP是用来实现VRRP协议的。
+`keepalived`主要有三个模块，分别是core、check和VRRP。core模块为`keepalived`的核心，主要负责进程的启动、维护以及全局配置文件的加载和解析，check模块负责健康检查，包括常见的各种检查方式。VRRP是用来实现VRRP协议的。
 
 ### 3、keepalived的安装
 
@@ -750,6 +750,7 @@ vrrp_instance VI_1 {
         auth_type PASS 
         auth_pass 1111 #主从密码一致
     } 
+    
     virtual_ipaddress {  #设置vip,可以设置多个换行即可
         192.168.0.106 // VRRP H 虚拟地址 
     } 
@@ -758,7 +759,7 @@ vrrp_instance VI_1 {
 
 4、添加检测脚本
 
-​		`keepalived`是通过检查`keepalived`进程是否存在来判断服务器是否宕机，如果`keepalived`进程在，但是`Nginx`进程不在了，那么`keepalived`不会做主备切换，所以我们需要写一个脚本来监控`Nginx`进程是否存在，如果不存在就将其杀掉。
+`keepalived`是通过检查`keepalived`进程是否存在来判断服务器是否宕机，如果`keepalived`进程在，但是`Nginx`进程不在了，那么`keepalived`不会做主备切换，所以我们需要写一个脚本来监控`Nginx`进程是否存在，如果不存在就将其杀掉。
 
 ```bash
 #在/usr/local/src目录下添加,名字：nginx_check.sh
@@ -789,22 +790,15 @@ vrrp_script chk_http_port {
 } 
 ```
 
-```
-./sbin/nginx -c conf/nginx1.conf 
-./sbin/nginx -c conf/nginx1.conf -s stop
-./sbin/nginx -s stop
-service keepalived start
-vim /etc/keepalived/keepalived.conf 
-ps -ef|grep nginx
 
 
- track_script {
-        chk_http_port
-    }
-    
-    /usr/local/src/nginx_check.sh
-    
-    firewall-cmd --direct --permanent --add-rule ipv4 filter INPUT 0 --in-interface eth0 --destination 224.0.0.18 --protocol vrrp -j ACCEPT
-    ip addr |grep  192.168.200.16
+
+
+```shell
+#!/bin/bash
+A=`ps -C nginx--no-header |wc -l`  
+if [ $A -eq 0];then               
+       service keepalived stop   
+fi
 ```
 

@@ -1,6 +1,6 @@
 # 1 介绍
 
-​		数据可视化：借助图形化手段，把数据由冰冷的数字转换成图形，揭示数据中蕴含的规律和道理。
+数据可视化：借助图形化手段，把数据由冰冷的数字转换成图形，揭示数据中蕴含的规律和道理。
 
 官网地址：https://echarts.apache.org/zh/index.html。
 
@@ -10,7 +10,7 @@
 
 **项目结构**
 
-<img src="Echarts学习.assets\image-20200707230149211.png" alt="image-20200707230149211" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831125627.png" alt="image-20200707230149211" style="zoom:80%;" />
 
 **index.html代码**
 
@@ -70,13 +70,13 @@
 
 + 控制台输出访问：http://localhost:8080/index.html，将会显示下面的界面：
 
-<img src="Echarts学习.assets\image-20200707230326448.png" alt="image-20200707230326448" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831125628.png" alt="image-20200707230326448" style="zoom:80%;" />
 
 # 2 线性图
 
 1. 对于折线图中的smooth属性的查询过程如下：
 
-<img src="Echarts学习.assets\image-20200708074552331.png" alt="image-20200708074552331" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831125629.png" alt="image-20200708074552331" style="zoom:80%;" />
 
 ​		我们了解到：该属性表示曲线是否平滑曲线显示。
 
@@ -92,7 +92,7 @@ stack属性默认值为null，使用时通过系列名称指定（serial中的na
 
 **项目结构**
 
-<img src="Echarts学习.assets\image-20200708083901866.png" alt="image-20200708083901866" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831125630.png" alt="image-20200708083901866" style="zoom:80%;" />
 
 **前端代码**
 
@@ -187,5 +187,5 @@ stack属性默认值为null，使用时通过系列名称指定（serial中的na
 
 前端界面显示：
 
-<img src="Echarts学习.assets\image-20200708084016483.png" alt="image-20200708084016483" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831125631.png" alt="image-20200708084016483" style="zoom:80%;" />
 

@@ -29,7 +29,7 @@ layui.use(['layer', 'form'], function(){
 
 + 首先引入样式及核心文件：
 
-<img src="Layui学习.assets/image-20200618113412358.png" alt="image-20200618113412358" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130130.png" alt="image-20200618113412358" style="zoom:67%;" />
 
 ```html
 <!--layui/css/layui.css表示 Layui中内置样式-->
@@ -95,7 +95,7 @@ layui.use(['layer', 'form'], function(){
 
 # 4 按钮
 
-<img src="Layui学习.assets/image-20200618114105855.png" alt="image-20200618114105855" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130131.png" alt="image-20200618114105855" style="zoom:80%;" />
 
 + `class="layui-btn"`，建立一个基础按钮。通过追加格式为`layui-btn-{type}`的`class`来定义其它按钮风格，即将`button`和`i`标签组合组成字体图标。`layui-icon-rate-solid`为图标标志。
 

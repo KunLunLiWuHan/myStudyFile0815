@@ -81,7 +81,7 @@ spring.datasource.password=123
 
 **目录结构**
 
-<img src="MybatisPlus学习.assets/image-20200610223305130.png" alt="image-20200610223305130" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831113203.png" alt="image-20200610223305130" style="zoom:80%;" />
 
 传统的方式为`pojo-dao(连接mybatis，还有十分繁琐的配置mapper.xml文件)-service-controller`，现在的连接步骤如下：
 
@@ -169,7 +169,7 @@ mybatis-plus.configuration.log-impl=org.apache.ibatis.logging.stdout.StdOutImpl
 
 + 再次测试，控制台输出：
 
-![image-20200610223820462](MybatisPlus学习.assets/image-20200610223820462.png)
+![image-20200610223820462](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831113204.png)
 
 配置完成之后，后面的学习就需要注意这个自动生成的SQL了。
 
@@ -190,7 +190,7 @@ mybatis-plus.configuration.log-impl=org.apache.ibatis.logging.stdout.StdOutImpl
     }
 ```
 
-<img src="MybatisPlus学习.assets/image-20200611080348185.png" alt="image-20200611080348185" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831113205.png" alt="image-20200611080348185" style="zoom:80%;" />
 
 ### 3.1.1 主键生成策略
 
@@ -248,7 +248,7 @@ snowflake是Twitter开源的分布式ID生成算法，结果是一个long型的I
     }
 ```
 
-<img src="MybatisPlus学习.assets/image-20200611083318814.png" alt="image-20200611083318814" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831113206.png" alt="image-20200611083318814" style="zoom:80%;" />
 
 ### 3.2.1 自动填充
 
@@ -258,7 +258,7 @@ snowflake是Twitter开源的分布式ID生成算法，结果是一个long型的I
 
 1. 在表中新增字段create_time update_time。
 
-<img src="MybatisPlus学习.assets/image-20200611090708479.png" alt="image-20200611090708479" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831113207.png" alt="image-20200611090708479" style="zoom:80%;" />
 
 设置默认值：CURRENT_TIMESTAMP，就可以实现创建时为当前时间，但是更新时也为当前时间，且更新时创建时间不变。
 
@@ -273,7 +273,7 @@ private Date updateTime;
 
 1. 删除数据库的默认值。
 
-<img src="MybatisPlus学习.assets/image-20200611091114210.png" alt="image-20200611091114210" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831113208.png" alt="image-20200611091114210" style="zoom:80%;" />
 
 2. **实体类字段上需要增加注解**
 
@@ -313,7 +313,7 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
 + 进行测试时，可以完成更新和插入时的时间改变的操作。
 + 遇到`Date`类型插入到`mysql`中出现时间不一致的问题，是因为时区的问题，将.`properties`文件中的`serverTimezone`其改为`CTT（Asia&Shanghai）`即可。
 
-<img src="MybatisPlus学习.assets/image-20200611093822334.png" alt="image-20200611093822334" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831113209.png" alt="image-20200611093822334" style="zoom:80%;" />
 
 ### 3.2.2 乐观锁
 
@@ -343,7 +343,7 @@ public class MyMetaObjectHandler implements MetaObjectHandler {
 
 1. **给数据库增加`version`字段**
 
-<img src="MybatisPlus学习.assets/image-20200611110505504.png" alt="image-20200611110505504" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831113210.png" alt="image-20200611110505504" style="zoom:80%;" />
 
 默认值设置为1就可以了。
 
@@ -370,7 +370,7 @@ public class MybatisConfig {
 }
 ```
 
-![image-20200611111302679](MybatisPlus学习.assets/image-20200611111302679.png)
+![image-20200611111302679](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831113211.png)
 
 4. **测试**
 
@@ -387,7 +387,7 @@ public class MybatisConfig {
     }
 ```
 
-![image-20200611112017324](MybatisPlus学习.assets/image-20200611112017324.png)
+![image-20200611112017324](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831113212.png)
 
 
 
@@ -409,7 +409,7 @@ public class MybatisConfig {
     }
 ```
 
-<img src="MybatisPlus学习.assets/image-20200611112623416.png" alt="image-20200611112623416" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831113213.png" alt="image-20200611112623416" style="zoom:80%;" />
 
 ## 3.3 select查询
 
@@ -470,7 +470,7 @@ public class MybatisConfig {
 
 1. **数据表中增加一个`deleted`字段**
 
-<img src="MybatisPlus学习.assets/image-20200611115615780.png" alt="image-20200611115615780" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831113214.png" alt="image-20200611115615780" style="zoom:80%;" />
 
 2. **实体类中增加相应字段**
 
@@ -505,11 +505,11 @@ mybatis-plus.global-config.db-config.logic-not-delete-value= 0
 
 + 走的是更新操作，并不是删除操作，此时控制台输出
 
-<img src="MybatisPlus学习.assets/image-20200611121310990.png" alt="image-20200611121310990" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831113215.png" alt="image-20200611121310990" style="zoom:80%;" />
 
 + 数据表显示
 
-<img src="MybatisPlus学习.assets/image-20200611121347908.png" alt="image-20200611121347908" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831113216.png" alt="image-20200611121347908" style="zoom:80%;" />
 
 # 4 性能分析插件
 
@@ -549,7 +549,7 @@ spring.profiles.active=dev
     }
 ```
 
-<img src="MybatisPlus学习.assets/image-20200611122459207.png" alt="image-20200611122459207" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831113217.png" alt="image-20200611122459207" style="zoom: 50%;" />
 
 # 5 条件构造器 Wrapper
 
@@ -569,7 +569,7 @@ spring.profiles.active=dev
     }
 ```
 
-<img src="MybatisPlus学习.assets/image-20200611160103477.png" alt="image-20200611160103477" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831113218.png" alt="image-20200611160103477" style="zoom:80%;" />
 
 **测试2**
 
@@ -586,9 +586,7 @@ spring.profiles.active=dev
     }
 ```
 
-<img src="MybatisPlus学习.assets/image-20200611160533816.png" alt="image-20200611160533816" style="zoom:80%;" />
-
-
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831113219.png" alt="image-20200611160533816" style="zoom:80%;" />
 
 **测试3**
 
@@ -604,7 +602,7 @@ spring.profiles.active=dev
     }
 ```
 
-<img src="MybatisPlus学习.assets/image-20200611161824820.png" alt="image-20200611161824820" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831113220.png" alt="image-20200611161824820" style="zoom:80%;" />
 
 **测试4**
 
@@ -623,7 +621,7 @@ spring.profiles.active=dev
     }
 ```
 
-<img src="MybatisPlus学习.assets/image-20200611162802493.png" alt="image-20200611162802493" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831113221.png" alt="image-20200611162802493" style="zoom:80%;" />
 
 **测试5**
 
@@ -641,7 +639,7 @@ spring.profiles.active=dev
     }
 ```
 
-<img src="MybatisPlus学习.assets/image-20200611163052811.png" alt="image-20200611163052811" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831113222.png" alt="image-20200611163052811" style="zoom:80%;" />
 
 **测试6**
 
@@ -659,7 +657,7 @@ spring.profiles.active=dev
     }
 ```
 
-<img src="MybatisPlus学习.assets/image-20200611163233223.png" alt="image-20200611163233223" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831113223.png" alt="image-20200611163233223" style="zoom:80%;" />
 
 # 6 代码自动生成器
 
@@ -683,7 +681,7 @@ spring.profiles.active=dev
 
 2. **在测试的包中书写main方法**
 
-<img src="MybatisPlus学习.assets/image-20200611171457359.png" alt="image-20200611171457359" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831113224.png" alt="image-20200611171457359" style="zoom:80%;" />
 
 ```java
 //代码自动生成器
@@ -758,7 +756,7 @@ public class generatorCode  {
 
 + 代码输出
 
-<img src="MybatisPlus学习.assets/image-20200611171525650.png" alt="image-20200611171525650" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831113225.png" alt="image-20200611171525650" style="zoom:80%;" />
 
 
 

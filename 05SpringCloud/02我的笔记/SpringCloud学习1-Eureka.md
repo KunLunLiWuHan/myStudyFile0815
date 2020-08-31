@@ -25,15 +25,15 @@ JUC+JWM+git、github+Nginx+RabbitMQ
 
 2. 京东系统网络架构
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200709215645948.png" alt="image-20200709215645948" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104119.png" alt="image-20200709215645948" style="zoom:80%;" />
 
 3. 微服务技术栈
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200709220006945.png" alt="image-20200709220006945" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104120.png" alt="image-20200709220006945" style="zoom:80%;" />
 
 3. 主要学习的技术
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200709215907790.png" alt="image-20200709215907790" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104121.png" alt="image-20200709215907790" style="zoom:80%;" />
 
 ## 1.1 Boot和Cloud版本选型
 
@@ -41,25 +41,25 @@ JUC+JWM+git、github+Nginx+RabbitMQ
 
 网址：https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.0-Release-Notes
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200709215432199.png" alt="image-20200709215432199" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104122.png" alt="image-20200709215432199" style="zoom:80%;" />
 
 2. 二者的版本依赖
 
 网址：https://spring.io/projects/spring-cloud#overview
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200709220301841.png" alt="image-20200709220301841" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104123.png" alt="image-20200709220301841" style="zoom:80%;" />
 
 **更详细的版本对应方法**
 
 网址：https://start.spring.io/actuator/info
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200709220754277.png" alt="image-20200709220754277" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104124.png" alt="image-20200709220754277" style="zoom:80%;" />
 
 3. 依赖关系确定
 
 同时使用boot和cloud，需要照顾cloud，应该由cloud来确定boot版本。
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200709221224242.png" alt="image-20200709221224242" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104125.png" alt="image-20200709221224242" style="zoom:80%;" />
 
 因此，定稿版为：
 
@@ -89,31 +89,31 @@ Mysql 5.7及以上
 
 1. 创建项目
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200709225304456.png" alt="image-20200709225304456" style="zoom: 50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104126.png" alt="image-20200709225304456" style="zoom: 50%;" />
 
 2. 确定字符编码
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200709230044133.png" alt="image-20200709230044133" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104127.png" alt="image-20200709230044133" style="zoom:50%;" />
 
 3. 注解生效激活
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200709230242581.png" alt="image-20200709230242581" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104128.png" alt="image-20200709230242581" style="zoom:50%;" />
 
 4. Java编译版本选8
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200709230424600.png" alt="image-20200709230424600" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104129.png" alt="image-20200709230424600" style="zoom:50%;" />
 
 5. File Type过滤
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200709230741761.png" alt="image-20200709230741761" style="zoom: 50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104130.png" alt="image-20200709230741761" style="zoom: 50%;" />
 
 5. Maven跳过单元测试
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200709233325879.png" alt="image-20200709233325879" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104131.png" alt="image-20200709233325879" style="zoom:50%;" />
 
 6. 父工程创建完成后，执行`mvn:install`将父工程发布到仓库中方便子工程继承。
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200709233547164.png" alt="image-20200709233547164" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104132.jpg" alt="image-20200709233547164" style="zoom:80%;" />
 
 ## 2.1 子模块cloud-provider-payment8001
 
@@ -128,13 +128,13 @@ Mysql 5.7及以上
 controller。
 ```
 
-<img src="SpringCloud学习1-Eureka.assets\支付消费模块图.jpg" alt="支付消费模块图" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104133.png" alt="支付消费模块图" style="zoom:80%;" />
 
 ### 2.1.1 业务类
 
 **项目结构**
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200710110140113.png" alt="image-20200710110140113" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104134.jpg" alt="image-20200710110140113" style="zoom:50%;" />
 
 #### 	1、sql
 
@@ -271,7 +271,7 @@ public class PaymentController {
 
 此时，只启动`cloud-provider-payment8001`进行测试：
 
-<img src="SpringCloud学习1-Eureka.assets/image-20200817204454064.png" alt="image-20200817204454064" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104135.png" alt="image-20200817204454064" style="zoom:50%;" />
 
 （1）查询测试：
 
@@ -302,7 +302,7 @@ public class PaymentController {
 
 ## 2.2 子模块cloud-consumer-order80
 
-<img src="SpringCloud学习1-Eureka.assets\支付消费模块图2.jpg" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104136.png" style="zoom:80%;" />
 
 ​		因为这里是消费者类,主要是消费,那么就没有service和dao,需要调用payment模块的方法。并且这里还没有微服务的远程调用，那么如果要调用另外一个模块，则需要使用基本的`api`调用。
 
@@ -310,7 +310,7 @@ public class PaymentController {
 
 官网地址：https://docs.spring.io/spring-framework/docs/5.2.2.RELEASE/javadoc-api/org/springframework/web/client/RestTemplate.html
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200710172957810.png" alt="image-20200710172957810" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104137.png" alt="image-20200710172957810" style="zoom:80%;" />
 
 **使用**
 
@@ -323,7 +323,7 @@ public class PaymentController {
 
 **项目结构**
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200710180122741.png" alt="image-20200710180122741" style="zoom: 67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104138.png" alt="image-20200710180122741" style="zoom: 67%;" />
 
 #### 1、配置类
 
@@ -374,7 +374,7 @@ http://localhost/consumer/payment/create?serial=4
 
 会遇到后端接收不到数据的情况，需要在接收的实体类中添加`@RequestBody`注解。
 
-<img src="SpringCloud学习1-Eureka.assets/image-20200817211053494.png" alt="image-20200817211053494" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104139.png" alt="image-20200817211053494" style="zoom:67%;" />
 
 这是因为：@RequestBody用来接收前端传递给后端的json字符（以对象形式），@RequestPrama 用来接收单个字段，而非对象实体。
 
@@ -388,17 +388,17 @@ http://localhost/consumer/payment/get/2
 
 注意：IDEA中现在有两个应用（80/8001端口）正在运行，需要开启下面的模式（RunDashBoard）。
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200710180404792.png" alt="image-20200710180404792" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104140.png" alt="image-20200710180404792" style="zoom:67%;" />
 
 ### 2.2.1 工程重构
 
 ​		即新建一个模块,将重复代码抽取到一个公共模块中。
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200710180913574.png" alt="image-20200710180913574" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104141.png" alt="image-20200710180913574" style="zoom:80%;" />
 
 **项目结构**
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200710182332505.png" alt="image-20200710182332505" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104142.png" alt="image-20200710182332505" style="zoom:80%;" />
 
 1. 创建子模块，将上图的**重复代码**抽取到一个公共模块中。
 2. 将其他模块中的公共类给删除。
@@ -418,7 +418,7 @@ http://localhost/consumer/payment/get/2
 
 目前工程样图
 
-<img src="SpringCloud学习1-Eureka.assets/image-20200817212833490.png" alt="image-20200817212833490" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104143.png" alt="image-20200817212833490" style="zoom:80%;" />
 
 # 3 服务注册中心Eureka
 
@@ -438,7 +438,7 @@ http://localhost/consumer/payment/get/2
 
 ​		在服务注册和发现中，有一个注册中心，当服务启动的时候，会把当前自己服务器的信息（比如服务器地址通讯地址等）以别名的方式注册到注册中心上，另一方（消费者|服务提供者）以该别名的方式去注册中心上获取到实际的服务通讯地址，然后再实现本地PC掉用RPC远程调用，框架的核心设计思想：在于注册中心，因为使用注册中心管理每个服务与服务之间关系的依赖（服务治理理念）。在任何rpc远程框架中，都会有一个注册中心（存放服务地址相关信息（接口地址））。
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200710203333432.png" alt="image-20200710203333432" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104144.png" alt="image-20200710203333432" style="zoom:67%;" />
 
 ​		Eureka包含两个组件：Eureka server 和 Eureka client。
 
@@ -448,7 +448,7 @@ http://localhost/consumer/payment/get/2
 
 4、Eureka集群原理说明
 
-<img src="SpringCloud学习1-Eureka.assets/image-20200817213414837.png" alt="image-20200817213414837" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104145.png" alt="image-20200817213414837" style="zoom: 50%;" />
 
 ​		微服务RPC远程服务最核心的是高可用，假如注册中心只有一个（only one），当其出现故障时，会导致整个服务环境不可用。因此，我们要搭建Eureka注册中心集群，实现负载均衡+故障容错。
 
@@ -464,7 +464,7 @@ http://localhost/consumer/payment/get/2
 
 **项目结构**
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200710210142133.png" alt="image-20200710210142133" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104146.png" alt="image-20200710210142133" style="zoom: 50%;" />
 
 1. **配置文件**
 
@@ -507,7 +507,7 @@ http://localhost:7001/
 
 当弹出下面的界面表示自己配置成功。
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200710210516155.png" alt="image-20200710210516155" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104147.png" alt="image-20200710210516155" style="zoom: 50%;" />
 
 ### 2、支付微服务cloud-provider-payment8001入驻Eureka Server
 
@@ -529,9 +529,9 @@ eureka:
 
 ​		首先要启动Eureka Server（cloud-eureka-Server7001）,然后再启动入驻的微服务，在http://localhost:7001/界面上显示：
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200710212025424.png" alt="image-20200710212025424" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104148.png" alt="image-20200710212025424" style="zoom:80%;" />
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200710212210166.png" alt="image-20200710212210166" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104149.png" alt="image-20200710212210166" style="zoom:80%;" />
 
 ### 3、消费微服务cloud-consumer-order80入驻Eureka Server
 
@@ -539,7 +539,7 @@ eureka:
 
 测试
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200710212728918.png" alt="image-20200710212728918" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104150.png" alt="image-20200710212728918" style="zoom:80%;" />
 
 ​		网址输入：
 
@@ -551,7 +551,7 @@ http://localhost/consumer/payment/get/5
 
 ## 3.3 Eureka集群
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200710213356545.png" alt="image-20200710213356545" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104151.png" alt="image-20200710213356545" style="zoom: 50%;" />
 
 ​		
 
@@ -564,13 +564,13 @@ http://localhost/consumer/payment/get/5
 
 ​		微服务RPC远程服务调用的核心是**高可用**，因此我们需要搭建Eureka注册中心集群，实现负载均衡和故障容错（**互相注册，相互守望**）。
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200710213751807.png" alt="image-20200710213751807" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104152.png" alt="image-20200710213751807" style="zoom: 50%;" />
 
 ### 3.3.1 集群环境搭建
 
 1、项目结构
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200710221421792.png" alt="image-20200710221421792" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104153.png" alt="image-20200710221421792" style="zoom:80%;" />
 
 2、步骤如下
 
@@ -580,7 +580,7 @@ http://localhost/consumer/payment/get/5
 
 （3）修改主机的host配置文件。
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200710214917046.png" alt="image-20200710214917046" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104154.png" alt="image-20200710214917046" style="zoom: 50%;" />
 
 ​		实现不同的端口映射到同一个地址,其中cloud-eureka-Server7001是一号机，cloud-eureka-Server7001是二号机。通过端口不同，来模拟两台机器。
 
@@ -636,13 +636,13 @@ http://eureka7002.com:7002/
 
 发现指向7001这个服务注册中心。
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200710220928437.png" alt="image-20200710220928437" style="zoom: 50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104155.png" alt="image-20200710220928437" style="zoom: 50%;" />
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200710220957443.png" alt="image-20200710220957443" style="zoom: 50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104156.png" alt="image-20200710220957443" style="zoom: 50%;" />
 
 ### 3.3.2 订单支付两微服务注册到Eureka集群中
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200710221341719.png" alt="image-20200710221341719" style="zoom: 50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104157.png" alt="image-20200710221341719" style="zoom: 50%;" />
 
 1、主要修改cloud-consumer-order80和cloud-provider-payment8001这两个模块中的yml文件，将单机版的入驻地址改成集群版的。
 
@@ -659,7 +659,7 @@ service-url:
 
 输入地址：http://eureka7001.com:7001/,显示：
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200710222516903.png" alt="image-20200710222516903" style="zoom: 50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104158.png" alt="image-20200710222516903" style="zoom: 50%;" />
 
 ​		同时输入地址：http://localhost/consumer/payment/get/5，能够完成正常查询。
 
@@ -667,15 +667,15 @@ service-url:
 
 1、实现的效果如下图：
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200710222932761.png" alt="image-20200710222932761" style="zoom: 50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104159.png" alt="image-20200710222932761" style="zoom: 50%;" />
 
 2、项目结构
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200710225850657.png" alt="image-20200710225850657" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104200.png" alt="image-20200710225850657" style="zoom:50%;" />
 
 3、创建`cloud-provider-payment8002`模块，pom文件，yml文件和主启动类的书写都复制`cloud-provider-payment8001`模块的，但是注意端口号要改成8002，服务名称不用改，用一样的。
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200710230054643.png" alt="image-20200710230054643" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104201.png" alt="image-20200710230054643" style="zoom: 50%;" />
 
 ​		此时访问`cloud-consumer-order80`模块,发现并没有负载均衡到两个payment，模块中,而是只访问`8001`模块，我们需要在`cloud-consumer-order80`模块中，不要将订单访问地址写死(不然，订单只会访问8001端口。此时，订单每次访问时，都会去Eureka中获取地址，轮询交替获取，这样就达到负载均衡的效果了)，而是写成下面的形式：
 
@@ -688,11 +688,11 @@ service-url:
 
 ​		访问网址：http://localhost/consumer/payment/get/5，将会报出下面的错误：
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200710225304566.png" alt="image-20200710225304566" style="zoom: 50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104202.png" alt="image-20200710225304566" style="zoom: 50%;" />
 
 ​		这是因为`cloud-provider-payment8001`和`cloud-provider-payment8002`两个微服务向外暴露的是微服务名称，而不是地址和端口，订单服务识别不了。我们需要使用该注解赋予`RestTemplate`负载均衡的能力。
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200710225152520.png" alt="image-20200710225152520" style="zoom: 50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104203.png" alt="image-20200710225152520" style="zoom: 50%;" />
 
 ```java
 @Bean
@@ -727,7 +727,7 @@ http://eureka7002.com:7002/
 
 （此时仍然是Eureka的集群模式，cloud-eureka-Server7001和cloud-eureka-Server7002在同时启动）显示：
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200711085118751.png" alt="image-20200711085118751" style="zoom: 50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104204.png" alt="image-20200711085118751" style="zoom: 50%;" />
 
 ### 3.3.4 服务发现Discovery
 
@@ -768,11 +768,11 @@ http://eureka7002.com:7002/
 
 ​		首先，启动EurekaServer，即cloud-eureka-Server7001/7002服务，再启动`cloud-provider-payment8001`主启动类，需要稍微等一会，然后输入：http://localhost:8001/payment/discovery，显示：
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200711091556145.png" alt="image-20200711091556145" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104205.png" alt="image-20200711091556145" style="zoom: 50%;" />
 
 控制台输出：
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200711091756809.png" alt="image-20200711091756809" style="zoom: 50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104206.png" alt="image-20200711091756809" style="zoom: 50%;" />
 
 ### 3.3.5 Eureka自我保护
 
@@ -782,7 +782,7 @@ http://eureka7002.com:7002/
 
 ​		如果Eureka Server首页看到这段提时，说明Eureka 进入到了保护模式：
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200711092443912.png" alt="image-20200711092443912" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104207.png" alt="image-20200711092443912" style="zoom: 50%;" />
 
 ​		一句话：某时刻某一个微服务不能用了，Eureka不会立即处理，依旧会对该微服务的信息进行保存，输入CAP里面的AP分支。
 
@@ -790,7 +790,7 @@ http://eureka7002.com:7002/
 
 ​		默认情况下，如果EurekaServer在一定的时间内没有接收到某个微服务实例的心跳，EurekaServer将会注销该实例（默认90秒），但是当网络分区故障发生的时候（延时，卡顿，拥挤等），微服务和EurekaServer之间就无法正常通讯了，剔除行为就变得十分危险（微服务本身是健康的，不应该注销这个微服务）。Eureka通过自我保护模式来解决上述问题。
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200711093303369.png" alt="image-20200711093303369" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104208.png" alt="image-20200711093303369" style="zoom:80%;" />
 
 #### 2、禁止自我保护
 
@@ -819,11 +819,11 @@ http://eureka7002.com:7002/
 
 ​		先启动`cloud-eureka-Server7001`,后启动`cloud-provider-payment8001`,输入网址：http://eureka7001.com:7001/，然后关闭`cloud-provider-payment8001`,可以看到服务立即被剔除了。
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200711095924055.png" alt="image-20200711095924055" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104209.png" alt="image-20200711095924055" style="zoom:80%;" />
 
 #### 3、Eureka停更
 
 网址：https://github.com/Netflix/eureka/wiki
 
-<img src="SpringCloud学习1-Eureka.assets\image-20200711100231485.png" alt="image-20200711100231485" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104210.png" alt="image-20200711100231485" style="zoom:80%;" />
 

@@ -6,7 +6,7 @@ Shiro可以完成认证、授权、加密、会话管理、Web集成，缓存等
 
 1. **功能**
 
-<img src="shiro学习.assets/image-20200520090316084.png" alt="image-20200520090316084" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134635.png" alt="image-20200520090316084" style="zoom:80%;" />
 
 + Authentication:身份认证、登录、验证用户是不是拥有相应的身份。
 + Authorization:授权，即授权验证，验证某个已认证的用户是否拥有某个权限，即判断用户能否进行什么操作，如：验证某个用户是否拥有某个角色。
@@ -23,7 +23,7 @@ Shiro可以完成认证、授权、加密、会话管理、Web集成，缓存等
 
 从外部来看Shiro，即从应用程序角度来观察如何使用Shiro完成工作：
 
-<img src="shiro学习.assets/image-20200520091314599.png" alt="image-20200520091314599" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134636.png" alt="image-20200520091314599" style="zoom:80%;" />
 
 + Subject:应用程序直接交互对象是Subject，也就是说Shiro的对外核心就是Subject，Subject代表了当前的用户，这个用户不一定是一个具体的人，与当前应用交互的任何东西都是Subject，如网络爬虫，机器人等，与Subject的所有交互都会委托给SecurityManager，Subject其实就是一个门面，SecurityManager才是真正的执行者。
 + SecurityManager：安全管理器，即所有的与安全相关的操作都会与SecurityManage交互，并且它管理着所有的Subject，可以看出它是Shiro的核心，它负责与Shiro其他的组件进行交互，相当于SpringMVX的DispatcherServlet的角色。
@@ -127,7 +127,7 @@ goodguy = winnebago:drive:eagle5
 
 + 文件目录
 
-<img src="shiro学习.assets/image-20200520110445936.png" alt="image-20200520110445936" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134637.png" alt="image-20200520110445936" style="zoom:67%;" />
 
 3. **java文件**
 
@@ -370,7 +370,7 @@ public class ShiroConfig {
 
 在浏览器输入http://localhost:8080/index.html，弹出界面：
 
-<img src="shiro学习.assets/image-20200520155917223.png" alt="image-20200520155917223" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134638.png" alt="image-20200520155917223" style="zoom:50%;" />
 
 点击上面连接，会跳转到相应的界面：http://localhost:8080/update。
 
@@ -427,11 +427,11 @@ public class ShiroConfig {
 
 浏览器输入：http://localhost:8080/index，跳转到首页：
 
-<img src="shiro学习.assets/image-20200520173449238.png" alt="image-20200520173449238" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134639.png" alt="image-20200520173449238" style="zoom:50%;" />
 
 其中`add`链接所有人都可以进入，`update`设置的需要认证才能进入，此时会跳转到已经编写好的登录页面中：
 
-<img src="shiro学习.assets/image-20200520173631279.png" alt="image-20200520173631279" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134640.png" alt="image-20200520173631279" style="zoom:50%;" />
 
 表明拦截成功。
 
@@ -497,7 +497,7 @@ public class ShiroConfig {
 
 浏览器输入：http://localhost:8080/index，在首页中点击需要认证的链接“update”，会跳转到认证界面：
 
-<img src="shiro学习.assets/image-20200520212713366.png" alt="image-20200520212713366" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134641.png" alt="image-20200520212713366" style="zoom:67%;" />
 
 在输入正确的用户名和密码后，就可以进入到正确的`update`所对应的界面。
 
@@ -690,7 +690,7 @@ public class User {
 
 + 增加权限标签，数据库为：
 
-<img src="shiro学习.assets/image-20200521185630363.png" alt="image-20200521185630363" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134642.png" alt="image-20200521185630363" style="zoom:67%;" />
 
 2. **修改controller**
 
@@ -777,17 +777,17 @@ public class UserRealm extends AuthorizingRealm {
 
 输入网址：http://localhost:8080/index,进入登录界面，点击add链接，跳转到如下登录界面：
 
-<img src="shiro学习.assets/image-20200521182444678.png" alt="image-20200521182444678" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134643.png" alt="image-20200521182444678" style="zoom:67%;" />
 
 输入正确信息后，登录成功，进行界面的跳转：
 
-<img src="shiro学习.assets/image-20200521182633264.png" alt="image-20200521182633264" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134644.png" alt="image-20200521182633264" style="zoom:67%;" />
 
 再点击`add`链接按钮，由于`root`用户只有`update`权限，所以
 
 会跳转到授权`update.html`界面,反之，跳转到如下未授权界面：
 
-<img src="shiro学习.assets/image-20200521182716173.png" alt="image-20200521182716173" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134645.png" alt="image-20200521182716173" style="zoom:67%;" />
 
 ## 3.6 Shiro整合Thymeleaf
 
@@ -866,10 +866,10 @@ public class UserRealm extends AuthorizingRealm {
 
 浏览器输入：http://localhost:8080/index，进入首页：
 
-<img src="shiro学习.assets/image-20200521192814084.png" alt="image-20200521192814084" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134646.png" alt="image-20200521192814084" style="zoom:50%;" />
 
 点击登录进入登录界面，输入`root`用户的账号，进入到登录后的界面：
 
-<img src="shiro学习.assets/image-20200521192932687.png" alt="image-20200521192932687" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134647.png" alt="image-20200521192932687" style="zoom:50%;" />
 
 可以发现，登录链接消失了。达到了预期的效果。

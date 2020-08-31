@@ -6,11 +6,11 @@
 
 在分布式前，单机单库没问题。分布式以后，从1：1 -> 1:N -> N: N。
 
-<img src="SpringCloud学习9-Seata.assets/image-20200825090047341.png" alt="image-20200825090047341" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112756.png" alt="image-20200825090047341" style="zoom:50%;" />
 
 
 
-<img src="SpringCloud学习9-Seata.assets/image-20200825090055739.png" alt="image-20200825090055739" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112757.png" alt="image-20200825090055739" style="zoom:50%;" />
 
 总结：一次业务操作需要跨多个数据源或需要跨多个系统进行远程调用，就会产生分布式事务问题。
 
@@ -24,15 +24,15 @@
 http://seata.io/zh-cn/
 ```
 
-<img src="SpringCloud学习9-Seata.assets/image-20200825090323910.png" alt="image-20200825090323910" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112758.png" alt="image-20200825090323910" style="zoom:67%;" />
 
 3、作用
 
 （1）一个典型的分布式事务过程
 
-<img src="SpringCloud学习9-Seata.assets/image-20200825090417756.png" alt="image-20200825090417756" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112759.png" alt="image-20200825090417756" style="zoom:67%;" />
 
-<img src="SpringCloud学习9-Seata.assets/image-20200825090424225.png" alt="image-20200825090424225" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112800.png" alt="image-20200825090424225" style="zoom:67%;" />
 
 （2）术语-分布式事务处理过程的-ID+三组件模型
 
@@ -56,7 +56,7 @@ https://github.com/seata/seata/releases
 
 （2）全局@GlobalTransactional，其中SEATA的分布式交易解决方案如下图：
 
-<img src="SpringCloud学习9-Seata.assets/image-20200825090849185.png" alt="image-20200825090849185" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112801.png" alt="image-20200825090849185" style="zoom:67%;" />
 
 ## 2、Seata-Server安装
 
@@ -181,7 +181,7 @@ create table `lock_table` (
 
 数据库的结构：
 
-<img src="SpringCloud学习9-Seata.assets/image-20200825173154906.png" alt="image-20200825173154906" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112802.png" alt="image-20200825173154906" style="zoom:67%;" />
 
 3、修改D:\03Enviroment\20seata\seata-server-1.3.0\seata\conf\registry.conf
 
@@ -210,7 +210,7 @@ registry {
 
 先启动本地nacos，端口号为8848，再启动bin/seata-server.bat（在接下来的测试中，我们要保证两个服务都处在正常运行状态），界面显示为：
 
-<img src="SpringCloud学习9-Seata.assets/image-20200825173701790.png" alt="image-20200825173701790" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112803.png" alt="image-20200825173701790" style="zoom:67%;" />
 
 假如Seata没启动，IDEA中会有下面的报错：
 
@@ -222,7 +222,7 @@ no available server to connect
 
 1、分布式业务说明
 
-<img src="SpringCloud学习9-Seata.assets/image-20200825174001173.png" alt="image-20200825174001173" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112804.png" alt="image-20200825174001173" style="zoom:50%;" />
 
 下订单-->扣库存-->减账户（余额）。
 
@@ -312,17 +312,17 @@ CREATE TABLE `undo_log` (
 
 最终效果：
 
-<img src="SpringCloud学习9-Seata.assets/image-20200825174718365.png" alt="image-20200825174718365" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112805.png" alt="image-20200825174718365" style="zoom:67%;" />
 
 ## 4、新建订单seata-order-service2001
 
 项目结构：
 
-<img src="SpringCloud学习9-Seata.assets/image-20200825174837602.png" alt="image-20200825174837602" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112806.png" alt="image-20200825174837602" style="zoom:50%;" />
 
 代码书写步骤：
 
-<img src="SpringCloud学习9-Seata.assets/image-20200825174932816.png" alt="image-20200825174932816" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112807.png" alt="image-20200825174932816" style="zoom:50%;" />
 
 1、添加pom
 
@@ -933,7 +933,7 @@ public class SeataOrderMainApp2001 {
 
 项目结构：
 
-<img src="SpringCloud学习9-Seata.assets/image-20200825180815083.png" alt="image-20200825180815083" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112808.png" alt="image-20200825180815083" style="zoom:50%;" />
 
 1、添加pom
 
@@ -1170,7 +1170,7 @@ public class SeataStorageServiceApplication2002 {
 
 项目结构：
 
-<img src="SpringCloud学习9-Seata.assets/image-20200825181738978.png" alt="image-20200825181738978" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112809.png" alt="image-20200825181738978" style="zoom:50%;" />
 
 1、pom文件与seata-order-service2001同。
 
@@ -1432,13 +1432,13 @@ public class SeataAccountMainApp2003 {
 
 ​		依次启动nacos，seata-server，seata-order-service2001/2002/2003，在nacos中会看到下面的注册情况。
 
-<img src="SpringCloud学习9-Seata.assets/image-20200825184210118.png" alt="image-20200825184210118" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112810.png" alt="image-20200825184210118" style="zoom:67%;" />
 
 ### 测试1-正常情况
 
 1、数据库初始情况
 
-<img src="SpringCloud学习9-Seata.assets/image-20200825182502986.png" alt="image-20200825182502986" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112811.png" alt="image-20200825182502986" style="zoom:50%;" />
 
 2、正常下单
 
@@ -1449,11 +1449,11 @@ public class SeataAccountMainApp2003 {
 http://localhost:2001/order/create?userId=1&productId=1&count=10&money=100
 ```
 
-<img src="SpringCloud学习9-Seata.assets/image-20200825183859800.png" alt="image-20200825183859800" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112812.png" alt="image-20200825183859800" style="zoom:50%;" />
 
 此时数据库情况：
 
-<img src="SpringCloud学习9-Seata.assets/image-20200825182654590.png" alt="image-20200825182654590" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112813.png" alt="image-20200825182654590" style="zoom:50%;" />
 
 ### 测试2-超时异常，没加@GlobalTransactional
 
@@ -1477,7 +1477,7 @@ try {
 
 2、添加下面的注解
 
-<img src="SpringCloud学习9-Seata.assets/image-20200825183112807.png" alt="image-20200825183112807" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112814.png" alt="image-20200825183112807" style="zoom:50%;" />
 
 3、故障情况
 
@@ -1507,32 +1507,32 @@ try {
 
 1、介绍
 
-<img src="SpringCloud学习9-Seata.assets/image-20200825183458621.png" alt="image-20200825183458621" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112815.png" alt="image-20200825183458621" style="zoom:50%;" />
 
-<img src="SpringCloud学习9-Seata.assets/image-20200825183507216.png" alt="image-20200825183507216" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112816.png" alt="image-20200825183507216" style="zoom:50%;" />
 
 2、流程
 
 （1）一阶段加载
 
-<img src="SpringCloud学习9-Seata.assets/image-20200825183608852.png" alt="image-20200825183608852" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112817.png" alt="image-20200825183608852" style="zoom:67%;" />
 
-<img src="SpringCloud学习9-Seata.assets/image-20200825183615453.png" alt="image-20200825183615453" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112818.png" alt="image-20200825183615453" style="zoom:50%;" />
 
 （2）二阶段提交
 
-<img src="SpringCloud学习9-Seata.assets/image-20200825183635986.png" alt="image-20200825183635986" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112819.png" alt="image-20200825183635986" style="zoom:50%;" />
 
 （3）二阶段回滚
 
-<img src="SpringCloud学习9-Seata.assets/image-20200825183658804.png" alt="image-20200825183658804" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112820.png" alt="image-20200825183658804" style="zoom:50%;" />
 
 
 
-<img src="SpringCloud学习9-Seata.assets/image-20200825183705297.png" alt="image-20200825183705297" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112821.png" alt="image-20200825183705297" style="zoom:67%;" />
 
 （4）补充
 
-<img src="SpringCloud学习9-Seata.assets/image-20200825183804062.png" alt="image-20200825183804062" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112822.png" alt="image-20200825183804062" style="zoom:67%;" />
 
-<img src="SpringCloud学习9-Seata.assets/image-20200825183815575.png" alt="image-20200825183815575" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112823.png" alt="image-20200825183815575" style="zoom:67%;" />

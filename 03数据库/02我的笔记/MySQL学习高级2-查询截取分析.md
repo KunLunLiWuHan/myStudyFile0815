@@ -79,11 +79,11 @@ select _ from table where exists(subquery);
 
 将主查询的数据，放到子查询中做条件验证，根据验证结果来决定主查询的数据结果是否得以保留。
 
-<img src="MySQL学习高级2-查询截取分析.assets/image-20200829202119559.png" alt="image-20200829202119559" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831115440.png" alt="image-20200829202119559" style="zoom:80%;" />
 
 ### 2、order by关键字优化
 
-<img src="MySQL学习高级2-查询截取分析.assets/image-20200829202320394.png" alt="image-20200829202320394" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831115441.png" alt="image-20200829202320394" style="zoom:80%;" />
 
 #### 1、建表SQL
 
@@ -113,7 +113,7 @@ EXPLAIN SELECT * FROM tb1A WHERE age>20 ORDER BY age;
 EXPLAIN SELECT * FROM tb1A WHERE age>20 ORDER BY age,birth;
 ```
 
-<img src="MySQL学习高级2-查询截取分析.assets/image-20200829203305696.png" alt="image-20200829203305696" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831115442.png" alt="image-20200829203305696" style="zoom:80%;" />
 
 （2）使用到索引，但是出现filesort的情况
 
@@ -122,7 +122,7 @@ EXPLAIN SELECT * FROM tb1A WHERE age>20 ORDER BY birth;
 EXPLAIN SELECT * FROM tb1A WHERE age>20 ORDER BY birth,age;
 ```
 
-<img src="MySQL学习高级2-查询截取分析.assets/image-20200829203431800.png" alt="image-20200829203431800" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831115443.png" alt="image-20200829203431800" style="zoom:80%;" />
 
 （3）SQL支持两种方式的扫描
 
@@ -141,7 +141,7 @@ order by 语句使用索引最左前列
 
 由于单路是后出的，总体而言好于双路，其存在问题如下：
 
-<img src="MySQL学习高级2-查询截取分析.assets/image-20200829204131189.png" alt="image-20200829204131189" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831115444.png" alt="image-20200829204131189" style="zoom:80%;" />
 
 优化策略：
 
@@ -152,7 +152,7 @@ order by 语句使用索引最左前列
 
 （2）双路排序
 
-<img src="MySQL学习高级2-查询截取分析.assets/image-20200829204003218.png" alt="image-20200829204003218" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831115445.png" alt="image-20200829204003218" style="zoom:80%;" />
 
 3、提高order by的速度
 
@@ -168,13 +168,13 @@ order by 语句使用索引最左前列
 
 4、小总结
 
-<img src="MySQL学习高级2-查询截取分析.assets/image-20200829204525863.png" alt="image-20200829204525863" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831115446.png" alt="image-20200829204525863" style="zoom:80%;" />
 
 #### 3、group by关键字优化
 
 和order by类似。
 
-<img src="MySQL学习高级2-查询截取分析.assets/image-20200829204601369.png" alt="image-20200829204601369" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831115447.png" alt="image-20200829204601369" style="zoom:80%;" />
 
 ## 2、慢查询日志
 
@@ -206,11 +206,11 @@ show VARIABLES LIKE '%slow_query_log%';
 set global slow_query_log=1;
 ```
 
-<img src="MySQL学习高级2-查询截取分析.assets/image-20200829205250189.png" alt="image-20200829205250189" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831115448.png" alt="image-20200829205250189" style="zoom:67%;" />
 
 一般不建议永久开启慢查询日志，如果一定要做，只能修改配置文件my.cnf：
 
-<img src="MySQL学习高级2-查询截取分析.assets/image-20200829205400637.png" alt="image-20200829205400637" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831115449.png" alt="image-20200829205400637" style="zoom:80%;" />
 
 2、查看慢时间的阈值
 
@@ -228,7 +228,7 @@ set global long_query_time=3;
 
 此时，虽然修改变量`long_query_time`，但是查询该变量`long_query_time`的值仍为10。
 
-<img src="MySQL学习高级2-查询截取分析.assets/image-20200829205819044.png" alt="image-20200829205819044" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831115450.png" alt="image-20200829205819044" style="zoom:80%;" />
 
 此时，我们需要重新开一个会话，或者使用下面的命令来查询，：
 
@@ -238,7 +238,7 @@ show GLOBAL VARIABLES LIKE '%long_query_time%';
 
 查询慢日志文件，可以看到下面的情况：
 
-<img src="MySQL学习高级2-查询截取分析.assets/image-20200829211304163.png" alt="image-20200829211304163" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831115451.png" alt="image-20200829211304163" style="zoom:80%;" />
 
 注：
 
@@ -274,15 +274,15 @@ log_output=FILE;
 mysqldumpslow --help
 ```
 
-<img src="MySQL学习高级2-查询截取分析.assets/image-20200829211937491.png" alt="image-20200829211937491" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831115452.png" alt="image-20200829211937491" style="zoom:67%;" />
 
 （2）参数
 
-<img src="MySQL学习高级2-查询截取分析.assets/image-20200829211958271.png" alt="image-20200829211958271" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831115453.png" alt="image-20200829211958271" style="zoom:67%;" />
 
 （3）常用命令 工作常用参考
 
-<img src="MySQL学习高级2-查询截取分析.assets/image-20200829212020983.png" alt="image-20200829212020983" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831115454.png" alt="image-20200829212020983" style="zoom:80%;" />
 
 
 
@@ -292,11 +292,11 @@ mysqldumpslow --help
 
 函数和存储过程的区别：函数有返回值，存储过程没有。
 
-<img src="MySQL学习高级2-查询截取分析.assets/image-20200829212117018.png" alt="image-20200829212117018" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831115455.png" alt="image-20200829212117018" style="zoom:50%;" />
 
 ### 2、操作-向表里插入1000w条数据
 
-<img src="MySQL学习高级2-查询截取分析.assets/image-20200829212156934.png" alt="image-20200829212156934" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831115456.png" alt="image-20200829212156934" style="zoom:67%;" />
 
 1、建表SQL
 
@@ -330,14 +330,14 @@ deptno  mediumint unsigned not null default 0,/*部门编号*/
 
 2、设置参数log_bin_trust_function_creators
 
-<img src="MySQL学习高级2-查询截取分析.assets/image-20200829213405835.png" alt="image-20200829213405835" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831115457.png" alt="image-20200829213405835" style="zoom:80%;" />
 
 ```mysql
 show variables like 'log_bin_trust_function_creators';
 set global log_bin_trust_function_creators = 1;
 ```
 
-<img src="MySQL学习高级2-查询截取分析.assets/image-20200829213538501.png" alt="image-20200829213538501" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831115458.png" alt="image-20200829213538501" style="zoom:80%;" />
 
 3、创建函数，保证每条数据都不同
 
@@ -431,7 +431,7 @@ delimiter ;
 CALL insert_dept(100,10);
 ```
 
-<img src="MySQL学习高级2-查询截取分析.assets/image-20200829221540765.png" alt="image-20200829221540765" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831115459.png" alt="image-20200829221540765" style="zoom:67%;" />
 
 （2）向员工表emp中插入50万条数据
 
@@ -447,13 +447,13 @@ delimiter ;
 CALL insert_emp(1,1000);
 ```
 
-<img src="MySQL学习高级2-查询截取分析.assets/image-20200829222358825.png" alt="image-20200829222358825" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831115500.png" alt="image-20200829222358825" style="zoom:80%;" />
 
 ## 4、show profile
 
 ### 1、介绍
 
-<img src="MySQL学习高级2-查询截取分析.assets/image-20200829222513009.png" alt="image-20200829222513009" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831115501.png" alt="image-20200829222513009" style="zoom:80%;" />
 
 mysql用来分析当前会话中语句执行的资源消耗情况。
 
@@ -467,7 +467,7 @@ show variables like 'profiling';
 set profiling=on;
 ```
 
-<img src="MySQL学习高级2-查询截取分析.assets/image-20200829222756609.png" alt="image-20200829222756609" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831115502.png" alt="image-20200829222756609" style="zoom:80%;" />
 
 2、运行SQL
 
@@ -482,18 +482,18 @@ select * from emp limit 10;
 show profiles;
 ```
 
-<img src="MySQL学习高级2-查询截取分析.assets/image-20200829223423986.png" alt="image-20200829223423986" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831115503.png" alt="image-20200829223423986" style="zoom:67%;" />
 
 ```mysql
 -- 3 对应show profiles;查询中的query_id
 show profile cpu,block io for query 3;
 ```
 
-<img src="MySQL学习高级2-查询截取分析.assets/image-20200829223520150.png" alt="image-20200829223520150" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831115504.png" alt="image-20200829223520150" style="zoom:80%;" />
 
 其中show profile后面还可以跟其他的参数：
 
-<img src="MySQL学习高级2-查询截取分析.assets/image-20200829223601779.png" alt="image-20200829223601779" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831115505.png" alt="image-20200829223601779" style="zoom:80%;" />
 
 对于上文中查询的结果，我们需要关注那些指标：
 
@@ -502,7 +502,7 @@ show profile cpu,block io for query 3;
 + Copying to tmp table on disk （把内存中临时表复制到磁盘上，十分危险！！！）
 + locked
 
-<img src="MySQL学习高级2-查询截取分析.assets/image-20200829224030561.png" alt="image-20200829224030561" style="zoom: 80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831115506.png" alt="image-20200829224030561" style="zoom: 80%;" />
 
 ## 5、全局查询日志
 
@@ -537,7 +537,7 @@ set global log_output = 'TABLE';
 select * from mysql.general_log;
 ```
 
-<img src="MySQL学习高级2-查询截取分析.assets/image-20200829224908016.png" alt="image-20200829224908016" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831115507.png" alt="image-20200829224908016" style="zoom:80%;" />
 
 推荐使用show profile。
 

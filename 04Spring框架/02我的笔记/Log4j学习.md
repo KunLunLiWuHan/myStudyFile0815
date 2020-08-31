@@ -4,11 +4,11 @@
 
 ​		Log4j（log for java）是一个开源的、轻量级的、用于日志管理的框架。
 
-<img src="Log4j学习.assets/image-20200817140922131.png" alt="image-20200817140922131" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134535.png" alt="image-20200817140922131" style="zoom:80%;" />
 
 ## 2、作用
 
-<img src="Log4j学习.assets/image-20200817141547795.png" alt="image-20200817141547795" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134536.png" alt="image-20200817141547795" style="zoom:80%;" />
 
 ## 3、操作
 
@@ -24,7 +24,7 @@
 + 以什么样的格式，按照日志的优先级，将日志输出到哪里？
 + Appender、Layout、Logger三者之间的关系：
 
-<img src="Log4j学习.assets/image-20200817165157439.png" alt="image-20200817165157439" style="zoom: 80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134537.png" alt="image-20200817165157439" style="zoom: 80%;" />
 
 （2）`#`表示注释
 
@@ -51,25 +51,25 @@ log4j.rootLogger=debug,xiaolun.File,xiaolun.Console
 
 （3）输出源
 
-<img src="Log4j学习.assets/image-20200817163541800.png" alt="image-20200817163541800" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134538.png" alt="image-20200817163541800" style="zoom:80%;" />
 
 当我们修改系统时间，我们会发现对应确实生成了两个文件：
 
-<img src="Log4j学习.assets/image-20200817164404475.png" alt="image-20200817164404475" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134539.png" alt="image-20200817164404475" style="zoom:80%;" />
 
 （4）布局
 
-<img src="Log4j学习.assets/image-20200817163654380.png" alt="image-20200817163654380" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134540.png" alt="image-20200817163654380" style="zoom:80%;" />
 
 （5）常用PatternLayout介绍
 
-<img src="Log4j学习.assets/image-20200817163739077.png" alt="image-20200817163739077" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134541.png" alt="image-20200817163739077" style="zoom:80%;" />
 
 ## 4、代码测试
 
 1、目录结构
 
-<img src="Log4j学习.assets/image-20200817163828412.png" alt="image-20200817163828412" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134542.png" alt="image-20200817163828412" style="zoom:80%;" />
 
 2、添加依赖
 
@@ -102,13 +102,13 @@ public class UserDao {
 
 但我们运行的时候，控制台输出信息如下：
 
-<img src="Log4j学习.assets/image-20200817162527464.png" alt="image-20200817162527464" style="zoom: 67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134543.png" alt="image-20200817162527464" style="zoom: 67%;" />
 
 在本地磁盘中，`D:\\testFile.log`文件中也会生成相应的数据。
 
 ## 5、日志级别的种类
 
-<img src="Log4j学习.assets/image-20200817163337062.png" alt="image-20200817163337062" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134544.png" alt="image-20200817163337062" style="zoom:80%;" />
 
 口诀：打印级别往后靠。
 
@@ -137,7 +137,7 @@ public class UserDao {
 
 控制台输出：
 
-<img src="Log4j学习.assets/image-20200817164227364.png" alt="image-20200817164227364" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134545.png" alt="image-20200817164227364" style="zoom:80%;" />
 
 # 3 多个输出源
 
@@ -152,7 +152,7 @@ log4j.logger.com.xiaolun.UserDao=info,xiaolun.File,xiaolun.Console
 
 控制台输出以info为准：
 
-<img src="Log4j学习.assets/image-20200817165000656.png" alt="image-20200817165000656" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134546.png" alt="image-20200817165000656" style="zoom:80%;" />
 
 口诀：级别取精确，输出为各自。
 
@@ -162,7 +162,7 @@ log4j.logger.com.xiaolun.UserDao=info,xiaolun.File,xiaolun.Console
 
 （1）目录结构
 
-<img src="Log4j学习.assets/image-20200817172624982.png" alt="image-20200817172624982" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134547.png" alt="image-20200817172624982" style="zoom:50%;" />
 
 （2）代码
 

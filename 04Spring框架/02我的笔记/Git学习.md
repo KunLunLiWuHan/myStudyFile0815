@@ -41,13 +41,13 @@
 
 记录文件每次的更新，可以对每个版本做一个快照，或是记录补丁文件，适合个人用。
 
-<img src="Git学习.assets/image-20200414213044563.png" alt="image-20200414213044563" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134043.png" alt="image-20200414213044563" style="zoom:80%;" />
 
 ### 1.1.2 集中版本控制
 
 所有的版本数据都存放到服务器上，协同开发者从服务器上同步更新或上传自己的修改。
 
-<img src="Git学习.assets/image-20200414213213662.png" alt="image-20200414213213662" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134044.png" alt="image-20200414213213662" style="zoom:80%;" />
 
 所有的版本都存在服务器上，用户的本地只有自己以前同步的数据，如果不联网的话，就看不到之前的历史版本，也无法切换版本验证问题，而且，所有数据都存放到单一的服务器上，有很大风险这个服务器会损坏，这样的话就会丢失所有保存的数据，当然，要定期更改备份。代表产品：SVN,CVS,VSS。
 
@@ -55,7 +55,7 @@
 
 所有版本信息仓库全部同步到本地的每个用户，这样就可以在本地查看所有版本历史，可以离线在本地提交，只需联网时push到相应的服务器或其他用户那里。由于每个用户那里保存了所有的版本数据，只要有一个用户的设备没有问题，就可以恢复到所有数据，但这增加了本地存储空间的占用，但每个人拥有全部的代码。代表产品：Git。
 
-<img src="Git学习.assets/image-20200414214113949.png" alt="image-20200414214113949" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134045.png" alt="image-20200414214113949" style="zoom:80%;" />
 
 ## 1.2 Git和SVN区别
 
@@ -83,7 +83,7 @@ Git是分布式版本控制系统，没有中央服务器，每个人的电脑�
 
 安装完成后，在开始菜单中会有Git项，菜单下有三个程序。或者任意文件夹下右键，也可以看到对应的程序。
 
-<img src="Git学习.assets/image-20200414221750120.png" alt="image-20200414221750120" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134046.png" alt="image-20200414221750120" style="zoom:80%;" />
 
 Git Bash：Unix与Linux风格的命令行，使用较多，推荐最多。
 
@@ -130,7 +130,7 @@ git config --global user.email 3493826518@qq.com #邮箱
 
 ​			如果你需要在一个特定的项目中使用不同的名称或者e-mail地址，你可以在该项目中运行命令而不使用--global选项。总之，--global为全局配置，不为某个项目的特定配置。
 
-<img src="Git学习.assets/image-20200414225455568.png" alt="image-20200414225455568" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134047.png" alt="image-20200414225455568" style="zoom:80%;" />
 
 + 查看不同级别的配置文件
 
@@ -146,11 +146,11 @@ git config --global --list
 
 + Git\etc\gitconfig   Git安装目录下的gitconfig  --system系统级。
 
-![image-20200414231037609](Git学习.assets/image-20200414231037609.png)
+![image-20200414231037609](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134048.png)
 
 + C:\Users\Administrator\\.gitconfig(C:\Users\老鼠\\.gitconfig\) 只适用于当前登录用户的配置  --global全局。
 
-<img src="Git学习.assets/image-20200414231251257.png" alt="image-20200414231251257" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134049.png" alt="image-20200414231251257" style="zoom:80%;" />
 
 在这里，可以直接编辑配置文件，通过命令设置后会响应到这里。
 
@@ -160,14 +160,14 @@ git config --global --list
 
 Git本地有三个工作区域：工作目录（Work Directory）、暂存区（Stage/index）和资源库（Repository或Git Directory）。如果再加上远程的git仓库(Remote Directory)就可以分为四个工作区域。文件中四个工作区域之间的转换关系如下：
 
-<img src="Git学习.assets/image-20200414231918875.png" alt="image-20200414231918875" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134050.png" alt="image-20200414231918875" style="zoom:80%;" />
 
 + Work Directory：平时存放项目代码的地方。
 + Stage/index：用于临时存放你的改动，事实上它是一个文件，保存即将提交的文件的列表信息。
 + Repository或Git Directory：是安全存放数据的位置，这里有你提交到所有版本的数据，其中HEAD指向最新放入仓库的版本。
 + Remote Directory：托管代码的服务器，可以简单的认为是你项目中的一台电脑用于远程数据交换。
 
-<img src="Git学习.assets/image-20200414232636447.png" alt="image-20200414232636447" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134051.png" alt="image-20200414232636447" style="zoom:80%;" />
 
 + Directory：用于Git管理的一个目录，也就是一个仓库，包含我们的工作空间和Git的管理空间
 + WorkSpace:需要通过Git进行版本控制的目录和文件，这些目录何文件组成了工作空间。
@@ -183,7 +183,7 @@ Git本地有三个工作区域：工作目录（Work Directory）、暂存区（
 
 因此，git管理的文件有三种状态：已修改（modified）、已暂存（staged）和已提交（committed）。
 
-<img src="Git学习.assets/image-20200414233708972.png" alt="image-20200414233708972" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134052.png" alt="image-20200414233708972" style="zoom:80%;" />
 
 
 
@@ -195,7 +195,7 @@ Git本地有三个工作区域：工作目录（Work Directory）、暂存区（
 
 日常使用只要记住下面6个命令
 
-<img src="Git学习.assets/image-20200414234038217.png" alt="image-20200414234038217" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134053.png" alt="image-20200414234038217" style="zoom:80%;" />
 
 ### 4.1.1 创建本地仓库
 
@@ -272,11 +272,11 @@ doc/*.txt #忽略doc/notes.txt，但不包括doc/server/arch.txt
 
 1、参考下面的配置
 
-<img src="Git学习.assets\image-20200815110632500.png" alt="image-20200815110632500" style="zoom: 80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134054.png" alt="image-20200815110632500" style="zoom: 80%;" />
 
 2、遇到push无法上传的问题
 
-<img src="Git学习.assets\image-20200815110709198.png" alt="image-20200815110709198" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134055.png" alt="image-20200815110709198" style="zoom:67%;" />
 
 解决方法如下：
 
@@ -293,27 +293,27 @@ https://www.cnblogs.com/e0yu/p/9828520.html
 ssh-keygen
 ```
 
-<img src="Git学习.assets/image-20200415090604602.png" alt="image-20200415090604602" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134056.png" alt="image-20200415090604602" style="zoom:80%;" />
 
 + 将公匙信息public key 添加到码云账户中即可。
 
-<img src="Git学习.assets/image-20200415090934092.png" alt="image-20200415090934092" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134057.png" alt="image-20200415090934092" style="zoom:80%;" />
 
 + 使用码云创建一个自己的仓库。
 
-<img src="Git学习.assets/image-20200415091335194.png" alt="image-20200415091335194" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134058.png" alt="image-20200415091335194" style="zoom:80%;" />
 
 许可证：开源是否可以随意转载，开源但是不能商业使用，不能转载等各种限制。
 
-<img src="Git学习.assets/image-20200415091622642.png" alt="image-20200415091622642" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134059.png" alt="image-20200415091622642" style="zoom:80%;" />
 
 + 在本地文件克隆
 
-<img src="Git学习.assets/image-20200415091950277.png" alt="image-20200415091950277" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134100.png" alt="image-20200415091950277" style="zoom:80%;" />
 
 ​															图6.1 使用命令在本地克隆
 
-<img src="Git学习.assets/image-20200415091903564.png" alt="image-20200415091903564" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134101.png" alt="image-20200415091903564" style="zoom:80%;" />
 
 ​															图6.2 克隆到本地的文件目录
 
@@ -327,7 +327,7 @@ https://www.bbsmax.com/A/pRdBOW17zn/
 
 注意：.ssh文件的位置。
 
-<img src="Git学习.assets\image-20200815135657934.png" alt="image-20200815135657934" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134102.png" alt="image-20200815135657934" style="zoom:67%;" />
 
 
 
@@ -336,11 +336,11 @@ https://www.bbsmax.com/A/pRdBOW17zn/
 1. 新建项目，绑定git。
    + 将我们远程的git文件目录拷贝到项目中即可。
 
-<img src="Git学习.assets/image-20200415093148661.png" alt="image-20200415093148661" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134103.png" alt="image-20200415093148661" style="zoom:80%;" />
 
 ​								图7.1 拷贝到Spring Boot文件中的git文件
 
-<img src="Git学习.assets/image-20200415093659460.png" alt="image-20200415093659460" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134104.png" alt="image-20200415093659460" style="zoom:80%;" />
 
 ​										图7.2 Spring Boot界面的图标变化
 
@@ -348,7 +348,7 @@ https://www.bbsmax.com/A/pRdBOW17zn/
 
 2. 修改文件，使用IDEA操作git。
 
-<img src="Git学习.assets/image-20200415094525375.png" alt="image-20200415094525375" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134105.png" alt="image-20200415094525375" style="zoom:80%;" />
 
 ​										图7.3 将文件提交到本地仓库的图形显示
 
@@ -359,7 +359,7 @@ https://www.bbsmax.com/A/pRdBOW17zn/
 
 3. 提交测试。
 
-<img src="Git学习.assets/image-20200415100617120.png" alt="image-20200415100617120" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134106.png" alt="image-20200415100617120" style="zoom:80%;" />
 
 然后在控制台使用命令`git push`上传到远端仓库
 
@@ -400,7 +400,7 @@ git branch -dr[remote/branch]
 
 1. 将下载软件解压后选择下面的文件：
 
-<img src="Git学习.assets\image-20200620122038139.png" alt="image-20200620122038139" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134107.png" alt="image-20200620122038139" style="zoom:80%;" />
 
 管理员运行到安装阶段就可以了，不要打开之后点击关闭。
 
@@ -443,7 +443,7 @@ C:\Users\34938\AppData\Local\Atlassian\SourceTree
 
 3. 打开SourceTree软件，运行。
 
-<img src="Git学习.assets\image-20200620121317072.png" alt="image-20200620121317072" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134108.png" alt="image-20200620121317072" style="zoom:80%;" />
 
 选择第四个选项，这个前提是基于你已经安装了Git之后。
 

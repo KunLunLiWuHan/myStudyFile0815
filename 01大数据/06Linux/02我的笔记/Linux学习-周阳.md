@@ -42,7 +42,7 @@ http://mirrors.sohu.com/centos/6/isos/
 
 5、和windows区别
 
-<img src="Linux学习-周阳.assets/image-20200826094229157.png" alt="image-20200826094229157" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132451.png" alt="image-20200826094229157" style="zoom:67%;" />
 
 ## 2、远程登录与SSH服务
 
@@ -73,7 +73,7 @@ service sshd status
 /etc/init.d/sshd status
 ```
 
-<img src="Linux学习-周阳.assets/image-20200826104539303.png" alt="image-20200826104539303" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132452.png" alt="image-20200826104539303" style="zoom:67%;" />
 
 （2）重启和关闭
 
@@ -111,7 +111,7 @@ man date
 date --help
 ```
 
-<img src="Linux学习-周阳.assets/image-20200826152212437.png" alt="image-20200826152212437" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132453.png" alt="image-20200826152212437" style="zoom:50%;" />
 
 + NAME  命令的名称和单行描述
 + SYNOPSIS 怎样使用命令
@@ -121,7 +121,7 @@ date --help
 
 2、数字说明
 
-<img src="Linux学习-周阳.assets/image-20200826152348216.png" alt="image-20200826152348216" style="zoom: 67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132454.png" alt="image-20200826152348216" style="zoom: 67%;" />
 
 ### 2、6个终端
 
@@ -136,7 +136,7 @@ Ctrl+Alt+F7
 
 2、查看连接的tty
 
-<img src="Linux学习-周阳.assets/image-20200826152840688.png" alt="image-20200826152840688" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132455.png" alt="image-20200826152840688" style="zoom:67%;" />
 
 3、使用下面的指令查看运行系统运行级别
 
@@ -144,7 +144,7 @@ Ctrl+Alt+F7
 cat /etc/inittab
 ```
 
-<img src="Linux学习-周阳.assets/image-20200826153023392.png" alt="image-20200826153023392" style="zoom: 67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132456.png" alt="image-20200826153023392" style="zoom: 67%;" />
 
 Linux系统有7个运行级别(runlevel)：常用的是3和5
 
@@ -168,20 +168,20 @@ Linux系统有7个运行级别(runlevel)：常用的是3和5
 
 ​		接通电源BIOS自检，按照BIOS中设置的启动设备（通常是硬盘）来启动，操作系统接管硬件以后，首先读入 /boot 目录下的内核文件。
 
-<img src="Linux学习-周阳.assets/image-20200826153225728.png" alt="image-20200826153225728" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132457.png" alt="image-20200826153225728" style="zoom:67%;" />
 
 2、运行init
 
 ​		init 进程是系统所有进程的起点，你可以把它比拟成系统所有进程的老祖宗，没有这个进程，系统中任何进程都不会启动。init 程序首先是需要读取配置文件 /etc/inittab。
 
-<img src="Linux学习-周阳.assets/image-20200826153252617.png" alt="image-20200826153252617" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132458.png" alt="image-20200826153252617" style="zoom:67%;" />
 
 ​		许多程序需要开机启动。它们在Windows叫做"服务"（service），在Linux就叫做"守护进程"（daemon）。init进程的一大任务，就是去运行这些开机启动的程序。
 
 ​		但是，不同的场合需要启动不同的程序，比如用作服务器时，需要启动Apache，用作桌面就不需要。Linux允许为不同的场合，分配不同的开机启动程序，这就叫做"运行级别"（runlevel）。
 ​		也就是说，启动时根据"运行级别"，确定要运行哪些程序。
 
-<img src="Linux学习-周阳.assets/image-20200826153320801.png" alt="image-20200826153320801" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132459.png" alt="image-20200826153320801" style="zoom:67%;" />
 
 3、系统初始化
 
@@ -196,7 +196,7 @@ Linux系统有7个运行级别(runlevel)：常用的是3和5
 
 ​		而rc.sysinit是一个bash shell的脚本，它主要是完成一些系统初始化的工作，rc.sysinit是每一个运行级别都要首先运行的重要脚本它主要完成的工作有：激活交换分区，检查磁盘，加载硬件模块以及其它一些需要优先执行任务。
 
-<img src="Linux学习-周阳.assets/image-20200826153506644.png" alt="image-20200826153506644" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132500.png" alt="image-20200826153506644" style="zoom:67%;" />
 
 4、建立终端
 
@@ -212,7 +212,7 @@ Linux系统有7个运行级别(runlevel)：常用的是3和5
 （3）ssh远程登录
 
 
-<img src="Linux学习-周阳.assets/image-20200826153747565.png" alt="image-20200826153747565" style="zoom: 67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132501.png" alt="image-20200826153747565" style="zoom: 67%;" />
 
 ### 4、关机
 
@@ -247,7 +247,7 @@ Linux系统有7个运行级别(runlevel)：常用的是3和5
 
 ### 2、三种模式
 
-<img src="Linux学习-周阳.assets/image-20200705213239207.png" alt="image-20200705213239207" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132502.png" alt="image-20200705213239207" style="zoom:67%;" />
 
 1、一般模式
 
@@ -309,19 +309,19 @@ q
 
 （1）第一部分
 
-<img src="Linux学习-周阳.assets/image-20200826163216714.png" alt="image-20200826163216714" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132503.png" alt="image-20200826163216714" style="zoom:80%;" />
 
-<img src="Linux学习-周阳.assets/image-20200826163227449.png" alt="image-20200826163227449" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132504.png" alt="image-20200826163227449" style="zoom:67%;" />
 
-<img src="Linux学习-周阳.assets/image-20200826163234737.png" alt="image-20200826163234737" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132505.png" alt="image-20200826163234737" style="zoom:67%;" />
 
 （2）第二部分
 
-<img src="Linux学习-周阳.assets/image-20200826163259120.png" alt="image-20200826163259120" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132506.png" alt="image-20200826163259120" style="zoom:67%;" />
 
 （3）第三部分
 
-<img src="Linux学习-周阳.assets/image-20200826163314357.png" alt="image-20200826163314357" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132507.png" alt="image-20200826163314357" style="zoom:67%;" />
 
 ## 5、用户和用户组
 
@@ -393,7 +393,7 @@ cat /etc/passwd
 
 ​		Linux系统中的每个用户都在/etc/passwd文件中有一个对应的记录行，它记录了这个用户的一些基本属性。
 
-<img src="Linux学习-周阳.assets/image-20200826183209678.png" alt="image-20200826183209678" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132508.png" alt="image-20200826183209678" style="zoom:67%;" />
 
 ​		从上面的例子我们可以看到，/etc/passwd中一行记录对应着一个用户，每行记录又被冒号(:)分隔为7个字段，其格式和具体含义如下：
 
@@ -429,7 +429,7 @@ cat /etc/passwd
 
 韩老师讲授中的图片为：
 
-<img src="Linux学习-周阳.assets/image-20200706084342680.png" alt="image-20200706084342680" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132509.png" alt="image-20200706084342680" style="zoom:67%;" />
 
 3、/etc/shadow
 
@@ -437,7 +437,7 @@ cat /etc/passwd
 cat /etc/shadow
 ```
 
-<img src="Linux学习-周阳.assets/image-20200826183952390.png" alt="image-20200826183952390" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132510.png" alt="image-20200826183952390" style="zoom:67%;" />
 
 ​		由于/etc/passwd文件是所有用户都可读的，如果用户的密码太简单或规律比较明显的话，一台普通的计算机就能够很容易地将它破解，因此对安全性要求较高的Linux系统都把加密后的口令字分离出来，单独存放在一个文件中，这个文件是/etc/shadow文件。 有超级用户才拥有该文件读权限，这就保证了用户密码的安全性。
 
@@ -465,13 +465,13 @@ cat /etc/shadow
 
 韩老师讲授中的图片为：
 
-<img src="Linux学习-周阳.assets/image-20200706084543566.png" alt="image-20200706084543566" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132511.png" alt="image-20200706084543566" style="zoom:67%;" />
 
 4、/etc/group
 
 ​		将用户分组是Linux 系统中对用户进行管理及控制访问权限的一种手段。每个用户都属于某个用户组；一个组中可以有多个用户，一个用户也可以属于不同的组。
 
-<img src="Linux学习-周阳.assets/image-20200706084722297.png" alt="image-20200706084722297" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132512.png" alt="image-20200706084722297" style="zoom:80%;" />
 
 用户组的所有信息都存放在/etc/group文件中。此文件的格式也类似于/etc/passwd文件，由冒号(:)隔开若干个字段，这些字段有：
 
@@ -563,11 +563,11 @@ q        ：离开 less 这个程序；
 
 9、tai-只看尾巴几行
 
-<img src="Linux学习-周阳.assets/image-20200826204941495.png" alt="image-20200826204941495" style="zoom: 67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132513.png" alt="image-20200826204941495" style="zoom: 67%;" />
 
 10、重定向命令
 
-<img src="Linux学习-周阳.assets/image-20200826205019466.png" alt="image-20200826205019466" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132514.png" alt="image-20200826205019466" style="zoom:67%;" />
 
 ### 3、文件权限类
 
@@ -586,7 +586,7 @@ q        ：离开 less 这个程序；
 -rwxrw-r-- 1 root police 1213 Feb 2 09:39 abc.txt
 ```
 
-<img src="Linux学习-周阳.assets/image-20200708170144778.png" alt="image-20200708170144778" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132515.png" alt="image-20200708170144778" style="zoom:80%;" />
 
 ```ini
 0-9位说明
@@ -617,11 +617,11 @@ Feb 2 09:39：文件最后的修改时间。
 chmod 权限值（2进制） 文件/目录
 ```
 
-<img src="Linux学习-周阳.assets/image-20200826230856389.png" alt="image-20200826230856389" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132516.png" alt="image-20200826230856389" style="zoom:67%;" />
 
 同组用户不能创建新文件：
 
-<img src="Linux学习-周阳.assets/image-20200826231129045.png" alt="image-20200826231129045" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132517.png" alt="image-20200826231129045" style="zoom:80%;" />
 
 方法2：通过+、-、=符号来变更权限。
 
@@ -657,7 +657,7 @@ chgrp newgroup(最终目的组)  file(文件或目录)
 
 4、umask
 
-<img src="Linux学习-周阳.assets/image-20200826231443888.png" alt="image-20200826231443888" style="zoom: 80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132518.png" alt="image-20200826231443888" style="zoom: 80%;" />
 
 默认规则：
  文件是666 减去 022等于644，
@@ -677,7 +677,7 @@ chgrp newgroup(最终目的组)  file(文件或目录)
 fdisk -l
 ```
 
-<img src="Linux学习-周阳.assets/image-20200826214809766.png" alt="image-20200826214809766" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132519.png" alt="image-20200826214809766" style="zoom:50%;" />
 
 + s表示scsi硬盘
 
@@ -701,9 +701,9 @@ fdisk -l
 mount 【参数】  设备名称   落地挂载点目录
 ```
 
-<img src="Linux学习-周阳.assets/image-20200826215315098.png" alt="image-20200826215315098" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132520.png" alt="image-20200826215315098" style="zoom:50%;" />
 
-<img src="Linux学习-周阳.assets/image-20200826215342089.png" alt="image-20200826215342089" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132521.png" alt="image-20200826215342089" style="zoom:67%;" />
 
 2、硬盘
 
@@ -716,7 +716,7 @@ df -h
 
 列出文件系统的整体磁盘使用量,检查文件系统的磁盘空间占用情况。
 
-<img src="Linux学习-周阳.assets/image-20200826215531600.png" alt="image-20200826215531600" style="zoom: 67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132522.png" alt="image-20200826215531600" style="zoom: 67%;" />
 
 ### 5、搜索查找类
 
@@ -754,13 +754,13 @@ grep+参数+查找内容+源文件
 
 （1）天字一号进程是所有进程的父进程
 
-<img src="Linux学习-周阳.assets/image-20200826220035004.png" alt="image-20200826220035004" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132523.png" alt="image-20200826220035004" style="zoom:80%;" />
 
 （2）查看进程
 
 （a）ps -aux
 
-<img src="Linux学习-周阳.assets/image-20200826220127383.png" alt="image-20200826220127383" style="zoom: 80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132524.png" alt="image-20200826220127383" style="zoom: 80%;" />
 
 ```shell
 #再利用一个管道符号导向到grep去查找特定的进程,然后再对特定的进程进行操作
@@ -780,13 +780,13 @@ ps -ef
 
 （c）ps显示的信息选项
 
-<img src="Linux学习-周阳.assets/image-20200826220325299.png" alt="image-20200826220325299" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132525.png" alt="image-20200826220325299" style="zoom:67%;" />
 
 2、netstat
 
-<img src="Linux学习-周阳.assets/image-20200826220345987.png" alt="image-20200826220345987" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132526.png" alt="image-20200826220345987" style="zoom:67%;" />
 
-<img src="Linux学习-周阳.assets/image-20200826220351998.png" alt="image-20200826220351998" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132527.png" alt="image-20200826220351998" style="zoom:80%;" />
 
 7、压缩和解压类
 

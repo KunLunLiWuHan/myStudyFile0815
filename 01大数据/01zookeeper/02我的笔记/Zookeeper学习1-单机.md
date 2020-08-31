@@ -6,11 +6,11 @@
 
 结构图：观察者可以理解为客户端。
 
-<img src="Zookeeper学习1-单机.assets\image-20200711105939626.png" alt="image-20200711105939626" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130754.png" alt="image-20200711105939626" style="zoom:80%;" />
 
 ## 1.1 特点
 
-<img src="Zookeeper学习1-单机.assets\image-20200711110715061.png" alt="image-20200711110715061" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130755.png" alt="image-20200711110715061" style="zoom:80%;" />
 
 + Zookeeper：只有一个领导者（Leader）,多个跟随者（Follower）组成的集群。
 + 集群中只要有半数以上的节点能够存活，Zookeeper集群就能够正常工作。
@@ -21,7 +21,7 @@
 
 ## 1.2 数据结构
 
-<img src="Zookeeper学习1-单机.assets\image-20200711111332088.png" alt="image-20200711111332088" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130756.png" alt="image-20200711111332088" style="zoom:80%;" />
 
 ​		Zookeeper数据模型的结构与Unix文件系统很类似，整体上可以看成是一棵树，每个节点称作一个ZNode（（即zookeeper node），一个znode可以有多个子节点。每个ZNode默认能够存储1MB的数据，每个ZNode都可以通过其路径唯一标识，比如/ns1/itcast/mysql/schema1/table1，此处ns-1、itcast、mysql、schema1、table1分别是 根节点、2级节点、3级节点以及4级节点；其中ns-1是itcast的父节点，itcast是ns-1的子 节点，itcast是mysql的父节点，mysql是itcast的子节点，以此类推。
 
@@ -84,7 +84,7 @@ numChildren = 2
 
 ​		在分布式环境下，经常需要对应用/服务进行统一命名，便于识别。例如：IP不容易记住，而域名容易记住。
 
-<img src="Zookeeper学习1-单机.assets\image-20200711111939429.png" alt="image-20200711111939429" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130757.png" alt="image-20200711111939429" style="zoom:80%;" />
 
 ### 2、统一配置管理
 
@@ -97,7 +97,7 @@ numChildren = 2
 
 ​		可将配置信息写入Zookeeper上的一个ZNode，各个客服端服务器监听这个ZNode，一旦ZNode中的数据被修改，Zookeeper将通知到各个客户端配置。
 
-<img src="Zookeeper学习1-单机.assets\image-20200711112530522.png" alt="image-20200711112530522" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130758.png" alt="image-20200711112530522" style="zoom:80%;" />
 
 ### 3、统一集群管理
 
@@ -106,13 +106,13 @@ numChildren = 2
 
 ​		可将节点信息写入Zookeeper上的一个ZNode，监听这个ZNode可以实时获取它的实时状态变化。
 
-<img src="Zookeeper学习1-单机.assets\image-20200711112934810.png" alt="image-20200711112934810" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130759.png" alt="image-20200711112934810" style="zoom:80%;" />
 
 ### 4、软负载均衡
 
 ​		在Zookeeper中记录每台服务器的访问数，让访问数最少的服务器去处理最新的客户端请求。
 
-<img src="Zookeeper学习1-单机.assets\image-20200711113215723.png" alt="image-20200711113215723" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130800.png" alt="image-20200711113215723" style="zoom:80%;" />
 
 # 2 安装和下载
 
@@ -120,7 +120,7 @@ numChildren = 2
 
 下载地址：https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html
 
-<img src="Zookeeper学习1-单机.assets\image-20200711115625280.png" alt="image-20200711115625280" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130801.png" alt="image-20200711115625280" style="zoom:80%;" />
 
 ## 2.2 下载地址
 
@@ -128,7 +128,7 @@ numChildren = 2
 
 下载网址：https://zookeeper.apache.org/releases.html。
 
-<img src="Zookeeper学习1-单机.assets\image-20200711113803762.png" alt="image-20200711113803762" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130802.png" alt="image-20200711113803762" style="zoom:80%;" />
 
 ### 2.2.1 单机安装
 
@@ -150,7 +150,7 @@ passwd zookeeper
 java -version
 ```
 
-<img src="Zookeeper学习1-单机.assets\image-20200712081945854.png" alt="image-20200712081945854" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130803.png" alt="image-20200712081945854" style="zoom:80%;" />
 
 3. zookeeper使用zookeeper-3.4.10.tar.gz，上传并解压
 
@@ -219,7 +219,7 @@ create [-s] [-e] path data #其中-s 为有序节点，-e 临时节点
 ./zkCli.sh 
 ```
 
-<img src="Zookeeper学习1-单机.assets\image-20200712093026749.png" alt="image-20200712093026749" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130804.png" alt="image-20200712093026749" style="zoom:80%;" />
 
 1. 创建持久化节点并写入数据：
 
@@ -227,7 +227,7 @@ create [-s] [-e] path data #其中-s 为有序节点，-e 临时节点
 create /hadoop "123456" --创建路径为hadoop的节点
 ```
 
-<img src="Zookeeper学习1-单机.assets\image-20200712093341885.png" alt="image-20200712093341885" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130805.png" alt="image-20200712093341885" style="zoom:80%;" />
 
 2. 创建持久化有序节点，此时创建的节点名为指定节点名 + 自增序号
 
@@ -235,7 +235,7 @@ create /hadoop "123456" --创建路径为hadoop的节点
 create -s /b "bbb"
 ```
 
-<img src="Zookeeper学习1-单机.assets\image-20200712093640116.png" alt="image-20200712093640116" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130806.png" alt="image-20200712093640116" style="zoom:80%;" />
 
 3. 创建临时节点，临时节点会在会话过期后被删除：
 
@@ -243,13 +243,13 @@ create -s /b "bbb"
 create -e /tmp "tmp"
 ```
 
-<img src="Zookeeper学习1-单机.assets\image-20200712093850414.png" alt="image-20200712093850414" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130807.png" alt="image-20200712093850414" style="zoom:80%;" />
 
 ​		使用命令`quit`退出之后，重新登录后，临时节点不存在，取不到数据。
 
 4. 创建临时有序节点，临时节点会在会话过期后被删除：
 
-<img src="Zookeeper学习1-单机.assets\image-20200712094042819.png" alt="image-20200712094042819" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130808.png" alt="image-20200712094042819" style="zoom:80%;" />
 
 #### 2、更改节点
 
@@ -262,7 +262,7 @@ set /hadoop "345" --更改节点的数据
 set /hadoop "3456" 1 
 ```
 
-<img src="Zookeeper学习1-单机.assets\image-20200712094612993.png" alt="image-20200712094612993" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130809.png" alt="image-20200712094612993" style="zoom:80%;" />
 
 #### 3、删除节点
 
@@ -278,7 +278,7 @@ delete path [version]
 delete /hadoop 1
 ```
 
-<img src="Zookeeper学习1-单机.assets\image-20200712094839667.png" alt="image-20200712094839667" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130810.png" alt="image-20200712094839667" style="zoom:80%;" />
 
 ​		要想删除某个节点及其所有后代节点，可以使用递归删除，命令为 
 
@@ -286,9 +286,9 @@ delete /hadoop 1
 rmr path  --r:recursion(递归)
 ```
 
-<img src="Zookeeper学习1-单机.assets\image-20200712095553783.png" alt="image-20200712095553783" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130811.png" alt="image-20200712095553783" style="zoom:80%;" />
 
-<img src="Zookeeper学习1-单机.assets\image-20200712095638890.png" alt="image-20200712095638890" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130812.png" alt="image-20200712095638890" style="zoom:80%;" />
 
 #### 4、查看节点
 
@@ -300,15 +300,15 @@ get path
 
 ​		可以使用 stat 命令查看节点状态，它的返回值和 get 命令类似，但不会返回节点数据。
 
-<img src="Zookeeper学习1-单机.assets\image-20200712100825223.png" alt="image-20200712100825223" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130813.png" alt="image-20200712100825223" style="zoom:80%;" />
 
 #### 6、查看节点列表
 
 ​		查看节点列表有 ls path 和 ls2 path 两个命令，后者是前者的增强，不仅可以查看指定路径下的所有节点，还可以查看当前节点的信息。
 
-<img src="Zookeeper学习1-单机.assets\image-20200712101042158.png" alt="image-20200712101042158" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130814.png" alt="image-20200712101042158" style="zoom:80%;" />
 
-<img src="Zookeeper学习1-单机.assets\image-20200712101107993.png" alt="image-20200712101107993" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130815.png" alt="image-20200712101107993" style="zoom:80%;" />
 
 #### 7、监听器
 
@@ -322,7 +322,7 @@ ls\ls2 path [watch]
 
 ​		使用 get path [watch] 注册的监听器能够在**节点内容**发生改变的时候，向客户端发出通知。需要注意的是 zookeeper 的触发器是一次性的 (One-time trigger)，即触发一次后就会立即失效。
 
-<img src="Zookeeper学习1-单机.assets\image-20200712102029163.png" alt="image-20200712102029163" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130816.png" alt="image-20200712102029163" style="zoom:80%;" />
 
 ​		使用 stat path [watch] 注册的监听器能够在**节点状态**发生改变的时候，向客 户端发出通知。
 
@@ -395,7 +395,7 @@ setAcl /test2 ip:192.168.60.130:crwda
 setAcl <path> world:anyone:<acl>
 ```
 
-<img src="Zookeeper学习1-单机.assets\image-20200712144051751.png" alt="image-20200712144051751" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130817.png" alt="image-20200712144051751" style="zoom:80%;" />
 
 2. ip授权模式
 
@@ -415,15 +415,15 @@ setAcl <path> ip:<ip>:<acl>
 
 ​		主要原因是权限不够，我们使用下面的命令，为所有人增加读写执行权限。
 
-<img src="Zookeeper学习1-单机.assets\image-20200712163500261.png" alt="image-20200712163500261" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130818.png" alt="image-20200712163500261" style="zoom:80%;" />
 
 连接同一个zookeeper:
 
-<img src="Zookeeper学习1-单机.assets\image-20200712213352397.png" alt="image-20200712213352397" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130819.png" alt="image-20200712213352397" style="zoom:80%;" />
 
 为两台服务器进行授权：
 
-<img src="Zookeeper学习1-单机.assets\image-20200712213737747.png" alt="image-20200712213737747" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130820.png" alt="image-20200712213737747" style="zoom:80%;" />
 
 通过上面我们可以发现：同一个节点可以同时使用多种模式授权，授权格式如上。
 
@@ -437,7 +437,7 @@ addauth digest <user>:<password>
 setAcl <path> auth:<user>:<acl>
 ```
 
-<img src="Zookeeper学习1-单机.assets\image-20200712215455661.png" alt="image-20200712215455661" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130821.png" alt="image-20200712215455661" style="zoom:80%;" />
 
 4. Digest授权模式
 
@@ -453,9 +453,9 @@ setAcl <path> digest:<user>:<password>:<acl>
 echo -n <user>:<password> | openssl dgst -binary -sha1 | openssl base64
 ```
 
-<img src="Zookeeper学习1-单机.assets\image-20200712221332856.png" alt="image-20200712221332856" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130822.png" alt="image-20200712221332856" style="zoom:80%;" />
 
-<img src="Zookeeper学习1-单机.assets\image-20200712221538899.png" alt="image-20200712221538899" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130823.png" alt="image-20200712221538899" style="zoom:80%;" />
 
 ##### 1.5 acl 超级管理员
 
@@ -489,11 +489,11 @@ Dzookeeper.DigestAuthenticationProvider.superDigest=super:xQJmxLMiHGwaqBvst5y6rk
     -cp "$CLASSPATH" $JVMFLAGS $ZOOMAIN "$ZOOCFG" > "$_ZOO_DAEMON_OUT" 2>&1 < /dev/null &
 ```
 
-<img src="Zookeeper学习1-单机.assets\image-20200713000810794.png" alt="image-20200713000810794" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130824.png" alt="image-20200713000810794" style="zoom:80%;" />
 
 ​		复制完成之后，不知道为啥启动后会爆出这样的错误，我们需要重新复制即可设置成功，复制时不要调格式：
 
-<img src="Zookeeper学习1-单机.assets\image-20200712232651768.png" alt="image-20200712232651768" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130825.png" alt="image-20200712232651768" style="zoom:67%;" />
 
 ​		**注**：设置完成之后，需要重新启动，超级管理员功能才能够生效。
 
@@ -501,23 +501,23 @@ Dzookeeper.DigestAuthenticationProvider.superDigest=super:xQJmxLMiHGwaqBvst5y6rk
 
 1. 添加完成之后，我们使用zookeeper用户去启动zookeeper应用，遇到下面的问题（此时防火墙已经关闭）：
 
-<img src="Zookeeper学习1-单机.assets\image-20200712225141371.png" alt="image-20200712225141371" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130826.png" alt="image-20200712225141371" style="zoom:80%;" />
 
 有可能2181端口被占用，我们需要将进程全部杀死：
 
-<img src="Zookeeper学习1-单机.assets\image-20200712225247872.png" alt="image-20200712225247872" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130827.png" alt="image-20200712225247872" style="zoom:80%;" />
 
 2. 如果还是启动不了，进行下面的方法：到zookeeper-3.4.10的data目录下，version-2文件夹和zookeeper_server.pid两个文件删除。
 
-   <img src="Zookeeper学习1-单机.assets\image-20200712234520231.png" alt="image-20200712234520231" style="zoom:80%;" />
+   <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130828.png" alt="image-20200712234520231" style="zoom:80%;" />
 
 然后就可以正常启动了。
 
 测试案例：
 
-<img src="Zookeeper学习1-单机.assets\image-20200713000655268.png" alt="image-20200713000655268" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130829.png" alt="image-20200713000655268" style="zoom:80%;" />
 
-<img src="Zookeeper学习1-单机.assets\image-20200713000605123.png" alt="image-20200713000605123" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130830.png" alt="image-20200713000605123" style="zoom:80%;" />
 
 # 3 JavaAPI
 
@@ -543,11 +543,11 @@ ZooKeeper(String connectionString, int sessionTimeout, Watcher watcher)
 
 项目结构：
 
-<img src="Zookeeper学习1-单机.assets\image-20200713090115739.png" alt="image-20200713090115739" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130831.png" alt="image-20200713090115739" style="zoom:50%;" />
 
 1. 事先需要将jar包导进去：
 
-<img src="Zookeeper学习1-单机.assets\image-20200713090206329.png" alt="image-20200713090206329" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130832.png" alt="image-20200713090206329" style="zoom:50%;" />
 
 ```java
 public class ZkConnection {
@@ -579,7 +579,7 @@ public class ZkConnection {
 
 控制台输出：
 
-<img src="Zookeeper学习1-单机.assets\image-20200713090002774.png" alt="image-20200713090002774" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130833.png" alt="image-20200713090002774" style="zoom: 50%;" />
 
 ## 3.2 新增节点
 
@@ -1015,7 +1015,7 @@ Watcher实现由三个部分组成：
 
 客户端首先将`Watcher`注册到服务端，同时将`Watcher`对象保存到客户端的`Watch`管理器中。当ZooKeeper服务端监听的数据状态发生变化时，服务端会主动通知客户端， 接着客户端的`Watch`管理器会触发相关`Watcher`来回调相应处理逻辑，从而完成整体的数据发布/订阅流程。
 
-<img src="Zookeeper学习1-单机.assets\image-20200713105946718.png" alt="image-20200713105946718" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130834.png" alt="image-20200713105946718" style="zoom:80%;" />
 
 ### 4.1.2 watcher特性
 
@@ -1030,7 +1030,7 @@ Watcher实现由三个部分组成：
 
 Watcher是一个接口，任何实现了Watcher接口的类就是一个新的Watcher。 Watcher内部包含了两个枚举类：KeeperState、EventType
 
-<img src="Zookeeper学习1-单机.assets\image-20200713110253908.png" alt="image-20200713110253908" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130835.png" alt="image-20200713110253908" style="zoom:80%;" />
 
 + **Watcher通知状态(KeeperState)**
 
@@ -1666,7 +1666,7 @@ public class GloballyUniqueId implements Watcher {
 
 **项目结构**
 
-<img src="Zookeeper学习1-单机.assets\image-20200713182046629.png" alt="image-20200713182046629" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130836.png" alt="image-20200713182046629" style="zoom:80%;" />
 
 
 
@@ -1830,4 +1830,4 @@ public class TicketSeller {
 
 + 控制台测试输出
 
-<img src="Zookeeper学习1-单机.assets\image-20200713182429012.png" alt="image-20200713182429012" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130837.png" alt="image-20200713182429012" style="zoom:80%;" />

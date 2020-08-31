@@ -8,11 +8,11 @@ Git是目前世界上最先进的分布式版本控制系统。
 
 （2）能干嘛
 
-<img src="Git学习-周阳.assets\image-20200813185832060.png" alt="image-20200813185832060" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134311.png" alt="image-20200813185832060" style="zoom:67%;" />
 
-<img src="Git学习-周阳.assets\image-20200813190123267.png" alt="image-20200813190123267" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134312.png" alt="image-20200813190123267" style="zoom:67%;" />
 
-<img src="Git学习-周阳.assets\image-20200813190138671.png" alt="image-20200813190138671" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134313.png" alt="image-20200813190138671" style="zoom:80%;" />
 
 （3）在哪下
 
@@ -65,7 +65,7 @@ Initialized empty Git repository in D:/oa/.git/
 
 在`D:/oa/`文件夹下产生一个.git/文件。
 
-<img src="Git学习-周阳.assets\image-20200813192418475.png" alt="image-20200813192418475" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134314.png" alt="image-20200813192418475" style="zoom:67%;" />
 
 ## 2、新建文件并放入git仓库
 
@@ -85,11 +85,11 @@ git commit -m "提交修改的信息说明" a.txt
 
 具体操作如下：
 
-<img src="Git学习-周阳.assets\image-20200813220115242.png" alt="image-20200813220115242" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134315.png" alt="image-20200813220115242" style="zoom:80%;" />
 
 提交文件没有添加注释会报错：
 
-<img src="Git学习-周阳.assets\image-20200813193147840.png" alt="image-20200813193147840" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134316.png" alt="image-20200813193147840" style="zoom:67%;" />
 
 ## 3、git的日志和跟踪管理
 
@@ -104,7 +104,7 @@ git log --pretty=oneline a.txt(file)
 git diff a.txt(file)
 ```
 
-<img src="Git学习-周阳.assets\image-20200813220929588.png" alt="image-20200813220929588" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134317.png" alt="image-20200813220929588" style="zoom:80%;" />
 
 ## 4、版本的回退
 
@@ -125,7 +125,7 @@ git reflog a.txt(文件)
 git reset --hard 7位版本号
 ```
 
-<img src="Git学习-周阳.assets\image-20200813222419458.png" alt="image-20200813222419458" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134318.png" alt="image-20200813222419458" style="zoom:80%;" />
 
 ## 5、git三区
 
@@ -137,7 +137,7 @@ git reset --hard 7位版本号
 
 暂存区(stage)：一般存放在"git目录"下的index文件（.git/index）中，所以我们把暂存区有时也叫作索引（index）。
 
-<img src="Git学习-周阳.assets\image-20200813222543043.png" alt="image-20200813222543043" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134319.png" alt="image-20200813222543043" style="zoom:80%;" />
 
 ​		Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD。
 
@@ -185,7 +185,7 @@ git rm -f d.txt
 git commit -m "delete file d.txt"
 ```
 
-<img src="Git学习-周阳.assets\image-20200813230418568.png" alt="image-20200813230418568" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134320.png" alt="image-20200813230418568" style="zoom:80%;" />
 
 ## 6、git分支
 
@@ -217,11 +217,11 @@ git checkout -b 分支名(dev)
 
 注意：不能删除数据，需要人工干预解决冲突。
 
-<img src="Git学习-周阳.assets\image-20200813232846709.png" alt="image-20200813232846709" style="zoom: 80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134321.png" alt="image-20200813232846709" style="zoom: 80%;" />
 
-<img src="Git学习-周阳.assets\image-20200813231815120.png" alt="image-20200813231815120" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134322.png" alt="image-20200813231815120" style="zoom:80%;" />
 
-<img src="Git学习-周阳.assets\image-20200813233043974.png" alt="image-20200813233043974" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134323.png" alt="image-20200813233043974" style="zoom:80%;" />
 
 ### 2、冲突2-git本地命令和github的交互冲突
 
@@ -229,11 +229,11 @@ git checkout -b 分支名(dev)
 
 1、将远程库文件拉取到本地进行修改
 
-<img src="Git学习-周阳.assets\image-20200814112330388.png" alt="image-20200814112330388" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134324.png" alt="image-20200814112330388" style="zoom:67%;" />
 
 2、将修改好的文件进行提交到远程
 
-<img src="Git学习-周阳.assets\image-20200814112957122.png" alt="image-20200814112957122" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134325.png" alt="image-20200814112957122" style="zoom:80%;" />
 
 ### 3、冲突3-TortoiseGit分支合并冲突
 
@@ -241,21 +241,21 @@ git checkout -b 分支名(dev)
 
 1、master合并dev分支出错
 
-<img src="Git学习-周阳.assets\image-20200814200055502.png" alt="image-20200814200055502" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134326.png" alt="image-20200814200055502" style="zoom:67%;" />
 
 2、在master中打开合并异常文件
 
-<img src="Git学习-周阳.assets\image-20200814200135074.png" alt="image-20200814200135074" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134327.png" alt="image-20200814200135074" style="zoom:67%;" />
 
 3、解决冲突
 
 （1）点击下面的按钮
 
-<img src="Git学习-周阳.assets\image-20200814200557983.png" alt="image-20200814200557983" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134328.png" alt="image-20200814200557983" style="zoom:67%;" />
 
 （2）按照提示和业务需求，合并文件内容，解决冲突
 
-<img src="Git学习-周阳.assets\image-20200814200351232.png" alt="image-20200814200351232" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134329.png" alt="image-20200814200351232" style="zoom:67%;" />
 
 介绍：
 
@@ -283,7 +283,7 @@ use this text block from theirs before mine  
 
 (3)解决完成后，将代码提交到本地库中
 
-<img src="Git学习-周阳.assets\image-20200814202251450.png" alt="image-20200814202251450" style="zoom: 67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134330.png" alt="image-20200814202251450" style="zoom: 67%;" />
 
 # 3 Github
 
@@ -295,7 +295,7 @@ use this text block from theirs before mine  
 
 ## 2、Github应用
 
-<img src="Git学习-周阳.assets\image-20200814082826968.png" alt="image-20200814082826968" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134331.png" alt="image-20200814082826968" style="zoom:80%;" />
 
 ### 1、注册+检查.ssh秘钥
 
@@ -308,7 +308,7 @@ use this text block from theirs before mine  
 $ cd ~/.ssh
 ```
 
-<img src="Git学习-周阳.assets\image-20200814093945729.png" alt="image-20200814093945729" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134332.png" alt="image-20200814093945729" style="zoom:80%;" />
 
 ### 2、创建SSH Key
 
@@ -322,11 +322,11 @@ ssh-keygen -t rsa -C 3493826518@qq.com
 
 （1）首先，进入配置界面
 
-<img src="Git学习-周阳.assets\image-20200814094812879.png" alt="image-20200814094812879" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134333.png" alt="image-20200814094812879" style="zoom:80%;" />
 
 （2）将公钥内容进行粘贴
 
-<img src="Git学习-周阳.assets\image-20200814094942677.png" alt="image-20200814094942677" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134334.png" alt="image-20200814094942677" style="zoom:80%;" />
 
 ### 4、测试连通性
 
@@ -336,7 +336,7 @@ ssh-keygen -t rsa -C 3493826518@qq.com
 ssh -T git@github.com
 ```
 
-<img src="Git学习-周阳.assets\image-20200814094557843.png" alt="image-20200814094557843" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134335.png" alt="image-20200814094557843" style="zoom:80%;" />
 
 ### 5、本地 —> github远程库
 
@@ -352,11 +352,11 @@ ssh -T git@github.com
 
 （b）到Github上新建一个同名的空项目
 
-<img src="Git学习-周阳.assets\image-20200814095736813.png" alt="image-20200814095736813" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134336.png" alt="image-20200814095736813" style="zoom:67%;" />
 
-<img src="Git学习-周阳.assets\image-20200814095919086.png" alt="image-20200814095919086" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134337.png" alt="image-20200814095919086" style="zoom:67%;" />
 
-<img src="Git学习-周阳.assets\image-20200814103004425.png" alt="image-20200814103004425" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134338.png" alt="image-20200814103004425" style="zoom:80%;" />
 
 （c）本地和github上的仓库进行关联
 
@@ -377,7 +377,7 @@ git push -u origin master
 
 ​		由于远程库是空的，我们第一次推送master分支时，加上了-u参数，Git不但会把本地的master分支内容推送的远程新的master分支，还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。
 
-<img src="Git学习-周阳.assets\image-20200814102301505.png" alt="image-20200814102301505" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134339.png" alt="image-20200814102301505" style="zoom:67%;" />
 
 （e）把远程仓库中的内容拉取到本地
 
@@ -387,7 +387,7 @@ git push -u origin master
  git pull origin master
 ```
 
-<img src="Git学习-周阳.assets\image-20200814102540160.png" alt="image-20200814102540160" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134340.png" alt="image-20200814102540160" style="zoom:80%;" />
 
 ### 6、github远程库 —> 本地
 
@@ -405,17 +405,17 @@ git push -u origin master
 $ git clone  https://github.com/KunLunLiWuHan/oa2.git
 ```
 
-<img src="Git学习-周阳.assets\image-20200814103946007.png" alt="image-20200814103946007" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134341.png" alt="image-20200814103946007" style="zoom:80%;" />
 
 ### 7、交互模型
 
 1、 本地修改，同步给远程；远程修改，同步到本地。
 
-<img src="Git学习-周阳.assets\image-20200814104122648.png" alt="image-20200814104122648" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134342.png" alt="image-20200814104122648" style="zoom:80%;" />
 
 2、一般流程
 
-<img src="Git学习-周阳.assets\image-20200814104143286.png" alt="image-20200814104143286" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134343.png" alt="image-20200814104143286" style="zoom:80%;" />
 
 ### 8、Fork
 
@@ -427,39 +427,39 @@ $ git clone  https://github.com/KunLunLiWuHan/oa2.git
 
 ​		相当于你在原项目的主分支上又建立了一个分支，你可以在该分支上任意修改，如果想将你的修改合并到原项目中时，可以`pull request`，这样原项目的作者就可以将你修改的东西合并到原项目的主分支上去，这样你就为开源项目贡献了代码，开源项目就会在大家共同的努力下不断壮大和完善。
 
-<img src="Git学习-周阳.assets\image-20200814104614657.png" alt="image-20200814104614657" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134344.png" alt="image-20200814104614657" style="zoom:80%;" />
 
 2、fork过程
 
 （1）搜查对方的github地址
 
-<img src="Git学习-周阳.assets\image-20200814105831487.png" alt="image-20200814105831487" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134345.png" alt="image-20200814105831487" style="zoom:67%;" />
 
 （2）fork一份对方的代码，进行更改
 
-<img src="Git学习-周阳.assets\image-20200814105731091.png" alt="image-20200814105731091" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134346.png" alt="image-20200814105731091" style="zoom:80%;" />
 
 （3）更改代码进行提交
 
-<img src="Git学习-周阳.assets\image-20200814111439980.png" alt="image-20200814111439980" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134347.png" alt="image-20200814111439980" style="zoom:67%;" />
 
-<img src="Git学习-周阳.assets\image-20200814110712111.png" alt="image-20200814110712111" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134348.png" alt="image-20200814110712111" style="zoom:80%;" />
 
 （4）对方接收到我的通知后，来进行判断代码是否进行合并。
 
-<img src="Git学习-周阳.assets\image-20200814110831400.png" alt="image-20200814110831400" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134349.png" alt="image-20200814110831400" style="zoom:80%;" />
 
-<img src="Git学习-周阳.assets\image-20200814111107773.png" alt="image-20200814111107773" style="zoom: 50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134350.png" alt="image-20200814111107773" style="zoom: 50%;" />
 
 ### 9、解决git push时重复输入用户名密码
 
 1、方法1
 
-<img src="Git学习-周阳.assets\image-20200814113512598.png" alt="image-20200814113512598" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134351.png" alt="image-20200814113512598" style="zoom:80%;" />
 
 2、方法2
 
-<img src="Git学习-周阳.assets\image-20200814113530548.png" alt="image-20200814113530548" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134352.png" alt="image-20200814113530548" style="zoom:80%;" />
 
 ```bash
 machine github.com
@@ -477,17 +477,17 @@ password 你的密码
 
 （1）安装完成后，右键点击，会有如下的界面
 
-<img src="Git学习-周阳.assets\image-20200814175740300.png" alt="image-20200814175740300" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134353.png" alt="image-20200814175740300" style="zoom:80%;" />
 
 （2）进入setting进行配置
 
-<img src="Git学习-周阳.assets\image-20200814175912676.png" alt="image-20200814175912676" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134354.png" alt="image-20200814175912676" style="zoom:80%;" />
 
 开始和本地库交互，需要设置账号和邮件：
 
-<img src="Git学习-周阳.assets\image-20200814180307640.png" alt="image-20200814180307640" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134355.png" alt="image-20200814180307640" style="zoom:80%;" />
 
-<img src="Git学习-周阳.assets\image-20200814180535980.png" alt="image-20200814180535980" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134356.png" alt="image-20200814180535980" style="zoom:80%;" />
 
 ## 2、操作-与本地库交互
 
@@ -499,15 +499,15 @@ password 你的密码
 
 （1）add操作
 
-<img src="Git学习-周阳.assets\image-20200814182325316.png" alt="image-20200814182325316" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134357.png" alt="image-20200814182325316" style="zoom:80%;" />
 
 （2）commit操作
 
-<img src="Git学习-周阳.assets\image-20200814181511201.png" alt="image-20200814181511201" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134358.png" alt="image-20200814181511201" style="zoom:67%;" />
 
 查看提交情况：
 
-<img src="Git学习-周阳.assets\image-20200814182548917.png" alt="image-20200814182548917" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134359.png" alt="image-20200814182548917" style="zoom:80%;" />
 
 3、版本回退和版本撤销
 
@@ -519,9 +519,9 @@ Revert：是撤销某次提交，这次撤销也会作为一次提交进行保�
 
 （1）Reset操作
 
-<img src="Git学习-周阳.assets\image-20200814183129985.png" alt="image-20200814183129985" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134400.png" alt="image-20200814183129985" style="zoom:67%;" />
 
-<img src="Git学习-周阳.assets\image-20200814183156124.png" alt="image-20200814183156124" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134401.png" alt="image-20200814183156124" style="zoom:80%;" />
 
 （2）Revert操作
 
@@ -533,21 +533,21 @@ Revert：是撤销某次提交，这次撤销也会作为一次提交进行保�
 
 （1）创建分支
 
-<img src="Git学习-周阳.assets\image-20200814185636766.png" alt="image-20200814185636766" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134402.png" alt="image-20200814185636766" style="zoom:67%;" />
 
-<img src="Git学习-周阳.assets\image-20200814185736490.png" alt="image-20200814185736490" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134403.png" alt="image-20200814185736490" style="zoom:67%;" />
 
 （2）切换分支
 
-<img src="Git学习-周阳.assets\image-20200814185824657.png" alt="image-20200814185824657" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134404.png" alt="image-20200814185824657" style="zoom:80%;" />
 
 （3）分支的合并
 
-<img src="Git学习-周阳.assets\image-20200814190453290.png" alt="image-20200814190453290" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134405.png" alt="image-20200814190453290" style="zoom:80%;" />
 
 （4）分支的删除
 
-<img src="Git学习-周阳.assets\image-20200814190632025.png" alt="image-20200814190632025" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134406.png" alt="image-20200814190632025" style="zoom:80%;" />
 
 ## 3、操作-与远程库Github交互
 
@@ -557,15 +557,15 @@ Revert：是撤销某次提交，这次撤销也会作为一次提交进行保�
 
 （1）点击push
 
-<img src="Git学习-周阳.assets\image-20200814205738168.png" alt="image-20200814205738168" style="zoom: 50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134407.png" alt="image-20200814205738168" style="zoom: 50%;" />
 
 （2）将Github服务器上的地址复制下来后就行粘贴
 
-<img src="Git学习-周阳.assets\image-20200814205826957.png" alt="image-20200814205826957" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134408.png" alt="image-20200814205826957" style="zoom:67%;" />
 
 （3）进行上传，可以看到下面的上传成功
 
-<img src="Git学习-周阳.assets\image-20200814205703640.png" alt="image-20200814205703640" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134409.png" alt="image-20200814205703640" style="zoom:67%;" />
 
 此时，Github上面就有你上传的内容了。
 
@@ -573,7 +573,7 @@ Revert：是撤销某次提交，这次撤销也会作为一次提交进行保�
 
 远程库上已经有一个git项目，从远程Clone到本地。
 
-<img src="Git学习-周阳.assets\image-20200814210504454.png" alt="image-20200814210504454" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134410.png" alt="image-20200814210504454" style="zoom:80%;" />
 
 # 5、IDEA上Git操作
 
@@ -583,31 +583,31 @@ Revert：是撤销某次提交，这次撤销也会作为一次提交进行保�
 
 点击工具栏中的 settings→Version Control→Git
 
-<img src="Git学习-周阳.assets\image-20200814221053753.png" alt="image-20200814221053753" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134411.png" alt="image-20200814221053753" style="zoom:80%;" />
 
 2、配置GitHub账户
 
-<img src="Git学习-周阳.assets\image-20200814221218788.png" alt="image-20200814221218788" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134412.png" alt="image-20200814221218788" style="zoom:80%;" />
 
 ## 2、创建本地库
 
 1、新建一个Maven工程
 
-<img src="Git学习-周阳.assets\image-20200814221341978.png" alt="image-20200814221341978" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134413.png" alt="image-20200814221341978" style="zoom:80%;" />
 
 2、创建本地库
 
 假如是一个项目的话，可以选择当前模块目录进行Git管理。下图我是选的HelloGit这个目录（一个工程进行管理，后来改成上面的模块进行管理）。
 
-<img src="Git学习-周阳.assets\image-20200814221627500.png" alt="image-20200814221627500" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134414.png" alt="image-20200814221627500" style="zoom:80%;" />
 
 3、看到下面的界面说明本地库创建成功
 
-<img src="Git学习-周阳.assets\image-20200814221741390.png" alt="image-20200814221741390" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134415.png" alt="image-20200814221741390" style="zoom:80%;" />
 
 4、是否将新文件添加到暂存区
 
-<img src="Git学习-周阳.assets\image-20200814221944640.png" alt="image-20200814221944640" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134416.png" alt="image-20200814221944640" style="zoom:80%;" />
 
 5、设置忽略文件
 
@@ -615,17 +615,17 @@ Revert：是撤销某次提交，这次撤销也会作为一次提交进行保�
 
 6、将文件添加到暂存区
 
-<img src="Git学习-周阳.assets\image-20200814224744184.png" alt="image-20200814224744184" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134417.png" alt="image-20200814224744184" style="zoom:67%;" />
 
 此时文件颜色由红变绿色。
 
 7、将文件添加到本地库
 
-<img src="Git学习-周阳.assets\image-20200814224829884.png" alt="image-20200814224829884" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134418.png" alt="image-20200814224829884" style="zoom:80%;" />
 
 也可以采用下面的方式：
 
-<img src="Git学习-周阳.assets\image-20200814225120785.png" alt="image-20200814225120785" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134419.png" alt="image-20200814225120785" style="zoom:80%;" />
 
 此时，IDEA中文件颜色回归到正常颜色状态。
 
@@ -633,37 +633,37 @@ Revert：是撤销某次提交，这次撤销也会作为一次提交进行保�
 
 1、更改内容进行提交
 
-<img src="Git学习-周阳.assets\image-20200814225521653.png" alt="image-20200814225521653" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134420.png" alt="image-20200814225521653" style="zoom:67%;" />
 
 2、版本回退
 
-<img src="Git学习-周阳.assets\image-20200814225730665.png" alt="image-20200814225730665" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134421.png" alt="image-20200814225730665" style="zoom:80%;" />
 
 选择`hard`属性完全删除痕迹
 
-<img src="Git学习-周阳.assets\image-20200814225751110.png" alt="image-20200814225751110" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134422.png" alt="image-20200814225751110" style="zoom:80%;" />
 
 ## 4、创建分支并合并
 
 1、创建分支
 
-<img src="Git学习-周阳.assets\image-20200814231940899.png" alt="image-20200814231940899" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134423.png" alt="image-20200814231940899" style="zoom:67%;" />
 
 2、为新分支命名
 
-<img src="Git学习-周阳.assets\image-20200814232002638.png" alt="image-20200814232002638" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134424.png" alt="image-20200814232002638" style="zoom:67%;" />
 
 当我们点击上图的`Create`后，上面的代码会切换到新的分支上。
 
-<img src="Git学习-周阳.assets\image-20200814232138462.png" alt="image-20200814232138462" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134425.png" alt="image-20200814232138462" style="zoom:67%;" />
 
 3、在dev分支上对代码进行修复成功后，将分支切换到主分支
 
-<img src="Git学习-周阳.assets\image-20200814232411635.png" alt="image-20200814232411635" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134426.png" alt="image-20200814232411635" style="zoom:67%;" />
 
 选择合并的分支，并添加注释：
 
-<img src="Git学习-周阳.assets\image-20200814232444710.png" alt="image-20200814232444710" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134427.png" alt="image-20200814232444710" style="zoom:80%;" />
 
 ## 5、解决冲突
 
@@ -671,15 +671,15 @@ Revert：是撤销某次提交，这次撤销也会作为一次提交进行保�
 
 （1）创建分支并在同一行编写不同的代码
 
-<img src="Git学习-周阳.assets\image-20200814234814772.png" alt="image-20200814234814772" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134428.png" alt="image-20200814234814772" style="zoom:67%;" />
 
 （2）合并分支
 
-<img src="Git学习-周阳.assets\image-20200814234855203.png" alt="image-20200814234855203" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134429.png" alt="image-20200814234855203" style="zoom:67%;" />
 
 （3）解决冲突
 
-<img src="Git学习-周阳.assets\image-20200814234027793.png" alt="image-20200814234027793" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134430.png" alt="image-20200814234027793" style="zoom:80%;" />
 
 ## 6、上传本地库到GitHub上
 
@@ -689,15 +689,15 @@ Revert：是撤销某次提交，这次撤销也会作为一次提交进行保�
 
 3、点击push
 
-<img src="Git学习-周阳.assets\image-20200814235559244.png" alt="image-20200814235559244" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134431.png" alt="image-20200814235559244" style="zoom:80%;" />
 
 4、将复制的地址粘贴到URl
 
-<img src="Git学习-周阳.assets\image-20200814235639418.png" alt="image-20200814235639418" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134432.png" alt="image-20200814235639418" style="zoom:67%;" />
 
 5、推送到远程仓库
 
-<img src="Git学习-周阳.assets\image-20200814235701192.png" alt="image-20200814235701192" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134433.png" alt="image-20200814235701192" style="zoom:67%;" />
 
 此时，可以在GitHub上看到自己上传的代码，表示上传成功。
 
@@ -705,25 +705,25 @@ Revert：是撤销某次提交，这次撤销也会作为一次提交进行保�
 
 1、IDEA中本地库修改文件，添加到暂存库、添加到本地库，然后上传到Gitub中，会发现上传被拒绝 。
 
-<img src="Git学习-周阳.assets\image-20200814235943202.png" alt="image-20200814235943202" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134434.png" alt="image-20200814235943202" style="zoom:80%;" />
 
 2、解决方法
 
-![image-20200815000837720](Git学习-周阳.assets\image-20200815000837720.png)
+![image-20200815000837720](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134435.png)
 
 ## 8、克隆
 
 1、点击CSV，进行克隆操作
 
-<img src="Git学习-周阳.assets\image-20200815001917585.png" alt="image-20200815001917585" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134436.png" alt="image-20200815001917585" style="zoom:67%;" />
 
 2、输入GitHub中仓库的地址并指定项目的存放路径
 
-<img src="Git学习-周阳.assets\image-20200815001954212.png" alt="image-20200815001954212" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134437.png" alt="image-20200815001954212" style="zoom:80%;" />
 
 3、为克隆的项目创建一个新工程
 
-<img src="Git学习-周阳.assets\image-20200815002031777.png" alt="image-20200815002031777" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134438.png" alt="image-20200815002031777" style="zoom:67%;" />
 
 ## 9、添加合作伙伴
 
@@ -731,26 +731,26 @@ Revert：是撤销某次提交，这次撤销也会作为一次提交进行保�
 
 1、让仓库拥有者在仓库上点击 settings（对应一个仓库）
 
-<img src="Git学习-周阳.assets\image-20200815004428669.png" alt="image-20200815004428669" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134439.png" alt="image-20200815004428669" style="zoom:67%;" />
 
 2、点击Manage Access 
 
-<img src="Git学习-周阳.assets\image-20200815004458690.png" alt="image-20200815004458690" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134440.png" alt="image-20200815004458690" style="zoom:80%;" />
 
 3、搜索合作伙伴，即搜索合作伙伴的 GitHub 账户
 
-<img src="Git学习-周阳.assets\image-20200815004525398.png" alt="image-20200815004525398" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134441.png" alt="image-20200815004525398" style="zoom:67%;" />
 
 4、点击邀请
 
-<img src="Git学习-周阳.assets\image-20200815004552000.png" alt="image-20200815004552000" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134442.png" alt="image-20200815004552000" style="zoom:67%;" />
 
 此时在你的界面处于合作伙伴确认的状态：
 
-<img src="Git学习-周阳.assets\image-20200815004651961.png" alt="image-20200815004651961" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134443.png" alt="image-20200815004651961" style="zoom:67%;" />
 
 5、仓库拥有者可以将链接发送给你让你确认，当然你的邮箱也会收到等待确认的邮件 。
 
-<img src="Git学习-周阳.assets\image-20200815004748520.png" alt="image-20200815004748520" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134444.png" alt="image-20200815004748520" style="zoom:67%;" />
 
 ​	等合作伙伴接收邀请之后，就与仓库拥有者成为了合作伙伴，就可以在克隆项目之后向仓库上传项目了。

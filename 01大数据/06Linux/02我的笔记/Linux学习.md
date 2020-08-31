@@ -12,7 +12,7 @@ Linux是一个开源的、免费的操作系统，其稳定性、安全性、处
 
 Linux是一个内核，在内核的基础上，做了一个包装。简单说就是将Linux内核与应用软件做一个打包。主要发行版有：Ubuntu(乌班图)、RedHat(红帽)、CentOS、Debain(蝶变)等。
 
-<img src="Linux学习.assets\clip_image001.png" alt="img" style="zoom: 67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102628.png" alt="img" style="zoom: 67%;" />
 
 **应用领域**
 
@@ -29,7 +29,7 @@ Linux是一个内核，在内核的基础上，做了一个包装。简单说就
 
 他们之间的关系为：
 
-<img src="Linux学习.assets\image-20200701111424239.png" alt="image-20200701111424239" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102629.png" alt="image-20200701111424239" style="zoom:67%;" />
 
 具体的安装步骤参考VMware_CentOS安装文档。
 
@@ -37,37 +37,37 @@ Linux是一个内核，在内核的基础上，做了一个包装。简单说就
 
 在电脑中的管理员界面输入`ipconfig`查看自己电脑的网络信息，我们可以看到电脑上的IP地址：
 
-<img src="Linux学习.assets\image-20200701153340258.png" alt="image-20200701153340258" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102630.png" alt="image-20200701153340258" style="zoom:67%;" />
 
 在电脑上会产生补一个网段的IP地址：
 
-<img src="Linux学习.assets\image-20200701153521211.png" alt="image-20200701153521211" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102631.png" alt="image-20200701153521211" style="zoom:80%;" />
 
 也就是说我们的虚拟机会有一个和VMnet8相同网段的一个IP地址，我们在虚拟机界面右键点击“在终端中打开”进入CentOS的终端界面，然后在其中输入`ifconfig`发现没有这个IP地址：
 
-<img src="Linux学习.assets\image-20200701153711028.png" alt="image-20200701153711028" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102632.png" alt="image-20200701153711028" style="zoom:80%;" />
 
 eth0表示的是第一块网卡。
 
 主要是我们进行网络连接：
 
-<img src="Linux学习.assets\image-20200701153829247.png" alt="image-20200701153829247" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102633.png" alt="image-20200701153829247" style="zoom:80%;" />
 
 此时我们再输入`ifconfig`,将会得到IP地址：会发现该地址和VMnet8处于相同一个网段。（这里是简单的动态分配ip(后面我们要学习固定分配ip)）
 
-<img src="Linux学习.assets\image-20200701154043078.png" alt="image-20200701154043078" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102634.png" alt="image-20200701154043078" style="zoom:80%;" />
 
 在虚拟机中的浏览器中输入百度网址，此时该浏览器可以上网，即虚拟机访问了万维网。
 
 也可以和外面的ip连通，测试如下：我们让虚拟机ping我们的电脑，发现可以ping通：
 
-<img src="Linux学习.assets\image-20200701154451072.png" alt="image-20200701154451072" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102635.png" alt="image-20200701154451072" style="zoom:80%;" />
 
 # 3 文件系统目录结构
 
 ​		Linux的文件目录是采用级层式的树状目录结构，在此结构中的最上层是根目录“/”,然后在此目录下再创建其他目录。
 
-<img src="Linux学习.assets\clip_image001-1593908320190.png" alt="img" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102636.png" alt="img" style="zoom:80%;" />
 
 + /bin(重点)（/usr/bin、/usr/local/bin），是Binary的缩写，该目录下存放着经常使用的命令。
 + /sbin（/usr/sbin、/usr/local/sbin）s的意思是Super User的意思，这里存放着系统管理员使用的系统管理程序。
@@ -122,7 +122,7 @@ eth0表示的是第一块网卡。
 
 下面是在Xshell工具上的注销命令：
 
-<img src="Linux学习.assets\image-20200705220852343.png" alt="image-20200705220852343" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102637.png" alt="image-20200705220852343" style="zoom:80%;" />
 
 # 6 实用指令
 
@@ -156,7 +156,7 @@ init [012356]
 vim /etc/inittab
 ```
 
-![image-20200706090120577](Linux学习.assets\image-20200706090120577.png)
+![image-20200706090120577](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102638.png)
 
 输入下面的指令：
 
@@ -201,7 +201,7 @@ cd中参数（绝对路径和相对路径的理解）
 
 + 使用相对路径到/root 目录 [ cd ../root]（.. 代表返回上一级目录）。
 
-![image-20200706102902151](Linux学习.assets\image-20200706102902151.png)
+![image-20200706102902151](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102639.png)
 
 + 表示回到当前目录的上一级目录 [ cd ..]。
 
@@ -227,17 +227,17 @@ rm -rf 要删除的目录
 ```
 
 案例1：创建一个目录 /home/test。
-![image-20200706104359706](Linux学习.assets\image-20200706104359706.png)
+![image-20200706104359706](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102640.png)
 
 案例2：创建多级目录 /home/animal/tiger。
 
-![image-20200706104437559](Linux学习.assets\image-20200706104437559.png)
+![image-20200706104437559](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102641.png)
 
-![image-20200706104454237](Linux学习.assets\image-20200706104454237.png)
+![image-20200706104454237](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102642.png)
 
 案例3：强制删除非空目录。
 
-![image-20200706105113753](Linux学习.assets\image-20200706105113753.png)
+![image-20200706105113753](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102643.png)
 
 **touch指令**
 
@@ -251,7 +251,7 @@ rm -rf 要删除的目录
 
 案例1：创建一个空文件 hello.txt。
 
-![image-20200706105510083](Linux学习.assets\image-20200706105510083.png)
+![image-20200706105510083](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102644.png)
 
 也可以一次性创建多个文件。
 
@@ -270,11 +270,11 @@ rm -rf 要删除的目录
 
 案例1：将 /home/hello.txt 拷贝到 /home/bbb 目录下
 
-![image-20200706105908473](Linux学习.assets\image-20200706105908473.png)
+![image-20200706105908473](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102645.png)
 
 案例2：递归复制整个文件夹。
 
-![image-20200706110313271](Linux学习.assets\image-20200706110313271.png)
+![image-20200706110313271](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102646.png)
 
 **rm指令**
 
@@ -304,7 +304,7 @@ mv /temp/movefile /targetFolder  --移动文件或目录
 
 案例2:将 /home/pig.txt 文件 移动到 /root 目录下。
 
-![image-20200706141426519](Linux学习.assets\image-20200706141426519.png)
+![image-20200706141426519](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102647.png)
 
 **cat指令**
 
@@ -349,7 +349,7 @@ echo  [选项]  [输出内容]
 
 案例: 使用echo 指令输出环境变量，比如 PATH。
 
-![image-20200706144745121](Linux学习.assets\image-20200706144745121.png)
+![image-20200706144745121](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102648.png)
 
 **head指令**
 
@@ -376,7 +376,7 @@ tail  -f  文件	-- 实时追踪该文档的所有更新（经常使用）。
 
 ​		案例1: 实时监控mydate.txt , 看看到文件有变化时，是否看到， 实时的追加日期。
 
-![image-20200706145845221](Linux学习.assets\image-20200706145845221.png)
+![image-20200706145845221](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102649.png)
 
 **ln指令**
 
@@ -393,7 +393,7 @@ tail  -f  文件	-- 实时追踪该文档的所有更新（经常使用）。
 
 案例1：在/home 目录下创建一个软连接 linkToRoot，连接到/root目录
 
- ![image-20200706163744264](Linux学习.assets\image-20200706163744264.png)
+ ![image-20200706163744264](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102650.png)
 
    **history指令**
 
@@ -426,11 +426,11 @@ date  -s  字符串时间 --设置时间。
 
 显示当前日期：
 
-![image-20200706165406973](Linux学习.assets\image-20200706165406973.png)
+![image-20200706165406973](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102651.png)
 
 设置日期：
 
-![image-20200706165657067](Linux学习.assets\image-20200706165657067.png)
+![image-20200706165657067](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102652.png)
 
 2. **cal指令**
 
@@ -442,7 +442,7 @@ date  -s  字符串时间 --设置时间。
 cal [选项]	--不加选项，显示本月日历
 ```
 
-![image-20200706165908982](Linux学习.assets\image-20200706165908982.png)
+![image-20200706165908982](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102653.png)
 
 **搜索查找类**
 
@@ -468,7 +468,7 @@ cal [选项]	--不加选项，显示本月日历
 
 ​	案例3：查找整个linux系统下大于10M的文件（+n 大于、 -n小于  、n等于）。
 
-![image-20200706171132736](Linux学习.assets\image-20200706171132736.png)
+![image-20200706171132736](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102654.png)
 
 2. **locate指令**
 
@@ -488,7 +488,7 @@ locate 搜索文件
 
 ​		案例1: 请使用locate 指令快速定位 hello.txt 文件所在目录。
 
-![image-20200706171725761](Linux学习.assets\image-20200706171725761.png)
+![image-20200706171725761](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102655.png)
 
   3. **grep指令和 管道符号 |** 
 
@@ -521,7 +521,7 @@ gzip 文件 	--压缩文件，只能将文件压缩为*.gz文件。
 gunzip 文件.gz --解压缩文件命令
 ```
 
-​		案例1:首先使用命令 `gzip`压缩， 将 /home下的 mydate.txt文件进行压缩，然后使用 `gunzip`压缩， 将 /home下的 mydate.txt.gz 文件进行解压缩。![image-20200706173212882](Linux学习.assets\image-20200706173212882.png)
+​		案例1:首先使用命令 `gzip`压缩， 将 /home下的 mydate.txt文件进行压缩，然后使用 `gunzip`压缩， 将 /home下的 mydate.txt.gz 文件进行解压缩。![image-20200706173212882](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102656.png)
 
 2. **zip/unzip 指令**
 
@@ -540,11 +540,11 @@ unzip [选项] XXX.zip	--解压缩文件。
 
 案例1: 将 /home下的 所有文件进行压缩成 mypackage.zip。
 
-![image-20200706174106915](Linux学习.assets\image-20200706174106915.png)
+![image-20200706174106915](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102657.png)
 
 案例2：将 mypackge.zip 解压到 /opt/tmp目录下。
 
-![image-20200706174211810](Linux学习.assets\image-20200706174211810.png)
+![image-20200706174211810](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102658.png)
 
 3. **tar 指令**
 
@@ -566,15 +566,15 @@ tar  [选项]  XXX.tar.gz  打包的内容/目录   --打包目录，压缩后�
 
 案例1：压缩多个文件，将 /home/a1.txt 和 /home/a2.txt这两个文件一起压缩成 a.tar.gz文件。
 
-![image-20200706175141601](Linux学习.assets\image-20200706175141601.png)  
+![image-20200706175141601](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102659.png)  
 
 案例2：将a.tar.gz 解压到当前目录。
 
-<img src="Linux学习.assets\image-20200706175439151.png" alt="image-20200706175439151"  />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102700.png" alt="image-20200706175439151"  />
 
  案例3：将a.tar.gz解压到/opt/目录(指定目录)下。
 
-![image-20200706175657567](Linux学习.assets\image-20200706175657567.png)
+![image-20200706175657567](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102701.png)
 
 注意：此时指定解压的目录要事先存在。
 
@@ -646,7 +646,7 @@ crontab [选项]
 
 案例：终止任务调度。
 
-![image-20200708174927833](Linux学习.assets\image-20200708174927833.png)
+![image-20200708174927833](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102702.png)
 
 # 8 磁盘分区和挂载
 
@@ -672,7 +672,7 @@ gtp分区（比较优越）:
 
 3. windows7 64位以后支持gtp
 
-![image-20200708175836379](Linux学习.assets\image-20200708175836379.png)
+![image-20200708175836379](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102703.jpg)
 
 2. **Linux分区**
 
@@ -680,7 +680,7 @@ gtp分区（比较优越）:
 + Linux采用了一种叫“载入”的处理方法，它的整个文件系统中包含了一整套的文件和目录，且将一个分区和一个目录联系起来。这时要载入的一个分区将使它的存储空间在一个目录下获得。
 + 下面是Linux分区示意图
 
-![img](Linux学习.assets\clip_image002.jpg)
+![img](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102704.png)
 
 3. **硬盘说明**
 
@@ -704,39 +704,39 @@ gtp分区（比较优越）:
 
 4. **查看所有设备的挂载情况**
 
-<img src="Linux学习.assets\image-20200708182158581.png" alt="image-20200708182158581" style="zoom:150%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102705.png" alt="image-20200708182158581" style="zoom:150%;" />
 
 ##  2、挂载的经典案例
 
 **需求**：给虚拟机添加一块新硬盘。
 
-<img src="Linux学习.assets\image-20200708182714534.png" alt="image-20200708182714534" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102706.png" alt="image-20200708182714534" style="zoom:80%;" />
 
 **步骤**
 
 1. 增加一块硬盘 1G [到设置中添加一块硬盘即可]
 
-<img src="Linux学习.assets\image-20200708183332445.png" alt="image-20200708183332445" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102707.png" alt="image-20200708183332445" style="zoom:80%;" />
 
-<img src="Linux学习.assets\image-20200708183412997.png" alt="image-20200708183412997" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102708.png" alt="image-20200708183412997" style="zoom:80%;" />
 
-<img src="Linux学习.assets\image-20200708183441585.png" alt="image-20200708183441585" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102709.png" alt="image-20200708183441585" style="zoom:80%;" />
 
-<img src="Linux学习.assets\image-20200708183531513.png" alt="image-20200708183531513" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102710.png" alt="image-20200708183531513" style="zoom:80%;" />
 
 完成界面：
 
-<img src="Linux学习.assets\image-20200708183614399.png" alt="image-20200708183614399" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102711.png" alt="image-20200708183614399" style="zoom:80%;" />
 
 我们需要使用命令`reboot`，重启一下服务器后，才能查到相关的硬盘信息，在Xshell界面上查询：
 
-![image-20200708203855782](Linux学习.assets\image-20200708203855782.png)
+![image-20200708203855782](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102712.png)
 
 2. 给sdb 硬盘分区
 
-<img src="Linux学习.assets\image-20200708204409096.png" alt="image-20200708204409096" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102713.png" alt="image-20200708204409096" style="zoom:80%;" />
 
-<img src="Linux学习.assets\image-20200708204605995.png" alt="image-20200708204605995" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102714.png" alt="image-20200708204605995" style="zoom:80%;" />
 
 其中对sdb分区中比较重要的指令：
 
@@ -748,7 +748,7 @@ d   删除分区
 w   写入并退出
 ```
 
-<img src="Linux学习.assets\image-20200708205214290.png" alt="image-20200708205214290" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102715.png" alt="image-20200708205214290" style="zoom:80%;" />
 
 3. 格式化 sdb1
 
@@ -756,7 +756,7 @@ w   写入并退出
 mkfs -t  ext4   /dev/sdb1   --格式化磁盘,其中ext4是分区类型。
 ```
 
-<img src="Linux学习.assets\image-20200708205459437.png" alt="image-20200708205459437" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102716.png" alt="image-20200708205459437" style="zoom:80%;" />
 
 4. 挂载
 
@@ -764,11 +764,11 @@ mkfs -t  ext4   /dev/sdb1   --格式化磁盘,其中ext4是分区类型。
 
 + 先创建一个/home/newdisk目录。
 
-<img src="Linux学习.assets\image-20200708210115119.png" alt="image-20200708210115119" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102717.jpg" alt="image-20200708210115119" style="zoom:80%;" />
 
 + 执行挂载命令
 
-<img src="Linux学习.assets\image-20200708210239496.png" alt="image-20200708210239496" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102718.png" alt="image-20200708210239496" style="zoom:80%;" />
 
 ​		对于上面的方式，只是临时生效，当你重启系统，挂载的关系就会消失， 因此，我们要配置`Linux`的分区表，实现启动时，自动挂载.
 
@@ -778,7 +778,7 @@ mkfs -t  ext4   /dev/sdb1   --格式化磁盘,其中ext4是分区类型。
 vim /etc/fstab  --进入挂载文件页面
 ```
 
-![img](Linux学习.assets\clip_image002-1594214539105.jpg)
+![img](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102719.png)
 
 添加完成后，执行下面的操作自动挂载会即刻生效。
 
@@ -788,7 +788,7 @@ mount  –a  -- a：auto含义。
 
 当我们重启虚拟机后，会发现硬盘自动挂载到/home/newdisk目录上。
 
-<img src="Linux学习.assets\image-20200708212440145.png" alt="image-20200708212440145" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102720.png" alt="image-20200708212440145" style="zoom:80%;" />
 
 **卸载指令**
 
@@ -797,7 +797,7 @@ umount 设备名 | 挂载路径
 umount /dev/sdb1 --将挂载到/home/newdisk的硬盘卸载
 ```
 
-<img src="Linux学习.assets\image-20200708212942300.png" alt="image-20200708212942300" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102721.png" alt="image-20200708212942300" style="zoom:80%;" />
 
 ## 3、磁盘查询
 
@@ -826,29 +826,29 @@ ls –lR /home/ | grep “^d” | wc -l --统计/home文件夹下目录的个数
 
 当没有`tree`指令时，我们使用`yum`指令来进行安装。
 
-<img src="Linux学习.assets\image-20200708214841069.png" alt="image-20200708214841069" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102722.png" alt="image-20200708214841069" style="zoom:80%;" />
 
-![image-20200708214903871](Linux学习.assets\image-20200708214903871.png)
+![image-20200708214903871](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102723.png)
 
 # 9 网络配置
 
 1、网络结构
 
-<img src="Linux学习.assets\image-20200708220305828.png" alt="image-20200708220305828" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102724.png" alt="image-20200708220305828" style="zoom:67%;" />
 
 2、查看虚拟网络编辑器
 
-<img src="Linux学习.assets\image-20200708220540380.png" alt="image-20200708220540380" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102725.png" alt="image-20200708220540380" style="zoom:80%;" />
 
 3、修改虚拟网卡的ip的地址
 
-<img src="Linux学习.assets\image-20200708220643258.png" alt="image-20200708220643258" style="zoom: 67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102726.png" alt="image-20200708220643258" style="zoom: 67%;" />
 
 4. **查看网关**
 
-<img src="Linux学习.assets\image-20200708220820346.png" alt="image-20200708220820346" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102727.png" alt="image-20200708220820346" style="zoom:67%;" />
 
-<img src="Linux学习.assets\image-20200708220914103.png" alt="image-20200708220914103" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102728.png" alt="image-20200708220914103" style="zoom:80%;" />
 
 5. **查看windows环境的中VMnet8网络配置**
 
@@ -856,7 +856,7 @@ ls –lR /home/ | grep “^d” | wc -l --统计/home文件夹下目录的个数
 
 方式2：界面查看（等到下次连接到wifi时再查看）。
 
-<img src="Linux学习.assets\image-20200708221820578.png" alt="image-20200708221820578" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102729.png" alt="image-20200708221820578" style="zoom:80%;" />
 
 6. **ping命令**
 
@@ -868,13 +868,13 @@ ls –lR /home/ | grep “^d” | wc -l --统计/home文件夹下目录的个数
 ping 目的主机  --测试当前服务器是否可以连接目的主机
 ```
 
-<img src="Linux学习.assets\image-20200708222201297.png" alt="image-20200708222201297" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102730.png" alt="image-20200708222201297" style="zoom:80%;" />
 
 ## 1、网络环境配置
 
 方式1：**自动获取**
 
-<img src="Linux学习.assets\image-20200708222747073.png" alt="image-20200708222747073" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102731.png" alt="image-20200708222747073" style="zoom:80%;" />
 
 ​		可以发现，这样的设置比较简单，每次启动Linux后，虚拟机分配的ip地址可能不一样，因此，该方式不适合做服务器。
 
@@ -888,7 +888,7 @@ vi /etc/sysconfig/network-scripts/ifcfg-eth0
 
  要求：将ip地址配置的静态的，ip地址为192.168.xxx.xxx  
 
-<img src="Linux学习.assets\image-20200709084645823.png" alt="image-20200709084645823" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102732.png" alt="image-20200709084645823" style="zoom:80%;" />
 
 **ifcfg-eth0文件说明**
 
@@ -911,7 +911,7 @@ DNS1=192.168.189.2
 
 注意，我们电脑的VMnet8的ip地址为`192.168.10.1`，因此，需要将上面的189这个网段改成10。
 
-<img src="Linux学习.assets\image-20200709085421498.png" alt="image-20200709085421498" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102733.png" alt="image-20200709085421498" style="zoom:80%;" />
 
 改好之后，重启网络服务：
 
@@ -919,9 +919,9 @@ DNS1=192.168.189.2
 service  network restart  、reboot
 ```
 
-<img src="Linux学习.assets\image-20200709085724639.png" alt="image-20200709085724639" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102734.png" alt="image-20200709085724639" style="zoom:80%;" />
 
-<img src="Linux学习.assets\image-20200709085800506.png" alt="image-20200709085800506" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102735.png" alt="image-20200709085800506" style="zoom:80%;" />
 
 ​		也可以在虚拟机界面ping我们的windows的ip地址，或者在windows的命令界面ping我们的虚拟机地址。
 
@@ -947,15 +947,15 @@ HOSTNAME= hadoop01 //写入新的主机名
 
 修改虚拟机主机名，ping主机：
 
-![image-20200709091700030](Linux学习.assets\image-20200709091700030.png)
+![image-20200709091700030](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102736.png)
 
 windows也可以通过主机名来连接centos01：
 
-<img src="Linux学习.assets\image-20200709092930900.png" alt="image-20200709092930900" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102737.png" alt="image-20200709092930900" style="zoom:80%;" />
 
 windows能够ping通hadoop01主机名：
 
-<img src="Linux学习.assets\image-20200709093021269.png" alt="image-20200709093021269" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102738.png" alt="image-20200709093021269" style="zoom:80%;" />
 
 # 10 进程管理
 
@@ -1001,19 +1001,19 @@ windows能够ping通hadoop01主机名：
 
 查看所有的进程信息：
 
-![image-20200709114102892](Linux学习.assets\image-20200709114102892.png)
+![image-20200709114102892](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102739.png)
 
 查看特定的进程信息：
 
-![image-20200709114418312](Linux学习.assets\image-20200709114418312.png)
+![image-20200709114418312](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102740.png)
 
 查看所有的父进程信息：
 
-![image-20200709114626603](Linux学习.assets\image-20200709114626603.png)
+![image-20200709114626603](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102741.png)
 
 查看特定的父进程信息：
 
-![image-20200709114613389](Linux学习.assets\image-20200709114613389.png)
+![image-20200709114613389](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102742.png)
 
 grep：全局正则表达式版本（Global Regular Expression Print）。
 
@@ -1032,13 +1032,13 @@ killall 进程名称 --通过进程名称杀死进程，也支持通配符，这
 
 案例1：踢掉某个非法登录用户，此时该登录用户就会掉线。
 
-<img src="Linux学习.assets\image-20200709115450794.png" alt="image-20200709115450794" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102743.png" alt="image-20200709115450794" style="zoom:80%;" />
 
 案例2: 终止远程登录服务sshd, 在适当时候再次重启sshd服务。
 
 ​		适用场景，系统处于维护的过程中，不需要用户进行登录。
 
-<img src="Linux学习.assets\image-20200709115657062.png" alt="image-20200709115657062" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102744.png" alt="image-20200709115657062" style="zoom:80%;" />
 
 案例3: 终止多个gedit 编辑器。
 
@@ -1048,7 +1048,7 @@ kill gedit --将父进程干掉后，子代也一锅端。
 
 案例4：强制杀掉一个终端 对于 bash。
 
-![image-20200709120314322](Linux学习.assets\image-20200709120314322.png)
+![image-20200709120314322](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102745.png)
 
 ## 3、服务管理
 
@@ -1064,9 +1064,9 @@ service  服务名 [start | stop | restart | reload | status]
 
 案例1：查看当前防火墙的状况，关闭防火墙和重启防火墙。
 
-![image-20200709150033385](Linux学习.assets\image-20200709150033385.png)
+![image-20200709150033385](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102746.png)
 
-![image-20200709150421568](Linux学习.assets\image-20200709150421568.png)
+![image-20200709150421568](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102747.png)
 
 说明：关闭或者启用防火墙后，立即生效。在windows中使用下面的指令进行测试，某个端口即可。
 
@@ -1077,7 +1077,7 @@ telnet 192.168.10.130 22
 
 ​		输入上面的指令在windows中进行测试：
 
-<img src="Linux学习.assets\image-20200709151955104.png" alt="image-20200709151955104" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102748.png" alt="image-20200709151955104" style="zoom:80%;" />
 
 ​		该指令需要计算机在控制面板中打开telent功能。这种方式只是临时生效，当重启系统后，还是回归以前对服务的设置。如果希望设置某个服务自启动或关闭永久生效，要使用`chkconfig`指令。
 
@@ -1093,13 +1093,13 @@ chkconfig iptables off  --关闭防火墙(chkconfig iptables off)
 
 **方式1**：使用setup -> 系统服务 就可以看到。
 
-<img src="Linux学习.assets\image-20200709152405926.png" alt="image-20200709152405926" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102749.png" alt="image-20200709152405926" style="zoom:80%;" />
 
 进入里面之后，按空格，即可将服务去除。
 
 **方式2**:  /etc/init.d/服务名称。
 
-<img src="Linux学习.assets\image-20200709152626388.png" alt="image-20200709152626388" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102750.png" alt="image-20200709152626388" style="zoom:80%;" />
 
 **服务的运行级别(runlevel)**
 
@@ -1116,7 +1116,7 @@ Linux系统有7种运行级别(runlevel)：常用的是级别3和5
 运行级别6：系统正常关闭并重启，默认运行级别不能设为6，否则不能正常启动
 ```
 
-<img src="Linux学习.assets\image-20200709152910127.png" alt="image-20200709152910127" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102751.png" alt="image-20200709152910127" style="zoom:80%;" />
 
 每个服务对应不同的运行级别。
 
@@ -1171,7 +1171,7 @@ top [选项]
 
 ​		首先，输入 top命令，按回车键，查看执行的进程。
 
-<img src="Linux学习.assets\image-20200709154741637.png" alt="image-20200709154741637" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102752.png" alt="image-20200709154741637" style="zoom:80%;" />
 		然后，输入`u`回车，再输入用户名，即可
 
 案例2：如何终止指定的进程。
@@ -1179,11 +1179,11 @@ top [选项]
 
 ​		然后输入`k`回车，再输入要结束的进程ID号。
 
-<img src="Linux学习.assets\image-20200709155056104.png" alt="image-20200709155056104" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102753.png" alt="image-20200709155056104" style="zoom:80%;" />
 
 案例3:指定系统状态更新的时间(每隔10秒自动更新一次）。
 
-<img src="Linux学习.assets\image-20200709155305825.png" alt="image-20200709155305825" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102754.png" alt="image-20200709155305825" style="zoom:80%;" />
 
 2、 监控网络状态
 
@@ -1200,7 +1200,7 @@ netstat [选项]
 
 案例：查看服务名为 sshd 的服务的信息。
 
-<img src="Linux学习.assets\image-20200709155826899.png" alt="image-20200709155826899" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102755.png" alt="image-20200709155826899" style="zoom:80%;" />
 
 # 11 RPM与YUM
 
@@ -1221,7 +1221,7 @@ rpm  –qa | grep xx --查询已安装的rpm列表
 rpm -qa | grep firefox --查询Linux中是否安装了火狐插件
 ```
 
-![image-20200709160526561](Linux学习.assets\image-20200709160526561.png)
+![image-20200709160526561](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102756.png)
 
 RPM包名基本格式解释：
 
@@ -1274,15 +1274,15 @@ rpm -ivh  RPM包全路径名称
 
 （1）先找到firefox的安装rpm包，此时，我们需要挂载上我们安装的centos的iso文件,然后到/media/目录下去查询软件包。
 
-<img src="Linux学习.assets\image-20200709164039427.png" alt="image-20200709164039427" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102757.png" alt="image-20200709164039427" style="zoom:80%;" />
 
 此时，桌面上有一个光驱出来：
 
-<img src="Linux学习.assets\image-20200709164127818.png" alt="image-20200709164127818" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102758.png" alt="image-20200709164127818" style="zoom:80%;" />
 
 ​	使用cd /media/命令切换到该目录下，在该目录下，使用指令`ls`可以看到里面有个`CentOS_6.8_Final`文件，进入`CentOS_6.8_Final`后输入`ls`命令后，有一个`Packages`文件，然后执行下面图片中的操作。
 
-<img src="Linux学习.assets\image-20200709165325965.png" alt="image-20200709165325965" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102759.png" alt="image-20200709165325965" style="zoom:80%;" />
 
 （2）安装firefox
 
@@ -1301,9 +1301,9 @@ rpm -e RPM包的名称
 rpm -e firefox  --删除firefox  软件包
 ```
 
-<img src="Linux学习.assets\image-20200709163522348.png" alt="image-20200709163522348" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102800.png" alt="image-20200709163522348" style="zoom:80%;" />
 
-<img src="Linux学习.assets\image-20200709163632456.png" alt="image-20200709163632456" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102801.png" alt="image-20200709163632456" style="zoom:80%;" />
 
 注意：
 
@@ -1343,5 +1343,5 @@ yum install xxx  下载安装 --安装指定的yum包，默认会安装最新的
 yum install firefox  --使用该命令，yum会将适合你系统的最新版本的软件包自动的下载到你的系统中。
 ```
 
-<img src="Linux学习.assets\image-20200709163310831.png" alt="image-20200709163310831" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831102802.png" alt="image-20200709163310831" style="zoom:80%;" />
 

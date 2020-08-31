@@ -311,7 +311,7 @@ jQuery是一个封装了JavaScript的函数库，可以通过一行简单的标�
 
 + 显示的效果图：
 
-<img src="jQuery学习.assets/image-20200418223345693.png" alt="image-20200418223345693" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130027.png" alt="image-20200418223345693" style="zoom:80%;" />
 
 2. 删除元素
 

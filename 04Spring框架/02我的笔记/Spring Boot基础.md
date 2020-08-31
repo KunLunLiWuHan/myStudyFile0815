@@ -199,8 +199,6 @@ properties和yml中的配置，相互补充；如果冲突，则properties优先
 
 ### 1.1.2. 补救方法
 
-
-
 | 通过增加项目外部的配置文件的方式。                           |
 | ------------------------------------------------------------ |
 | run Configuration -> Arguments ->program  arguments：--spring.config.location=D:\java\StsDownloadPlugin\application.properties  文件路径。 |

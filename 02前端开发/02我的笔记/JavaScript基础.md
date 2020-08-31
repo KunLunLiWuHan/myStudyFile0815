@@ -899,10 +899,6 @@ CSS标签，JS元素，DOM节点
 
 + div2相对于div1进行定位，其中div2的（;position: absolute），div1的（;position: relative，此时div1会相对div2进行移动。
 
-
-
-
-
 # 5 面向对象
 
 ## 5.1 this使用
