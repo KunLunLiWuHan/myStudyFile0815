@@ -287,61 +287,7 @@ use this text block from theirs before mine  
 
 # 3 Github
 
-## 1、介绍
-
-​		github是一个git项目托管网站,主要提供基于git的版本托管服务。
-
-​		github是一个基于git的代码托管平台，Git 并不像 SVN 那样有个中心服务器。目前我们使用到的 Git 命令都是在本地执行，如果你想通过 Git 分享你的代码或者与其他开发人员合作。 你就需要将数据放到一台其他开发人员能够连接的服务器上。
-
-## 2、Github应用
-
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134331.png" alt="image-20200814082826968" style="zoom:80%;" />
-
-### 1、注册+检查.ssh秘钥
-
-​		由于你的本地Git仓库和GitHub仓库之间的传输是通过SSH加密的，所以我们需要配置验证信息(No such file or directory表示第一次)。
-
-执行下面的命令，可以查看有无创建ssh连接文件：
-
-```bash
-34938@LAPTOP-5NUHM8TD MINGW64 /d/oa (master)
-$ cd ~/.ssh
-```
-
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134332.png" alt="image-20200814093945729" style="zoom:80%;" />
-
-### 2、创建SSH Key
-
-```bash
-ssh-keygen -t rsa -C 3493826518@qq.com
-```
-
-成功的话会在~/下生成.ssh文件夹，进去，打开id_rsa.pub，复制里面的key。
-
-### 3、粘贴id_rsa.pub内容到Github
-
-（1）首先，进入配置界面
-
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134333.png" alt="image-20200814094812879" style="zoom:80%;" />
-
-（2）将公钥内容进行粘贴
-
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134334.png" alt="image-20200814094942677" style="zoom:80%;" />
-
-### 4、测试连通性
-
-执行下面的命令进行测试：
-
-```bash
-ssh -T git@github.com
-
-#注意：前面有多余的空格时，会曝出下面的错误：
-bash: $'\302\226ssh': command not found
-```
-
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134335.png" alt="image-20200814094557843" style="zoom:80%;" />
-
-### 5、本地 —> github远程库
+### 1、本地 —> github远程库
 
 （1）情景
 
@@ -392,7 +338,7 @@ git push -u origin master
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134340.png" alt="image-20200814102540160" style="zoom:80%;" />
 
-### 6、github远程库 —> 本地
+### 2、github远程库 —> 本地
 
 1、情景
 
@@ -410,7 +356,7 @@ $ git clone  https://github.com/KunLunLiWuHan/oa2.git
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134341.png" alt="image-20200814103946007" style="zoom:80%;" />
 
-### 7、交互模型
+### 3、交互模型
 
 1、 本地修改，同步给远程；远程修改，同步到本地。
 
@@ -420,7 +366,7 @@ $ git clone  https://github.com/KunLunLiWuHan/oa2.git
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134343.png" alt="image-20200814104143286" style="zoom:80%;" />
 
-### 8、Fork
+### 4、Fork
 
 ​		GitHub 上有好多开源的好的项目，我们可以下载下来查看、借鉴别人的代码。但是如果我们修改了，由于不是对方的合作伙伴，我们无法将代码上传到别人的仓库，此时我们可以选择使用 fork 和 pullrequest 操作 。即：非合作伙伴如何共同开发项目 。
 
@@ -454,7 +400,7 @@ $ git clone  https://github.com/KunLunLiWuHan/oa2.git
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134350.png" alt="image-20200814111107773" style="zoom: 50%;" />
 
-### 9、解决git push时重复输入用户名密码
+### 5、解决git push时重复输入用户名密码
 
 1、方法1
 

@@ -266,72 +266,7 @@ build/  #忽略build/目录下的所有文件（往下走）
 doc/*.txt #忽略doc/notes.txt，但不包括doc/server/arch.txt
 ```
 
-# 6 使用码云
-
-## 1、上传本地库
-
-1、参考下面的配置
-
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134054.png" alt="image-20200815110632500" style="zoom: 80%;" />
-
-2、遇到push无法上传的问题
-
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134055.png" alt="image-20200815110709198" style="zoom:67%;" />
-
-解决方法如下：
-
-https://www.cnblogs.com/e0yu/p/9828520.html
-
-## 2、SSH配置
-
-+ 注册登录码云，完善个人信息。
-+ 设置本机绑定SSH公匙，实现免密登录。
-
-```bash
-#进入C:\Users\Administrator\.ssh 目录
-#生成公匙
-ssh-keygen
-```
-
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134056.png" alt="image-20200415090604602" style="zoom:80%;" />
-
-+ 将公匙信息public key 添加到码云账户中即可。
-
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134057.png" alt="image-20200415090934092" style="zoom:80%;" />
-
-+ 使用码云创建一个自己的仓库。
-
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134058.png" alt="image-20200415091335194" style="zoom:80%;" />
-
-许可证：开源是否可以随意转载，开源但是不能商业使用，不能转载等各种限制。
-
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134059.png" alt="image-20200415091622642" style="zoom:80%;" />
-
-+ 在本地文件克隆
-
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134100.png" alt="image-20200415091950277" style="zoom:80%;" />
-
-​															图6.1 使用命令在本地克隆
-
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134101.png" alt="image-20200415091903564" style="zoom:80%;" />
-
-​															图6.2 克隆到本地的文件目录
-
-可以发现通过使用命令，可以将远程码云的程序文件克隆到本地。
-
-#### 1、Gitee(码云)、Github同时配置ssh key
-
-参考博客：
-
-https://www.bbsmax.com/A/pRdBOW17zn/
-
-注意：.ssh文件的位置。
-
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134102.png" alt="image-20200815135657934" style="zoom:67%;" />
-
-
-
-# 7 IDEA集成Git操作
+# 6 IDEA集成Git操作
 
 1. 新建项目，绑定git。
    + 将我们远程的git文件目录拷贝到项目中即可。
@@ -363,7 +298,7 @@ https://www.bbsmax.com/A/pRdBOW17zn/
 
 然后在控制台使用命令`git push`上传到远端仓库
 
-# 8 Git分支
+# 7 Git分支
 
 ​		分支在Git中相对较难，分支就是科幻世界中的平行宇宙，如果两个平行宇宙互不干扰，那对于现在的你也没啥影响。不过，在某个时间点，两个宇宙合并了，我们就需要处理一些问题了。
 
@@ -394,9 +329,9 @@ git branch -dr[remote/branch]
 
 ​		master主分支非常稳定，用来发布新版本，一般情况下不允许在上面工作，工作一般情况下再新建一个`dev`后，比如上要发布，或者说`dev`分支代码稳定后可以合并到主分支`master`上来。
 
-# 9 SourceTree
+# 8 SourceTree
 
-## 9.1 安装过程
+## 8.1 安装过程
 
 1. 将下载软件解压后选择下面的文件：
 

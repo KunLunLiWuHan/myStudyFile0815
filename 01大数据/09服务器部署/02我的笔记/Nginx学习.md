@@ -10,29 +10,33 @@
 
 ## 3、正向代理 
 
-​		正向代理：如果把局域网外的 Internet 想象成一个巨大的资源库，则局域网中的客户端要访问 Internet，则需要通过代理服务器来访问，这种代理服务就称为正向代理。 
+正向代理：如果把局域网外的 Internet 想象成一个巨大的资源库，则局域网中的客户端要访问 Internet，则需要通过代理服务器来访问，这种代理服务就称为正向代理。 
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831164722.png" alt="image-20200818090104312" style="zoom:67%;" />
 
-​		在客户端（浏览器）配置代理服务器，通过代理服务器进行互联网的访问。
+在客户端（浏览器）配置代理服务器，通过代理服务器进行互联网的访问。
 
-​		反向代理和正向代理的区别，参考网址：https://www.cnblogs.com/taostaryu/p/10547132.html。
+反向代理和正向代理的区别，参考网址：
+
+```http
+https://www.cnblogs.com/taostaryu/p/10547132.html
+```
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831164723.png" alt="image-20200818090716585" style="zoom:50%;" />
 
-​		正向代理中，proxy和client同属一个LAN，对server透明；反向代理中，proxy和server同属一个LAN，对client透明。
+正向代理中，proxy和client同属一个LAN，对server透明；反向代理中，proxy和server同属一个LAN，对client透明。
 
-​		实际上proxy在两种代理中做的事都是代为收发请求和响应，不过从结构上来看正好左右互换了下，所以把后出现的那种代理方式叫成了反向代理
+实际上proxy在两种代理中做的事都是代为收发请求和响应，不过从结构上来看正好左右互换了下，所以把后出现的那种代理方式叫成了反向代理
 
 ## 4、反向代理
 
-​		反向代理，其实客户端对代理是无感知的，因为客户端不需要任何配置就可以访问，我们只需要将请求发送到反向代理服务器， 由反向代理服务器去选择目标服务器获取数据后， 再返回给客户端， 此时反向代理服务器和目标服务器对外就是一个服务器， 暴露的是代理服务器地址，隐藏了真实服务器 IP 地址。
+反向代理，其实客户端对代理是无感知的，因为客户端不需要任何配置就可以访问，我们只需要将请求发送到反向代理服务器， 由反向代理服务器去选择目标服务器获取数据后， 再返回给客户端， 此时反向代理服务器和目标服务器对外就是一个服务器， 暴露的是代理服务器地址，隐藏了真实服务器 IP 地址。
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831164724.png" alt="image-20200818090814544" style="zoom:67%;" />
 
 ## 5、负载均衡
 
-​		客户端发送多个请求到服务器，服务器处理请求，有一些可能要与数据库进行交互，服务器处理完毕后，再将结果返回给客户端。 
+客户端发送多个请求到服务器，服务器处理请求，有一些可能要与数据库进行交互，服务器处理完毕后，再将结果返回给客户端。 
   这种架构模式对于早期的系统相对单一， 并发请求相对较少的情况下是比较适合的， 成本也低。但是随着信息数量的不断增长，访问量和数据量的飞速增长，以及系统业务的复杂度增加，这种架构会造成服务器相应客户端的请求日益缓慢，并发量特别大的时候，还容易造成服务器直接崩溃。 
 ​		首先想到的可能是升级服务器的配置， 比如提高 CPU 执行频率， 加大内存等提高机器的物理性能来解决此问题， 但是我们知道摩尔定律的日益失效， 硬件的性能提升已经不能满足日益提升的需求了。最明显的一个例子，天猫双十一当天，某个热销商品的瞬时访问量是极其庞大的，那么类似上面的系统架构，将机器都增加到现有的顶级物理配置，都是不能够满足需求的。 
 ​		上面的分析我们去掉了增加服务器物理配置来解决问题的办法， 也就是说纵向解决问题的办法行不通了， 那么横向增加服务器的数量呢？这时候集群的概念产生了， 单个服务器解决不了，我们增加服务器的数量，然后将请求分发到各个服务器上，将原先请求集中到单个服务器上的情况改为将请求分发到多个服务器上， 将负载分发到不同的服务器， 也就是我们所说的负载均衡。 
@@ -41,7 +45,7 @@
 
 ## 6、动静分离
 
-​		为了加快网站的解析速度， 可以把动态页面和静态页面由不同的服务器来解析， 加快解析速度。降低原来单个服务器的压力。 
+为了加快网站的解析速度， 可以把动态页面和静态页面由不同的服务器来解析， 加快解析速度。降低原来单个服务器的压力。 
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831164726.png" alt="image-20200818091207916" style="zoom:67%;" />
 
@@ -57,13 +61,13 @@ http://nginx.org/en/download.html
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831164727.png" alt="image-20200819144650234" style="zoom:50%;" />
 
-​		nginx是c语言开发，笔记中使用Centos6.9作为开发环境。
+nginx是c语言开发，笔记中使用Centos6.9作为开发环境。
 
-​	为了安装nginx，我们还需要安装 prce-xx.tar.gz、openssl-xx.tar.gz和zlib-xx.tar.gz（prce-xx.tar.gz为了重写rewrite，zlib-xx.tar.gz为了gzip压缩）。
+为了安装nginx，我们还需要安装 prce-xx.tar.gz、openssl-xx.tar.gz和zlib-xx.tar.gz（prce-xx.tar.gz为了重写rewrite，zlib-xx.tar.gz为了gzip压缩）。
 
 2、安装pcre
 
-​		PCRE(Perl Compatatible Regular Expressions)是一个Perl库，包含perl兼容的正则表达式库。Nginx的http模块使用pcre来解析正则表达式。我们需要在Linux中安装一个pcre库。
+PCRE(Perl Compatatible Regular Expressions)是一个Perl库，包含perl兼容的正则表达式库。Nginx的http模块使用pcre来解析正则表达式。我们需要在Linux中安装一个pcre库。
 
 推荐以root身份进行安装，不然会有类似权限等的许多问题。
 
@@ -112,9 +116,9 @@ yum install -y zlib zlib-devel
 yum install -y openssl openssl-devel
 ```
 
-​		OpnSSL是一个强大的安全套接字层密码库，囊括主要的密码算法，常用的密钥和整数封装和管理功能以及SSL协议，并提供丰富的应用程序供测试或者其他目的使用。
+OpenSSL是一个强大的安全套接字层密码库，囊括主要的密码算法，常用的密钥和整数封装和管理功能以及SSL协议，并提供丰富的应用程序供测试或者其他目的使用。
 
-​		ngin不仅支持http协议，还支持https(即在ssl协议上传递的http),所以需要在Linux中安装OpenSSL库。
+ngin不仅支持http协议，还支持https(即在ssl协议上传递的http),所以需要在Linux中安装OpenSSL库。
 
 4、安装nginx
 
@@ -128,7 +132,7 @@ make && make install
 
 5、防火墙配置
 
-​		在nginx中（conf/nginx.conf），服务器的监听端口默认为80,因此，我们要在防火墙中开放该端口
+在nginx中（conf/nginx.conf），服务器的监听端口默认为80,因此，我们要在防火墙中开放该端口
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831164728.png" alt="image-20200818104513643" style="zoom: 67%;" />
 
@@ -169,7 +173,7 @@ service iptables status
 
 1、启动命令
 
-​		在`/usr/local/nginx/sbin` 目录下执行，下面几个目录也都是在这个目录下执行的。
+在`/usr/local/nginx/sbin` 目录下执行，下面几个目录也都是在这个目录下执行的。
 
 ```shell
 ./sbin/nginx 
@@ -234,13 +238,13 @@ nginx: [error] open() ＂/usr/local/nginx/logs/nginx.pid＂ failed
 
 ## 3、配置文件
 
-​		nginx 安装目录下，其默认的配置文件都放在这个目录的 conf 目录下，而主配置文件 nginx.conf 也在其中，后续对 nginx 的使用基本上都是对此配置文件进行相应的修改 。
+nginx 安装目录下，其默认的配置文件都放在这个目录的 conf 目录下，而主配置文件 nginx.conf 也在其中，后续对 nginx 的使用基本上都是对此配置文件进行相应的修改 。
 
 nginx.conf  配置文件分为三部分： 
 
 1、全局块
 
-​		从配置文件开始到 `events` 块之间的内容，主要会设置一些影响 nginx 服务器整体运行的配置指令，主要包括配置运行 Nginx 服务器的用户（组）、允许生成的 worker process 数，进程 PID 存放路径、日志存放路径和类型以及配置文件的引入等。 
+从配置文件开始到 `events` 块之间的内容，主要会设置一些影响 nginx 服务器整体运行的配置指令，主要包括配置运行 Nginx 服务器的用户（组）、允许生成的 worker process 数，进程 PID 存放路径、日志存放路径和类型以及配置文件的引入等。 
 
 比如：
 
@@ -248,11 +252,11 @@ nginx.conf  配置文件分为三部分：
 worker_processes  1;
 ```
 
-​		这是 Nginx 服务器并发处理服务的关键配置，worker_processes 值越大，可以支持的并发处理量也越多，但是会受到硬件、软件等设备的制约。
+这是 Nginx 服务器并发处理服务的关键配置，worker_processes 值越大，可以支持的并发处理量也越多，但是会受到硬件、软件等设备的制约。
 
 2、events块
 
-​		events 块涉及的指令主要影响 Nginx 服务器与用户的网络连接，常用的设置包括是否开启对多 work process 下的网络连接进行序列化，是否允许同时接收多个网络连接，选取哪种事件驱动模型来处理连接请求，每个 word 
+events 块涉及的指令主要影响 Nginx 服务器与用户的网络连接，常用的设置包括是否开启对多 work process 下的网络连接进行序列化，是否允许同时接收多个网络连接，选取哪种事件驱动模型来处理连接请求，每个 word 
 process 可以同时支持的最大连接数等。 
 
 ```ini
@@ -261,15 +265,15 @@ events {
 }
 ```
 
-​		上述例子就表示每个 `work process` 支持的最大连接数为 1024.。这部分的配置对 Nginx 的性能影响较大，在实际中应该灵活配置。 
+上述例子就表示每个 `work process` 支持的最大连接数为 1024.。这部分的配置对 Nginx 的性能影响较大，在实际中应该灵活配置。 
 
 3、http块
 
-​		这是 Nginx 服务器配置中最频繁的部分， 代理、 缓存和日志定义等绝大多数功能和第三方模块的配置都在这里。 需要注意的是：http 块也可以包括 http 全局块、server 块。 
+这是 Nginx 服务器配置中最频繁的部分， 代理、 缓存和日志定义等绝大多数功能和第三方模块的配置都在这里。 需要注意的是：http 块也可以包括 http 全局块、server 块。 
 
 （1）http全局块
 
-​		http 全局块配置的指令包括文件引入、MIME-TYPE 定义、日志自定义、连接超时时间、单链接请求数上限等。 
+http 全局块配置的指令包括文件引入、MIME-TYPE 定义、日志自定义、连接超时时间、单链接请求数上限等。 
 
 （2）server 块 
 
@@ -692,7 +696,7 @@ upstream myserver{
 
 （1）两台Nginx，一主一备：192.168.10.101和192.168.10.102。
 
-（2）一台tomcat服务器：192.168.10.101。
+（2）两台tomcat服务器：192.168.10.101:8080和192.168.10.102:8080。
 
 ## 2、Keepalived+nginx实现主从模式
 
@@ -733,8 +737,11 @@ global_defs {
    #smtp_connect_timeout 30  #指定smtp连接的超时时间
    router_id LVS_DEVEL   #运行keepalived机器的一个标识
 } 
-  
-vrrp_script chk_http_port { 
+
+# 注意大括号的格式应该像下面这样，不然脚本无法执行。
+#  script执行路径没啥要求，也可以在/etc/keepalived/nginx_check.sh下
+vrrp_script nginx_check 
+{ 
    script "/usr/local/src/nginx_check.sh"  #监控脚本
    interval 2      #（检测脚本执行的间隔） 2秒
    weight 2        #权重
@@ -752,8 +759,13 @@ vrrp_instance VI_1 {
     } 
     
     virtual_ipaddress {  #设置vip,可以设置多个换行即可
-        192.168.0.106 // VRRP H 虚拟地址 
-    } 
+        192.168.10.10 // VRRP H 虚拟地址 
+    }
+    
+    # 添加追踪脚本
+     track_script {
+         nginx_check
+    }
 } 
 ```
 
@@ -761,44 +773,139 @@ vrrp_instance VI_1 {
 
 `keepalived`是通过检查`keepalived`进程是否存在来判断服务器是否宕机，如果`keepalived`进程在，但是`Nginx`进程不在了，那么`keepalived`不会做主备切换，所以我们需要写一个脚本来监控`Nginx`进程是否存在，如果不存在就将其杀掉。
 
-```bash
+我使用的是下面简洁版的脚本：
+
+```shell
 #在/usr/local/src目录下添加,名字：nginx_check.sh
-#!/bin/bash 
 #查看是否有nginx进程，把值赋给变量
 # -C by command name
-#wc -l统计行数
-A=`ps -C nginx –no-header |wc -l` 
-if [ $A -eq 0 ];then  #如果没有进程值为0
-    /usr/local/nginx/sbin/nginx 
-    sleep 2 
-    if [ `ps -C nginx --no-header |wc -l` -eq 0 ];then 
-        #killall keepalived 
-        service keepalived stop #则结束keepalived进程
-    fi 
-fi 
+#wc -l统计行数。注：--no-header前面有两个英文--,写一个会报错
+# [ $A -eq 0 ]中括号留一个间距，不然会报错
+
+#!/bin/bash
+A=`ps -C nginx --no-header |wc -l` 
+if [ $A -eq 0 ];then            
+       service keepalived stop   
+fi
+```
+
+注意：我们的脚本文件需要加授权，将其变成可执行文件：
+
+```shell
+chmode u+x ./nginx_check.sh
 ```
 
 5、修改keepalived.conf文件
 
-添加脚本定义检测。
+添加脚本定义检测，在第3的时候，我们已经配置好了。
 
 ```ini
-vrrp_script chk_http_port { 
+vrrp_script nginx_check 
+{ 
    script "/usr/local/src/nginx_check.sh"  #监控脚本
    interval 2      #（检测脚本执行的间隔） 2秒
    weight 2        #权重
 } 
 ```
 
+6、添加追踪脚本
 
+```ini
+# 添加追踪脚本
+track_script {
+ 		nginx_check
+}
+```
 
+7、两条主机上的nginx的配置反向代理
 
+```ini
+#hadoop101主机
+upstream cluster{
+        server 192.168.10.101:8080;
+   }
+    server {
+        listen       80;
+        server_name  localhost;
+
+        location / {
+            proxy_pass http://cluster;
+        }
+}
+
+#hadoop101备机
+upstream cluster{
+        server 192.168.10.102:8080;
+   }
+    server {
+        listen       80;
+        server_name  localhost;
+
+        location / {
+            proxy_pass http://cluster;
+        }
+}
+```
+
+8、测试
+
+（1）在hadoop101/102服务器上启动nginx和keepalived服务
 
 ```shell
-#!/bin/bash
-A=`ps -C nginx--no-header |wc -l`  
-if [ $A -eq 0];then               
-       service keepalived stop   
-fi
+sbin/nginx -s stop
+ps -ef|grep nginx
+
+service keepalived start
+service keepalived status
 ```
+
+（2）在hadoop101/102主机查看虚拟主机的绑定情况
+
+```sheLl
+ip add show eth0
+```
+
+hadoop101主机：
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831185015.png" alt="image-20200831185001998" style="zoom:67%;" />
+
+hadoop102主机：
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831185119.png" alt="image-20200831185114636" style="zoom:67%;" />
+
+此时访问下面的网址：
+
+```http
+http://192.168.10.10/
+```
+
+能够正常访问：
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831185229.png" alt="image-20200831185225720" style="zoom:67%;" />
+
+（3）关闭hadoop101服务器上的nginx，查看虚拟主机漂移情况
+
+hadoop101主机：
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831185404.png" alt="image-20200831185400835" style="zoom:67%;" />
+
+hadoop102主机：
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831185448.png" alt="image-20200831185444589" style="zoom:67%;" />
+
+此时访问下面的网址：
+
+```http
+http://192.168.10.10/
+```
+
+同样可以正常访问。
+
+（4）在hadoop101重新启动nginx和keepalived，此时虚拟ip会重新漂移到该主机上。
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831185632.png" alt="image-20200831185629047" style="zoom:67%;" />
+
+而在hadoop102中，该虚拟ip已和eth0解除绑定。
+
+
 
