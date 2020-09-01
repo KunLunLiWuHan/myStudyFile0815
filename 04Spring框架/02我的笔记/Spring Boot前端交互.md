@@ -142,7 +142,7 @@ public String savePage(@Valid Users users,BindingResult result){
 
   这是因为，当输出上面网址的时候，我们会访问add.html界面，并没有输入任何信息，故此时<`font color="red" th:errors = "${users.name}"></font>`代码中，并没有`users`的信息，即`users = null`。
 
-<img src="Spring Boot前端交互.assets/image-20200414091655993.png" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083546.png" style="zoom:80%;" />
 
 ## 1.4 解决异常
 
@@ -419,7 +419,7 @@ $.get(请求地址，请求参数，局部刷新函数名，需要的数据类�
 
 1. **项目结构**
 
-<img src="Spring Boot前端交互.assets\image-20200629094214937.png" alt="image-20200629094214937" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083547.png" alt="image-20200629094214937" style="zoom:80%;" />
 
 1. **前端界面**
 
@@ -542,13 +542,13 @@ public List<User> a2(){
 
 + 控制台输出如下，前端的Ajax确实能够将后台数据带回来进行渲染。
 
-<img src="Spring Boot前端交互.assets\image-20200629100312505.png" alt="image-20200629100312505" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083548.png" alt="image-20200629100312505" style="zoom:80%;" />
 
 #### 2.4.1.2 验证用户名
 
 **项目结构**
 
-<img src="Spring Boot前端交互.assets\image-20200629102152972.png" alt="image-20200629102152972" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083549.png" alt="image-20200629102152972" style="zoom:80%;" />
 
 
 
@@ -603,7 +603,7 @@ public String a3(@RequestParam String name){
 
 + 控制台输出
 
-<img src="Spring Boot前端交互.assets\image-20200629102345847.png" alt="image-20200629102345847" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083550.png" alt="image-20200629102345847" style="zoom:67%;" />
 
 ## 2.5 Ajax进行数据交互的方式总结
 
@@ -611,7 +611,7 @@ public String a3(@RequestParam String name){
 
 **方式1：后台的实体类接收前端发来的数据@RequestBody**
 
-<img src="Spring Boot前端交互.assets\image-20200630155321607.png" alt="image-20200630155321607" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083551.png" alt="image-20200630155321607" style="zoom:67%;" />
 
 1. 前端界面
 
@@ -673,9 +673,9 @@ public class AjaxController {
 
 + 前端调试输出（POST方式的输出，携带参数）：
 
-<img src="Spring Boot前端交互.assets\image-20200630155917160.png" alt="image-20200630155917160" style="zoom: 80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083552.png" alt="image-20200630155917160" style="zoom: 80%;" />
 
-<img src="Spring Boot前端交互.assets\image-20200630155855900.png" alt="image-20200630155855900" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083553.png" alt="image-20200630155855900" style="zoom:80%;" />
 
 **方式2：简单接收前端发来的数据@RequestParam**
 

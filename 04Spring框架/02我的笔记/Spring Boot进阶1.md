@@ -275,11 +275,11 @@ Springloaded和DevTools工具区别在于：前者在创建项目时使用热部
 
 然后，开启自动编译：
 
-<img src="Spring Boot进阶1.assets\image-20200710111607014.png" alt="image-20200710111607014" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083445.png" alt="image-20200710111607014" style="zoom:80%;" />
 
 注册（更新）热部署，按住`ctrl + shift + alt + /`,选择`Registry，将下面的代码打勾，打勾完后，重启IDEA生效。
 
-<img src="Spring Boot进阶1.assets\image-20200710111843633.png" alt="image-20200710111843633" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083446.png" alt="image-20200710111843633" style="zoom: 67%;" />
 
 # 4 缓存技术
 

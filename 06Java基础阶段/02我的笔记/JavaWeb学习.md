@@ -10,7 +10,7 @@ web页面无法动态更新，所有的用户看到的都是同一个界面；�
 
 假如服务器的动态web资源出现了错误，我们需要重新编写我们的后台程序，然后重新发布（停机维护）。
 
-<img src="JavaWeb学习.assets/image-20200611175414155.png" alt="image-20200611175414155" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085531.png" alt="image-20200611175414155" style="zoom:80%;" />
 
 **Web服务器**
 
@@ -47,21 +47,21 @@ HTTP1.1时代客户端与web服务器连接后，可以获得多个web资源。
 
 网址：https://tomcat.apache.org/download-90.cgi。
 
-<img src="JavaWeb学习.assets/image-20200611212344987.png" alt="image-20200611212344987" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085542.png" alt="image-20200611212344987" style="zoom:80%;" />
 
 **启动和配置**
 
 + 文件夹作用
 
-<img src="JavaWeb学习.assets/image-20200611212612916.png" alt="image-20200611212612916" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085752.png" alt="image-20200611212612916" style="zoom:80%;" />
 
 + 启动和关闭
 
-<img src="JavaWeb学习.assets/image-20200611213523409.png" alt="image-20200611213523409" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085756.png" alt="image-20200611213523409" style="zoom:80%;" />
 
 访问测试：在启动后，在界面输入http://localhost:8081/将会弹出tomcat界面。
 
-<img src="JavaWeb学习.assets/image-20200611213840246.png" alt="image-20200611213840246" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085801.png" alt="image-20200611213840246" style="zoom:80%;" />
 
 `server.xml`为服务器核心配置文件。
 
@@ -83,7 +83,7 @@ HTTP1.1时代客户端与web服务器连接后，可以获得多个web资源。
 
 默认主机名为:localhost -> 127.0.0.1。
 
-<img src="JavaWeb学习.assets/image-20200611215532924.png" alt="image-20200611215532924" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085806.png" alt="image-20200611215532924" style="zoom:80%;" />
 
 这里更改了底层。
 
@@ -95,7 +95,7 @@ HTTP1.1时代客户端与web服务器连接后，可以获得多个web资源。
 
 2. 检查本机的`C:\Windows\System32\drivers\etc\hosts`配置的文件中是否有这个映射，如果有的话，直接返回ip地址，可以直接访问；如果没有，去DNS服务找，找到的话就返回，找不到就返回找不到。
 
-<img src="JavaWeb学习.assets/image-20200611220415859.png" alt="image-20200611220415859" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085810.png" alt="image-20200611220415859" style="zoom:80%;" />
 
 **发布一个web网站**
 
@@ -130,7 +130,7 @@ HTTP1.1时代客户端与web服务器连接后，可以获得多个web资源。
 
    http://maven.apache.org/
 
-<img src="JavaWeb学习.assets/image-20200611222913874.png" alt="image-20200611222913874" style="zoom: 67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085814.png" alt="image-20200611222913874" style="zoom: 67%;" />
 
 建议：电脑上的所有环境都放到一个文件夹中，方便管理。
 
@@ -148,7 +148,7 @@ HTTP1.1时代客户端与web服务器连接后，可以获得多个web资源。
 
 `%MAVEN_HOME%\bin`
 
-<img src="JavaWeb学习.assets/image-20200611224352356.png" alt="image-20200611224352356" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085817.png" alt="image-20200611224352356" style="zoom:80%;" />
 
 测试maven是否安装成功。
 
@@ -179,29 +179,29 @@ HTTP1.1时代客户端与web服务器连接后，可以获得多个web资源。
 
 1. 选择Maven项目
 
-<img src="JavaWeb学习.assets/image-20200612092112739.png" alt="image-20200612092112739" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085820.png" alt="image-20200612092112739" style="zoom:80%;" />
 
 2. 为文件命名
 
-<img src="JavaWeb学习.assets/image-20200612092353896.png" alt="image-20200612092353896" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085830.png" alt="image-20200612092353896" style="zoom:80%;" />
 
 3. 选择配置环境
 
-<img src="JavaWeb学习.assets/image-20200612092700281.png" alt="image-20200612092700281" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085823.png" alt="image-20200612092700281" style="zoom:67%;" />
 
 在选择Maven地址的时候，IDEA能够自动识别的原因，是我们设置了环境变量。
 
 4. 等待项目初始化完成
 
-<img src="JavaWeb学习.assets/image-20200612093922656.png" alt="image-20200612093922656" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085837.png" alt="image-20200612093922656" style="zoom:80%;" />
 
-<img src="JavaWeb学习.assets/image-20200612094159845.png" alt="image-20200612094159845" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085846.png" alt="image-20200612094159845" style="zoom:80%;" />
 
 在创建完成后，看一眼Maven的配置，因为在IDEA中经常会出现这样一个问题，就是项目自动创建完成后，Maven Home会使用IDEA中默认的，我们需要手动改成本地的。
 
-<img src="JavaWeb学习.assets/image-20200612185128471.png" alt="image-20200612185128471" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085839.png" alt="image-20200612185128471" style="zoom:80%;" />
 
-<img src="JavaWeb学习.assets/image-20200612184244214.png" alt="image-20200612184244214" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085855.png" alt="image-20200612184244214" style="zoom:80%;" />
 
 + 通过上面两个图发现，一共有两个1.8 的JDK版本，我们要选对。
 + VM Option 的值为：
@@ -215,57 +215,57 @@ HTTP1.1时代客户端与web服务器连接后，可以获得多个web资源。
 
 **项目结构**
 
-<img src="JavaWeb学习.assets/image-20200612095124332.png" alt="image-20200612095124332" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085858.png" alt="image-20200612095124332" style="zoom:80%;" />
 
 **标记文件夹功能**
 
 第一种方法：
 
-<img src="JavaWeb学习.assets/image-20200612095626465.png" alt="image-20200612095626465" style="zoom: 67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085900.png" alt="image-20200612095626465" style="zoom: 67%;" />
 
 当选择源码目录时，java包会变蓝，在右击java包后可以新建java类。然后将resource变成资源目录就可以了。
 
-<img src="JavaWeb学习.assets/image-20200612100033484.png" alt="image-20200612100033484" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085905.png" alt="image-20200612100033484" style="zoom:80%;" />
 
 第二种方法：
 
-<img src="JavaWeb学习.assets/image-20200612100410874.png" alt="image-20200612100410874" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085911.png" alt="image-20200612100410874" style="zoom:80%;" />
 
 #### 1.3.2.1 IDEA中配置Tomcat
 
 1. Run ->Edit Configuration
 
-<img src="JavaWeb学习.assets/image-20200612100940768.png" alt="image-20200612100940768" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085907.png" alt="image-20200612100940768" style="zoom:80%;" />
 
 2. 找到Templates
 
-<img src="JavaWeb学习.assets/image-20200612101217110.png" alt="image-20200612101217110" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085914.png" alt="image-20200612101217110" style="zoom:80%;" />
 
-<img src="JavaWeb学习.assets/image-20200612101850731.png" alt="image-20200612101850731" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085917.png" alt="image-20200612101850731" style="zoom:80%;" />
 
-<img src="JavaWeb学习.assets\image-20200627111524671.png" alt="image-20200627111524671" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085920.png" alt="image-20200627111524671" style="zoom:67%;" />
 
 **解决警告问题**
 
 产生这个问题的原因是，访问一个网站，需要指定一个文件夹名字。IDEA中没有默认找webapp文件，所以我们要手动添加。
 
-<img src="JavaWeb学习.assets/image-20200612101941273.png" alt="image-20200612101941273" style="zoom: 67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085923.png" alt="image-20200612101941273" style="zoom: 67%;" />
 
-<img src="JavaWeb学习.assets/image-20200612102443336.png" alt="image-20200612102443336" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085926.png" alt="image-20200612102443336" style="zoom:80%;" />
 
-<img src="JavaWeb学习.assets/image-20200612101941273.png" alt="image-20200612101941273" style="zoom: 67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085930.png" alt="image-20200612101941273" style="zoom: 67%;" />
 
-<img src="JavaWeb学习.assets/image-20200612102443336.png" alt="image-20200612102443336" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085933.png" alt="image-20200612102443336" style="zoom:80%;" />
 
 
 
 **运行Tomcat**
 
-<img src="JavaWeb学习.assets/image-20200612105225296.png" alt="image-20200612105225296" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085936.png" alt="image-20200612105225296" style="zoom:80%;" />
 
 
 
-<img src="JavaWeb学习.assets/image-20200612105349512.png" alt="image-20200612105349512" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085940.png" alt="image-20200612105349512" style="zoom:80%;" />
 
 **pom文件**
 
@@ -309,19 +309,19 @@ HTTP1.1时代客户端与web服务器连接后，可以获得多个web资源。
 
 2. 遇到archetype-catalo.xml文件找不到的情况报错和解决方法如下：
 
-<img src="JavaWeb学习.assets/image-20200612115456027.png" alt="image-20200612115456027" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085943.png" alt="image-20200612115456027" style="zoom:80%;" />
 
 
 
-<img src="JavaWeb学习.assets/image-20200612121057903.png" alt="image-20200612121057903" style="zoom: 67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085945.png" alt="image-20200612121057903" style="zoom: 67%;" />
 
 3. 插件下载不成功报错和解决方法如下：
 
-<img src="JavaWeb学习.assets/image-20200612184037306.png" alt="image-20200612184037306" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085953.png" alt="image-20200612184037306" style="zoom:80%;" />
 
 #### 1.3.2.3 修改web项目中web.xml
 
-<img src="JavaWeb学习.assets/image-20200612205428935.png" alt="image-20200612205428935" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085956.png" alt="image-20200612205428935" style="zoom:80%;" />
 
 我们应该参考Tomcat中最新的文件配置,因为这个文件最和tomcat兼容，文件路径为：
 
@@ -355,7 +355,7 @@ Servlet是sun公司开发动态web的一门技术。如果你需要开发一个s
 
 即：把实现了Servlet接口的Java程序叫做，Servlet。
 
-<img src="JavaWeb学习.assets/image-20200612214504500.png" alt="image-20200612214504500" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085959.png" alt="image-20200612214504500" style="zoom:80%;" />
 
 ## 2.2 创建项目
 
@@ -457,7 +457,7 @@ public class HelloServlet extends HttpServlet {
 
 5. **测试输出**
 
-<img src="JavaWeb学习.assets/image-20200612213624334.png" alt="image-20200612213624334" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901090004.png" alt="image-20200612213624334" style="zoom:80%;" />
 
 ## 2.3 ServletContext
 
@@ -467,7 +467,7 @@ public class HelloServlet extends HttpServlet {
 
 在一个`Servlet`中保存的数，需要在另一个`Servlet`中获得。
 
-<img src="JavaWeb学习.assets/image-20200612221210650.png" alt="image-20200612221210650" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901090007.png" alt="image-20200612221210650" style="zoom:80%;" />
 
 
 
@@ -550,7 +550,7 @@ http://localhost:8081/s1/getContext
 
 控制台输出：
 
-<img src="JavaWeb学习.assets/image-20200612223343548.png" alt="image-20200612223343548" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901090010.png" alt="image-20200612223343548" style="zoom:80%;" />
 
 ### 2.3.2 获取初始化参数
 
@@ -576,7 +576,7 @@ http://localhost:8081/s1/getContext
 
 控制台输出结果：
 
-<img src="JavaWeb学习.assets/image-20200612224205992.png" alt="image-20200612224205992" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901090015.png" alt="image-20200612224205992" style="zoom:80%;" />
 
 ### 2.3.3 请求转发
 
@@ -596,7 +596,7 @@ http://localhost:8081/s1/getContext
 
 当浏览器A输入访问上面后台的访问地址B时，后台B会向后台C进行转发，将后台C的数据返回给A。此时，浏览器上的地址一直没有变换。
 
-<img src="JavaWeb学习.assets/image-20200612225605703.png" alt="image-20200612225605703" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901090017.png" alt="image-20200612225605703" style="zoom:80%;" />
 
 **区别**
 
@@ -628,7 +628,7 @@ http://localhost:8081/s1/getContext
     }
 ```
 
-<img src="JavaWeb学习.assets/image-20200613082235192.png" alt="image-20200613082235192" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901090020.png" alt="image-20200613082235192" style="zoom:80%;" />
 
 # 3 HttpServletResponse
 
@@ -717,7 +717,7 @@ http://localhost:8081/s1/getContext
 </html>
 ```
 
-<img src="JavaWeb学习.assets/image-20200613100841594.png" alt="image-20200613100841594" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901090026.png" alt="image-20200613100841594" style="zoom:80%;" />
 
 2. jsp登录响应界面
 
@@ -982,7 +982,7 @@ MVC就是Model、View、Controller(模型层，视图层，控制层)。
 
 
 
-<img src="JavaWeb学习.assets/image-20200613172025233.png" alt="image-20200613172025233" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901090034.png" alt="image-20200613172025233" style="zoom:80%;" />
 
 # 8 过滤器Filter
 
@@ -1092,7 +1092,7 @@ resp.sendRedirect("/s1/sys/success.jsp");
 
 有前缀/sys主要是因为文件目录的结构：
 
-<img src="JavaWeb学习.assets/image-20200613192624237.png" alt="image-20200613192624237" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901090038.png" alt="image-20200613192624237" style="zoom:80%;" />
 
 3. **注销处理**
 
@@ -1365,19 +1365,19 @@ public class FileServlet extends HttpServlet {
 
 + 控制台输出
 
-<img src="JavaWeb学习.assets/image-20200615170447796.png" alt="image-20200615170447796" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901090044.png" alt="image-20200615170447796" style="zoom:80%;" />
 
 ## 9.2 邮件发送原理及实现
 
 SMTP协议发送邮件，POP3协议接收邮件。
 
-<img src="JavaWeb学习.assets/image-20200615172906229.png" alt="image-20200615172906229" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901090046.png" alt="image-20200615172906229" style="zoom:80%;" />
 
-<img src="JavaWeb学习.assets/image-20200615173436171.png" alt="image-20200615173436171" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901090052.png" alt="image-20200615173436171" style="zoom:80%;" />
 
-<img src="JavaWeb学习.assets/image-20200615172906229.png" alt="image-20200615172906229" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901090055.png" alt="image-20200615172906229" style="zoom:80%;" />
 
-<img src="JavaWeb学习.assets/image-20200615173436171.png" alt="image-20200615173436171" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901090122.png" alt="image-20200615173436171" style="zoom:80%;" />
 
 1. **添加pom依赖**
 
@@ -1452,7 +1452,7 @@ public class SendEmail {
 
 + 控制台输出
 
-<img src="JavaWeb学习.assets/image-20200615181116989.png" alt="image-20200615181116989" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901090127.png" alt="image-20200615181116989" style="zoom:80%;" />
 
 ### 9.2.1 SpringBoot中整合Email
 
@@ -1472,7 +1472,7 @@ public class SendEmail {
 
 其中包含两个类，`MimeBodyPart`类表示的是一个MIME消息，它和`MimeMessage`类一样都是`Part`接口继承过来的；`MimeMultipart`类是抽象类`Multipart`实现的子类，它用来组合多个`MIME`消息，一个`MimeMultipart`对象可以包含多个代表MIME消息的`MimeBodyPart`对象。
 
-<img src="JavaWeb学习.assets/image-20200615194057312.png" alt="image-20200615194057312" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901090130.png" alt="image-20200615194057312" style="zoom:80%;" />
 
 **测试1**
 
@@ -1576,4 +1576,4 @@ public class SendEmail {
 
 + 控制台输出
 
-<img src="JavaWeb学习.assets/image-20200615212642893.png" alt="image-20200615212642893" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901090137.png" alt="image-20200615212642893" style="zoom:80%;" />

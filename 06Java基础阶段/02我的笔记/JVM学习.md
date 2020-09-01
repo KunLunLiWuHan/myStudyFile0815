@@ -2,13 +2,13 @@
 
 ## 1、JVM位置
 
-<img src="JVM学习.assets/image-20200815201646263.png" alt="image-20200815201646263" style="zoom: 50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200815201646263.png" alt="image-20200815201646263" style="zoom: 50%;" />
 
 JVM是运行在操作系统之上的，它与硬件没有直接的交互。
 
 ## 2、JVM体系结构概览
 
-<img src="JVM学习.assets/image-20200815201839725.png" alt="image-20200815201839725" style="zoom: 50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200815201839725.png" alt="image-20200815201839725" style="zoom: 50%;" />
 
 在运行数据区，有亮色和暗色的区别：对于亮色所有线程共享，灰色表示线程私有；同时亮色存在垃圾回收机制。
 
@@ -18,11 +18,11 @@ JVM是运行在操作系统之上的，它与硬件没有直接的交互。
 
 （1）负责加载class文件，class文件在文件开头有特定的文件标示，将class文件字节码内容加载到内存中，并将这些内容转换成方法区中的运行时数据结构并且ClassLoader只负责class文件的加载，至于它是否可以运行，则由Execution Engine决定 。
 
-<img src="JVM学习.assets/image-20200815202112264.png" alt="image-20200815202112264" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200815202112264.png" alt="image-20200815202112264" style="zoom:67%;" />
 
 2、加载器
 
-<img src="JVM学习.assets/image-20200815202806028.png" alt="image-20200815202806028" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200815202806028.png" alt="image-20200815202806028" style="zoom:80%;" />
 
 （1）虚拟机自带的加载器
 
@@ -73,7 +73,7 @@ public class MyObject {
 
 ​		采用双亲委派的一个好处是：比如加载位于 `rt.jar` 包中的类 `java.lang.Objec`t，不管是哪个加载器加载这个类，最终都是委托给顶层的启动类加载器进行加载，这样就保证了使用不同的类加载器最终得到的都是同样一个 `Object`对象。 
 
-<img src="JVM学习.assets/image-20200815210242369.png" alt="image-20200815210242369" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200815210242369.png" alt="image-20200815210242369" style="zoom:80%;" />
 
 4、Execution Engine
 
@@ -108,9 +108,9 @@ public class NativeInterfaceDemo {
 }
 ```
 
-<img src="JVM学习.assets/image-20200815213922325.png" alt="image-20200815213922325" style="zoom: 50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200815215620567.png" alt="image-20200815213922325" style="zoom: 50%;" />
 
-<img src="JVM学习.assets/image-20200815214019200.png" alt="image-20200815214019200" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200815213922325.png" alt="image-20200815214019200" style="zoom:50%;" />
 
 可以发现，native是一个关键字，有声明，但是没有方法的实现。
 
@@ -132,7 +132,7 @@ public class NativeInterfaceDemo {
 
 注意：实例变量存在堆内存中，和方法区无关。
 
-<img src="JVM学习.assets/image-20200815215620567.png" alt="image-20200815215620567" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200816084858708.png" alt="image-20200815215620567" style="zoom:80%;" />
 
 ## 7、栈-Stack
 
@@ -168,7 +168,7 @@ B方法又调用了 C方法，于是产生栈帧 F3 也被压入栈，
 
 ​		每个方法执行的同时都会创建一个栈帧，用于存储局部变量表、操作数栈、动态链接、方法出口等信息，每一个方法从调用直至执行完毕的过程，就对应着一个栈帧在虚拟机中入栈到出栈的过程。栈的大小和具体JVM的实现有关，通常在256K~756K之间,与等于1Mb左右。
 
-<img src="JVM学习.assets/image-20200816084858708.png" alt="image-20200816084858708" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200815214019200.png" alt="image-20200816084858708" style="zoom:67%;" />
 
 图示在一个栈中有两个栈帧：
 
@@ -178,11 +178,11 @@ B方法又调用了 C方法，于是产生栈帧 F3 也被压入栈，
 
 ​		每执行一个方法都会产生一个栈帧，保存到栈(后进先出)的顶部，顶部栈就是当前的方法，该方法执行完毕 后会自动将此栈帧出栈。
 
-<img src="JVM学习.assets/image-20200816084958298.png" alt="image-20200816084958298" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200816084958298.png" alt="image-20200816084958298" style="zoom:67%;" />
 
 3、栈+堆+方法区的交互关系
 
-<img src="JVM学习.assets/image-20200816085030332.png" alt="image-20200816085030332" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200816093604397.png" alt="image-20200816085030332" style="zoom:67%;" />
 
 ​		HotSpot是使用指针的方式来访问对象；Java堆中会存放访问**类元数据**的地址，reference存储的就直接是对象的地址。
 
@@ -198,7 +198,7 @@ B方法又调用了 C方法，于是产生栈帧 F3 也被压入栈，
 
 + Permanent Space             永久区             Perm
 
-<img src="JVM学习.assets/image-20200816085502392.png" alt="image-20200816085502392" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200816085030332.png" alt="image-20200816085502392" style="zoom:67%;" />
 
 ### 2、Heap堆new对象流程
 
@@ -247,11 +247,11 @@ public class TransferValueDemo01 {
 
 讲解：
 
-<img src="JVM学习.assets/image-20200816093604397.png" alt="image-20200816093604397" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200816094810489.png" alt="image-20200816093604397" style="zoom:67%;" />
 
 ### 4、MinorGC过程
 
-<img src="JVM学习.assets/image-20200816094810489.png" alt="image-20200816094810489" style="zoom: 50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200816085502392.png" alt="image-20200816094810489" style="zoom: 50%;" />
 
 该过程主要暴扣三个过程：复制->清空->互换
 
@@ -273,9 +273,9 @@ public class TransferValueDemo01 {
 
 ### 5、永久带
 
-<img src="JVM学习.assets/image-20200816095722040.png" alt="image-20200816095722040" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200816095722040.png" alt="image-20200816095722040" style="zoom:50%;" />
 
-<img src="JVM学习.assets/image-20200816095730690.png" alt="image-20200816095730690" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200816095730690.png" alt="image-20200816095730690" style="zoom:50%;" />
 
 ​		实际而言，方法区（Method Area）和堆一样，是各个线程共享的内存区域，它用于存储虚拟机加载的：类信息+普通常量+静态常量+编译器编译后的代码等等，虽然JVM规范将方法区描述为堆的一个逻辑部分，但它却还有一个别名叫做Non-Heap(非堆)，目的就是要和堆分开。
 
@@ -293,11 +293,11 @@ public class TransferValueDemo01 {
 
 （2）Java7
 
-<img src="JVM学习.assets/image-20200816114302195.png" alt="image-20200816114302195" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200816114302195.png" alt="image-20200816114302195" style="zoom:80%;" />
 
 （2）Java8
 
-<img src="JVM学习.assets/image-20200816114330167.png" alt="image-20200816114330167" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200816114445566.png" alt="image-20200816114330167" style="zoom:67%;" />
 
 ​		在Java8中，永久代已经被移除，被一个称为**元空间**的区域所取代。元空间的本质和永久代类似。
 
@@ -309,7 +309,7 @@ public class TransferValueDemo01 {
 
 ## 2、调优
 
-<img src="JVM学习.assets/image-20200816114445566.png" alt="image-20200816114445566" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200816114550664.png" alt="image-20200816114445566" style="zoom:80%;" />
 
 ```java
 public class Demo01 {
@@ -338,11 +338,11 @@ public class Demo01 {
 -Xms1024m -Xmx1024m -XX:+PrintGCDetails
 ```
 
-<img src="JVM学习.assets/image-20200816114550664.png" alt="image-20200816114550664" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200816114330167.png" alt="image-20200816114550664" style="zoom:67%;" />
 
 （2）通过下面的方式证明，堆内存有两个区
 
-<img src="JVM学习.assets/image-20200816114819736.png" alt="image-20200816114819736" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200816114819736.png" alt="image-20200816114819736" style="zoom:67%;" />
 
 （3）通过下面的方式将内存撑爆
 
@@ -356,7 +356,7 @@ public class Demo02 {
 }
 ```
 
-<img src="JVM学习.assets/image-20200816115416217.png" alt="image-20200816115416217" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200816115416217.png" alt="image-20200816115416217" style="zoom:67%;" />
 
 # 4、GC垃圾回收
 
@@ -364,13 +364,13 @@ public class Demo02 {
 
 （1）GC
 
-<img src="JVM学习.assets/image-20200816143835864.png" alt="image-20200816143835864" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200816143835864.png" alt="image-20200816143835864" style="zoom:80%;" />
 
 （2）FullGC
 
-<img src="JVM学习.assets/image-20200816144249560.png" alt="image-20200816144249560" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200816144249560.png" alt="image-20200816144249560" style="zoom:80%;" />
 
-<img src="JVM学习.assets/image-20200816144208933.png" alt="image-20200816144208933" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200816144208933.png" alt="image-20200816144208933" style="zoom:80%;" />
 
 ## 2、分代收集算法
 
@@ -386,7 +386,7 @@ public class Demo02 {
 
 ### 1、GC算法概述
 
-<img src="JVM学习.assets/image-20200816144622736.png" alt="image-20200816144622736" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200816145103937.png" alt="image-20200816144622736" style="zoom:80%;" />
 
 （1）JVM在进行GC时，并非每次都对上面三个内存区域一起回收的，大部分时候回收的都是指新生代。
 		因此GC按照回收的区域又分了两种类型，一种是普通GC（minor GC），一种是全局GC（major GC or Full GC）。
@@ -399,7 +399,7 @@ public class Demo02 {
 
 1、介绍
 
-<img src="JVM学习.assets/image-20200816145103937.png" alt="image-20200816145103937" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200816151012399.png" alt="image-20200816145103937" style="zoom:80%;" />
 
 2、代码演示
 
@@ -431,7 +431,7 @@ public class RefCountGC
 
 2、原理图
 
-<img src="JVM学习.assets/image-20200816151012399.png" alt="image-20200816151012399" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200816152113968.png" alt="image-20200816151012399" style="zoom:80%;" />
 
 ​		复制算法的基本思想就是将内存分为两块，每次只用其中一块，当这一块内存用完，就将还活着的对象复制到另外一块上面。复制算法不会产生内存碎片。
 
@@ -447,9 +447,9 @@ public class RefCountGC
 
 2、原理图
 
-<img src="JVM学习.assets/image-20200816152113968.png" alt="image-20200816152113968" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200816144622736.png" alt="image-20200816152113968" style="zoom:67%;" />
 
-<img src="JVM学习.assets/image-20200816152120433.png" alt="image-20200816152120433" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200816152120433.png" alt="image-20200816152120433" style="zoom:67%;" />
 
 ​		用通俗的话解释一下标记清除算法，就是当程序运行期间，若可以使用的内存被耗尽的时候，GC线程就会被触发并将程序暂停，随后将要回收的对象标记一遍，最终统一回收这些对象，完成标记清理工作接下来便让应用程序恢复运行。
 
@@ -469,7 +469,7 @@ public class RefCountGC
 
 2、原理图
 
-<img src="JVM学习.assets/image-20200816152309073.png" alt="image-20200816152309073" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200816152309073.png" alt="image-20200816152309073" style="zoom:67%;" />
 
 ​		在整理压缩阶段，不再对标记的对象做回收，而是通过所有存活对像都向一端移动，然后直接清除边界以外的内存。
 ​		可以看到，标记的存活对象将会被整理，按照内存地址依次排列，而未被标记的内存会被清理掉。如此一来，当我们需要给新对象分配内存时，JVM只需要持有一个内存的起始地址即可，这比维护一个空闲列表显然少了许多开销。 

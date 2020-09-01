@@ -75,7 +75,7 @@ public class Driver {
 
 + 驾驶员类Driver需要依赖汽车类Car才能行驶,其中Car可以通过构造函数参数，方法参数等形式存在于Driver类中。
 
-<img src="UML学习.assets/image-20200503105835704.png" alt="image-20200503105835704" style="zoom:150%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200503105835704.png" alt="image-20200503105835704" style="zoom:150%;" />
 
 ```java
 // Car通过方法参数的形式存在于Driver中
@@ -112,7 +112,7 @@ public class Department {
 
 + 带普通箭头的实心线，指向被拥有者
 
-<img src="UML学习.assets/image-20200503110057073.png" alt="image-20200503110057073" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200503110057073.png" alt="image-20200503110057073" style="zoom:80%;" />
 
 2. 类型;多对对关联（商店和商品）。
 
@@ -122,7 +122,7 @@ public class Shop {
 }
 ```
 
-<img src="UML学习.assets/image-20200503110430318.png" alt="image-20200503110430318" style="zoom:150%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200503110430318.png" alt="image-20200503110430318" style="zoom:150%;" />
 
 ### 2.1.3 聚合(Aggregation)
 
@@ -144,11 +144,11 @@ public class Book {
 
 
 
-<img src="UML学习.assets/image-20200503110533385.png" alt="image-20200503110533385" style="zoom:150%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200503110633273.png" alt="image-20200503110533385" style="zoom:150%;" />
 
 
 
-<img src="UML学习.assets/image-20200503110633273.png" alt="image-20200503110633273" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200503110533385.png" alt="image-20200503110633273" style="zoom:80%;" />
 
 + 聚合图形多重性的表示
 
@@ -176,7 +176,7 @@ public class Child extends Parent {
 
 + 带三角形箭头的实线，箭头指向父类。
 
-<img src="UML学习.assets/image-20200503110740448.png" alt="image-20200503110740448" style="zoom:150%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200503110740448.png" alt="image-20200503110740448" style="zoom:150%;" />
 
 ### 2.1.6 实现（Realization）
 
@@ -201,14 +201,14 @@ public class IChild implements IParent {
 
 + 带三角形箭头的虚线，箭头指向接口。
 
-<img src="UML学习.assets/image-20200503110923364.png" alt="image-20200503110923364" style="zoom:150%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200503111052329.png" alt="image-20200503110923364" style="zoom:150%;" />
 
 ## 2.2 外国小哥类图
 
-<img src="UML学习.assets/image-20200503111020713.png" alt="image-20200503111020713" style="zoom:150%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200503110923364.png" alt="image-20200503111020713" style="zoom:150%;" />
 
 + 动物园系统图
 
-<img src="UML学习.assets/image-20200503111052329.png" alt="image-20200503111052329" style="zoom:150%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200503111020713.png" alt="image-20200503111052329" style="zoom:150%;" />
 
 + 在线购物图

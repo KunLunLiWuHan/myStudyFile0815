@@ -4,9 +4,9 @@
 
 1、接口类型
 
-<img src="JUC学习2.assets\image-20200811213746258.png" alt="image-20200811213746258" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085044.png" alt="image-20200811213746258" style="zoom:80%;" />
 
-<img src="JUC学习2.assets\image-20200811213755511.png" alt="image-20200811213755511" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085045.png" alt="image-20200811213755511" style="zoom:80%;" />
 
 2、实例
 
@@ -154,27 +154,27 @@ public class StreamDemo01 {
 Fork：把一个复杂任务进行分拆，大事化小。
 Join：把分拆任务的结果进行合并。
 
-<img src="JUC学习2.assets\image-20200812174341306.png" alt="image-20200812174341306" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085046.png" alt="image-20200812174341306" style="zoom:80%;" />
 
-<img src="JUC学习2.assets\image-20200812174347684.png" alt="image-20200812174347684" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085047.png" alt="image-20200812174347684" style="zoom:80%;" />
 
 ## 2、相关类
 
 1、ForkJoinPool
 
-<img src="JUC学习2.assets\image-20200812174432507.png" alt="image-20200812174432507" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085048.png" alt="image-20200812174432507" style="zoom:80%;" />
 
 分支合并池    类比=>   线程池。
 
 2、ForkJoinTask
 
-<img src="JUC学习2.assets\image-20200812174455462.png" alt="image-20200812174455462" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085049.png" alt="image-20200812174455462" style="zoom:80%;" />
 
 ForkJoinTask    类比=>   FutureTask。
 
 3、RecursiveTask
 
-<img src="JUC学习2.assets\image-20200812174519297.png" alt="image-20200812174519297" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085050.png" alt="image-20200812174519297" style="zoom:80%;" />
 
 递归任务：继承后可以实现递归(自己调自己)调用的任务。
 
@@ -247,7 +247,7 @@ public class ForkJoinDemo {
 
 ## 1、原理
 
-<img src="JUC学习2.assets\image-20200812180030241.png" alt="image-20200812180030241" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085051.png" alt="image-20200812180030241" style="zoom:80%;" />
 
 ## 2、实现代码
 

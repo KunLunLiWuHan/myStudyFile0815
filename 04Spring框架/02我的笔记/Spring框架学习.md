@@ -2,7 +2,7 @@
 
 **组成**
 
-<img src="Spring框架学习.assets/image-20200601193351274.png" alt="image-20200601193351274" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083836.png" alt="image-20200601193351274" style="zoom:80%;" />
 
 有七大核心框架。
 
@@ -25,9 +25,9 @@ spring Boot（构建一切）是一个快速开发的脚手架，基于spring Bo
 
 **项目结构**
 
-<img src="Spring框架学习.assets/image-20200601213655808.png" alt="image-20200601213655808" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083837.png" alt="image-20200601213655808" style="zoom:80%;" />
 
-![image-20200626102940420](Spring框架学习.assets\image-20200626102940420-1593159785931.png)
+![image-20200626102940420](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083838.png)
 
 首先建立`maven`工程，修改`pom`文件
 
@@ -161,7 +161,7 @@ public class MyTest {
 
 ### 2.1.2 总结
 
-<img src="Spring框架学习.assets/image-20200601220528893.png" alt="image-20200601220528893" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083839.png" alt="image-20200601220528893" style="zoom:67%;" />
 
 在我们之前的业务中，用户的需求可（对Dao层添加许多实现类）能会影响我们原来的代码，所以我们需要根据用户的需求去修改原代码，如果程序代码量比较大，修改的成本代价十分昂贵。
 
@@ -179,13 +179,13 @@ public class MyTest {
 
 （控制反转，把对象创建和对象 之间的调用过程，交给Spring进行管理。）
 
-<img src="Spring框架学习.assets/image-20200601220854960.png" alt="image-20200601220854960" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083840.png" alt="image-20200601220854960" style="zoom:80%;" />
 
 `IOC`是Spring框架的核心内容，我们可以使用XML配置，也可以使用注解，新版本的Spring也可以零配置实现`IOC`。`IOC`意味着将你设计好的对象交给容器控制，而不是传统的在你的对象内部直接(New)控制。
 
 spring初始化时先读取配置文件，根据配置文件或元数据创建和组织对象存入容器中，程序使用时再从IOC容器中取得需要的对象。
 
-<img src="Spring框架学习.assets/image-20200601221427667.png" alt="image-20200601221427667" style="zoom: 67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083841.png" alt="image-20200601221427667" style="zoom: 67%;" />
 
 在采用XML方式配置`Bean`的时候，Bean的定义信息实现分离，而采用注解的方式可以将两者合在一体，`Bean`的定义信息直接以注解的形式定义在类中，从而实现了零配置的目的。
 
@@ -195,7 +195,7 @@ spring初始化时先读取配置文件，根据配置文件或元数据创建�
 
 **1、项目结构**
 
-<img src="Spring框架学习.assets/image-20200601231352205.png" alt="image-20200601231352205" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083842.png" alt="image-20200601231352205" style="zoom:80%;" />
 
 **2、创建实体类**
 
@@ -420,7 +420,7 @@ name=xiaolun
 
 **1、XML文件结构**
 
-<img src="Spring框架学习.assets/image-20200602085521019.png" alt="image-20200602085521019" style="zoom: 80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083843.png" alt="image-20200602085521019" style="zoom: 80%;" />
 
 **2、applicationContext.xml文件**
 
@@ -455,19 +455,19 @@ name=xiaolun
 
 1. **原始方式创建对象**
 
-<img src="Spring框架学习.assets\image-20200626095914714.png" alt="image-20200626095914714" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083844.png" alt="image-20200626095914714" style="zoom:80%;" />
 
 可以发现，上面两个类之间的耦合度太高了。
 
 2. **工厂模式创建对象**
 
-<img src="Spring框架学习.assets\image-20200626100123396.png" alt="image-20200626100123396" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083845.png" alt="image-20200626100123396" style="zoom:80%;" />
 
 可以发现，`UserService`类和`UserDao`类之间进行了解耦，但是`UserService`类和工厂`UserFactory`之间耦合度还是很大。
 
 3. **`IOC`过程**
 
-<img src="Spring框架学习.assets\image-20200626100508721.png" alt="image-20200626100508721" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083846.png" alt="image-20200626100508721" style="zoom:80%;" />
 
 可以发现，耦合度进一步降低，加入`class=""（UserDao类发生变化）`路径发生变化，在`UserFactory`中的`classValue`的值获得的还是正确的路径。
 
@@ -605,7 +605,7 @@ public class MyTest {
 
 + 使用注释的方法，会报错
 
-<img src="Spring框架学习.assets\image-20200626111547760.png" alt="image-20200626111547760" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083847.png" alt="image-20200626111547760" style="zoom:80%;" />
 
 + 使用上文未注释方法，控制台输出为
 
@@ -943,7 +943,7 @@ User{name='xiaolun', age=18}
 
 ## 4.1 Bean的作用域
 
-<img src="Spring框架学习.assets/image-20200602103455970.png" alt="image-20200602103455970" style="zoom:150%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083848.png" alt="image-20200602103455970" style="zoom:150%;" />
 
 | 作用域类型    | 使用范围       | 描述                                                         |
 | ------------- | -------------- | ------------------------------------------------------------ |
@@ -1371,7 +1371,7 @@ public class MyTest {
 
 1. 引入依赖
 
-<img src="Spring框架学习.assets\image-20200626123918187.png" alt="image-20200626123918187" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083849.png" alt="image-20200626123918187" style="zoom:67%;" />
 
 2. 开启组件扫描
 
@@ -1430,7 +1430,7 @@ public class MyTest {
 
 + 可以扫描到`com.xiaolun`下的dao,controller,pojo和service包。
 
-<img src="Spring框架学习.assets/image-20200603094131336.png" alt="image-20200603094131336" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083850.png" alt="image-20200603094131336" style="zoom:80%;" />
 
 2. **实体类**
 
@@ -1599,7 +1599,7 @@ xiaolun
 
 AOP(Aspect Oriented Programming)面向切面编程，通过预编译方式和运行期间动态代理实现程序功能的统一维护的一种技术。AOP是OOP的延续，利用AOP可以对业务逻辑的各个部分进行隔离，从而使业务逻辑各部分之间的耦合度降低，提高程序的可重用性。
 
-<img src="Spring框架学习.assets/image-20200603183742704.png" alt="image-20200603183742704" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083851.png" alt="image-20200603183742704" style="zoom:80%;" />
 
 通俗描述，就是不通过修改源代码的方式，在主干功能中添加新功能。比如在登录的主干功能中添加权限判断的功能。
 
@@ -1632,7 +1632,7 @@ AOP(Aspect Oriented Programming)面向切面编程，通过预编译方式和运
 
 在AOP中，通过Advice定义横切逻辑，Spring中支持5种类型的Advice。
 
-<img src="Spring框架学习.assets/image-20200603184800080.png" alt="image-20200603184800080" style="zoom: 50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083852.png" alt="image-20200603184800080" style="zoom: 50%;" />
 
 #### 6.1.1 准备工作
 
@@ -1674,7 +1674,7 @@ exexution(*com.xiaolun.proxy.*.*(..))
 
 1. **项目结构**
 
-<img src="Spring框架学习.assets/image-20200603214530434.png" alt="image-20200603214530434" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083853.png" alt="image-20200603214530434" style="zoom:80%;" />
 
 2. **添加aop依赖**
 
@@ -1810,13 +1810,13 @@ com.xiaolun.service.UserServiceImpl的---->add方法---->被执行了
 执行了------>add方法，---->返回结果为null
 ```
 
-<img src="Spring框架学习.assets\image-20200627001119319.png" alt="image-20200627001119319" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083854.png" alt="image-20200627001119319" style="zoom:67%;" />
 
 ### 6.2.2 xml方式实现
 
 1. **项目结构**
 
-<img src="Spring框架学习.assets/image-20200603220554276.png" alt="image-20200603220554276" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083855.png" alt="image-20200603220554276" style="zoom:80%;" />
 
 
 

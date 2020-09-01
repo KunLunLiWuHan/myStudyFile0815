@@ -148,7 +148,7 @@ public void testWrite07(){
   + 面向接口编程，对象`new XSSFWorkbook()`变了，接口不用变。
 + xlsx表显示：
 
-<img src="操作POI和EasyExcel学习.assets/image-20200424105506154.png" alt="image-20200424105506154" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083928.png" alt="image-20200424105506154" style="zoom:80%;" />
 
 2.1 大数据量的导入
 

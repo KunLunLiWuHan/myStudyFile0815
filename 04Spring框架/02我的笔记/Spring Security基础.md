@@ -45,7 +45,7 @@
 + what:即资源Resources（如系统菜单，系统商品信息等）。
 + how:访问许可（Permission）。主体、资源和权限的关系如下图所示。
 
-<img src="Spring Security基础.assets/image-20200424161514511.png" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083607.png" style="zoom:80%;" />
 
 + 主体（用户id、账号、密码等）。
 + 资源（资源id,访问地址等）。
@@ -54,7 +54,7 @@
 + 角色和权限关系（角色id，权限id等）。
 + 主体和主体关系（主体id，主体id等）。三者之间关系如下：
 
-<img src="Spring Security基础.assets/image-20200424162101600.png" alt="image-20200424162101600" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083608.png" alt="image-20200424162101600" style="zoom:80%;" />
 
 ### 1.1.2 RBAC
 
@@ -64,7 +64,7 @@
 
 RBAC(Role-Based Access Control)按角色进行授权，比如：主体的角色是总经理，可以查询企业运营报表，查询员工工资信息等，访问流程为：
 
-<img src="Spring Security基础.assets/image-20200424163136513.png" alt="image-20200424163136513" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083609.png" alt="image-20200424163136513" style="zoom:80%;" />
 
 + 授权代码：
 
@@ -78,7 +78,7 @@ if(主体.hasRole("总经理角色id")){
 
 RBAC是按照资源（或权限）进行授权。比如：用户必须拥有查询工资权限才可以查询员工工资信息等。
 
-<img src="Spring Security基础.assets/image-20200424164125540.png" alt="image-20200424164125540" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083610.png" alt="image-20200424164125540" style="zoom:80%;" />
 
 + 授权代码
 
@@ -325,17 +325,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 + 主要将静态资源放行和配置登录界面。
 
-<img src="Spring Security基础.assets/image-20200518220656097.png" alt="image-20200518220656097" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083611.png" alt="image-20200518220656097" style="zoom:50%;" />
 
 + `loginPage("/login.html")`和前端界面的接口一致。
 
 3. 输入网址：http://localhost:8080/login.html，在弹出的窗口中输入用户名和密码后进入下面界面：
 
-   <img src="Spring Security基础.assets/image-20200518220455351.png" alt="image-20200518220455351" style="zoom:80%;" />
+   <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083612.png" alt="image-20200518220455351" style="zoom:80%;" />
 
 在网址上追加“hello”输出界面为：
 
-<img src="Spring Security基础.assets/image-20200518220620512.png" alt="image-20200518220620512" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083613.png" alt="image-20200518220620512" style="zoom:50%;" />
 
 ## 2.3 表单登录配置细节
 
@@ -453,7 +453,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     `@GetMapping`用于将HTTP get请求映射到特定处理程序的方法注解
     具体来说，`@GetMapping`是一个组合注解，是`@RequestMapping(method = RequestMethod.GET)`的缩写。
 
-![image-20200518223257366](Spring Security基础.assets/image-20200518223257366.png)
+![image-20200518223257366](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083614.png)
 
 + 输入http://localhost:8080/login.html，登录成功后，自动将 http://localhost:8080/s 界面中数据输出。但此时网址仍是http://localhost:8080/login.html。
 
@@ -874,11 +874,11 @@ create unique index ix_auth_username on authorities (username,authority);
 
 user表：
 
-<img src="Spring Security基础.assets/image-20200519230505764.png" alt="image-20200519230505764" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083615.png" alt="image-20200519230505764" style="zoom:80%;" />
 
 authorities表：
 
-<img src="Spring Security基础.assets/image-20200519230519436.png" alt="image-20200519230519436" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083616.png" alt="image-20200519230519436" style="zoom:80%;" />
 
 2. **config配置**
 
@@ -939,11 +939,11 @@ spring.datasource.url=jdbc:mysql://localhost:3306/test01?useUnicode=true&charact
 
 项目启动成功后，我们就可以看到数据库中自动添加了两个用户进来，并且用户都配置了角色。如下图：
 
-<img src="Spring Security基础.assets/image-20200519232351502.png" alt="image-20200519232351502" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083617.png" alt="image-20200519232351502" style="zoom:80%;" />
 
 
 
-<img src="Spring Security基础.assets/image-20200519232408297.png" alt="image-20200519232408297" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083618.png" alt="image-20200519232408297" style="zoom:80%;" />
 
 6. **测试**
 

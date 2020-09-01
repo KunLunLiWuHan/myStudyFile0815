@@ -10,11 +10,11 @@ JVM:Java Virtual  Machine 虚拟机。
 
 IDE： Integrated Development Environment  集成开发环境。
 
-<img src="Java基础.assets/image-20200523200103119.png" alt="image-20200523200103119" style="zoom:150%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901084600.png" alt="image-20200523200103119" style="zoom:150%;" />
 
 **Java程序运行机制**
 
-![image-20200523220712182](Java基础.assets/image-20200523220712182.png)
+![image-20200523220712182](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901084601.png)
 
 ## 1.1 安装开发环境
 
@@ -47,7 +47,7 @@ IDE： Integrated Development Environment  集成开发环境。
 
 Java的数据类型分为两大类，基本类型（primitive type）和引用类型（reference type）。
 
-<img src="Java基础.assets/image-20200524111311667.png" alt="image-20200524111311667" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901084602.png" alt="image-20200524111311667" style="zoom:80%;" />
 
 引用数据类型：把参数作为对象的属性，然后把参数包装成对象来传递；java中的对象默认都是引用传递的，区别于指针。
 
@@ -266,7 +266,7 @@ public class Doc {
 
 点击鼠标右键，弹出命令，选择`show in explorer`:
 
-<img src="Java基础.assets/image-20200530102411821.png" alt="image-20200530102411821" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901084603.png" alt="image-20200530102411821" style="zoom:67%;" />
 
 此时该文件下输入`cmd`进入命令行，输入：
 
@@ -274,11 +274,11 @@ public class Doc {
 javadoc -encoding UTF-8 -charset UTF-8 Doc.java
 ```
 
-<img src="Java基础.assets/image-20200530102231704.png" alt="image-20200530102231704" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901084604.png" alt="image-20200530102231704" style="zoom:80%;" />
 
 在这个文件夹下就会生成对应的文档，点击`index.html`就可以查阅。
 
-<img src="Java基础.assets/image-20200530102302315.png" alt="image-20200530102302315" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901084605.png" alt="image-20200530102302315" style="zoom:67%;" />
 
 # 5 Java流程控制
 
@@ -502,7 +502,7 @@ class Person{
 }
 ```
 
-<img src="Java基础.assets/image-20200530171933103.png" alt="image-20200530171933103" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901084606.png" alt="image-20200530171933103" style="zoom:80%;" />
 
 ### 6.2.1 方法的重载
 
@@ -529,7 +529,7 @@ public class Demo06 {
 
 点击类的`show in explorer`选项，进入到类的文件夹，输入`cmd`，进入控制面板，输入以下 命令，就可以使用命令行执行了。
 
-<img src="Java基础.assets/image-20200530150122579.png" alt="image-20200530150122579" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901084607.png" alt="image-20200530150122579" style="zoom:80%;" />
 
 ### 6.2.3  可变参数
 
@@ -590,7 +590,7 @@ public class Demo08 {
 }
 ```
 
-<img src="Java基础.assets/image-20200530153141280.png" alt="image-20200530153141280" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901084608.png" alt="image-20200530153141280" style="zoom:80%;" />
 
 主要分为三个阶段：前阶段（上图向右进行），边界条件（本文为f(1),此时f(1)存在值），返回阶段（n*(n-1)）。
 
@@ -642,7 +642,7 @@ a[1]=1;
 
 多维数组可以看成是数组的数组，比如二维数组就是一个特殊的一维数组，其每一个元素都是一个一维数组。
 
-<img src="Java基础.assets/image-20200530162324766.png" alt="image-20200530162324766" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901084609.png" alt="image-20200530162324766" style="zoom:80%;" />
 
 **二维数组的创建：**
 
@@ -737,9 +737,9 @@ public class Application { //测试类
 
 **显示项目结构的方法**
 
-<img src="Java基础.assets/image-20200530210107390.png" alt="image-20200530210107390" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901084610.png" alt="image-20200530210107390" style="zoom:80%;" />
 
-<img src="Java基础.assets/image-20200530210158097.png" alt="image-20200530210158097" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901084611.png" alt="image-20200530210158097" style="zoom:80%;" />
 
 然后点击确定即可看到java编译的class文件。
 
@@ -1406,7 +1406,7 @@ public class Application {
 
 错误不是异常，而是脱离程序员控制的问题。
 
-<img src="Java基础.assets/image-20200531145205604.png" alt="image-20200531145205604" style="zoom: 67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901084612.png" alt="image-20200531145205604" style="zoom: 67%;" />
 
 Java把异常作为对象来处理，并定义一个基类java.lang.Throwable作为所有异常的超类。
 

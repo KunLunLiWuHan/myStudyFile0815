@@ -4,15 +4,15 @@ SpringMVC的Web框架围绕DispatcherServlet设计，DispatcherServlet的作用�
 
 ​		当用户发起请求时，会被前置控制器拦截，然后根据请求参数生成代理请求，找到请求对应的实际控制器，控制器处理请求，创建数据模型，访问数据库，将模型响应交给中心控制器，控制器使用模型与试图渲染视图结果，将结果返回给中心处理器，再将结果返回给请求者。
 
-<img src="SpringMVC学习.assets\image-20200627122212018.png" alt="image-20200627122212018" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200627122212018.png" alt="image-20200627122212018" style="zoom:80%;" />
 
 **原理的详细介绍**
 
-<img src="SpringMVC学习.assets\image-20200627122317805.png" alt="image-20200627122317805" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200627122317805.png" alt="image-20200627122317805" style="zoom:80%;" />
 
-<img src="SpringMVC学习.assets\image-20200627122355488.png" alt="image-20200627122355488" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200627122355488.png" alt="image-20200627122355488" style="zoom:80%;" />
 
-<img src="SpringMVC学习.assets\image-20200627122434797.png" alt="image-20200627122434797" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200627122434797.png" alt="image-20200627122434797" style="zoom:80%;" />
 
 # 2 第一个SpringMVC
 
@@ -20,7 +20,7 @@ SpringMVC的Web框架围绕DispatcherServlet设计，DispatcherServlet的作用�
 
 **项目结构**
 
-<img src="SpringMVC学习.assets\image-20200627112157287.png" alt="image-20200627112157287" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200627112157287.png" alt="image-20200627112157287" style="zoom:67%;" />
 
 **步骤**
 
@@ -28,11 +28,11 @@ SpringMVC的Web框架围绕DispatcherServlet设计，DispatcherServlet的作用�
 
 在module上右键添加web支持：
 
-<img src="SpringMVC学习.assets\image-20200627094410585.png" alt="image-20200627094410585" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200627094410585.png" alt="image-20200627094410585" style="zoom:67%;" />
 
 此时，项目结构出来了web的支持，此时结构图如下：
 
-<img src="SpringMVC学习.assets\image-20200627094439726.png" alt="image-20200627094439726" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200627094439726.png" alt="image-20200627094439726" style="zoom:80%;" />
 
 2. 导入SpringMVC的依赖。
 
@@ -65,9 +65,9 @@ SpringMVC的Web框架围绕DispatcherServlet设计，DispatcherServlet的作用�
 
 这样可能不生效，在控制台可能会出现404的错误，此时我们需要在WEB-INF文件夹下新建lib目录，让后将上面的依赖全部导入到里面去。
 
-<img src="SpringMVC学习.assets\image-20200627111959608.png" alt="image-20200627111959608" style="zoom: 50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200627111959608.png" alt="image-20200627111959608" style="zoom: 50%;" />
 
-<img src="SpringMVC学习.assets\image-20200627112059082.png" alt="image-20200627112059082" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200627112059082.png" alt="image-20200627112059082" style="zoom:67%;" />
 
 3. 配置web.xml，注册DispatcherServlet。
 
@@ -143,7 +143,7 @@ SpringMVC的Web框架围绕DispatcherServlet设计，DispatcherServlet的作用�
 
 + 文件位置在resources文件夹下，该文件创建时，使用下面的配置：
 
-<img src="SpringMVC学习.assets\image-20200627112527939.png" alt="image-20200627112527939" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200627112527939.png" alt="image-20200627112527939" style="zoom:67%;" />
 
 5. index.jsp首页
 
@@ -284,7 +284,7 @@ springMVC实现转发和定向，无需视图解析器。测试前，可以将�
 
 + **项目结构**
 
-<img src="SpringMVC学习.assets\image-20200628114825778.png" alt="image-20200628114825778" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200628114825778.png" alt="image-20200628114825778" style="zoom:80%;" />
 
 ## 2.4 接收请求参数和数据回显
 
@@ -370,7 +370,7 @@ name的值------>?°????
 
 + 前端界面输出：
 
-<img src="SpringMVC学习.assets\image-20200628125654817.png" alt="image-20200628125654817" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200628125654817.png" alt="image-20200628125654817" style="zoom:80%;" />
 
 3. 使用SpringMVC给我们提供的过滤器，在web.xml文件中进行配置。
 
@@ -434,7 +434,7 @@ public String json1(){
 
 + 前端界面输出
 
-<img src="SpringMVC学习.assets\image-20200628154958044.png" alt="image-20200628154958044" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200628154958044.png" alt="image-20200628154958044" style="zoom:80%;" />
 
 **（2）使用jackson解析工具**
 
@@ -453,7 +453,7 @@ public String json1() throws JsonProcessingException {
 
 + 前端界面输出为json字符串：
 
-<img src="SpringMVC学习.assets\image-20200628155308597.png" alt="image-20200628155308597" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200628155308597.png" alt="image-20200628155308597" style="zoom:80%;" />
 
 + 乱码解决方法，在配置文件springmvc-servlet.xml中引入下面的代码
 
@@ -477,7 +477,7 @@ public String json1() throws JsonProcessingException {
     </mvc:annotation-driven>
 ```
 
-<img src="SpringMVC学习.assets\image-20200628160456882.png" alt="image-20200628160456882" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200628160456882.png" alt="image-20200628160456882" style="zoom:80%;" />
 
 **（3）使用jackson返回List对象**
 
@@ -524,7 +524,7 @@ return mapper.writeValueAsString(date);
 
 + 前端界面输出
 
-<img src="SpringMVC学习.assets\image-20200628161453911.png" alt="image-20200628161453911" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200628161453911.png" alt="image-20200628161453911" style="zoom:80%;" />
 
 **（4.2-1）自定义格式数据的返回：**
 
@@ -538,7 +538,7 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 return mapper.writeValueAsString(sdf.format(date));
 ```
 
-<img src="SpringMVC学习.assets\image-20200628162340820.png" alt="image-20200628162340820" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200628162340820.png" alt="image-20200628162340820" style="zoom:80%;" />
 
 **（4.2-2）自定义格式数据的返回：**
 
@@ -705,7 +705,7 @@ public HttpMessageConverters fastJsonMessageConverters() {
 
 **项目结构**
 
-<img src="SpringMVC学习.assets\image-20200629103816483.png" alt="image-20200629103816483" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200629103816483.png" alt="image-20200629103816483" style="zoom:80%;" />
 
 1. **拦截器java配置**
 

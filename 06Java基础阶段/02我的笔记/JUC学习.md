@@ -2,7 +2,7 @@
 
 1、JUC（java.util.concurrent）是在并发编程中使用的工具类。 （concurrent：并发的，一致的）。
 
-<img src="JUC学习.assets\image-20200810171906868.png" alt="image-20200810171906868" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085014.png" alt="image-20200810171906868" style="zoom:80%;" />
 
 （1）进程：进程是一个**具有一定独立功能的程序**关于某个数据集合的一次运行活动。它是操作系统动态执行的基本单元，在传统的操作系统中，进程既是基本的分配单元，也是基本的执行单元。
 
@@ -119,7 +119,7 @@ Thread t1 = new Thread();
 
 （3）Thread(Runnable target, String name) 
 
-<img src="JUC学习.assets\image-20200810222813439.png" alt="image-20200810222813439" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085015.png" alt="image-20200810222813439" style="zoom:80%;" />
 
 ## 2、SaleTicket回顾
 
@@ -357,7 +357,7 @@ public boolean add(E e) {
 
 ## 2、解决方案
 
-<img src="JUC学习.assets\List.jpg" alt="List" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085016.png" alt="List" style="zoom:80%;" />
 
 （1）Vector
 
@@ -386,7 +386,7 @@ List<String> list = Collections.synchronizedList(new ArrayList<>());
 
 ​		那HashMap，HashSet也不是线程安全的，所以有同样的线程安全方法。
 
-<img src="JUC学习.assets\image-20200811001207498.png" alt="image-20200811001207498" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085017.jpg" alt="image-20200811001207498" style="zoom:80%;" />
 
 （3）CopyOnWriteArrayList
 
@@ -404,7 +404,7 @@ List<String> list = new CopyOnWriteArrayList<>();
 
 （b）举例-名单那签到
 
-<img src="JUC学习.assets\image-20200811001727232.png" alt="image-20200811001727232" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085018.png" alt="image-20200811001727232" style="zoom:80%;" />
 
 （c）CopyOnWrite理论代码
 
@@ -613,13 +613,13 @@ B	0
 
 ​		当换成4个线程的时候，生产和消费会出现错误，比如会出现一个数字2的情况。会出现虚假唤醒的情况，解释如下：
 
-<img src="JUC学习.assets\image-20200811101059300.png" alt="image-20200811101059300" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085019.png" alt="image-20200811101059300" style="zoom:80%;" />
 
 ​		在java多线程判断时，不能用if，程序出事出在了判断上面，突然有一添加的线程进到if了，突然中断了交出控制权，没有进行验证，而是直接走下去了，加了两次，甚至多次。
 
 ​		即：中断和虚假唤醒是可能产生的，所以要用loop循环，if只判断一次，while是只要唤醒就要拉回来再判断一次。if换成while。用到下面的代码重构。
 
-<img src="JUC学习.assets\image-20200811101426580.png" alt="image-20200811101426580" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085020.png" alt="image-20200811101426580" style="zoom:80%;" />
 
 ### 2、代码重构
 
@@ -656,7 +656,7 @@ class AirCondition {
 
 ### 3、使用Lock代码重写
 
-<img src="JUC学习.assets\image-20200811114312519.png" alt="image-20200811114312519" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085021.png" alt="image-20200811114312519" style="zoom:80%;" />
 
 ```java
 class AirCondition2 {
@@ -843,7 +843,7 @@ public class ConditionDemo01 {
 
 ​		这是一个函数式接口，因此可以用作lambda表达式或方法引用的赋值对象。
 
-<img src="JUC学习.assets\image-20200811135429526.png" alt="image-20200811135429526" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085022.png" alt="image-20200811135429526" style="zoom:80%;" />
 
 ## 1、callable接口与runnable接口的区别
 
@@ -926,13 +926,13 @@ public class CallableDemo01 {
 
 （2）FutureTask中间人
 
-<img src="JUC学习.assets\FutureTask.png" alt="FutureTask" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085023.png" alt="FutureTask" style="zoom:80%;" />
 
 ## 3、讲解
 
 ​		未来的任务，用它（Callable）就干一件事，即异步调用。main方法就像一个冰糖葫芦，一个个方法由main串起来。但解决不了一个问题：正常调用挂起堵塞问题
 
-<img src="JUC学习.assets\image-20200811143852089.png" alt="image-20200811143852089" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085024.png" alt="image-20200811143852089" style="zoom:80%;" />
 
 举例：
 
@@ -1145,7 +1145,7 @@ public class ReadWriteLockDemo01 {
 （1）阻塞：必须要阻塞/不得不阻塞 
 阻塞队列是一个队列，在数据结构中起的作用如下图：
 
-<img src="JUC学习.assets\image-20200811164403698.png" alt="image-20200811164403698" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085025.png" alt="image-20200811164403698" style="zoom:80%;" />
 
  		线程1往阻塞队列里添加元素，线程2从阻塞队列里移除元素。
 
@@ -1169,7 +1169,7 @@ public class ReadWriteLockDemo01 {
 
 ## 3、架构介绍
 
-<img src="JUC学习.assets\Collection.png" alt="Collection" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085026.png" alt="Collection" style="zoom:80%;" />
 
 ## 4、种类分析
 
@@ -1189,7 +1189,7 @@ LinkedBlockingDeque：由链表组成的双向阻塞队列。
 
 5、BlockingQueue核心方法
 
-<img src="JUC学习.assets\image-20200811165111335.png" alt="image-20200811165111335" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085027.png" alt="image-20200811165111335" style="zoom:80%;" />
 
 |          | 描述                                                         |
 | -------- | :----------------------------------------------------------- |
@@ -1219,7 +1219,7 @@ LinkedBlockingDeque：由链表组成的双向阻塞队列。
 
 ​		Java中的线程池是通过Executor框架实现的，该框架中用到了Executor，Executors，ExecutorService，ThreadPoolExecutor这几个类。
 
-<img src="JUC学习.assets\image-20200811173424832.png" alt="image-20200811173424832" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085028.png" alt="image-20200811173424832" style="zoom:80%;" />
 
 ## 3、线程池的3大方法
 
@@ -1317,11 +1317,11 @@ public class MyThreadPoolDemo01 {
 
 ## 4、ThreadPoolExecutor底层原理
 
-<img src="JUC学习.assets\image-20200811180709989.png" alt="image-20200811180709989" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085029.png" alt="image-20200811180709989" style="zoom:80%;" />
 
 ## 5、线程池的7大参数
 
-<img src="JUC学习.assets\image-20200811181410410.png" alt="image-20200811181410410" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085030.png" alt="image-20200811181410410" style="zoom:80%;" />
 
 1、corePoolSize：线程池中的常驻核心线程数（银行常驻值班人员）。
 
@@ -1341,11 +1341,11 @@ public class MyThreadPoolDemo01 {
 
 ## 6、线程池底层工作原理
 
-<img src="JUC学习.assets\image-20200811183037384.png" alt="image-20200811183037384" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085031.png" alt="image-20200811183037384" style="zoom:80%;" />
 
-<img src="JUC学习.assets\image-20200811183050851.png" alt="image-20200811183050851" style="zoom:150%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085032.png" alt="image-20200811183050851" style="zoom:150%;" />
 
-<img src="JUC学习.assets\image-20200811185007125.png" alt="image-20200811185007125" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085033.png" alt="image-20200811185007125" style="zoom:80%;" />
 
    以下很重要：
 
@@ -1372,7 +1372,7 @@ public class MyThreadPoolDemo01 {
 
 ​		答案是一个都不用，我们工作中只能使用自定义的。Executors中JDK已经给你提供了，为什么不用？
 
-<img src="JUC学习.assets\image-20200811185111165.png" alt="image-20200811185111165" style="zoom:150%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085034.png" alt="image-20200811185111165" style="zoom:150%;" />
 
 2、自定义线程池
 
