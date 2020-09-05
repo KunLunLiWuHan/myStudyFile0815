@@ -784,3 +784,433 @@ Queue默认是持久化配置。
 可靠性的另一个重要方面是确保持久性消息传送至目标后，消息服务在向消费者传送它们之前不会丢失这些消息。
 
 2、持久化topic
+
+（1）持久的发布主题生产者
+
+```java
+package com.xiaolun.activemq.topic;
+
+import org.apache.activemq.ActiveMQConnectionFactory;
+
+import javax.jms.*;
+
+/**
+ * 持久化Topic生产者
+ */
+public class JmsProducer_Topic_Persist {
+   private static final String ACTIVEMQ_URL = "tcp://192.168.10.101:61616";
+   private static final String ACTIVEMQ_TOPIC_NAME = "Topic-Persist";
+
+   public static void main(String[] args) throws JMSException {
+      //1.创建连接工厂，按照给定的URL，采用默认的用户名密码
+      ActiveMQConnectionFactory activeMQConnectionFactory = new ActiveMQConnectionFactory(ACTIVEMQ_URL);
+      //2.通过连接工厂,持久化的topic必须在生产者创建并设置持久化完成后调用start
+      Connection connection = activeMQConnectionFactory.createConnection();
+      //3.创建会话session
+      //两个参数transacted=事务,acknowledgeMode=确认模式(签收)
+      Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+      //4.创建目的地(具体是队列queue还是主题topic)
+      Topic topic = session.createTopic(ACTIVEMQ_TOPIC_NAME);
+      //5.创建消息的生产者
+      MessageProducer messageProducer = session.createProducer(topic);
+      //6.设置生产者生产持久化的Topic
+      messageProducer.setDeliveryMode(DeliveryMode.PERSISTENT);
+
+      //7.启动连接！表示启动的是一个持久化的生产者的主题
+      connection.start();
+      //8.通过使用持久化Topic消息生产者,生产三条消息,发送到MQ的队列里面
+      for (int i = 1; i <= 3; i++) {
+         //7.通过session创建消息
+         TextMessage textMessage = session.createTextMessage("msg-persist" + i);
+         //8.使用指定好目的地的消息生产者发送消息
+         messageProducer.send(textMessage);
+      }
+      //9.关闭资源
+      messageProducer.close();
+      session.close();
+      connection.close();
+      System.out.println("****TOPIC_NAME消息发布到MQ完成");
+   }
+}
+```
+
+（2）持久的定阅主题消费者
+
+```java
+package com.xiaolun.activemq.topic;
+
+import org.apache.activemq.ActiveMQConnectionFactory;
+
+import javax.jms.*;
+import java.io.IOException;
+
+/**
+ * 持久化Topic消费者
+ */
+public class Jms_Topic_Consumer_Persist {
+   private static final String ACTIVEMQ_URL = "tcp://192.168.10.101:61616";
+   private static final String ACTIVEMQ_TOPIC_NAME = "Topic-Persist";
+
+   public static void main(String[] args) throws JMSException, IOException {
+      System.out.println("*******我是1号消费者");
+      //1.创建连接工厂，按照给定的URL，采用默认的用户名密码
+      ActiveMQConnectionFactory activeMQConnectionFactory = new ActiveMQConnectionFactory(ACTIVEMQ_URL);
+      //2.通过连接工厂,获得connection,设置connectionID
+      Connection connection = activeMQConnectionFactory.createConnection();
+      connection.setClientID("1号ID"); //客户端ID，表示是谁订阅了主题Topic-Persist
+      //3.创建会话session
+      //两个参数transacted=事务,acknowledgeMode=确认模式(签收)
+      Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+      //4.创建目的地(具体是队列queue还是主题topic)
+      Topic topic = session.createTopic(ACTIVEMQ_TOPIC_NAME);
+      //5.通过session创建持久化订阅，参数2是一个备注
+      TopicSubscriber topicSubscriber = session.createDurableSubscriber(topic, "1号消费者");
+      //6.启动连接
+      connection.start();
+      //7.接收消息
+      topicSubscriber.setMessageListener(message -> {
+         if (message instanceof TextMessage) {
+            TextMessage textMessage = (TextMessage) message;
+            try {
+               System.out.println("收到的持久化订阅消息: " + textMessage.getText());
+            } catch (JMSException e) {
+               e.printStackTrace();
+            }
+         }
+      });
+
+   
+      System.in.read();
+      session.close();
+      connection.close();
+   }
+}
+```
+
+（3）测试
+
+（a）先启动消费者Jms_Topic_Consumer_Persist，再启动生产者JmsProducer_Topic_Persist向消费者发送3条消息，此时前端控制台界面如下：
+
+Topics界面：
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200902103121867.png" alt="image-20200902103121867" style="zoom:50%;" />
+
+Subscribers界面：
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200902103314731.png" alt="image-20200902103314731" style="zoom:50%;" />
+
+（b）先启动消费者Jms_Topic_Consumer_Persist注册到MQ服务器上，然后关闭，启动生产者JmsProducer_Topic_Persist向消费者发送3条消息，然后再启动消费者，可以发现该消费者可以接收到这3条消息：
+
+![image-20200902103756528](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200902103756528.png)
+
+（4）总结
+
+一定要先运行一次消费者，类似于像MQ注册,我订阅了这个主题， 然后再运行主题生产者，无论消费着是否在线,都会接收到，在线的立即接收到，不在线的等下次上线把没接收到的接收。
+       3、事务-transaction
+
+事务偏生产者，签收偏消费者。
+
+当producer提交时的事务设置为true时，先执行send再执行commit，消息才被**真正**提交到队列中，此外消息需要需要批量提交，需要缓冲处理。
+
+当producer提交时的事务设置为false时，只要执行send，就进入到队列中。此外，当我们关闭事务时，那第2个签收参数的设置需要有效。
+
+（1）生产者
+
+```java
+package com.xiaolun.activemq.tracation;
+
+import org.apache.activemq.ActiveMQConnectionFactory;
+
+import javax.jms.*;
+
+public class Jms_TX_Producer {
+   private static final String ACTIVEMQ_URL = "tcp://192.168.10.101:61616";
+   private static final String ACTIVEMQ_QUEUE_NAME = "Queue-TX";
+
+
+   public static void main(String[] args) throws JMSException {
+      //1.创建连接工厂，按照给定的URL，采用默认的用户名密码
+      ActiveMQConnectionFactory activeMQConnectionFactory = new ActiveMQConnectionFactory(ACTIVEMQ_URL);
+      //2.通过连接工厂,获得connection并启动访问
+      Connection connection = activeMQConnectionFactory.createConnection();
+      connection.start();
+      //3.创建会话session
+      //两个参数transacted=事务,acknowledgeMode=确认模式(签收)
+      //开启事务需要commit
+      Session session = connection.createSession(true, Session.AUTO_ACKNOWLEDGE);
+      //4.创建目的地(具体是队列queue还是主题topic)
+      Queue queue = session.createQueue(ACTIVEMQ_QUEUE_NAME);
+      //5.创建消息的生产者,并设置不持久化消息
+      MessageProducer producer = session.createProducer(queue);
+      //6.通过使用消息生产者,生产三条消息,发送到MQ的队列里面
+      try {
+         for (int i = 1; i <= 3; i++) {
+            TextMessage textMessage = session.createTextMessage("tx msg--" + i);
+            producer.send(textMessage);
+         }
+         //7.提交事务
+         session.commit();
+         System.out.println("消息发送完成");
+      } catch (Exception e) {
+         System.out.println("出现异常,消息回滚");
+         session.rollback();
+      } finally {
+         //8.关闭资源
+         producer.close();
+         session.close();
+         connection.close();
+      }
+
+   }
+}
+```
+
+（2）消费者
+
+```java
+package com.xiaolun.activemq.tracation;
+
+import org.apache.activemq.ActiveMQConnectionFactory;
+
+import javax.jms.*;
+import java.io.IOException;
+
+public class Jms_TX_Consumer {
+   private static final String ACTIVEMQ_URL = "tcp://192.168.10.101:61616";
+   private static final String ACTIVEMQ_QUEUE_NAME = "Queue-TX";
+
+   public static void main(String[] args) throws JMSException, IOException {
+      //1.创建连接工厂，按照给定的URL，采用默认的用户名密码
+      ActiveMQConnectionFactory activeMQConnectionFactory = new ActiveMQConnectionFactory(ACTIVEMQ_URL);
+      //2.通过连接工厂,获得connection并启动访问
+      Connection connection = activeMQConnectionFactory.createConnection();
+      connection.start();
+      //3.创建会话session
+      //两个参数transacted=事务,acknowledgeMode=确认模式(签收)
+      //消费者开启了事务就必须手动提交，不然会重复消费消息
+      Session session = connection.createSession(true, Session.AUTO_ACKNOWLEDGE);
+      //4.创建目的地(具体是队列queue还是主题topic)
+      Queue queue = session.createQueue(ACTIVEMQ_QUEUE_NAME);
+      //5.创建消息的消费者,指定消费哪一个队列里面的消息
+      MessageConsumer messageConsumer = session.createConsumer(queue);
+      //6.通过监听的方式消费消息
+      messageConsumer.setMessageListener(new MessageListener() {
+         int a = 0;
+         @Override
+         public void onMessage(Message message) {
+            if (message instanceof TextMessage) {
+               try {
+                  if (a == 2) {
+                     System.out.println(1 / 0);
+                  }
+                  TextMessage textMessage = (TextMessage) message;
+                  System.out.println("***消费者接收到的消息:   " + textMessage.getText());
+                  session.commit();
+                  a = a + 1;
+               } catch (Exception e) {
+                  System.out.println("出现异常，消费失败，放弃消费");
+                  try {
+                     session.rollback();
+                     a = 0;
+                  } catch (JMSException ex) {
+                     ex.printStackTrace();
+                  }
+               }
+            }
+         }
+      });
+      //7.关闭资源
+      System.in.read();
+      messageConsumer.close();
+      session.close();
+      connection.close();
+   }
+}
+```
+
+（3）测试
+
+先启动消费者Jms_TX_Consumer，再启动生产者Jms_TX_Producer，此时前端控制台如下：
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200902110417946.png" alt="image-20200902110417946" style="zoom:67%;" />
+
+后台控制台如下：
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200902110450937.png" alt="image-20200902110450937" style="zoom:67%;" />
+
+虽然执行了回滚操作，但是，消费者是从第三条拿到的数据，并不是从回滚的起点拿到的数据。
+
+4、签收
+
+自动签收（默认）：
+
+```java
+Session.AUTO_ACKNOWLEDGE
+```
+
+手动签收，此时客户端需要调用acknowledge方法手动签收，不然会有重复消费
+
+```java
+Session.CLIENT_ACKNOWLEDGE
+```
+
+生产者-消费者事务客户端签收方式代码：
+
+（1）消息生产者
+
+```java
+package com.xiaolun.activemq.acknowledge;
+
+import org.apache.activemq.ActiveMQConnectionFactory;
+
+import javax.jms.*;
+
+public class Jms_Transaction_AUTOACK_Producer {
+   private static final String ACTIVEMQ_URL = "tcp://192.168.10.101:61616";
+   private static final String ACTIVEMQ_QUEUE_NAME = "Queue-ACK-Transaction";
+
+   public static void main(String[] args) throws JMSException {
+      ActiveMQConnectionFactory activeMQConnectionFactory = new ActiveMQConnectionFactory(ACTIVEMQ_URL);
+      Connection connection = activeMQConnectionFactory.createConnection();
+      connection.start();
+      Session session = connection.createSession(true, Session.AUTO_ACKNOWLEDGE);
+      Queue queue = session.createQueue(ACTIVEMQ_QUEUE_NAME);
+      MessageProducer producer = session.createProducer(queue);
+
+      for (int i = 1; i <= 3; i++) {
+         TextMessage textMessage = session.createTextMessage("Transaction_AUTOACK-msg:   " + i);
+         producer.send(textMessage);
+      }
+      session.commit(); //提交事务
+      System.out.println("发送完成");
+      producer.close();
+      session.close();
+      connection.close();
+   }
+}
+```
+
+（2）消息消费者
+
+```java
+package com.xiaolun.activemq.acknowledge;
+
+import org.apache.activemq.ActiveMQConnectionFactory;
+
+import javax.jms.*;
+import java.io.IOException;
+
+public class Jms_Transaction_CLIENTACK_Consumer {
+   private static final String ACTIVEMQ_URL = "tcp://192.168.10.101:61616";
+   private static final String ACTIVEMQ_QUEUE_NAME = "Queue-ACK-Transaction";
+
+   public static void main(String[] args) throws JMSException, IOException {
+      ActiveMQConnectionFactory activeMQConnectionFactory = new ActiveMQConnectionFactory(ACTIVEMQ_URL);
+      Connection connection = activeMQConnectionFactory.createConnection();
+      connection.start();
+      //消费者设置了手动签收,就必须自己签收,向服务器发送我已经收到消息了
+      //开启事务如果不提交,就算手动签收,也是无效的
+      Session session = connection.createSession(true, Session.CLIENT_ACKNOWLEDGE);
+      Queue queue = session.createQueue(ACTIVEMQ_QUEUE_NAME);
+      MessageConsumer messageConsumer = session.createConsumer(queue);
+      messageConsumer.setMessageListener(new MessageListener() {
+         @Override
+         public void onMessage(Message message) {
+            if (message instanceof TextMessage) {
+               TextMessage textMessage = (TextMessage) message;
+               try {
+                  //Session.CLIENT_ACKNOWLEDGE客户端需要下面的方法手动签收，不然会有手动消费
+                  textMessage.acknowledge();
+                  System.out.println(textMessage.getText());
+                  session.commit();
+               } catch (JMSException e) {
+                  e.printStackTrace();
+               }
+            }
+         }
+      });
+      //7.关闭资源
+      System.in.read();
+      messageConsumer.close();
+      session.close();
+      connection.close();
+   }
+}
+```
+
+（3）测试
+
+（a）消费者接收消息(使用acknowledge)后没有提交事务
+
+```java
+session.commit(); //注释
+```
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200902112332971.png" alt="image-20200902112332971" style="zoom:67%;" />
+
+由于消费者开启了事务，没有提交事务(就算手动签收也没用)，MQ服务器认为，消费者没有收到消息，当消费者下次启动的时候，仍然会接收到消息，造成重复消费。
+
+（b）消费者提交事务但是没有使用acknowledge接收消息
+
+```java
+textMessage.acknowledge(); //注释
+```
+
+和上图一样可以接收消息。
+
+（c）生产者-消费者非事务客户端签收方式测试
+
+更改为下面的配置：
+
+```java
+private static final String ACTIVEMQ_QUEUE_NAME = "Queue-ACK-NoTransaction";
+
+Session session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
+
+//消费端不手动签收，下面的进行注释
+textMessage.acknowledge();
+```
+
+此时前台控制台输出：
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200902113140095.png" alt="image-20200902113140095" style="zoom:80%;" />
+
+当消费者再次启动时，会有重复消费。
+
+### 5、JMS的点对点总结
+
+点对点模型是基于队列的，生产者发送消息到队列，消费者从队列接收消息，队列的存在使得消息的异步传输成为可能。和我们平时给朋友发送短信类似。
+
+1、如果在Session关闭时有部分消息被收到但还没有被签收（acknowledge），那当消费者下次连接到相同的队列时，这些消息还会被再次接收
+
+2、队列可以长久的保存消息直到消费者收到消息。消费者不需要因为担心消息会丢失而时刻和队列保持激活的链接状态，充分体现了异步传输模式的优势。
+
+### 6、JMS的发布订阅总结
+
+ JMS Pub/Sub 模型定义了如何向一个内容节点发布和订阅消息，这些节点被称作topic主题可以被认为是消息的传输中介，发布者（publisher）发布消息到主题，订阅者（subscribe）从主题订阅消息。
+
+主题使得消息订阅者和消息发布者保持互相独立不需要解除即可保证消息的传送。
+
+1、非持久订阅 
+
+ 非持久订阅只有当客户端（消费者）处于激活状态，也就是和MQ保持连接状态才能收发到某个主题的消息。
+
+如果消费者处于离线状态，生产者发送的主题消息将会丢失作废，消费者永远不会收到。
+
+一句话：先订阅注册才能接受到发布，只给订阅者发布消息。
+
+ 2、持久订阅
+
+ 客户端首先向MQ注册一个自己的身份ID识别号，当这个客户端处于离线时，生产者会为这个ID保存所有发送到主题的消息，当客户再次连接到MQ的时候，会根据消费者的ID得到所有当自己处于离线时发送到主题的消息。
+
+非持久订阅状态下，不能恢复或重新派送一个未签收的消息。
+
+持久订阅才能恢复或重新派送一个未签收的消息。
+
+ 因此，当所有的消息必须被接收，则用持久订阅。当消息丢失能够被容忍，则用非持久订阅。
+
+ 
+
+ 
+
+ 

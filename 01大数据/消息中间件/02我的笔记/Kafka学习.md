@@ -4,7 +4,7 @@
 
 **应用场景**
 
-<img src="Kafka学习.assets\image-20200714215702216.png" alt="image-20200714215702216" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200714215702216.png" alt="image-20200714215702216" style="zoom:80%;" />
 
 **使用消息队列的好处**
 
@@ -24,7 +24,7 @@
 
 ​		消息生产者生产消息发送到Queue中，然后消息消费者从Queue中取出并且消费消息。 消息被消费以后，queue 中不再有存储，所以消息消费者不可能消费到已经被消费的消息。 Queue 支持存在多个消费者，但是对一个消息而言，只会有一个消费者可以消费。
 
-<img src="Kafka学习.assets\image-20200714220209216.png" alt="image-20200714220209216" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200714220209216.png" alt="image-20200714220209216" style="zoom:80%;" />
 
 ### 2、发布/订阅模式
 
@@ -34,11 +34,11 @@
 
 ​		其中，有两种模式，一种是消费者拉取模式，比较耗费时间，消费者一直维护一个常轮询，去到Topic中询问或者获取消息；一种是Topic推送模式，由于速率不匹配，可能会造成消费者崩溃或者资源的浪费。
 
-<img src="Kafka学习.assets\image-20200714220321149.png" alt="image-20200714220321149" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200714215702216.png" alt="image-20200714220321149" style="zoom:80%;" />
 
 ## 1.2 Kafka基础架构
 
-<img src="Kafka学习.assets\image-20200714220404927.png" alt="image-20200714220404927" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200714220404927.png" alt="image-20200714220404927" style="zoom:80%;" />
 
 1. Producer ：消息生产者，就是向 kafka broker 发消息的客户端(发布消息到 kafka 集群的终端或服务)。
 2. Consumer ：消息消费者，向 kafka broker 取消息的客户端( kafka 集群中消费消息的终端或服务)。
@@ -55,7 +55,7 @@
 
 网址：http://kafka.apache.org/downloads。
 
-<img src="Kafka学习.assets\image-20200715170805450.png" alt="image-20200715170805450" style="zoom: 50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200715170805450.png" alt="image-20200715170805450" style="zoom: 50%;" />
 
 
 
@@ -146,7 +146,7 @@ bin/kafka-topics.sh --zookeeper hadoop101:2181 --topic first --create --replicat
 --partitions 分区数
 ```
 
-<img src="Kafka学习.assets\image-20200716205910918.png" alt="image-20200716205910918" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200716205910918.png" alt="image-20200716205910918" style="zoom:80%;" />
 
 ​	(6.4) 查看主题
 
@@ -196,19 +196,19 @@ bin/kafka-console-consumer.sh  --bootstrap-server hadoop101:9092 --from-beginnin
 bin/kafka-console-consumer.sh  --zookeeper hadoop102:2181 --topic first
 ```
 
-<img src="Kafka学习.assets\image-20200716212222501.png" alt="image-20200716212222501" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200716212222501.png" alt="image-20200716212222501" style="zoom:67%;" />
 
 # 2 Kafka 架构深入
 
 ## 2.1 工作流程
 
-<img src="Kafka学习.assets\image-20200717082616899.png" alt="image-20200717082616899" style="zoom: 80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717082616899.png" alt="image-20200717082616899" style="zoom: 80%;" />
 
 ​		topic 是逻辑上的概念，而 partition 是物理上的概念，每个 partition 对应于一个 log 文 件，该 log 文件中存储的就是 producer 生产的数据。			Producer 生产的数据会被不断追加到该 log 文件末端，且每条数据都有自己的 offset。消费者组中的每个消费者，都会实时记录自己消费到了哪个 offset，以便出错恢复时，从上次的位置继续消费。
 
 ### 2.1.1 文件存储机制
 
-<img src="Kafka学习.assets\image-20200717084640708.png" alt="image-20200717084640708" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717084640708.png" alt="image-20200717084640708" style="zoom:80%;" />
 
 ​		由于生产者生产的消息会不断追加到 log 文件末尾，为防止 log 文件过大导致数据定位 效率低下，Kafka 采取了分片和索引机制，将每个 partition 分为多个 segment。
 
@@ -216,7 +216,7 @@ bin/kafka-console-consumer.sh  --zookeeper hadoop102:2181 --topic first
 
 ​		index 和 log 文件以当前 segment 的第一条消息的 offset 命名。下图为 index 文件和 log 文件的结构示意图。
 
-​	<img src="Kafka学习.assets\image-20200717084823433.png" alt="image-20200717084823433" style="zoom:80%;" />
+​	<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717084823433.png" alt="image-20200717084823433" style="zoom:80%;" />
 
 ​		`.index`文件存储大量的索引信息，`.log`文件存储大量的数据，索引文件中的元数据指向对应数据文件中 message 的物理偏移地址，系统通过偏移地址能够很快的将数据查出来。
 
@@ -234,7 +234,7 @@ bin/kafka-console-consumer.sh  --zookeeper hadoop102:2181 --topic first
 
 ​		我们需要将 producer 发送的数据封装成一个 **ProducerRecord** 对象。
 
-<img src="Kafka学习.assets\image-20200717085814380.png" alt="image-20200717085814380" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717085814380.png" alt="image-20200717085814380" style="zoom:80%;" />
 
 发送数据分为三种情况：
 
@@ -246,7 +246,7 @@ bin/kafka-console-consumer.sh  --zookeeper hadoop102:2181 --topic first
 
 ​		为保证 producer 发送的数据，能可靠的发送到指定的 topic，topic 的每个 partition 收到 producer 发送的数据后，都需要向 producer 发送 ack（acknowledgement 确认收到），如果 producer 收到 ack，就会进行下一轮的发送，否则重新发送数据。
 
-<img src="Kafka学习.assets\image-20200717090642397.png" alt="image-20200717090642397" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717090642397.png" alt="image-20200717090642397" style="zoom:80%;" />
 
 **副本数据同步策略**
 
@@ -283,11 +283,11 @@ Kafka 选择了第二种方案，原因如下：
 
 数据重复的原因：
 
-<img src="Kafka学习.assets\image-20200717094229774.png" alt="image-20200717094229774" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717094229774.png" alt="image-20200717094229774" style="zoom:80%;" />
 
 #### 3、故障处理细节
 
-<img src="Kafka学习.assets\image-20200717095531884.png" alt="image-20200717095531884" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717095531884.png" alt="image-20200717095531884" style="zoom:80%;" />
 
 ​		`HW`主要解决的是消费者消费数据的一致性。
 
@@ -347,13 +347,13 @@ At Least Once + 幂等性 = Exactly Once
 
 情况1：
 
-<img src="Kafka学习.assets\image-20200717102917405.png" alt="image-20200717102917405" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717102917405.png" alt="image-20200717102917405" style="zoom:80%;" />
 
-<img src="Kafka学习.assets\image-20200717103102250.png" alt="image-20200717103102250" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717103102250.png" alt="image-20200717103102250" style="zoom:67%;" />
 
 情况2：有可能会出现多个主题的情况：
 
-<img src="Kafka学习.assets\image-20200717103303974.png" alt="image-20200717103303974" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717103303974.png" alt="image-20200717103303974" style="zoom:67%;" />
 
 #### 2、Range方式 
 
@@ -361,17 +361,17 @@ At Least Once + 幂等性 = Exactly Once
 
 情况1：
 
-<img src="Kafka学习.assets\image-20200717103610979.png" alt="image-20200717103610979" style="zoom: 67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717103610979.png" alt="image-20200717103610979" style="zoom: 67%;" />
 
 情况2：有可能会出现多个主题的情况：
 
-<img src="Kafka学习.assets\image-20200717103918706.png" alt="image-20200717103918706" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717103918706.png" alt="image-20200717103918706" style="zoom:80%;" />
 
 ​		当消费者重新加进来之后，分配策略会重新分配。
 
 情况3：
 
-<img src="Kafka学习.assets\image-20200717153652569.png" alt="image-20200717153652569" style="zoom: 67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717153652569.png" alt="image-20200717153652569" style="zoom: 67%;" />
 
 ​		A，B是一个消费者组1，C单独是要给消费者组2，主题T1发给A，B，C,假如采用轮询方式的话，组1会将T1和T2看成一个整体，然后将数据轮询发给组1，此时A会收到T2的数据，不符合；需要采用Range方式发送数据。
 
@@ -381,7 +381,7 @@ At Least Once + 幂等性 = Exactly Once
 
 ​		在上面的分配策略确定之后，就该进行下面的消费过程了。
 
-<img src="Kafka学习.assets\image-20200717111612567.png" alt="image-20200717111612567" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717111612567.png" alt="image-20200717111612567" style="zoom:80%;" />
 
 ​		由于 consumer 在消费过程中可能会出现断电宕机等故障，consumer 恢复后，需要从故障前的位置的继续消费，所以 consumer 需要实时记录自己消费到了哪个 offset，以便故障恢复后继续消费。
 
@@ -395,15 +395,15 @@ At Least Once + 幂等性 = Exactly Once
 bin/kafka-console-consumer.sh  --zookeeper hadoop102:2181 --topic second
 ```
 
-<img src="Kafka学习.assets\image-20200717144729873.png" alt="image-20200717144729873" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717144729873.png" alt="image-20200717144729873" style="zoom:67%;" />
 
 
 
-<img src="Kafka学习.assets\image-20200717145051919.png" alt="image-20200717145051919" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717145051919.png" alt="image-20200717145051919" style="zoom:80%;" />
 
 ​		其中，**/brokers/ids**在Kafka集群中，每个broker都有一个唯一的id值用来区分彼此。Kafka在启动时会在zookeeper中/brokers/ids路径下创建一个与当前broker的id为名称的虚节点，Kafka的健康状态检查就依赖于此节点。进入创建一个集群。
 
-<img src="Kafka学习.assets\image-20200717145240090.png" alt="image-20200717145240090" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717145240090.png" alt="image-20200717145240090" style="zoom:80%;" />
 
 ​		也就是使用一个组保存offsets，使用group（组）+topic（主题） + partition(分区)来保存一个数据内容。
 
@@ -446,7 +446,7 @@ bin/kafka-console-producer.sh --broker-list hadoop101:9092 --topic second
 
 2. **零复制技术**
 
-<img src="Kafka学习.assets\image-20200717153005259.png" alt="image-20200717153005259" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717153005259.png" alt="image-20200717153005259" style="zoom:80%;" />
 
 ## 2.5 Zookeeper 在 Kafka 中的作用
 
@@ -476,7 +476,7 @@ bin/kafka-console-producer.sh --broker-list hadoop101:9092 --topic second
 
 ​	KafkaProducer 发送消息流程如下：
 
-<img src="Kafka学习.assets\image-20200717155817626.png" alt="image-20200717155817626" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717155817626.png" alt="image-20200717155817626" style="zoom:80%;" />
 
 ​	**相关参数**： 
 
@@ -556,7 +556,7 @@ public class MyProducer {
 
 ​		我们需要在centos中启动kafka集群，并创建一个消费者，当上面程序运行的时候，在消费者端接收数据为：
 
-<img src="Kafka学习.assets\image-20200717171106332.png" alt="image-20200717171106332" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717171106332.png" alt="image-20200717171106332" style="zoom:80%;" />
 
 
 
@@ -584,7 +584,7 @@ public class MyProducer {
 
 ​		控制台输出：
 
-<img src="Kafka学习.assets\image-20200717172511887.png" alt="image-20200717172511887" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717172511887.png" alt="image-20200717172511887" style="zoom:67%;" />
 
 4、**同步发送 API**
 
@@ -714,7 +714,7 @@ props.put("enable.auto.commit", "false");
 consumer.commitSync();
 ```
 
-<img src="Kafka学习.assets\image-20200717223717180.png" alt="image-20200717223717180" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717223717180.png" alt="image-20200717223717180" style="zoom:80%;" />
 
 ​		当前线程会阻塞直到 offset 提交成功，然后才会从生产者中拉取新的数据。
 
@@ -795,7 +795,7 @@ while (true){
 
 ​		实现一个简单的双 interceptor 组成的拦截链。第一个 interceptor 会在消息发送前将时间 戳信息加到消息 value 的最前部；第二个 interceptor 会在消息发送后更新成功发送消息数或 失败发送消息数。
 
-<img src="Kafka学习.assets\image-20200718083054227.png" alt="image-20200718083054227" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200718083054227.png" alt="image-20200718083054227" style="zoom:80%;" />
 
 1. **增加时间戳拦截器**
 
@@ -888,7 +888,7 @@ public class InterceptorProducerMain {
 
 ​		在centos中开启kafka集群的消费者，然后启动测试类。集群获取的值为：
 
-<img src="Kafka学习.assets\image-20200718090654937.png" alt="image-20200718090654937" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200718090654937.png" alt="image-20200718090654937" style="zoom:80%;" />
 
 ​		控制台输出：
 

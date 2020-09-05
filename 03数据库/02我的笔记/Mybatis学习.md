@@ -84,7 +84,7 @@ public class Account {
 </configuration>
 ```
 
-+ config.xml文件名可自定义，<configuration>对应是一个根节点。
++ config.xml文件名可自定义，< configuration >对应是一个根节点。
 + `“value="jdbc:”`这一句得问号“？”要英文书写，时区`“serverTimezone=UTC”`千万不能不写，`“&amp”`就是“&”得转义字符。
 + 如果mapper.xml文件没有在核心文佳中注册，将会报出下面的错误：
 
@@ -1772,7 +1772,7 @@ List<User> getUserByRowBounds(); //将所有的数据查出来
 3.**测试**
 
 ```java
- @Test //分页2
+   @Test //分页2
     public void getUserByRowBounds(){
 
         SqlSession sqlSession = MybatisUtils.getSqlSession();

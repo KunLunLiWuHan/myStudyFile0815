@@ -1,4 +1,4 @@
-# 介绍
+# 1 介绍
 
 **组成**
 
@@ -95,7 +95,7 @@ public class MyTest {
 
 + 控制台输出
 
-```java
+```ini
 默认获取用户数据
 ```
 
@@ -171,17 +171,21 @@ public class MyTest {
 
 ## 2.2 IOC本质
 
-参考文档官网地址：https://docs.spring.io/spring/docs/5.2.6.RELEASE/spring-framework-reference/core.html#spring-core
+参考文档官网地址：
+
+```http
+https://docs.spring.io/spring/docs/5.2.6.RELEASE/spring-framework-reference/core.html#spring-core
+```
 
 在程序中经常去调用别的对象，这个时候就会对调用的对象产生依赖，我们程序的**耦合性**就会变高。`IOC`思想就是基于这种思想提出的。
 
 控制反转`IOC`（Inversion of Control）是一种设计思想，DI（Dependency Injection）(依赖注入)是实现IOC的一种方法。在没有`IOC`的程序中，我们使用面向对象编程，对象的创建与对象间的依赖关系完全硬编码在程序中，对象的创建由程序自己控制，而控制反转则是将对象的创建转移给第三方。
 
-（控制反转，把对象创建和对象 之间的调用过程，交给Spring进行管理。）
+（控制反转，把对象创建和对象之间的调用过程，交给Spring进行管理。）
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083840.png" alt="image-20200601220854960" style="zoom:80%;" />
 
-`IOC`是Spring框架的核心内容，我们可以使用XML配置，也可以使用注解，新版本的Spring也可以零配置实现`IOC`。`IOC`意味着将你设计好的对象交给容器控制，而不是传统的在你的对象内部直接(New)控制。
+`IOC`是Spring框架的核心内容，我们可以使用XML配置，也可以使用注解，新版本的Spring也可以零配置实现`IOC`。`IOC`意味着将你设计好的对象交给容器控制，而不是传统的在你的对象内部直接(new)控制。
 
 spring初始化时先读取配置文件，根据配置文件或元数据创建和组织对象存入容器中，程序使用时再从IOC容器中取得需要的对象。
 
@@ -189,15 +193,15 @@ spring初始化时先读取配置文件，根据配置文件或元数据创建�
 
 在采用XML方式配置`Bean`的时候，Bean的定义信息实现分离，而采用注解的方式可以将两者合在一体，`Bean`的定义信息直接以注解的形式定义在类中，从而实现了零配置的目的。
 
-## 2.3 `HelloSpring`
+## 2.3 HelloSpring
 
-### 2.3.1 `IOC`简单项目
+### 1、 IOC简单项目
 
-**1、项目结构**
+1、项目结构
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083842.png" alt="image-20200601231352205" style="zoom:80%;" />
 
-**2、创建实体类**
+2、创建实体类
 
 ```java
 public class Hello {
@@ -222,7 +226,7 @@ public class Hello {
 }
 ```
 
-**3、创建xml配置文件**
+3、创建xml配置文件
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -267,11 +271,11 @@ public class MyTest {
 Hello{str='spring'}
 ```
 
-+ `Hello`对象是由`Spring`来创建的，它的属性也是通过`Spring`来设置的。
+**Hello对象是由Spring来创建的，它的属性也是通过Spring来设置的。**
 
-### 2.2.2 简单工程的修改
+### 2、简单工程的修改
 
-**1、编写XML文件**
+1、编写XML文件
 
 ```xml
 <bean id="Impl" class="com.xiaolun.dao.UserDaoImpl"></bean>
@@ -281,7 +285,7 @@ Hello{str='spring'}
 </bean>
 ```
 
-**2、测试类**
+2、测试类
 
 ```java
 public class MyTest {
@@ -294,7 +298,7 @@ public class MyTest {
 }
 ```
 
-+ 控制台出现报错信息
+控制台出现报错信息
 
 ```java
 java.io.FileNotFoundException: class path resource [beans2.xml] cannot be opened because it does not exist
@@ -302,7 +306,7 @@ java.io.FileNotFoundException: class path resource [beans2.xml] cannot be opened
 
 重要原因是项目结构有问题，在这里未解决。
 
-### 2.3.3 总结
+### 3、总结
 
 控制：谁来控制对象的创建，传统应用程序的对象是由程序本身控制创建的，使用Spring后，对象由Spring来创建的。
 
@@ -312,17 +316,17 @@ java.io.FileNotFoundException: class path resource [beans2.xml] cannot be opened
 
 IOC是一种编程思想，由主动的编程变成被动的接收。我们可以通过 `ClassPathXmlApplicationContext`去浏览一下底层的源码。
 
-到了现在，要实现不同的操作，我们不需要在程序中改动了，只需要在XML配置文件中进行修改。所谓IOC,就是：对象由Spring来创建，管理和装配。
+到了现在，要实现不同的操作，我们不需要在程序中改动了，只需要在XML配置文件中进行修改。所谓IOC,就是：**对象由Spring来创建，管理和装配**。
 
 ## 2.4 IOC创建对象的方式
 
-### 2.4.1 无参构造
+### 1、无参构造
 
-1、程序默认使用无参构造器创建对象，所以我们在写有参构造器的时候，应该也需要将无参构造器添加上。
+程序默认使用无参构造器创建对象，所以我们在写有参构造器的时候，必须将无参构造器添加上。
 
-### 2.4.2 有参构造
+### 2、有参构造
 
-**1、 创建实体类**
+1、 创建实体类
 
 ```java
 public class User {
@@ -345,7 +349,7 @@ public class User {
 }
 ```
 
-**2、XML配置文件**
+2、XML配置文件
 
 ```java
 <?xml version="1.0" encoding="UTF-8"?>
@@ -368,11 +372,10 @@ public class User {
             <bean id="user" class = "com.xiaolun.pojo.User">
                 <constructor-arg name="name" value="xiaolun"></constructor-arg>
             </bean>
-
 </beans>
 ```
 
-**3、测试类**
+3、测试类
 
 ```java
 public class MyTest {
@@ -384,19 +387,19 @@ public class MyTest {
 }
 ```
 
-+ 控制台输出
+控制台输出
 
 ```java
 name=xiaolun
 ```
 
-+ 当我们在xml文件中写多个实体类的时候，在配置加载的时候，容器中管理的对象就已经初始化了。
+当我们在xml文件中写多个实体类的时候，在配置加载的时候，容器中管理的对象就已经初始化了。
 
 ## 2.5 Spring配置说明
 
-### 2.5.1 别名
+### 1、别名
 
-**1、XML文件配置**
+1、XML文件配置
 
 ```xml
  <bean id="user"  class = "com.xiaolun.pojo.User">
@@ -406,7 +409,7 @@ name=xiaolun
         <alias name="user" alias="user_alias"></alias>
 ```
 
-**2、测试类**
+2、测试类
 
 ```java
  public static void main(String[] args) {
@@ -416,13 +419,13 @@ name=xiaolun
  }
 ```
 
-### 2.5.2 import
+### 2、import
 
-**1、XML文件结构**
+1、XML文件结构
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083843.png" alt="image-20200602085521019" style="zoom: 80%;" />
 
-**2、applicationContext.xml文件**
+2、applicationContext.xml文件
 
 ```java
 <?xml version="1.0" encoding="UTF-8"?>
@@ -437,31 +440,31 @@ name=xiaolun
 </beans>
 ```
 
-**总结**
+3、总结
 
 `import`一般用于团队开发中使用，可以将多个配置文件，导入合并成一个，在使用的时候，直接使用总的配置就行了。
 
 ## 2.6 尚硅谷相关内容介绍
 
-1. `IOC`容器包含的内容
+1、`IOC`容器包含的内容
 
 + `IOC`底层原理
 + `IOC`容器的两种实现方式：通过两个接口(`BeanFactory,ApplicationContext`)
 + `IOC`操作，`Bean`管理（基于`XML`/注解方式）
 
-### 2.6.1 `IOC`底层原理
+### 1、IOC底层原理
 
 使用到了`xml`文件解析，工厂模式，反射。
 
-1. **原始方式创建对象**
+1. 原始方式创建对象
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083844.png" alt="image-20200626095914714" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083844.png" alt="image-20200626095914714" style="zoom: 50%;" />
 
 可以发现，上面两个类之间的耦合度太高了。
 
-2. **工厂模式创建对象**
+2. 工厂模式创建对象
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083845.png" alt="image-20200626100123396" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083845.png" alt="image-20200626100123396" style="zoom: 67%;" />
 
 可以发现，`UserService`类和`UserDao`类之间进行了解耦，但是`UserService`类和工厂`UserFactory`之间耦合度还是很大。
 
@@ -469,15 +472,15 @@ name=xiaolun
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083846.png" alt="image-20200626100508721" style="zoom:80%;" />
 
-可以发现，耦合度进一步降低，加入`class=""（UserDao类发生变化）`路径发生变化，在`UserFactory`中的`classValue`的值获得的还是正确的路径。
+可以发现，耦合度进一步降低，加入`class=""`（UserDao类发生变化）路径发生变化，在`UserFactory`中的`classValue`的值获得的还是正确的路径。
 
-### 2.6.2 `IOC`接口
+### 2、IOC接口
 
 `IOC`思想基于`IOC`容器完成，`IOC`容器底层就是对象工厂。
 
 Spring提供`IOC`容器实现的两种方式，`BeanFactory,ApplicationContext`。
 
- **`BeanFactory`**
+ 1、BeanFactory
 
 该接口是Spring内部的使用接口，不提供开发人员进行使用。
 
@@ -491,19 +494,19 @@ ApplicationContext context = new ClassPathXmlApplicationContext("beans2.xml");
 UserServiceImpl userServiceImpl = (UserServiceImpl) context.getBean("UserServiceImpl");
 ```
 
- **`ApplicationContext`**
+ 2、ApplicationContext
 
 是`BeanFactory`的子接口，提供更为强大的功能，提供给开发人员进行使用。
 
 在加载配置文件的时候就会把配置文件中的对象创建。
 
-### 2.6.3 `IOC`操作，`Bean`管理
+### 3、 IOC操作，Bean管理
 
 `Bean`管理指的就是两个操作，一个是`Spring`创建对象，另一个是`Spring`注入属性。
 
-**基于xml方式**
+1、基于xml方式
 
-1. 创建对象
+（1）创建对象
 
 ```xml
 <!--创建UserDaoImpl对象
@@ -519,7 +522,7 @@ class:类全路径
 
 在创建对象的时候，默认执行无参构造方法来创建对象，因此，当我们在实体类中定义有参构造方法的时候，我们需要将无参构造也要加上。
 
-2. 注入属性
+（2）注入属性
 
 在原始的方式中，我们有两种方式来实现，分别是：一种使用set方式进行注入，一种是使用有参构造方法进行注入。这两种方式都是Spring推荐的。
 
@@ -533,12 +536,12 @@ value:向属性注入的值。
 -->
 <bean id="hello" class="com.xiaolun.pojo.Hello">
         <property name="str" value="spring"></property>
-    </bean>
+</bean>
 ```
 
 方式2：配置文件中的**有参构造方式**注入属性参考2.4小节即可。
 
-### 2.6.4 FactoryBean
+### 4、FactoryBean
 
 Spring中有两种类型的bean,一种是普通的bean，一种是工厂bean(FactoryBean)。其中普通bean就是上文我们在xml配置文件中书写的bean，如下：
 
@@ -607,29 +610,27 @@ public class MyTest {
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083847.png" alt="image-20200626111547760" style="zoom:80%;" />
 
-+ 使用上文未注释方法，控制台输出为
+使用上文未注释方法，控制台输出为
 
 ```ini
 xiaohei
 ```
 
-
-
 # 3 DI
 
-## 3.1 构造器注入
+## 1、构造器注入
 
 前文已讲述。
 
 依赖：bean对象的创建依赖于容器。注入：bean对象的所有属性，由容器注入。也就是把底层类作为参数传递给上层类，实现上对下的控制。例子：老板对员工说：不要来找我，我会去找你的。
 
-## 3.2 Set方式注入
+## 2、Set方式注入
 
-### 3.2.1 创建项目
+创建项目如下：
 
-**1、实体类**
+1、实体类
 
-1.  Student类
+（1）Student类
 
 ```java
 public class Student { 
@@ -642,111 +643,24 @@ public class Student {
     private String wife; //设置为null
     private Properties info; //配置类
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Address getAdddress() {
-        return adddress;
-    }
-
-    public void setAdddress(Address adddress) {
-        this.adddress = adddress;
-    }
-
-    public String[] getBooks() {
-        return books;
-    }
-
-    public void setBooks(String[] books) {
-        this.books = books;
-    }
-
-    public List<String> getHobbys() {
-        return hobbys;
-    }
-
-    public void setHobbys(List<String> hobbys) {
-        this.hobbys = hobbys;
-    }
-
-    public Map<String, String> getCard() {
-        return card;
-    }
-
-    public void setCard(Map<String, String> card) {
-        this.card = card;
-    }
-
-    public Set<String> getGames() {
-        return games;
-    }
-
-    public void setGames(Set<String> games) {
-        this.games = games;
-    }
-
-    public String getWife() {
-        return wife;
-    }
-
-    public void setWife(String wife) {
-        this.wife = wife;
-    }
-
-    public Properties getInfo() {
-        return info;
-    }
-
-    public void setInfo(Properties info) {
-        this.info = info;
-    }
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "name='" + name + '\'' +
-                ", adddress=" + adddress.toString()+
-                ", books=" + Arrays.toString(books) +
-                ", hobbys=" + hobbys +
-                ", card=" + card +
-                ", games=" + games +
-                ", wife='" + wife + '\'' +
-                ", info=" + info +
-                '}';
-    }
+    //相应的set/get方法
+    //toString方法
 }
 
 ```
 
-2. Address引用类
+（2）Address引用类
 
 ```java
 public class Address {
     private String address;
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    @Override
-    public String toString() {
-        return "Address{" +
-                "address='" + address + '\'' +
-                '}';
-    }
+  
+    //相应的set/get方法
+    //toString方法
 }
 ```
 
-**2、XML配置文件**
+2、XML配置文件
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -813,12 +727,11 @@ public class Address {
                     <prop key="password">123</prop>
                 </props>
             </property>
-
         </bean>
 </beans>
 ```
 
-**3、测试类**
+3、测试类
 
 ```java
 public class MyTest {
@@ -830,7 +743,7 @@ public class MyTest {
 }
 ```
 
-+ 控制台输出结果
+控制台输出结果：
 
 ```java
 Student{
@@ -853,9 +766,9 @@ Student{
 	}
 ```
 
-## 6.3 拓展方式注入
+## 3、拓展方式注入
 
-**1、实体类**
+1、实体类
 
 ```java
 public class User {
@@ -871,34 +784,13 @@ public class User {
         this.name = name;
         this.age = age;
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                '}';
-    }
+  	//相应的set/get方法
+    //toString方法
+    
 }
 ```
 
-**2、XML文件**
+2、XML文件
 
 ```java
 <?xml version="1.0" encoding="UTF-8"?>
@@ -921,7 +813,7 @@ public class User {
 
 + `xmlns:p/c`分别对应的是p/c空间的添加的第三方的xml文件，这样做可以简化xml配置方式。
 
-**3、测试类**
+3、测试类
 
 ```java
 public class MyTest {
@@ -933,7 +825,7 @@ public class MyTest {
 }
 ```
 
-+ 控制台输出
+控制台输出：
 
 ```java
 User{name='xiaolun', age=18}
@@ -941,9 +833,9 @@ User{name='xiaolun', age=18}
 
 # 4 Bean
 
-## 4.1 Bean的作用域
+## 1、Bean的作用域
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083848.png" alt="image-20200602103455970" style="zoom:150%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083848.png" alt="image-20200602103455970" style="zoom: 80%;" />
 
 | 作用域类型    | 使用范围       | 描述                                                         |
 | ------------- | -------------- | ------------------------------------------------------------ |
@@ -954,22 +846,21 @@ User{name='xiaolun', age=18}
 | request       | Spring Web应用 | Web工程单次请求(request)。                                   |
 | globalSession | Spring Web应用 | 在一个全局的HTTP Session种，一个Bean定义对应一个实例。实践中基本不使用。 |
 
-1. 在Spring里面，设置创建的bean实例是单实例还是多实例。Spring的默认机制是单实例对象。原型模式是多实例模式。而其余的request、session、application这些只能在web开发中使用到。
-2. 单例模式和原型模式区别：
+1、在Spring里面，设置创建的bean实例是单实例还是多实例。Spring的默认机制是**单实例对象**。原型模式是多实例模式。而其余的request、session、application这些只能在web开发中使用到。
+
+2、单例模式和原型模式区别：
 
 当设置scope属性值为`singleton`的时候，加载spring配置文件的时候就会创建单实例对象；当设置scope属性值为`prototype`的时候，不是在加载spring配置文件的时候创建对象，而是在调用getBean方法的时候去创建一个多实例对象。
 
-**配置XML文件**
+配置XML文件
 
 ```xml
-<!--scope属性定义bean的作用域
-本文设置成多实例模式
--->
+<!--scope属性定义bean的作用域，本文设置成多实例模式-->
 <bean id="mybean" class="com.xiaolun.pojo.MyBean" scope="prototype">
 </bean>
 ```
 
-**测试**
+测试
 
 ```java
 public class MyTest {
@@ -983,16 +874,16 @@ public class MyTest {
 }
 ```
 
-+ 控制台输出。可以发现，两个对象不同，即为多实例模式。
+控制台输出。可以发现，两个对象不同，即为多实例模式。
 
 ```ini
 60559178
 395629617
 ```
 
-## 4.2 自动装配Bean
+## 2、自动装配Bean
 
-Spring会在上下文中自动寻找，并自动给bean装配属性。
+**Spring会在上下文中自动寻找，并自动给bean装配属性**。
 
 在Spring中有三种装配方式：
 
@@ -1000,13 +891,13 @@ Spring会在上下文中自动寻找，并自动给bean装配属性。
 + 在java中显式配置。
 + 隐式的自动装配（本章所讲的，重点掌握）。
 
-### 4.2.1 创建项目
+### 1、 创建项目
 
 描述：一个人有两个宠物，根据这句话有三个对象进行建模。
 
-**1、实体类**
+1、实体类
 
-Cat类
+（1）Cat类
 
 ```java
 public class Cat {
@@ -1016,7 +907,7 @@ public class Cat {
 }
 ```
 
-Dog类
+（2）Dog类
 
 ```java
 public class Dog {
@@ -1026,7 +917,7 @@ public class Dog {
 }
 ```
 
-People类
+（3）People类
 
 ```java
 public class People {
@@ -1034,42 +925,12 @@ public class People {
     private Dog dog;
     private String name;
 
-    public Cat getCat() {
-        return cat;
-    }
-
-    public void setCat(Cat cat) {
-        this.cat = cat;
-    }
-
-    public Dog getDog() {
-        return dog;
-    }
-
-    public void setDog(Dog dog) {
-        this.dog = dog;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return "People{" +
-                "cat=" + cat +
-                ", dog=" + dog +
-                ", name='" + name + '\'' +
-                '}';
-    }
+   //相应的set/get方法
+   //toString方法
 }
 ```
 
-**2、XML配置文件**
+2、XML配置文件
 
 ```java
 <?xml version="1.0" encoding="UTF-8"?>
@@ -1088,22 +949,18 @@ public class People {
 <!--            <property name="cat" ref="cat" ></property>-->
 <!--        </bean>-->
 
-        <!--方法2：使用byName方式注入
-            系统会自动在容器上下文中寻找，和自己对象set方法后面的参数值对应的<bean>中的id属性的值
-        -->
+<!--方法2：使用byName方式注入系统会自动在容器上下文中寻找和自己对象set方法后面的参数值对应的<bean>中的id属性的值-->
 <!--        <bean id="people" class="com.xiaolun.pojo.People" autowire="byName">-->
 <!--        </bean>-->
 
-        <!--方法3：使用byType方式注入
-        系统会自动在容器上下文中寻找，和自己对象属性类型想相对应的<bean>，且保证xml文件中<bean>（class="com.xiaolun.pojo.Cat"）类型全局唯一。
-        此时，可以将上面的<bean id="cat" class="com.xiaolun.pojo.Cat"></bean>中的 id="cat" 给去掉。
-        -->
+<!--方法3：使用byType方式注入系统会自动在容器上下文中寻找，和自己对象属性类型想相对应的<bean>，且保证xml文件中<bean>（class="com.xiaolun.pojo.Cat"）类型全局唯一。
+        此时，可以将上面的<bean id="cat" class="com.xiaolun.pojo.Cat"></bean>中的 		             id="cat" 给去掉。-->
         <bean id="people" class="com.xiaolun.pojo.People" autowire="byType">
         </bean>
 </beans>
 ```
 
-**3、测试**
+3、测试
 
 ```java
 public class MyTest {
@@ -1116,21 +973,21 @@ public class MyTest {
 }
 ```
 
-+ 控制台输出
+控制台输出：
 
 ```java
 miao----->miao
 wang----->wang
 ```
 
-**4、总结**
+4、总结
 
 + 使用`byName`关键字进行自动装配的时候，需要保证`bean`的`id`唯一，并且这个`bean`需要和自动注入的属性的`set`方法的值一致。
 + 使用`byType`关键字进行自动装配的时候，需要保证所有的`bean`的`class`唯一，并且这个`bean`需要和自动注入的属性的类型一样。
 
-### 4.2.2 使用注解来实现自动装配-基于注解的属性注入
+### 2、使用注解来实现自动装配-基于注解的属性注入
 
-使用注解须知：
+1、使用注解须知：
 
 + 导入约束
 + 配置注解的支持
@@ -1150,9 +1007,9 @@ wang----->wang
 </beans>
 ```
 
-#### 4.2.2.1 @Autowired使用
+2、@Autowired使用
 
-1. **beans.xml文件**
+（1）beans.xml文件
 
 ```java
 <?xml version="1.0" encoding="UTF-8"?>
@@ -1165,22 +1022,20 @@ wang----->wang
         https://www.springframework.org/schema/context/spring-context.xsd">
 
         <context:annotation-config/>
-
         <bean id="cat" class="com.xiaolun.pojo.Cat"></bean>
         <bean id="dog" class="com.xiaolun.pojo.Dog"></bean>
-        <bean id="people" class="com.xiaolun.pojo.People" >
-        </bean>
+        <bean id="people" class="com.xiaolun.pojo.People" ></bean>
 </beans>
 ```
 
-+ 可以发现配置文件十分简介。
+可以发现配置文件十分简洁。
 
-2. **People类**
+（2）People类
 
 ```java
 public class People {
 
-    @Autowired  //添加注解（添加到属性这里，可以省去setxx的方法!!!）
+    @Autowired  //添加注解（添加到属性这里，可以省去setxx的方法!）
     private Cat cat;
 
     @Autowired
@@ -1192,7 +1047,8 @@ public class People {
     public Cat getCat() {
         return cat;
     }
-
+  
+    //该方法这里可以省略
     public void setCat(Cat cat) {
         this.cat = cat;
     }
@@ -1224,9 +1080,9 @@ public class People {
 }
 ```
 
-+ 测试类不变，可以发现经过测试能够正常输出。
+测试类不变，可以发现经过测试能够正常输出。
 
-**总结**
+总结：
 
 1、使用`Autowired`注解我们可以不用编写set方法了，前提是自动装配的属性在容器中了，命名符合`byName`。
 
@@ -1242,7 +1098,13 @@ public People(@Nullable String name){
 
 4、 采用@Autowired如果存在多个实现类的情况下，@Qualifier注解通过资源名称确定唯一性。（`@Qualifier(value = "xxx")`(xxx对应beans.xml文件中的id值)，这样的话就可以指定一个唯一的bean对象注入。）
 
-#### 4.2.2.2 @Resource使用
+当两个实现类实现同一个接口的时候，如果只使用@Autowired注解，会报错。原因：系统不知道注入哪个一个实例，此时我们就需要用到@Qualifier注解来指明注入的实例。具体的理解可以参考下面的博客：
+
+```http
+https://www.cnblogs.com/hjw-zq/p/10626347.html
+```
+
+2、@Resource使用
 
 ```java
     @Resource(name = "cat")
@@ -1252,7 +1114,7 @@ public People(@Nullable String name){
     private Dog dog;
 ```
 
-**小结**
+小结：
 
 @Autowired和@Resource注解的区别
 
@@ -1277,7 +1139,7 @@ public People(@Nullable String name){
 
 ### 4.3.1 创建项目
 
-1. **实体类**
+1. 实体类
 
 ```java
 public class MyBean  {
@@ -1304,14 +1166,14 @@ public class MyBean  {
 }
 ```
 
-2. **实体类配置**
+2. 实体类配置
 
 ```xml
 <bean id="mybean" class="com.xiaolun.pojo.MyBean" init-method="initMethod" destroy-method="destoryMethod">
 </bean>
 ```
 
-3. **配置后置处理器**
+3. 配置后置处理器
 
 ```java
 public class MyBeanPost implements BeanPostProcessor {
@@ -1327,7 +1189,7 @@ public class MyBeanPost implements BeanPostProcessor {
 }
 ```
 
-4. **后置处理器配置**
+4. 后置处理器配置
 
 ```xml
 <!--  配置后置处理器
@@ -1337,7 +1199,7 @@ public class MyBeanPost implements BeanPostProcessor {
 </bean>
 ```
 
-5. **测试类**
+5. 测试类
 
 ```java
 public class MyTest {
@@ -1352,7 +1214,7 @@ public class MyTest {
 }
 ```
 
-+ 控制台输出
+控制台输出
 
 ```ini
 第一步，执行无参构造方法创建bean实例
@@ -1367,7 +1229,7 @@ public class MyTest {
 
 上文的第2/3节（IOC/DI）中，使用的是基于xml的注解的开发。
 
-**开发步骤**
+开发步骤
 
 1. 引入依赖
 
@@ -1383,7 +1245,7 @@ public class MyTest {
 
 ## 5.1 @Component注解
 
-1. **XML文件**
+1、XML文件
 
 ```java
 <?xml version="1.0" encoding="UTF-8"?>
@@ -1395,8 +1257,7 @@ public class MyTest {
         http://www.springframework.org/schema/context
         https://www.springframework.org/schema/context/spring-context.xsd">
 
-    <!--开启组件扫描，指定要扫描的包，这个包下的注解就会生效
-        这也是这个xml文件存在的原因吧。
+    <!--开启组件扫描，指定要扫描的包，这个包下的注解就会生效。这也是这个xml文件存在的原因吧。
     -->
     <context:component-scan base-package="com.xiaolun"></context:component-scan>
     <context:annotation-config/>
@@ -1407,7 +1268,7 @@ public class MyTest {
 </beans>
 ```
 
-+ 设置扫描包的内容：
+（1）设置扫描包的内容：
 
 ```xml
 <!--
@@ -1428,14 +1289,14 @@ public class MyTest {
     </context:component-scan>
 ```
 
-+ 可以扫描到`com.xiaolun`下的dao,controller,pojo和service包。
+（2）可以扫描到`com.xiaolun`下的dao,controller,pojo和service包：
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901083850.png" alt="image-20200603094131336" style="zoom:80%;" />
 
-2. **实体类**
+2、实体类
 
 ```java
-@Component //注入bean的方式等价于    <bean id="user" class="com.xiaolun.pojo.User"></bean>
+@Component //注入bean的方式等价于<bean id="user" class="com.xiaolun.pojo.User"></bean>
 public class User {
     
     @Value("xiaolun")  //等价于<property name = "name" value = "xiaolun">
@@ -1456,7 +1317,7 @@ public class User {}
 */
 ```
 
-3. **测试类**
+3、测试类
 
 ```java
 public class MyTest {
@@ -1470,7 +1331,7 @@ public class MyTest {
 }
 ```
 
-+ 控制台输出
+控制台输出
 
 ```java
 xiaolun
@@ -1496,7 +1357,7 @@ public class UserService {
 }
 ```
 
-+ controller层（@Controller） 用于呈现层（Web层），（Spring-MVC）,暴露给前端的入口。
++ controller层（@Controller） 用于呈现层（Web层），（Spring-MVC），暴露给前端的入口。
 
 ```java
 @Controller
@@ -1504,7 +1365,7 @@ public class UserController {
 }
 ```
 
-这四个注解的功能是一样的，都是代表将某个类注册到Spring中进行装配。这也就是尚硅谷所讲到的，Spring针对Bean管理中创建对象提供的四种注解。
+这四个注解的功能是一样的，都是**代表将某个类注册到Spring中进行装配**。这也就是尚硅谷所讲到的，Spring针对Bean管理中创建对象提供的四种注解。
 
 **小结**
 
@@ -1515,10 +1376,10 @@ public class UserController {
 
 完全不使用Spring的xml配置了，全部交给Java来做。
 
-1. **实体类**
+1、实体类
 
 ```java
-@Component //该类被注册到容器中，别IOC托管。
+@Component //该类被注册到容器中，被IOC托管。
 public class User {
     @Value("xiaolun") //输入普通类型属性
     private String name;
@@ -1540,7 +1401,7 @@ public class User {
 }
 ```
 
-2. **配置类**
+2、配置类
 
 主配置类，代替xml配置文件。
 
@@ -1555,7 +1416,6 @@ public class LunConfig {
      * 注册一个bean，相当于之前写的一个bean标签。
      * 方法名字getUser相当于bean标签中的id属性
      * 方法返回值相当于bean标签中中的class属性
-     * @return
      */
     @Bean
     public User getUser(){
@@ -1590,8 +1450,6 @@ public class MyTest {
 ```java
 xiaolun
 ```
-
-
 
 # 6 AOP
 
@@ -2001,10 +1859,3 @@ userService.add();
 ----------------After----------
 ----------------AfterReturning----------
 ```
-
-# 7 事务
-
-事务是数据库操作的基本单元，是逻辑上的一组操作，要么操作都成功，假如有一个失败时所有操作都失败。
-
-
-

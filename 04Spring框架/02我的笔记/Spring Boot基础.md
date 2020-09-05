@@ -18,7 +18,7 @@
 
 `@SpringBootApplication`：Spring Boot的主配置类，该注解包含`@SpringBootConfiguration`和`@EnableAutoConfiguration`注解。
 
-### 2.2.1 SpringBootConfiguration注解介绍
+1、SpringBootConfiguration注解介绍
 
 该注解包含`@Configuration`注解，`@Configuration`注解表示“配置类”（Spring Boot推荐使用配置类代替配置文件（`spring.xml`）），加了`@Configuration`注解的类，会自动纳入Spring容器中。
 
@@ -30,11 +30,11 @@ public class A{ //表示A是一个用于配置的类，相当于一个配置文�
 }
 ```
 
-### 2.2.2 @EnableAutoConfiguration注解介绍
+2、@EnableAutoConfiguration注解介绍
 
 该注解包含`@AutoConfigurationPackage`和`@Import(AutoConfigurationImportSelector.class)`，使Spring Boot可以自动配置。可以找到`@Spring BootApplication`所在类的包。（原则：约定优于配置）
 
-+  `@AutoConfigurationPackage`：作用：就会将改包及所有的子包纳入到spring容器中（即将你写的代码纳入到spring容器中），这是自己写的代码。
++  `@AutoConfigurationPackage`：作用：就会将该包及所有的子包纳入到spring容器中（即将你写的代码纳入到spring容器中），这是自己写的代码。
 + `@Import(AutoConfigurationImportSelector.class)`：引入第三方依赖（包含~包、配置）。spring boot在启动时，会根据`META-INF/spring.factories`找到相应的第三方依赖，并将该依赖引入该项目。
 
 总结：
