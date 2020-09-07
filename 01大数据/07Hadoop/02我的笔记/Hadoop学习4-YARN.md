@@ -2,9 +2,9 @@
 
 ## 1.1、介绍
 
-<img src="Hadoop学习-YARN.assets\image-20200809090759616.png" alt="image-20200809090759616" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200809090759616.png" alt="image-20200809090759616" style="zoom:80%;" />
 
-<img src="Hadoop学习-YARN.assets\image-20200809090838206.png" alt="image-20200809090838206" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200809090838206.png" alt="image-20200809090838206" style="zoom:80%;" />
 
 1、MR支持的编码
 
@@ -38,25 +38,25 @@
 
 1、gzip压缩
 
-<img src="Hadoop学习-YARN.assets\image-20200809091136900.png" alt="image-20200809091136900" style="zoom: 80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200809091136900.png" alt="image-20200809091136900" style="zoom: 80%;" />
 
 2、 Bzip2压缩
 
-<img src="Hadoop学习-YARN.assets\image-20200809091216196.png" alt="image-20200809091216196" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200809091216196.png" alt="image-20200809091216196" style="zoom:80%;" />
 
 3、lzo压缩
 
-<img src="Hadoop学习-YARN.assets\image-20200809091243169.png" alt="image-20200809091243169" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200809091243169.png" alt="image-20200809091243169" style="zoom:80%;" />
 
 4、snappy压缩
 
-<img src="Hadoop学习-YARN.assets\image-20200809091303548.png" alt="image-20200809091303548" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200809091303548.png" alt="image-20200809091303548" style="zoom:80%;" />
 
 ## 1.3 压缩位置选择
 
 压缩可以在MapReduce作用的任意阶段启用。
 
-<img src="Hadoop学习-YARN.assets\image-20200809091415057.png" alt="image-20200809091415057" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200809091415057.png" alt="image-20200809091415057" style="zoom:80%;" />
 
 ## 1.4 压缩参数配置
 
@@ -75,7 +75,7 @@
 
 1、数据流的压缩和解压缩
 
-<img src="Hadoop学习-YARN.assets\image-20200809091844485.png" alt="image-20200809091844485" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200809091844485.png" alt="image-20200809091844485" style="zoom:80%;" />
 
 测试一下压缩方式：
 
@@ -182,7 +182,7 @@ FileOutputFormat.setOutputCompressorClass(job, BZip2Codec.class);
 
 ## 2.1 工作机制
 
-<img src="Hadoop学习-YARN.assets\image-20200809101307449.png" alt="image-20200809101307449" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200809101307449.png" alt="image-20200809101307449" style="zoom:80%;" />
 
 工作机制详解：
 
@@ -218,7 +218,7 @@ FileOutputFormat.setOutputCompressorClass(job, BZip2Codec.class);
 
 ## 2.2 作业提交全过程详解
 
-<img src="Hadoop学习-YARN.assets\image-20200809103132454.png" alt="image-20200809103132454" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200809103132454.png" alt="image-20200809103132454" style="zoom:80%;" />
 
 （1）作业提交
 
@@ -282,15 +282,15 @@ YARN中的任务将其进度和状态(包括counter)返回给应用管理器, �
 
 1、先进先出调度器（FIFO）
 
-<img src="Hadoop学习-YARN.assets\image-20200809103401012.png" alt="image-20200809103401012" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200809103401012.png" alt="image-20200809103401012" style="zoom:80%;" />
 
 2、容量调度器（Capacity Scheduler）
 
-<img src="Hadoop学习-YARN.assets\image-20200809103456432.png" alt="image-20200809103456432" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200809103456432.png" alt="image-20200809103456432" style="zoom:80%;" />
 
 3、公平调度器（Fair Scheduler）
 
-<img src="Hadoop学习-YARN.assets\image-20200809104012668.png" alt="image-20200809104012668" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200809104012668.png" alt="image-20200809104012668" style="zoom:80%;" />
 
 ## 2.3 任务的推测执行
 

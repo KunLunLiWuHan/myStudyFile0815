@@ -193,9 +193,9 @@ HTTP1.1时代客户端与web服务器连接后，可以获得多个web资源。
 
 4. 等待项目初始化完成
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085837.png" alt="image-20200612093922656" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085837.png" alt="image-20200612093922656" style="zoom: 33%;" />
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085846.png" alt="image-20200612094159845" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085846.png" alt="image-20200612094159845" style="zoom: 50%;" />
 
 在创建完成后，看一眼Maven的配置，因为在IDEA中经常会出现这样一个问题，就是项目自动创建完成后，Maven Home会使用IDEA中默认的，我们需要手动改成本地的。
 
@@ -210,8 +210,6 @@ HTTP1.1时代客户端与web服务器连接后，可以获得多个web资源。
 //这也是我们为什么在仓库maven_repo里添加archetype-catalog.xml文件的原因。
 -DarchetypeCatalog=local
 ```
-
-
 
 **项目结构**
 
@@ -311,13 +309,11 @@ HTTP1.1时代客户端与web服务器连接后，可以获得多个web资源。
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085943.png" alt="image-20200612115456027" style="zoom:80%;" />
 
-
-
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085945.png" alt="image-20200612121057903" style="zoom: 67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085945.png" alt="image-20200612121057903" style="zoom: 50%;" />
 
 3. 插件下载不成功报错和解决方法如下：
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085953.png" alt="image-20200612184037306" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085953.png" alt="image-20200612184037306" style="zoom: 50%;" />
 
 #### 1.3.2.3 修改web项目中web.xml
 
@@ -346,12 +342,13 @@ D:\apache-tomcat-9.0.12\8.0\apache-tomcat-8.5.34\webapps\ROOT\WEB-INF\web.xml
 
 ## 2.1 介绍
 
-Servlet接口有两个实现类，HttpServlet、
+Servlet接口有两个实现类，有一个是HttpServlet。
 
-Servlet是sun公司开发动态web的一门技术。如果你需要开发一个servlet程序，著需要完成两个小步骤：
+Servlet是sun公司开发动态web的一门技术。如果你需要开发一个servlet程序，需要完成下面两个小步骤：
 
-+ 编写一个类，实现servlet接口。
-+ 把开发好的Java类部署到web服务器中。
+（1）编写一个类，实现servlet接口。
+
+（2）把开发好的Java类部署到web服务器中。
 
 即：把实现了Servlet接口的Java程序叫做，Servlet。
 
@@ -366,7 +363,7 @@ Servlet是sun公司开发动态web的一门技术。如果你需要开发一个s
 ```xml
 <modules>
     <module>servlet-01</module>
-  </modules>
+</modules>
 ```
 
 子项目中暗含有parent。
@@ -448,8 +445,6 @@ public class HelloServlet extends HttpServlet {
 *前面不能加映射路径，比如/hello/*报错-->
 <url-pattern>*.xiaolun</url-pattern>
 ```
-
-
 
 4. **配置Tomcat**
 
