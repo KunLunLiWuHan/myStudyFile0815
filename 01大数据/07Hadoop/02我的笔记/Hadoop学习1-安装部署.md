@@ -16,7 +16,7 @@
 
 ## 1、hadoop介绍
 
-​		hadoop是一个由Apache基金会所开发的分布式系统基础架构，主要解决海量数据的存储和海量数据的分析计算问题。广义上来讲，hadoop通常指一个更宽泛的概念-Hadoop生态圈。
+hadoop是一个由Apache基金会所开发的分布式系统基础架构，主要解决海量数据的存储和海量数据的分析计算问题。广义上来讲，hadoop通常指一个更宽泛的概念-Hadoop生态圈。
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200719174023252.png" alt="image-20200719174023252" style="zoom:80%;" />
 
@@ -34,9 +34,9 @@
 
 ​			yarn 资源调度 （0.5）
 
-​		其次，会学习**zookeeper**（分布式协调服务，2）、**hive**(依赖于hadoop的数据仓库，主要学习hql语句，6)、**hbase**（依赖于hadoop分布式数据库，3）。
+其次，会学习**zookeeper**（分布式协调服务，2）、**hive**(依赖于hadoop的数据仓库，主要学习hql语句，6)、**hbase**（依赖于hadoop分布式数据库，3）。
 
-​		其次，学习工具型组件：**sqoop**（关系型数据库mysql的数据迁移，0.5），**flume**（数据采集工具，1），azkaben（crontab只能做单机的简单的任务调度，azkaben做复杂任务的调度，0.5）
+其次，学习工具型组件：**sqoop**（关系型数据库mysql的数据迁移，0.5），**flume**（数据采集工具，1），azkaben（crontab只能做单机的简单的任务调度，azkaben做复杂任务的调度，0.5）
 
 （2）实时：实时产生的数据（动态的）
 
@@ -432,9 +432,9 @@ jps
 
 注意：
 
-​		我们只需要在第一次启动的时候执行格式化即可，以后不要老是格式化，因为格式化NameNode，会产生新的集群id（`/home/zookeeper/software/hadoop-2.7.2/data/tmp`）,导致NameNode和DataNode的集群id不一致，集群找不到已往数据。
+我们只需要在第一次启动的时候执行格式化即可，以后不要老是格式化，因为格式化NameNode，会产生新的集群id（`/home/zookeeper/software/hadoop-2.7.2/data/tmp`）,导致NameNode和DataNode的集群id不一致，集群找不到已往数据。
 
-​		所以，格式NameNode时，一定要先删除data数据和log日志，然后再格式化NameNode。
+所以，格式NameNode时，一定要先删除data数据和log日志，然后再格式化NameNode。
 
 ```ini
 #路径：/home/zookeeper/software/hadoop-2.7.2/data/tmp/dfs/data/current
@@ -599,7 +599,7 @@ bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.2.jar wordco
 
 （1）配置mapred-site.xml
 
-```
+```shell
 vi mapred-site.xml
 ```
 
@@ -697,9 +697,9 @@ sbin/mr-jobhistory-daemon.sh stop historyserver
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200722192822480.png" alt="image-20200722192822480" style="zoom:80%;" />
 
-##### 5、配置文件说明
+### 5、配置文件说明
 
-​		Hadoop配置文件分两类：默认配置文件和自定义配置文件，只有用户想修改某一默认配置值时，才需要修改自定义配置文件，更改相应属性值。
+Hadoop配置文件分两类：默认配置文件和自定义配置文件，只有用户想修改某一默认配置值时，才需要修改自定义配置文件，更改相应属性值。
 
 （1）默认配置文件
 
@@ -712,33 +712,33 @@ sbin/mr-jobhistory-daemon.sh stop historyserver
 
 （2）自定义配置文件
 
-​		`core-site.xml、hdfs-site.xml、yarn-site.xml、mapred-site.xml`四个配置文件存放在`$HADOOP_HOME/etc/hadoop`这个路径上，用户可以根据项目需求重新进行修改配置。
+`core-site.xml、hdfs-site.xml、yarn-site.xml、mapred-site.xml`四个配置文件存放在`$HADOOP_HOME/etc/hadoop`这个路径上，用户可以根据项目需求重新进行修改配置。
 
 ## 3.3 完全分布式运行模式
 
-​		一个集群中，有多个节点共同负责存储和计算，存在真正的分布式文件系统和计算系统。
+一个集群中，有多个节点共同负责存储和计算，存在真正的分布式文件系统和计算系统。
 
-​		但是在多个节点中，只有一个namenode主节点，剩下的都是从节点datanode。此时存在一个问题：namenode存在单点故障的问题，namenode宕机，会造成整个集群不可用。极少数公司用，集群规模小（3-5台）。
+但是在多个节点中，只有一个namenode主节点，剩下的都是从节点datanode。此时存在一个问题：namenode存在单点故障的问题，namenode宕机，会造成整个集群不可用。极少数公司用，集群规模小（3-5台）。
 
 **高可用的安装介绍**：
 
-​		此时，出现了高可用的安装，主要解决namenode存在单点故障的问题。该集群中同时有两个namenode（在hadoop3.0中支持多个），同一时间只有一个对外提供服务，我们将这个对外提供服务的namenode称为active namenode，另一个namenode处于热备的状态，时刻准备接替active namenode，将其称为standby namenode。
+此时，出现了高可用的安装，主要解决namenode存在单点故障的问题。该集群中同时有两个namenode（在hadoop3.0中支持多个），同一时间只有一个对外提供服务，我们将这个对外提供服务的namenode称为active namenode，另一个namenode处于热备的状态，时刻准备接替active namenode，将其称为standby namenode。
 
-​		一旦active的宕机，standby的会立即切换为active，如果原先的active活了，这个时候将自己的状态切换为standby。
+一旦active的宕机，standby的会立即切换为active，如果原先的active活了，这个时候将自己的状态切换为standby。
 
-​		存在问题：当集群规模很大的时候，同一时间对外提供服务的只有一个namenode，会造成namenode的压力很大（两个namenode是不能分担压力的）。生产上用的较多，适用于高可用集群，不适用超级大的规模集群。
+存在问题：当集群规模很大的时候，同一时间对外提供服务的只有一个namenode，会造成namenode的压力很大（两个namenode是不能分担压力的）。生产上用的较多，适用于高可用集群，不适用超级大的规模集群。
 
 **联邦模式安装介绍**：
 
-​		解决高可用集群的namenode的压力过大的问题，同一时间，一个集群中存在多个namenode，但是这多个namenode都处于active状态的，多个namenode共同管理集群。
+解决高可用集群的namenode的压力过大的问题，同一时间，一个集群中存在多个namenode，但是这多个namenode都处于active状态的，多个namenode共同管理集群。
 
-​		多个namenode共同管理集群中所有从节点的时候，是分工明确的。不同的namenode进行管理不同的块池（blockpoolID=BP-XX）中的数据。
+多个namenode共同管理集群中所有从节点的时候，是分工明确的。不同的namenode进行管理不同的块池（blockpoolID=BP-XX）中的数据。
 
 超大集群：联邦模式+高可用。
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200725214818640.png" alt="image-20200725214818640" style="zoom:80%;" />
 
-### 3.3.1 编写集群分发脚本
+### 1、编写集群分发脚本
 
 #### 1、scp（secure copy）安全拷贝
 
@@ -802,7 +802,7 @@ rsync -rvl  $pdir/$fname   $user@hadoop$host:$pdir/$fname
 | -v   | 显示复制过程 |
 | -l   | 拷贝符号连接 |
 
-### 3.3.2 集群配置
+### 2、集群配置
 
 #### 1、集群部署规划
 
@@ -985,7 +985,7 @@ cp mapred-site.xml.template mapred-site.xml
 
 #### 3、集群单点启动
 
-**说明：**启动集群的方式2方式1：各个服务组件逐一启动/停止。
+**说明：**启动集群的方式1：各个服务组件逐一启动/停止。
 
 （1）如果集群是第一次启动，需要格式化NameNode。（此时把关于此次启动的所有的后台服务给关闭）
 
@@ -1038,14 +1038,14 @@ ssh hadoop102(另一台电脑的ip地址)
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200722222252544.png" alt="image-20200722222252544" style="zoom:80%;" />
 
-+ （a）首先是hadoop101生成公钥和私钥
+（a）首先是hadoop101生成公钥和私钥
 
 ```ini
 #cd .ssh即可进入下面的目录
 [zookeeper@hadoop101 .ssh]$ ssh-keygen -t rsa
 ```
 
-​		然后敲（三个回车），就会生成两个文件id_rsa（私钥）、id_rsa.pub（公钥）。
+然后敲（三个回车），就会生成两个文件id_rsa（私钥）、id_rsa.pub（公钥）。
 
 然后将公钥拷贝到要免密的三台目标机器上：
 
@@ -1056,7 +1056,7 @@ ssh hadoop102(另一台电脑的ip地址)
 [zookeeper@hadoop101 .ssh]$ ssh-copy-id hadoop103
 ```
 
-+ （b）还需要在hadoop102上采用zookeeper账号配置一下无密登录到hadoop101、hadoop102、hadoop103服务器上。这和hadoop102作为 ResourceManager  有关系。
+（b）还需要在hadoop102上采用zookeeper账号配置一下无密登录到hadoop101、hadoop102、hadoop103服务器上。这和hadoop102作为 ResourceManager  有关系。
 
 ```ini
 #1、生成公钥和密钥
@@ -1065,7 +1065,7 @@ ssh hadoop102(另一台电脑的ip地址)
 [zookeeper@hadoop102 .ssh]$ ssh-copy-id hadoop101（2，3）
 ```
 
-+ （c）hadoop101上采用root账号，配置一下无密登录到hadoop101、hadoop102、hadoop103。参考（b）方式即可。
+（c）hadoop101上采用root账号，配置一下无密登录到hadoop101、hadoop102、hadoop103。参考（b）方式即可。
 
 （3）.ssh文件夹下的文件功能说明
 
@@ -1073,7 +1073,7 @@ ssh hadoop102(另一台电脑的ip地址)
 | --------------- | -------------------------------------- |
 | id_rsa          | 生成的私钥                             |
 | id_rsa.pub      | 生成的公钥                             |
-| authorized_keys | 存放授权过得无密登录服务器公钥         |
+| authorized_keys | 存放授权过的无密登录服务器公钥         |
 
 #### 5、群起集群
 
@@ -1086,7 +1086,7 @@ ssh hadoop102(另一台电脑的ip地址)
 [zookeeper@hadoop101 hadoop]$ vim slaves
 ```
 
-​		在该文件中增加下面的内容（localhost删除），同时也在hadoop102、
+在该文件中增加下面的内容（localhost删除），同时也在hadoop102、
 hadoop103文件中也这样配置。主要是配置（datanode和nodemanager的关系）
 
 ```ini
@@ -1099,11 +1099,11 @@ hadoop103
 
 （2）启动集群
 
-​		如果是第一次启动集群，需要格式化NameNode（只能再namenode节点上 hadoop101）。此时，**一定要先停止上次启动的所有namenode和datanode进程，然后再删除data和log数据**。不然会出现namenode节点启动失败的情况。
+如果是第一次启动集群，需要格式化NameNode（只能在namenode节点上 hadoop101）。此时，**一定要先停止上次启动的所有namenode和datanode进程，然后再删除data和log数据**。不然会出现namenode节点启动失败的情况。
 
-**说明：**启动集群的方式2：采用各个模块分开启动/停止（其中配置ssh是前提），是比较常用的一种方式。
+说明：启动集群的方式2：采用各个模块分开启动/停止（其中配置ssh是前提），是比较常用的一种方式。
 
-+ （a）NameNode格式化
+（a）NameNode格式化
 
 成功的格式化只能一次。
 
@@ -1111,7 +1111,7 @@ hadoop103
 bin/hdfs namenode -format
 ```
 
-+ （b）启动HDFS文件
+（b）启动HDFS文件
 
 ```ini
 #只需要在hadoop101中启动一次就可以
@@ -1123,16 +1123,16 @@ hadoop102:DataNode
 hadoop103:DataNode、SecondaryNameNode
 ```
 
-+ （c）启动YARN
+（c）启动YARN
 
 ```ini
 #只能在hadoop102机器上启动，hadoop101（NameNode）,hadoop103会报错。应该在hadoop102(ResourceManager主节点上执行)上启动。
 [zookeeper@hadoop102 hadoop-2.7.2]$ sbin/start-yarn.sh
 ```
 
-​		`NameNode`和`ResourceManger`的配置如果不是同一台机器，不能在`NameNode`上启动 `YARN`，应该在`ResouceManager`所在的机器上启动`YARN`。
+`NameNode`和`ResourceManger`的配置如果不是同一台机器，不能在`NameNode`上启动 `YARN`，应该在`ResouceManager`所在的机器上启动`YARN`。
 
-+ （d）查看启动状态
+（d）查看启动状态
 
 浏览器输入：http://hadoop103:50090/status.html，可以查看`SecondaryNameNode`的信息。
 
@@ -1181,9 +1181,9 @@ zookeeper
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200722232344716.png" alt="image-20200722232344716" style="zoom:67%;" />
 
-### 3.3.3 集群时间同步
+### 3、集群时间同步
 
-​		时间同步的方式：找一个机器，作为时间服务器，所有的机器与这台集群时间进行定时的同步，比如，每隔十分钟，同步一次时间。
+时间同步的方式：找一个机器，作为时间服务器，所有的机器与这台集群时间进行定时的同步，比如，每隔十分钟，同步一次时间。
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200723101758376.png" alt="image-20200723101758376" style="zoom:80%;" />
 
@@ -1206,13 +1206,13 @@ ntpdate-4.2.6p5-10.el6.centos.x86_64
 vim /etc/ntp.conf
 ```
 
-+ （a）授权192.168.1.0-192.168.1.255网段上的所有机器可以从hadoop101机器上查询和同步时间。
+（a）授权192.168.1.0-192.168.1.255网段上的所有机器可以从hadoop101机器上查询和同步时间。
 
 ```ini
 restrict 192.168.10.0 mask 255.255.255.0 nomodify notrap
 ```
 
-+ （b）集群在局域网中，不使用其他互联网上的时间
+（b）集群在局域网中，不使用其他互联网上的时间
 
 ```ini
 #将下面内容注释
@@ -1222,7 +1222,7 @@ restrict 192.168.10.0 mask 255.255.255.0 nomodify notrap
 #server 3.centos.pool.ntp.org iburst
 ```
 
-+ （c）当该节点丢失网络连接，依然可以采用本地时间作为时间服务器为集群中的其他节点提供时间同步。
+（c）当该节点丢失网络连接，依然可以采用本地时间作为时间服务器为集群中的其他节点提供时间同步。
 
 ```ini
 #在该文件最后添加下面的文件
@@ -1272,4 +1272,3 @@ date -s "2017-9-11 11:11:11"
 #10分钟后，查看其他机器时间是否和时间服务器同步
 date
 ```
-

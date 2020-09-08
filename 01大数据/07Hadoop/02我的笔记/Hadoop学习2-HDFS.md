@@ -1,22 +1,22 @@
 # 1 介绍
 
-## 1、产生背景
+1、产生背景
 
-​		随着数据量的越来越大，一个操作系统中存不下所有的数据，需要分配到更多的操作系统管理的磁盘上，但是不方便管理和维护，此时，我们可以使用一种分布式文件管理系统（HDFS，HDFS只是分布式管理系统中的一种）来管理多台机器上的文件。
+随着数据量的越来越大，一个操作系统中存不下所有的数据，需要分配到更多的操作系统管理的磁盘上，但是不方便管理和维护，此时，我们可以使用一种分布式文件管理系统（HDFS，HDFS只是分布式管理系统中的一种）来管理多台机器上的文件。
 
-## 2、定义
+2、定义
 
-​		HDFS（Hadoop Distributed File System）是一个系统，用于存储文件（海量数据存储的），通过目录树来定位文件，其次，它也是分布式的，由很多服务器联合起来实现其功能，集群中的服务器各有各的角色。
+HDFS（Hadoop Distributed File System）是一个系统，用于存储文件（海量数据存储的），通过目录树来定位文件，其次，它也是分布式的，由很多服务器联合起来实现其功能，集群中的服务器各有各的角色。
 
-​		HDFS使用场景：适合一次写入，多次读出的场景，且不支持文件的修改。
+HDFS使用场景：适合一次写入，多次读出的场景，且不支持文件的修改。
 
-### 2.1、HDFS的设计思想
+3、HDFS的设计思想
 
-1、分而治之
+（1）分而治之
 
-​		对很大的文件进行分块存储，这个时候需要切分标准。假如切分输入的数据块太大，容易造成集群中节点的存储`datanode`的负载不均衡；反之，会造成一个文件切过多的块，造成`namenode`的压力过大。
+对很大的文件进行分块存储，这个时候需要切分标准。假如切分输入的数据块太大，容易造成集群中节点的存储`datanode`的负载不均衡；反之，会造成一个文件切过多的块，造成`namenode`的压力过大。
 
-​		总之，hdfs进行文件存储的时候，将文件进行切块的时候，默认每一个块大小为128M。假设一个文件为400M,切块为：
+总之，hdfs进行文件存储的时候，将文件进行切块的时候，默认每一个块大小为128M。假设一个文件为400M,切块为：
 
 ​	0-128M blk01
 
@@ -26,31 +26,31 @@
 
 ​	384-400M blk04 （独立成一个块，不会和其他的文件的数据块合并）
 
-​		假设在上面的基础上，又存储一个文件10M（即使不够128），该文件会单独一个块。
+假设在上面的基础上，又存储一个文件10M（即使不够128），该文件会单独一个块。
 
-2、备份冗余存储
+（2）备份冗余存储
 
-​		解决数据丢失的问题。用空间去换取数据安全。在HDFS中没哟个数据块都会备份存储。
+解决数据丢失的问题。用空间去换取数据安全。在HDFS中没哟个数据块都会备份存储。
 
-​		其中数据中副本都是同等地位的，没有优先级，互为副本。对外提供服务的时候，那个副本处于空闲就去提供。
+其中数据中副本都是同等地位的，没有优先级，互为副本。对外提供服务的时候，那个副本处于空闲就去提供。
 
-​		一个节点上可以存储多个数据块，但是同一个节点上没有相同的数据块。
+一个节点上可以存储多个数据块，但是同一个节点上没有相同的数据块。
 
-​		问题1：（真实副本 < 设置值）
+问题1：（真实副本 < 设置值）
 
-​		假设集群3个节点，副本配置2个，有一个块的一个节点宕机了，会造成这个块的副本数低于配置的值，这个时候数据块会复制出来这个块的一个副本到另一个节点上。
+假设集群3个节点，副本配置2个，有一个块的一个节点宕机了，会造成这个块的副本数低于配置的值，这个时候数据块会复制出来这个块的一个副本到另一个节点上。
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200725223842097.png" alt="image-20200725223842097" style="zoom:80%;" />
 
-​		问题2：（集群节点 < 副本）
+问题2：（集群节点 < 副本）
 
-​		假设集群3个节点，副本配置4个，此时会存储3份，另外一份namenode会进行记账，当集群中添加节点的时候，会将这个欠的副本复制出来，假设有一个块的一个节点宕机了，此时副本不会拷贝出来。
+假设集群3个节点，副本配置4个，此时会存储3份，另外一份namenode会进行记账，当集群中添加节点的时候，会将这个欠的副本复制出来，假设有一个块的一个节点宕机了，此时副本不会拷贝出来。
 
-​		问题3：（真实副本 > 设置值）
+问题3：（真实副本 > 设置值）
 
-​		假设集群3个节点，副本配置2个，集群中某一个节点宕机，这个节点存储的所有副本会拷贝一份，过了一段时间之后，这个节点活了，会造成这个节点上存储的数据块的副本多了（真实的副本>设置的副本个数），等待1h左右将多余的副本删除。
+假设集群3个节点，副本配置2个，集群中某一个节点宕机，这个节点存储的所有副本会拷贝一份，过了一段时间之后，这个节点活了，会造成这个节点上存储的数据块的副本多了（真实的副本>设置的副本个数），等待1h左右将多余的副本删除。
 
-## 3、优点
+3、优点
 
 （1）高容错性
 
@@ -66,17 +66,17 @@
 
 7*24连续使用。
 
-## 4、缺点
+4、缺点
 
 （1）不适合低延时的数据访问，比如毫秒级的存储数据，无法实现。
 
 （2）无法高效地对大量小文件进行存储。
 
-​		一个数据块对应一条元数据（150byte），存储小文件会大量占用NameNode的内存来存储文件的目录和块信息。此外，寻址时间远远大于读取数据的时间，不划算。
+一个数据块对应一条元数据（150byte），存储小文件会大量占用NameNode的内存来存储文件的目录和块信息。此外，寻址时间远远大于读取数据的时间，不划算。
 
 （3）不支持并发写入，文件随即修改。仅支持数据追加（append）（虽然支持文件追加，但是不建议使用），不支持文件的随机修改（一次写入，多次读取）。
 
-## 5、HDFS组成架构
+5、HDFS组成架构
 
 ![image-20200723171515264](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200723171515264.png)
 
@@ -116,7 +116,7 @@ namenode记录的元数据，包含3部分的内容：
 
 ​	128-180M blk_1073741826 
 
-​		另一个功能就是接收客户端的读写请求，所谓客户端**，就是客户操作的窗口**。即客户端所有的读写请求，先经过namenode。
+另一个功能就是接收客户端的读写请求，所谓客户端**，就是客户操作的窗口**。即客户端所有的读写请求，先经过namenode。
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200725231500642.png" alt="image-20200725231500642" style="zoom:80%;" />
 
@@ -147,17 +147,17 @@ namenode记录的元数据，包含3部分的内容：
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200726101002045.png" alt="image-20200726101002045" style="zoom: 67%;" />
 
-## 6、HDFS文件块大小
+6、HDFS文件块大小
 
 ​		HDFS中的文件在物理上是分块存储（Block）的，块的大小可以通过配置参数（dfs.blocksize）来规定，默认大小在Hadoop2.x版本中是128M，老版本为64M。HDFS块的大小设置主要取决于磁盘传输速率。
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200723175539238.png" alt="image-20200723175539238" style="zoom:80%;" />
 
-​		HDFS的块设置太小，会增加寻址时间，程序一直在找块的开始位置；反之，程序处理数据变慢。
+HDFS的块设置太小，会增加寻址时间，程序一直在找块的开始位置；反之，程序处理数据变慢。
 
 # 2 HDFS的Shell操作
 
-## 1、基本语法
+1、基本语法
 
 ```ini
 #这个路径下：使用（hadoop fs 具体命令）也可以
@@ -169,7 +169,7 @@ bin/hdfs dfs 具体命令
 
 其中hadoop是启动hadoop的客户端，然后连接hadop集群。fs表示打开hadoop的（文件系统）filesystem的客户端。
 
-## 2、具体命令
+2、具体命令
 
 （1）-help：帮助
 
@@ -302,7 +302,7 @@ hadoop fs -ls /
 
 # 3 HDFS客户端操作
 
-## 3.1 环境准备
+1、环境准备
 
 （1）将windows下的hadoop的jar包（hadoop-2.7.2）拷贝到指定环境中。
 
@@ -320,9 +320,9 @@ D:\03Enviroment\12hadoop\01install\hadoop-2.7.2
 %HADOOP_HOME%\bin
 ```
 
-## 3.2 测试连接
+2、测试连接
 
-1、导入相关依赖
+（1）导入依赖
 
 ```xml
 <dependency>
@@ -367,7 +367,7 @@ maven创建工程优缺点：
 
 缺点：代码移动的时候，需要重新构建依赖。
 
-2、在resources目录下创建log4j.properties
+（2）在resources目录下创建log4j.properties
 
 ```properties
 log4j.rootLogger=INFO, stdout
@@ -380,7 +380,7 @@ log4j.appender.logfile.layout=org.apache.log4j.PatternLayout
 log4j.appender.logfile.layout.ConversionPattern=%d %p [%c] - %m%n
 ```
 
-3、测试
+（3）测试
 
 ```java
 public class HdfsClient {
@@ -428,7 +428,7 @@ public class HdfsClient {
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200723203001659.png" alt="image-20200723203001659" style="zoom:80%;" />
 
-## 3.3 API操作
+# 3 API操作
 
 1、文件上传
 
@@ -771,15 +771,15 @@ fsimage_000000257
 
 **NN和2NN工作机制详解：**
 
-​		Fsimage：NameNode内存中元数据序列化后形成的文件。
+Fsimage：NameNode内存中元数据序列化后形成的文件。
 
-​		Edits：记录客户端更新元数据信息的每一步操作（可通过Edits运算出元数据）。
+Edits：记录客户端更新元数据信息的每一步操作（可通过Edits运算出元数据）。
 
-​		NameNode启动时，先滚动Edits并生成一个**空的edits.inprogress**，然后加载Edits和Fsimage到内存中，此时NameNode内存就持有最新的元数据信息。Client开始对NameNode发送元数据的**增删改**的请求，这些请求的操作首先会被记录到edits.inprogress中（查询元数据的操作不会被记录在Edits中，因为查询操作不会更改元数据信息），如果此时NameNode挂掉，重启后会从Edits中读取元数据的信息。然后，NameNode会在内存中执行元数据的增删改的操作。
+NameNode启动时，先滚动Edits并生成一个**空的edits.inprogress**，然后加载Edits和Fsimage到内存中，此时NameNode内存就持有最新的元数据信息。Client开始对NameNode发送元数据的**增删改**的请求，这些请求的操作首先会被记录到edits.inprogress中（查询元数据的操作不会被记录在Edits中，因为查询操作不会更改元数据信息），如果此时NameNode挂掉，重启后会从Edits中读取元数据的信息。然后，NameNode会在内存中执行元数据的增删改的操作。
 
-​		由于Edits中记录的操作会越来越多，Edits文件会越来越大，导致NameNode在启动加载Edits时会很慢，所以需要对Edits和Fsimage进行合并（**所谓合并，就是将Edits和Fsimage加载到内存中，照着Edits中的操作一步步执行，最终形成新的Fsimage**）。SecondaryNameNode的作用就是帮助NameNode进行Edits和Fsimage的合并工作。
+由于Edits中记录的操作会越来越多，Edits文件会越来越大，导致NameNode在启动加载Edits时会很慢，所以需要对Edits和Fsimage进行合并（**所谓合并，就是将Edits和Fsimage加载到内存中，照着Edits中的操作一步步执行，最终形成新的Fsimage**）。SecondaryNameNode的作用就是帮助NameNode进行Edits和Fsimage的合并工作。
 
-​		SecondaryNameNode首先会询问NameNode是否需要CheckPoint（**触发CheckPoint需要满足两个条件中的任意一个，定时时间到和Edits中数据写满了**）。直接带回NameNode是否检查结果。SecondaryNameNode执行CheckPoint操作，首先会让NameNode滚动Edits并生成一个空的edits.inprogress，滚动Edits的目的是给Edits打个标记，以后所有新的操作都写入edits.inprogress，其他未合并的Edits和Fsimage会拷贝到SecondaryNameNode的本地，然后将拷贝的Edits和Fsimage加载到内存中进行合并，生成fsimage.chkpoint，然后将fsimage.chkpoint拷贝给NameNode，重命名为Fsimage后替换掉原来的Fsimage。NameNode在启动时就只需要加载之前**未合并的Edits和Fsimage**即可，因为合并过的Edits中的元数据信息已经被记录在Fsimage中。
+SecondaryNameNode首先会询问NameNode是否需要CheckPoint（**触发CheckPoint需要满足两个条件中的任意一个，定时时间到和Edits中数据写满了**）。直接带回NameNode是否检查结果。SecondaryNameNode执行CheckPoint操作，首先会让NameNode滚动Edits并生成一个空的edits.inprogress，滚动Edits的目的是给Edits打个标记，以后所有新的操作都写入edits.inprogress，其他未合并的Edits和Fsimage会拷贝到SecondaryNameNode的本地，然后将拷贝的Edits和Fsimage加载到内存中进行合并，生成fsimage.chkpoint，然后将fsimage.chkpoint拷贝给NameNode，重命名为Fsimage后替换掉原来的Fsimage。NameNode在启动时就只需要加载之前**未合并的Edits和Fsimage**即可，因为合并过的Edits中的元数据信息已经被记录在Fsimage中。
 
 ## 5.2 Fsimage和Edits解析
 
@@ -907,7 +907,7 @@ bin/hdfs dfsadmin -safemode wait
 
 ## 5.6 NameNode多目录配置
 
-​		NameNode的本地目录可以配置成多个，且每个目录存放内容相同，增加了可靠性。
+NameNode的本地目录可以配置成多个，且每个目录存放内容相同，增加了可靠性。
 
 1、配置步骤
 
@@ -998,9 +998,9 @@ namenode存储元数据的时候，按照存储空间：
 
 （2）namenode确定一个datanode是否宕机需要的时间？
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200726162740132.png" alt="image-20200726162740132" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200726162740132.png" alt="image-20200726162740132" style="zoom:80%;" /> 
 
-​		默认连续10次接收不到心跳（不间断的），namenode断定datanode可能宕机了（这中间这要有一次接收到了，namenode重新记录心跳）。然后，namenode主动向datanode发送检查，namenode会开启后台的守护进程，等待检查结果。默认检查两次，每次5分钟。
+默认连续10次接收不到心跳（不间断的），namenode断定datanode可能宕机了（这中间这要有一次接收到了，namenode重新记录心跳）。然后，namenode主动向datanode发送检查，namenode会开启后台的守护进程，等待检查结果。默认检查两次，每次5分钟。
 
 ## 6.2 数据完整性
 
@@ -1018,7 +1018,7 @@ DataNode节点保证数据完整性的方法。
 
 <img src="Hadoop学习2-HDFS.assets\image-20200724101806080.png" alt="image-20200724101806080" style="zoom:80%;" />
 
-​		需要注意的是`hdfs-site.xml` 配置文件中的heartbeat.recheck.interval的单位为毫秒，dfs.heartbeat.interval的单位为秒。
+需要注意的是`hdfs-site.xml` 配置文件中的heartbeat.recheck.interval的单位为毫秒，dfs.heartbeat.interval的单位为秒。
 
 ```xml
 <property>
@@ -1033,7 +1033,7 @@ DataNode节点保证数据完整性的方法。
 
 ## 6.4 服务新数据节点
 
-​		随着公司业务的增长，数据量越来越大，原有的数据节点的容量已经不能满足存储数据的需求，需要在原有集群基础上动态添加新的数据节点。
+随着公司业务的增长，数据量越来越大，原有的数据节点的容量已经不能满足存储数据的需求，需要在原有集群基础上动态添加新的数据节点。
 
 1、配置过程
 
@@ -1063,6 +1063,3 @@ source /etc/profile
 ```ini
 [atguigu@hadoop102 sbin]$ ./start-balancer.sh
 ```
-
-
-

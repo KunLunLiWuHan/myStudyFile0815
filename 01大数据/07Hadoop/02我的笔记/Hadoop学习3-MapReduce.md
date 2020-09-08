@@ -1,44 +1,42 @@
-
-
 # 1 介绍
 
-​		MapReduce是一个**分布式运算程序的编程框架和模型**，是用户开发“基于Hadoop的数据分析应用”的核心框架。Map（映射）和Reduce（归约）是核心思想。
+MapReduce是一个**分布式运算程序的编程框架和模型**，是用户开发“基于Hadoop的数据分析应用”的核心框架。Map（映射）和Reduce（归约）是核心思想。
 
-​		MapReduce核心功能是将**用户编写的业务逻辑代码**和**自带默认组件**整合成一个完整的分布式运算程序，并发运行在一个Hadoop集群上。
+MapReduce核心功能是将**用户编写的业务逻辑代码**和**自带默认组件**整合成一个完整的分布式运算程序，并发运行在一个Hadoop集群上。
 
-## 1、优点
+1、优点
 
 （1）MapReduce易于编程
 
-​		它简单的实现一些接口，就可以完成一个分布式程序，这个分布式程序可以分布到大量廉价的PC机器上运行。
+它简单的实现一些接口，就可以完成一个分布式程序，这个分布式程序可以分布到大量廉价的PC机器上运行。
 
 （2）良好的扩展性
 
-​		当你的计算资源不能得到满足的时候，你可以通过简单的增加机器来扩展它的运算能力。
+当你的计算资源不能得到满足的时候，你可以通过简单的增加机器来扩展它的运算能力。
 
 （3）高容错性
 
-​		MapReduce设计的初衷就是将程序可以部署到廉价的PC机器上，这就要求它就有很高的容错性。比如：当一台机器挂掉之后，它上面的计算任务可以转移到另外一个节点上运行，不至于这个任务运行失败。这个过程不需要人工参与，完全由Hadoop内部完成。
+MapReduce设计的初衷就是将程序可以部署到廉价的PC机器上，这就要求它就有很高的容错性。比如：当一台机器挂掉之后，它上面的计算任务可以转移到另外一个节点上运行，不至于这个任务运行失败。这个过程不需要人工参与，完全由Hadoop内部完成。
 
 （4）适合PB以上海量数据的离线处理
 
-​		可以是自安上千台服务器集群并发工作，提供数据处理能力。
+可以是自安上千台服务器集群并发工作，提供数据处理能力。
 
-## 2、缺点
+2、缺点
 
 （1）不擅长实时计算
 
-​		MapReduce无法像MySql一样，在毫秒或者秒级返回计算结果。
+MapReduce无法像MySql一样，在毫秒或者秒级返回计算结果。
 
 （2）不擅长流式计算
 
-​		流式计算的输入数据是动态的，而MapReduce的输入数据集是静态的，不能动态计算。
+流式计算的输入数据是动态的，而MapReduce的输入数据集是静态的，不能动态计算。
 
 （3）不擅长有向图（DAG）计算
 
-​		对于多个应用程序存在依赖关系，后一个程序的输入为前一个程序的输出的情况，MapReduce并不是不能做，而是使用后，每个MapReduce作业的输出结果都会写入磁盘，造成大量的磁盘IO，导致性能低下。
+对于多个应用程序存在依赖关系，后一个程序的输入为前一个程序的输出的情况，MapReduce并不是不能做，而是使用后，每个MapReduce作业的输出结果都会写入磁盘，造成大量的磁盘IO，导致性能低下。
 
-## 3、MapReduce核心思想
+3、MapReduce核心思想
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200724104935932.png" alt="image-20200724104935932" style="zoom:80%;" />
 
@@ -50,11 +48,11 @@
 
 （4）MapReduce编程模型只能包含一个Map阶段和一个Reduce阶段，如果用户的业务逻辑非常复杂，那就只能多个MapReduce程序，**串行运行**。
 
-## 4、MapReduce进程
+4、MapReduce进程
 
 <img src="Hadoop学习3-MapReduce.assets\image-20200724105042548.png" alt="image-20200724105042548" style="zoom:80%;" />
 
-## 5、常用数据序列化类型
+5、常用数据序列化类型
 
 | Java类型 | Hadoop Writable类型 |
 | -------- | ------------------- |
@@ -68,7 +66,7 @@
 | map      | MapWritable         |
 | array    | ArrayWritable       |
 
-## 6、MapReduce编程规范
+6、MapReduce编程规范
 
 用户编写的程序分成三个部分：Mapper、Reducer和Driver。
 
@@ -239,7 +237,7 @@ public class WordcountReducer extends Reducer<Text, IntWritable, Text, IntWritab
 }
 ```
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200727085200570.png" alt="image-20200727085200570" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200727085200570.png" alt="image-20200727085200570" style="zoom: 50%;" />
 
 （3）编写Driver驱动类
 
@@ -292,11 +290,11 @@ public class WordcountDriver {
 }
 ```
 
-​		我们可以在`D:\output`文件夹中看到输出的数据。
+我们可以在`D:\output`文件夹中看到输出的数据。
 
 说明：
 
-​		遇到报错时：将hadoop安装路径下的hadoop.dll文件拷贝到`C:\Windows\System32`路径下（windows环境下解析Linux的组件，需要和D:\03Enviroment\12hadoop\01install\hadoop-2.7.2\bin\winutils.exe联合后一起解析）。
+遇到报错时：将hadoop安装路径下的hadoop.dll文件拷贝到`C:\Windows\System32`路径下（windows环境下解析Linux的组件，需要和D:\03Enviroment\12hadoop\01install\hadoop-2.7.2\bin\winutils.exe联合后一起解析）。
 
 ```ini
 #hadoop jar jar包路径 需要运行主类的全限定名 程序中的参数（如果有多个空格隔开）该程序中的路劲为：hdfs路径（输入路径  输出路径）
@@ -367,63 +365,50 @@ hadoop jar wc.jar com.xiaolun.mapreduce.WordcountDriver /user/zookeeper/input  /
 
 ## 3、mapreduce的设计
 
+```
 1、map端key是谁，决定reduce中接受的数据是如何的，目前阶段，mapkey的设计的唯一依据是分组。
 
 因此，mapkey**可以通过reduce中的分组**确定，
 
 （1）求每一个部门中的平均年龄
+map:
+key：部门（**分组**）
+value：剩下的要求的字段 年龄
 
-​	map:
-
-​			key：部门（**分组**）
-
-​			value：剩下的要求的字段 年龄
-
-​	reduce：
-
-​		key：部门
-
-​		value：一个部门中的所有年龄。（年龄的累计个数，累计总和）
+reduce：
+key：部门
+value：一个部门中的所有年龄。（年龄的累计个数，累计总和）
 
 （2）每一个部门中相同年龄的都有谁
 
 map:
+key：部门+年龄
+value：姓名
 
-​			key：部门+年龄
-
-​			value：姓名
-
-​	reduce：
+reduce：
 
 相同部门，相同年龄，所有姓名
-
-​		key：部门+年龄
-
-​		value：所有人的姓名
+key：部门+年龄
+value：所有人的姓名
 
 2、mapreduce编程中的分工
+mapper (无逻辑)
+一行数据调用一次
+获取一行内容 切分 发送给reduce
+reduce
+根据map输过来的数据进行分组和**逻辑运算**。
+一组一次
+```
 
-​	mapper (无逻辑)
+mapreduce编程套路：
 
-​		**一行数据调用一次**
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200727094749680.png" alt="image-20200727094712973" style="zoom: 50%;" />
 
-​		获取一行内容 切分 发送给reduce
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200727094749680.png" alt="image-20200727094749680" style="zoom: 50%;" />
 
-​	reduce
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200727094749680.png" alt="image-20200727094831205" style="zoom: 50%;" />
 
-​		根据map输过来的数据进行分组和**逻辑运算**。
-
-​		**一组一次**。
-
-### 2.1 mapreduce编程套路
-
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200727094749680.png" alt="image-20200727094712973" style="zoom:80%;" />
-
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200727094749680.png" alt="image-20200727094749680" style="zoom:80%;" />
-
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200727094749680.png" alt="image-20200727094831205" style="zoom:80%;" />
-
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200727094912826.png" alt="image-20200727094912826" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200727094912826.png" alt="image-20200727094912826" style="zoom: 50%;" />
 
 ## 4、自定义类
 
@@ -601,7 +586,7 @@ public class FlowCount {
 }
 ```
 
-**总结**
+总结：
 
 （1）自定义一个类实现writable
 
@@ -613,7 +598,7 @@ public class FlowCount {
 
 # 3 hadoop序列化
 
-## 1、介绍
+1、介绍
 
 ![image-20200724154759584](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200724154759584.png)
 
@@ -621,11 +606,11 @@ public class FlowCount {
 
 
 
-##  2、切片与MapTask并行度决定机制
+2、切片与MapTask并行度决定机制
 
-​		MapTask的并行度决定Map阶段的任务处理并发度，进而影响到整个Job的处理速度。
+MapTask的并行度决定Map阶段的任务处理并发度，进而影响到整个Job的处理速度。
 
-1、MapTask并行度决定机制
+MapTask并行度决定机制：
 
 数据块：Block是HDFS物理上把数据分成一块一块。
 
@@ -635,13 +620,13 @@ public class FlowCount {
 
 # 4 maptask的并行度
 
-​		mapTask执行mapper端代码的任务。并行度指的是一个job中（一个完整的mapreduce的过程）运行的maptask的个数以及reducetask的个数。
+mapTask执行mapper端代码的任务。并行度指的是一个job中（一个完整的mapreduce的过程）运行的maptask的个数以及reducetask的个数。
 
-​		maptask(mapper) --> 直接面向的是文件输入（大量的数据），因为map端接收的数据量可能很大，map端的任务需要分布式的运行，这里的maptask的个数指的就是map分布式运行几个任务。
+maptask(mapper) --> 直接面向的是文件输入（大量的数据），因为map端接收的数据量可能很大，map端的任务需要分布式的运行，这里的maptask的个数指的就是map分布式运行几个任务。
 
-​		map端的任务需要切分几个小任务和切片的大小有关。
+map端的任务需要切分几个小任务和切片的大小有关。
 
-​		map端接收的数据就是hdfs上的存储的数据，hdfs数据存储，分块存储，一个块128M，假设mapreduce任务的输入文件为500M，
+map端接收的数据就是hdfs上的存储的数据，hdfs数据存储，分块存储，一个块128M，假设mapreduce任务的输入文件为500M，
 
 存储：
 
@@ -653,13 +638,13 @@ blk2 256 -384
 
 blk3 384 -500
 
-​		计算任务和存储相互匹配时比较合理的。一个maptask的计算任务  -> 一个数据块的大小（一个maptask --> 一个逻辑切片的大小）。对于上面的存储，只需要启动4个maptask。
+计算任务和存储相互匹配时比较合理的。一个maptask的计算任务  -> 一个数据块的大小（一个maptask --> 一个逻辑切片的大小）。对于上面的存储，只需要启动4个maptask。
 
-​		逻辑切片：针对计算，为了便于每一个maptask任务的划分，将数据分成不同的区域，仅仅是一个范围的划分。
+逻辑切片：针对计算，为了便于每一个maptask任务的划分，将数据分成不同的区域，仅仅是一个范围的划分。
 
-​		源码实现，切片的大小：mapper代码执行FileInputFormat getSplits  进行逻辑的切片。
+源码实现，切片的大小：mapper代码执行FileInputFormat getSplits  进行逻辑的切片。
 
-​	注意：
+注意：
 
 （1）一个文件如果不够一个切片的大小，单独成一个切片。
 
@@ -684,7 +669,7 @@ FileInputFormat.setMinInputSplitSize();
 
 # 5 mapreduce的排序
 
-1、mapreduce计算框架中，默认按照map输出的key进行排序
+mapreduce计算框架中，默认按照map输出的key进行排序
 
 （1）如果map输出的key是字符型类型 Text,按照字符串的字典顺序进行排序。
 
@@ -692,7 +677,7 @@ FileInputFormat.setMinInputSplitSize();
 
 （3）自定义类。
 
-## 5.1 案例1
+1、案例1
 
 需求：
 
@@ -778,9 +763,7 @@ fileSystem.delete(out, true);
 FileOutputFormat.setOutputPath(job, out);
 ```
 
-
-
-## 5.2 自定义排序
+2、自定义排序
 
 ​		mapreduce编程中，只要放在map输出的key的位置的类型，都必须具备序列胡能力和比较能力。下面的过程又叫做mapreduce的二次排序。
 
@@ -796,25 +779,25 @@ FileOutputFormat.setOutputPath(job, out);
 
 分析：
 
+```
 要求排序的字段：总流量+手机号
 
 map端：
+key: 总流量 + 手机号 上行 下行 自定义类（需要实现WritableComparable）
+排序规则：先按总流量降序  再手机号升序
 
-​	key: 总流量 + 手机号 上行 下行 自定义类（需要实现WritableComparable）
-
-​			排序规则：先按总流量降序  再手机号升序
-
-​	value: null
+value: null
 
 shuffle:
 
-​	按照定义的规则排序 
+按照定义的规则排序 
 
 reduce端：
 
-​	输出结果
+输出结果
+```
 
-1. **自定义类**
+1. 自定义类
 
 ```java
 public class FlowBeanSort implements WritableComparable<FlowBeanSort> {
@@ -944,7 +927,7 @@ job.setOutputValueClass(NullWritable.class);
 
 # 6 分区讲解
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200727231746339.png" alt="image-20200727230211071" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200727231746339.png" alt="image-20200727230211071" style="zoom: 33%;" />
 
 1、 引入reducetask的并行度。
 
@@ -989,7 +972,7 @@ Partitioner  -》 mapkey.hash % redcuetask个数。
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200727231746339.png" alt="image-20200727231824184" style="zoom:80%;" />
 
-## 6.1 自定义分区
+### 1、自定义分区
 
 分区只能按照map输出的key。
 
@@ -1011,37 +994,39 @@ Partitioner  -》 mapkey.hash % redcuetask个数。
  job.setPartitionerClass(FlowPartitioner.class);
 ```
 
-### 6.1.1 案例
+1、案例
 
-#### 1、需求
+（1）需求
 
+```
 根据手机归属地不同，返回不同的分区编号。
 
 人为规定：
 
-​	134-136 北京
+134-136 北京
 
-​	137-138 深圳
+137-138 深圳
 
-​	139 武汉
+139 武汉
 
 此时将有三个分区。
 
 map:
 
-​	key: 手机号
+key: 手机号
 
-​	value:其他
+value:其他
 
 shuffle:
 
-​	自定义分区
+自定义分区
 
 reduce:
 
-​	有几个分区，就启动几个reducetask任务。
+有几个分区，就启动几个reducetask任务。
+```
 
-#### 2、创建项目
+（2）创建项目
 
 1. 自定义分区
 
@@ -1401,15 +1386,15 @@ combiner：
 
 求平均值的方案：在combiner中累计求总和和总次数，在reducer端求最终平均。
 
-## 8.1 测试
+## 1、测试
 
-### 1、需求
+1、需求
 
 使用combiner优化wordcount程序。
 
-### 2、创建项目
+2、创建项目
 
-1. 创建combiner类
+（1）创建combiner类
 
 ```java
 public class MyCombiner extends Reducer<Text, IntWritable, Text, IntWritable> {
@@ -1435,7 +1420,7 @@ public class MyCombiner extends Reducer<Text, IntWritable, Text, IntWritable> {
 }
 ```
 
-2. 指定combiner类
+（2）指定combiner类
 
 ```java
 job.setCombinerClass(MyCombiner.class);
