@@ -583,7 +583,7 @@ for (FileStatus fileStatus : listStatus) {
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200726182636114.png" alt="image-20200726182636114" style="zoom:80%;" />
 
-<img src="Hadoop学习2-HDFS.assets\image-20200726182659673.png" alt="image-20200726182659673" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200726182659673.png" alt="image-20200726182659673" style="zoom:80%;" />
 
 1、文件上传中的问题
 
@@ -937,7 +937,7 @@ rm -rf data/ logs/
 
 （1）datanode的主要作用就是负责存储真正的数据，每一个节点将对应的数据块存储到自己的本地。
 
-<img src="Hadoop学习2-HDFS.assets\image-20200726085947070.png" alt="image-20200726085947070" style="zoom: 80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200726085947070.png" alt="image-20200726085947070" style="zoom: 80%;" />
 
 里面的块池文件夹存储namenode管理的所有数据块信息。
 
@@ -1016,7 +1016,7 @@ DataNode节点保证数据完整性的方法。
 
 ## 6.3 掉线时限参数设置
 
-<img src="Hadoop学习2-HDFS.assets\image-20200724101806080.png" alt="image-20200724101806080" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200724101806080.png" alt="image-20200724101806080" style="zoom:80%;" />
 
 需要注意的是`hdfs-site.xml` 配置文件中的heartbeat.recheck.interval的单位为毫秒，dfs.heartbeat.interval的单位为秒。
 
