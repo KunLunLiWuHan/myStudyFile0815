@@ -132,3 +132,412 @@ Hive 在查询数据的时候，由于没有索引，需要扫描整个表，因
 
 而数据库由于 ACID 语义的严格限制，扩展行非常有限。目前最先进的并行数据库 Oracle 在理 论上的扩展能力也只有 100 台左右。
 
+## 2、安装和部署
+
+1、网址
+
+（1）Hive官网地址
+
+```http
+http://hive.apache.org/
+```
+
+（2）下载网址
+
+```http
+http://archive.apache.org/dist/hive/
+```
+
+2、安装
+
+（1）配置Hive的配置文件hive-env.sh
+
+```ini
+# 配置 HADOOP_HOME 路径
+export HADOOP_HOME=/home/zookeeper/software/hadoop-2.7.2
+
+# 配置 HIVE_CONF_DIR 路径
+export HIVE_CONF_DIR=/myhive/hive/conf
+```
+
+（2）启动hdfs和yarn
+
+```ini
+sbin/start-dfs.sh
+sbin/start-yarn.sh
+```
+
+（3）启动hive
+
+```shell
+ bin/hive
+```
+
+使用user时可能会遇到下面的报错：
+
+```
+Database Class Loader started - derby.database.classpath=''
+```
+
+主要是metastore数据库read only，没有写权限，因此，修改hive安装目录的所属用户和组为zookeeper:zookeeper即可。
+
+```shell
+[zookeeper@hadoop101 hive]$ sudo chown -R zookeeper:zookeeper /myhive/hive/
+```
+
+3、hive基本操作
+
+```sql
+-- 查看数据库和表
+hive> show databases;
+hive> show tables;
+-- 创建表
+hive> create table student(id int, name string);
+-- 查看表的结构
+hive> desc student;
+-- 退出 hive
+hive> quit;
+```
+
+4、简单案例
+
+（1）需求
+
+将本地/opt/module/data/student.txt 这个目录下的数据导入到 hive 的 student(id int, name string)表中。
+
+（2）操作
+
+```sql
+-- 创建student表，并声明文件分隔符'\t'
+create table stu(id int, name string) ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t';
+
+-- 创建文件 student.txt，以table键分隔开
+1       z3
+2       li4
+
+
+-- 加载/home/zookeeper/software/student.txt文件到 student 数据库表中。如果是hdfs中加载文件，将下面的local去掉。
+load data local inpath '/home/zookeeper/software/student.txt' into table stu;
+
+-- 查询结果 
+select * from stu;
+```
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200909101456889.png" alt="image-20200909101456889" style="zoom:67%;" />
+
+## 3、 Hive 元数据配置到 MySql
+
+1、驱动拷贝
+
+将mysql-connector-java-5.1.27驱动拷贝到hive的配置目录下：/myhive/hive/lib。
+
+2、配置 Metastore 到 MySql
+
+在/myhive/hive/conf目录下创建一个文件hive-site.xml，并在文件中添加下面的配置：
+
+```xml
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+<property>
+	<name>javax.jdo.option.ConnectionURL</name>
+	<value>jdbc:mysql://hadoop101:3306/metastore?createDatabaseIfNotExist=true</value>
+	<description>JDBC connect string for a JDBC metastore</description>
+</property>
+<property>
+  <name>javax.jdo.option.ConnectionDriverName</name>
+  <value>com.mysql.jdbc.Driver</value>
+  <description>Driver class name for a JDBC metastore</description>
+</property>
+<property>
+ <name>javax.jdo.option.ConnectionUserName</name>
+ <value>root</value>
+ <description>username to use against metastore database</description>
+</property>
+<property>
+ <name>javax.jdo.option.ConnectionPassword</name>
+ <value>123</value>
+ <description>password to use against metastore database</description>
+</property>
+</configuration>
+```
+
+配置完成后，如果启动hive异常，可以冲洗启动虚拟机。
+
+3、重启hive后，再重启mysql查看数据库
+
+```mysql
+bin/hive
+
+mysql -u root -p 123
+ 
+show databases;
+```
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200909111430302.png" alt="image-20200909111430302" style="zoom: 80%;" />
+
+可以看到新建了metastore数据库。
+
+4、在hive中新建数据库和表
+
+```mysql
+create database db03;
+create table stu(id int,name String);
+```
+
+在navicate中可以看到：
+
+![image-20200909111841521](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200909111841521.png)
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200909111929229.png" alt="image-20200909111929229" style="zoom:67%;" />
+
+5、Hive 常用交互命令
+
+（1）“-e”不进入 hive 的交互窗口执行 sql 语句
+
+```mysql
+ bin/hive -e "select id from stu;"
+```
+
+（2）“-f”执行脚本中 sql 语句
+
+```shell
+# 创建一个sql脚本文件
+touch hivef.sql
+ 
+# 并在文件中写入下面的sql语句
+select * from stu;
+
+# 执行文件中的sql语句，也可以将结果写入到相应的文件中
+bin/hive -f /home/zookeeper/sofeware/hivef.sql
+
+bin/hive -f /home/zookeeper/sofeware/hivef.sql >
+/home/zookeeper/sofeware/hivef.sql/hive_result.txt
+```
+
+6、Hive 常见属性配置
+
+（1）查询后信息显示配置
+
+在 hive-site.xml 文件中添加如下配置信息，就可以实现显示当前数据库，以及查询表的头信息配置。
+
+```xml
+<property>
+    <name>hive.cli.print.header</name>
+    <value>true</value>
+</property>
+<property>
+    <name>hive.cli.print.current.db</name>
+    <value>true</value>
+</property>
+```
+
+（2） Hive 运行日志信息配置
+
+默认情况下，日志log存放在在/tmp/zookeeper/hive.log中。我们可以使用下面的配置修改log日志的存放路径：
+
+修改/hive/conf/hive-log4j.properties.template 文件名称为hive-log4j.properties
+
+```shell
+mv hive-log4j.properties.template hive-log4j.properties
+```
+
+在 hive-log4j.properties 文件中修改 log 存放位置：
+
+```ini
+hive.log.dir=/home/zookeeper/sofeware/hive/logs
+```
+
+（3）参数配置方式
+
+（a）配置文件方式
+
+默认配置文件：hive-default.xml ，用户自定义配置文件：hive-site.xml。
+
+（b）命令行参数方式
+
+启动 Hive 时，可以在命令行添加-hiveconf param=value 来设定参数。
+
+```shell
+bin/hive -hiveconf mapred.reduce.tasks=10;
+```
+
+这仅对本次 hive 启动有效。
+
+（c）参数声明方式
+
+可以在 HQL 中使用 SET 关键字设定参数。
+
+```shell
+ set mapred.reduce.tasks=100;
+```
+
+上述三种设定方式的优先级依次递增。即配置文件<命令行参数<参数声明。
+
+## 4、Hive数据类型
+
+### 1、基本数据类型
+
+1、基本数据类型
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200909151903359.png" alt="image-20200909151903359" style="zoom:67%;" />
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200909151936137.png" alt="image-20200909151936137" style="zoom:67%;" />
+
+对于 Hive 的 String 类型相当于数据库的 varchar 类型，该类型是一个可变的字符串，不 过它不能声明其中最多能存储多少个字符，理论上它可以存储 2GB 的字符数。
+
+2、集合数据类型
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200909152010578.png" alt="image-20200909152010578" style="zoom:80%;" />
+
+Hive 有三种复杂数据类型 ARRAY、MAP 和 STRUCT。ARRAY 和 MAP 与 Java 中的 Array 和 Map 类似，而 STRUCT 与 C 语言中的 Struct 类似，它封装了一个命名字段集合， 复杂数据类型允许任意层次的嵌套。
+
+3、案例
+
+（1）需求
+
+假设某表有如下一行，我们用 JSON 格式来表示其数据结构。在 Hive 下访问的格式为：
+
+```json
+{
+ "name": "songsong",
+ "friends": ["bingbing" , "lili"] , //列表 Array,
+ "children": {            //键值 Map,
+ "xiao song": 18 ,
+ "xiaoxiao song": 19
+ }
+ "address": {             //结构 Struct,
+ "street": "hui long guan" ,
+ "city": "beijing"
+ }
+}
+```
+
+基于上述数据结构，我们在 Hive 里创建对应的表，并导入数据。
+
+（2）创建本地测试文件test.txt
+
+```
+xiaolun,zhihao_xiaohongzi,xiao song:18_xiaoxiao song:19,henan_zhoukou
+```
+
+MAP，STRUCT 和 ARRAY 里的元素间关系都可以用同字符“_”表示。
+
+（3）建表
+
+```sql
+create table test(
+name string,
+friends array<string>,
+children map<string, int>,
+address struct<street:string, city:string>
+)
+row format delimited
+fields terminated by ','
+collection items terminated by '_'
+map keys terminated by ':'
+lines terminated by '\n';
+```
+
+字段解释：
+
+```sql
+row format delimited fields terminated by ',' -- 列分隔符
+collection items terminated by '_' --MAP STRUCT 和 ARRAY 的分隔符(数据分割符号)
+map keys terminated by ':' -- MAP 中的 key 与 value 的分隔符
+lines terminated by '\n'; -- 行分隔符(默认，可不加)
+```
+
+（4）导入文本数据到测试表中
+
+```sql
+load data local inpath
+'/home/zookeeper/sofeware/test.txt' into table test;
+```
+
+（5）访问三种集合中的数据，以下分别是 ARRAY，MAP，STRUCT 的访问方式
+
+```sql
+ select friends[0],children['xiao song'],address.city from test where name="xiaolun";
+```
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200909153456376.png" alt="image-20200909153456376" style="zoom:80%;" />
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200909153525896.png" alt="image-20200909153525896" style="zoom:80%;" />
+
+### 2、类型转换
+
+Hive 的原子数据类型是可以进行隐式转换的，类似于 Java 的类型转换，例如某表达式 使用 INT 类型，TINYINT 会自动转换为 INT 类型，但是 Hive 不会进行反向转化，例如， 某表达式使用 TINYINT 类型，INT 不会自动转换为 TINYINT 类型，它会返回错误，除非使 用 CAST 操作。
+
+1、隐式类型转换规则如下
+
+（1）任何整数类型都可以隐式地转换为一个范围更广的类型，如 TINYINT 可以转换 成 INT，INT 可以转换成 BIGINT。 
+
+（2）所有整数类型、FLOAT 和 STRING 类型都可以隐式地转换成 DOUBLE。 
+
+（3）TINYINT、SMALLINT、INT 都可以转换为 FLOAT。 
+
+（4）BOOLEAN 类型不可以转换为任何其它的类型。
+
+2、可以使用 CAST 操作显示进行数据类型转换
+
+例如 CAST('1' AS INT)将把字符串'1' 转换成整数 1；如果强制类型转换失败，如执行 CAST('X' AS INT)，表达式返回空值 NULL。
+
+## 5、DDL-data definition language
+
+### 1、数据库的增删改查
+
+1、创建数据库
+
+数据库在 HDFS 上的默认存储路径是/user/hive/warehouse/*.db。
+
+```sql
+create database db_hive if not exists db_hive;
+
+-- 指定数据库在 HDFS 上存放的位置
+create database db_hive2 location '/db';
+```
+
+2、查询数据库
+
+```sql
+-- 过滤显示查询的数据库（模糊查询）
+show databases like 'db_hive*';
+
+-- 查看数据库详情，extended表示显示数据库详细信息
+desc database db_hive;
+desc database extended db_hive;
+```
+
+3、修改数据库
+
+用户可以使用 ALTER DATABASE 命令为某个数据库的 DBPROPERTIES 设置键-值对 属性值，来描述这个数据库的属性信息。数据库的其他元数据信息都是不可更改的，包括数据库名和数据库所在的目录位置。
+
+```sql
+-- 增加时间戳信息
+alter database hive set
+dbproperties('createtime'='20170830');
+```
+
+4、删除数据库
+
+```sql
+ -- 删除空数据库
+ drop database if exists db_hive;
+ 
+ -- 删除非空数据库
+ drop database db_hive cascade;
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
