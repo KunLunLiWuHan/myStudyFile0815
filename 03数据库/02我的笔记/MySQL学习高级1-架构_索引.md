@@ -95,7 +95,7 @@ insert into A values(2,'a02');
 insert into A values(3,'a03');
 insert into A values(4,'a04');
 
-create table B(aID int not null,aName varchar(20));
+create table B(bID int not null,bName varchar(20));
 insert into B values(1,'b01');
 insert into B values(2,'b02');
 insert into B values(5,'b05');
