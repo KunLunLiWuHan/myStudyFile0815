@@ -95,11 +95,11 @@ insert into A values(2,'a02');
 insert into A values(3,'a03');
 insert into A values(4,'a04');
 
-create table A(aID int not null,aName varchar(20));
-insert into A values(1,'b01');
-insert into A values(2,'b02');
-insert into A values(5,'b05');
-insert into A values(6,'b06');
+create table B(aID int not null,aName varchar(20));
+insert into B values(1,'b01');
+insert into B values(2,'b02');
+insert into B values(5,'b05');
+insert into B values(6,'b06');
 ```
 
 表结构：
