@@ -1,1 +1,0 @@
-![image-20200914085401417](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200914085401417.png)
