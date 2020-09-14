@@ -529,15 +529,519 @@ dbproperties('createtime'='20170830');
  drop database db_hive cascade;
 ```
 
+### 2、创建表
 
+1、建表语法
 
+```sql
+CREATE [EXTERNAL] TABLE [IF NOT EXISTS] table_name
+[(col_name data_type [COMMENT col_comment], ...)]
+[COMMENT table_comment]
+[PARTITIONED BY (col_name data_type [COMMENT col_comment], ...)]
+[CLUSTERED BY (col_name, col_name, ...)
+[SORTED BY (col_name [ASC|DESC], ...)] INTO num_buckets BUCKETS]
+[ROW FORMAT row_format]
+[STORED AS file_format]
+[LOCATION hdfs_path]
+```
 
+字段解释：
 
+（1）CREATE TABLE 创建一个指定名字的表。如果相同名字的表已经存在，则抛出 异常；用户可以用 IF NOT EXISTS 选项来忽略这个异常。 
 
+（2）EXTERNAL 关键字可以让用户创建一个外部表，在建表的同时指定一个指向实际 数据的路径（LOCATION），Hive 创建内部表时，会将数据移动到数据仓库指向的路 径；若创建外部表，仅记录数据所在的路径，不对数据的位置做任何改变。在删除表的 时候，内部表的元数据和数据会被一起删除，而外部表只删除元数据，不删除数据。 
 
+（3）COMMENT：为表和列添加注释。 
 
+（4）PARTITIONED BY 创建分区表 。
 
+（5）CLUSTERED BY 创建分桶表 。
 
+（6）SORTED BY 不常用。
+
+（7）ROW FORMAT
+
+```sql
+DELIMITED [FIELDS TERMINATED BY char] [COLLECTION ITEMS
+TERMINATED BY char]
+ [MAP KEYS TERMINATED BY char] [LINES TERMINATED BY char]
+ | SERDE serde_name [WITH SERDEPROPERTIES (property_name=property_value,
+property_name=property_value, ...)]
+```
+
+用户在建表的时候可以自定义 SerDe 或者使用自带的 SerDe。如果没有指定 ROW FORMAT 或者 ROW FORMAT DELIMITED，将会使用自带的 SerDe。在建表的时候，用户还需要为表指定列，用户在指定表的列的同时也会指定自定义的 SerDe，Hive 通过 SerDe 确定表的具体的列的数据。 
+
+SerDe 是 Serialize/Deserilize 的简称，目的是用于序列化和反序列化。
+
+（8）STORED AS 指定存储文件类型
+
+常用的存储文件类型：SEQUENCEFILE（二进制序列文件）、TEXTFILE（文本）、 RCFILE（列式存储格式文件） 如果文件数据是纯文本，可以使用 STORED AS TEXTFILE。如果数据需要压缩， 使用 STORED AS SEQUENCEFILE。
+
+（9）LOCATION ：指定表在 HDFS 上的存储位置。
+
+（10）LIKE 允许用户复制现有的表结构，但是不复制数据。
+
+### 3、内部表
+
+1、理论
+
+默认创建的表都是所谓的管理表，有时也被称为内部表。因为这种表，Hive 会（或多 或少地）控制着数据的生命周期。Hive 默认情况下会将这些表的数据存储在由配置项 hive.metastore.warehouse.dir(例如，/user/hive/warehouse)所定义的目录的子目录下。
+
+当我们删除一个管理表时，Hive 也会删除这个表中数据。管理表不适合和其他工具共享数据。
+
+2、操作
+
+（1）普通创建表
+
+```sql
+create table if not exists student(
+id int, name string
+)row format delimited fields terminated by '\t'
+stored as textfile
+location '/user/hive/warehouse/student';
+```
+
+使用下面的命令来查询表的类型：
+
+```sql
+ desc formatted student;
+```
+
+（2）删除
+
+```sql
+ drop table student;
+```
+
+当我们删除一个管理表时，Hive /mysql中删除这个表中数据。
+
+### 4、外部表
+
+1、介绍
+
+因为表是外部表，所以 Hive 并非认为其完全拥有这份数据。删除该表并不会删除掉这份数据，不过描述表的元数据信息会被删除掉。
+
+2、使用场景
+
+每天将收集到的网站日志定期流入 HDFS 文本文件。在外部表（原始日志表）的基础 上做大量的统计分析，用到的中间表、结果表使用内部表存储，数据通过 SELECT+INSERT 进入内部表。
+
+```sql
+create external table if not exists student2(
+id int,
+name string
+)row format delimited fields terminated by '\t';
+```
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200914103937310.png" alt="image-20200914103937310" style="zoom:67%;" />
+
+3、内部表和外部表的互换
+
+```sql
+alter table student2 set tblproperties('EXTERNAL'='TRUE');
+```
+
+其中：('EXTERNAL'='TRUE')和('EXTERNAL'='FALSE')为固定写法，区分大小写。
+
+### 5、分区表
+
+分区表实际上就是对应一个 HDFS 文件系统上的独立的文件夹，该文件夹下是该分区 所有的数据文件。Hive 中的分区就是分目录，把一个大的数据集根据业务需要分割成小的 数据集。在查询时通过 WHERE 子句中的表达式选择查询所需要的指定的分区，这样的查询效率会提高很多。
+
+1、基本操作
+
+（1）创建分区表语法
+
+```sql
+create table partition01(
+id int, name string
+)partitioned by (month string)
+row format delimited fields terminated by '\t';
+```
+
+（2）加载数据到分区表中
+
+```sql
+load data local inpath '/home/zookeeper/software/student.txt' into table db03.partition01 partition(month='202010');
+```
+
+（3）查询分区表中的数据
+
+```sql
+select * from partition01 where month='202010';
+```
+
+（4）增加分区
+
+```sql
+alter table partition01 add partition(month='202009') ;
+
+-- 同时增加多个分区，分区之间使用空格分开
+alter table partition01 add
+partition(month='202009') partition(month='202008');
+```
+
+（5）删除分区
+
+```sql
+alter table partition01 drop partition(month='202008');
+
+-- 删除多个分区，分区之间使用逗号隔开
+alter table partition01 drop partition
+(month='202008'), partition (month='202009');
+```
+
+（6）查看分区表有多少个分区
+
+```sql
+ show partitions partition01;
+```
+
+2、二级分区表
+
+（1）创建二级分区表
+
+```sql
+create table partition02(
+ id int, name string
+ )partitioned by (month string, day string)
+row format delimited fields terminated by '\t';
+```
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200914132918506.png" alt="image-20200914132918506" style="zoom:80%;" />
+
+（2）加载数据 
+
+```sql
+load data local inpath
+'/home/zookeeper/software/student.txt' into table
+db03.partition02 partition(month='202010', day='11');
+```
+
+（3）查询分区数据
+
+```sql
+select * from dept_partition2 where month='202010' and day='11';
+```
+
+3、分区表和数据产生关联
+
+（1）创建hadoop文件夹
+
+```sql
+hive > dfs -mkdir -p
+/user/hive/warehouse/db03.db/partition03/month=202010/day=12;
+```
+
+（2）上传数据
+
+```sql
+hive > dfs -put /home/zookeeper/software/student.txt
+/user/hive/warehouse/db03.db/partition03/month=202010/day=12;
+```
+
+（3）创建二级分区表partition03
+
+（4）添加分区
+
+```sql
+alter table partition03 add partition(month='202010',day='12');
+```
+
+这样的话，hadoop中的数据就和MySQL中的数据相关联，通过下面的语句就可以查询到数据了
+
+```sql
+select * from partition03 where
+month='202010' and day='12';
+```
+
+### 6、修改表
+
+1、重命名表
+
+```sql
+-- 语法
+ALTER TABLE table_name RENAME TO new_table_name;
+
+-- 举例
+alter table test01 rename to test02;
+```
+
+2、表中增加|替换列
+
+```sql
+-- 语法
+ALTER TABLE table_name ADD|REPLACE COLUMNS (col_name data_type [COMMENT col_comment], ...) 
+
+-- 举例
+alter table test01 add columns(address string);
+```
+
+其中ADD表示新增一个列的字段，而REPLACE表示替换表中所有的字段。
+
+3、表中修改（更新）列
+
+```sql
+-- 语法
+ALTER TABLE table_name CHANGE [COLUMN] col_old_name col_new_name column_type [COMMENT col_comment] [FIRST|AFTER column_name]
+
+-- 举例
+ alter table test01 change column
+id did int;
+```
+
+## 6、DML-Data Manipulation Language
+
+### 1、数据导入
+
+1、向表中装载数据（Load）
+
+```sql
+hive> load data [local] inpath '/opt/module/datas/student.txt' [overwrite] | into table student
+[partition (partcol1=val1,…)];
+
+（1）load data:表示加载数据
+（2）local:表示从本地加载数据到 hive 表；否则从 HDFS 加载数据到 hive 表
+（3）inpath:表示加载数据的路径
+（4）overwrite:表示覆盖表中已有数据，否则表示追加
+（5）into table:表示加载到哪张表
+（6）student:表示具体的表
+（7）partition:表示上传到指定分区
+```
+
+2、 通过查询语句向表中插入数据（Insert）
+
+```sql
+-- 创建一张分区表
+create table student(id int, name string)
+partitioned by (month string) row format delimited fields
+terminated by '\t';
+
+-- 将查询到的test02表中的数据插入到test01中
+hive > insert overwrite table test01
+partition(month='202010')
+select id, name from test02 where month='202010';
+```
+
+3、查询语句中创建表并加载数据（As Select）
+
+```sql
+-- 创建和test02相同的表test01
+create table if not exists test01
+as select id, name from test02;
+```
+
+4、创建表时通过 Location 指定加载数据路径
+
+```sql
+ create table if not exists test02(
+ id int, name string
+ )row format delimited fields terminated by '\t'
+ location '/user/hive/warehouse/student5';
+```
+
+### 2、数据导出
+
+1、Insert导出
+
+将查询的结果格式化地导出到本地，当没有local关键字时表示将查询地结果导出到HDFS中。
+
+```sql
+hive > insert overwrite local directory '/home/zookeeper/software/student2' 
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
+select * from student2;
+```
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200914142721042.png" alt="image-20200914142721042" style="zoom:67%;" />
+
+2、Hadoop命令导出到本地
+
+```shell
+hive > dfs -get /user/hive/warehouse/student/month=201709/000000_0
+/home/zookeeper/software/student2
+```
+
+3、Hive shell命令导出
+
+```sql
+[xx@hadoop102 hive]$ bin/hive -e 
+'select * from db03.student;' >
+/opt/module/datas/export/student.txt;
+```
+
+4、Export 导出到 HDFS 中
+
+```sql
+hive > export table db03.student to
+'/user/hive/warehouse/export/student';
+```
+
+5、Sqoop导出
+
+### 3、清除表中的数据
+
+```sql
+-- Truncate 只能删除管理表，不能删除外部表中数据
+hive > truncate table student;
+```
+
+## 7、查询
+
+### 1、介绍
+
+1、基本语法
+
+```sql
+[WITH CommonTableExpression (, CommonTableExpression)*] (Note:Only available starting with Hive 0.13.0)
+SELECT [ALL | DISTINCT] select_expr, select_expr, ...
+  FROM table_reference
+  [WHERE where_condition]
+  [GROUP BY col_list]
+  [ORDER BY col_list]
+  [CLUSTER BY col_list
+   | [DISTRIBUTE BY col_list] [SORT BY col_list]
+  ]
+  [LIMIT number]
+```
+
+参考文档：
+
+```http
+https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Select
+```
+
+注意点：
+
+（1）SQL 语言大小写不敏感。 
+
+（2）SQL 可以写在一行或者多行 。
+
+（3）关键字不能被缩写也不能分行 。
+
+（4）各子句一般要分行写。 
+
+（5）使用缩进提高语句的可读性。
+
+2、列别名
+
+```sql
+-- 在列名和别名之间添加关键字AS
+hive > select ename AS name from emp;
+```
+
+3、算术运算符
+
+![image-20200914143947595](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200914143947595.png)
+
+~A 表示A按位取反。
+
+案例：查询出所有员工的薪水后加 1 显示
+
+```sql
+hive > select sal +1 from emp;
+```
+
+4、常用函数
+
+```sql
+1．求总行数（count）
+hive > select count(*) cnt from emp;
+
+2．求工资的最大值（max）
+hive > select max(sal) max_sal from emp;
+
+3．求工资的最小值（min）
+hive > select min(sal) min_sal from emp;
+
+4．求工资的总和（sum）
+hive > select sum(sal) sum_sal from emp;
+
+5．求工资的平均值（avg）
+hive > select avg(sal) avg_sal from emp;
+```
+
+5、Limit语句
+
+```sql
+-- LIMIT 子句用于限制返回的行数为5行
+hive > select * from emp limit 5;
+```
+
+### 2、where语句
+
+1、介绍
+
+（1）使用 WHERE 子句，将不满足条件的行过滤掉 。
+
+（2）WHERE 子句紧随 FROM 子句。
+
+2、 比较运算符（Between/In/ Is Null）
+
+下面表中描述了谓词操作符，这些操作符同样可以用于 JOIN…ON 和 HAVING 语句中
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200914144526943.png" alt="image-20200914144526943" style="zoom:80%;" />
+
+![image-20200914144540075](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200914144540075.png)
+
+案例
+
+（1）查询工资在 500 到 1000 的员工信息
+
+```sql
+hive > select * from emp where sal between 500 and 1000;
+```
+
+（2）查询 comm 为空的所有员工信息
+
+```sql
+hive > select * from emp where comm is null;
+```
+
+（3）查询工资是 1500 或 5000 的员工信息
+
+```sql
+hive > select * from emp where sal IN (1500, 5000);
+```
+
+3、 Like 和 RLike
+
+（1）使用 LIKE 运算选择类似的值。
+
+（2）选择条件可以包含字符或数字: 
+
+% 代表零个或多个字符(任意个字符)， _ 代表一个字符。 
+
+（3）RLIKE 子句是 Hive 中这个功能的一个扩展，其可以通过 Java 的正则表达式这个更强大的语言来指定匹配条件。
+
+案例：
+
+```sql
+-- 查找以 2 开头薪水的员工信息
+hive > select * from emp where sal LIKE '2%';
+
+-- 查找薪水中含有 2 的员工信息
+hive > select * from emp where sal RLIKE '[2]';
+```
+
+4、逻辑运算符（And/Or/Not）
+
+![image-20200914145222857](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200914145222857.png)
+
+### 3、分组
+
+1、 Group By 语句
+
+GROUP BY 语句通常会和聚合函数一起使用，按照一个或者多个列队结果进行分组， 然后对每个组执行聚合操作。
+
+```sql
+-- 计算 emp 表每个部门的平均工资
+hive > select t.deptno, avg(t.sal) avg_sal from emp t
+group by t.deptno;
+```
+
+### 4、Join语句
+
+1、等值 Join
+
+Hive 支持通常的 SQL JOIN 语句，但是只支持等值连接，不支持非等值连接。
 
 
 

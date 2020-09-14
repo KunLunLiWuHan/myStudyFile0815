@@ -112,9 +112,11 @@ insert into B values(6,'b06');
 select * from A left join B  on A.aID = B.bID;
 ```
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831124945.png" alt="image-20200828162850378" style="zoom: 80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200914153212617.png" alt="image-20200914153212617" style="zoom:80%;" />
 
 （3）全连接-full outer join-union
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831124945.png" alt="image-20200828162850378" style="zoom: 80%;" />
 
 oracle支持full outer join，但是mysql不支持。使用union可以查询两表**独有**的数据，且能查询两表共有的数据而且不重复。
 
