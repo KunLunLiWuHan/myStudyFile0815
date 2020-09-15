@@ -4,11 +4,11 @@
 
 ## 1.1 Hbase逻辑结构
 
-![image-20200805111218898](HBase学习.assets\image-20200805111218898.png)
+![image-20200805111218898](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200805111218898.png)
 
 ## 1.2 Hbase逻辑结构结构
 
-![image-20200805111502497](HBase学习.assets\image-20200805111502497.png)
+![image-20200805111502497](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200805111502497.png)
 
 ## 1.3 数据模型
 
@@ -67,7 +67,7 @@ default：所有未指定命名空间的表都自动进入该命名空间(默认
 
 ## 1.4 HBase基本架构
 
-![image-20200805112355336](HBase学习.assets\image-20200805112355336.png)
+![image-20200805112355336](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200805112355336.png)
 
 具体的话，参考下面的博客：
 
@@ -252,7 +252,7 @@ HRegionServer
 
 http://hadoop101:16010
 
-<img src="HBase学习.assets\image-20200805145435561.png" alt="image-20200805145435561" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200805145435561.png" alt="image-20200805145435561" style="zoom:80%;" />
 
 注意：要首先启动zookeeper。
 
@@ -303,20 +303,20 @@ hbase(main):007:0> put 'student01','1002','info:age','20'
 hbase(main):008:0> scan 'student'
 ```
 
-<img src="HBase学习.assets\image-20200805151732525.png" alt="image-20200805151732525" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200805151732525.png" alt="image-20200805151732525" style="zoom:80%;" />
 
 ```ini
 #STARTROW,STOPROW要大写。{}为查看的附加条件，左右包含
 hbase(main):003:0> scan 'student01',{STARTROW => '1001',STOPROW => '1001'}
 ```
 
-<img src="HBase学习.assets\image-20200805151759165.png" alt="image-20200805151759165" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200805151759165.png" alt="image-20200805151759165" style="zoom:80%;" />
 
 ```ini
 hbase(main):004:0> scan 'student01',{STARTROW => '1001'}
 ```
 
-<img src="HBase学习.assets\image-20200805151916514.png" alt="image-20200805151916514" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200805151916514.png" alt="image-20200805151916514" style="zoom:80%;" />
 
 （4）更新指定字段的数据
 
@@ -332,7 +332,7 @@ hbase(main):014:0> get 'student01','1001'
 hbase(main):015:0> get 'student01','1001','info:name'
 ```
 
-<img src="HBase学习.assets\image-20200805152630917.png" alt="image-20200805152630917" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200805152630917.png" alt="image-20200805152630917" style="zoom:80%;" />
 
 （6）查看表结构 
 
@@ -386,7 +386,7 @@ f1:name timestamp=1482820503889,value=a
 3 row(s) in 0.0960 seconds
 ```
 
-<img src="HBase学习.assets\image-20200806161248525.png" alt="image-20200806161248525" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200806161248525.png" alt="image-20200806161248525" style="zoom:80%;" />
 
 （7）统计表数据行数
 
@@ -394,7 +394,7 @@ f1:name timestamp=1482820503889,value=a
 hbase(main):021:0> count 'student01' 
 ```
 
-<img src="HBase学习.assets\image-20200805152842621.png" alt="image-20200805152842621" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200805152842621.png" alt="image-20200805152842621" style="zoom:80%;" />
 
 （8）删除数据 
 
@@ -439,7 +439,7 @@ hbase(main):022:0>  get 'student01','1001',{COLUMN=>'info:name',VERSIONS=>3}
 
 ## 3.1、架构原理
 
-<img src="HBase学习.assets\image-20200805154912843.png" alt="image-20200805154912843" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200805154912843.png" alt="image-20200805154912843" style="zoom:80%;" />
 
 1、StoreFile
 
@@ -455,7 +455,7 @@ hbase(main):022:0>  get 'student01','1001',{COLUMN=>'info:name',VERSIONS=>3}
 
 ## 3.2、写流程
 
-![image-20200805155747920](HBase学习.assets\image-20200805155747920.png)
+![image-20200805155747920](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200805155747920.png)
 
 写流程： 
 （1）Client 先访问 zookeeper，获取 hbase:meta 表位于哪个 Region Server。 
@@ -474,7 +474,7 @@ hbase(main):022:0>  get 'student01','1001',{COLUMN=>'info:name',VERSIONS=>3}
 
 ## 3.3、Flush流程
 
-<img src="HBase学习.assets\image-20200805163123432.png" alt="image-20200805163123432" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200805163123432.png" alt="image-20200805163123432" style="zoom:80%;" />
 
 MemStore  刷写时机： 
 1、 当某个 `memstroe` 的大小达到了 `hbase.hregion.memstore.flush.size` （默认值 128M ），其所在 region 的所有 memstore 都会刷写。 
@@ -515,7 +515,7 @@ hbase.regionserver.optionalcacheflushinterval （默认 1 小时）
 
 ## 3.4、读流程
 
-![image-20200805164204421](HBase学习.assets\image-20200805164204421.png)
+![image-20200805164204421](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200805164204421.png)
 
 （1）Client 先访问 zookeeper，获取 hbase:meta 表位于哪个 Region Server。 
 
@@ -537,7 +537,7 @@ hbase.regionserver.optionalcacheflushinterval （默认 1 小时）
 
 ​		Compaction 分为两种， 分别是 Minor Compaction 和 Major Compaction。 Minor Compaction会将临近的若干个较小的 HFile 合并成一个较大的 HFile，但 不会清理过期和删除的数据。Major Compaction 会将一个 Store 下的所有的 HFile 合并成一个大 HFile，并且 会清理掉过期和删除的数据。
 
-<img src="HBase学习.assets\image-20200805164634789.png" alt="image-20200805164634789" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200805164634789.png" alt="image-20200805164634789" style="zoom:80%;" />
 
 ## 3.6、Region Split
 
@@ -550,7 +550,7 @@ Region Split 时机：
 2、当 1 个 region 中 的某 个 Store 下所有 StoreFile 的总 大 小超过 Min(R^2 * 
 "hbase.hregion.memstore.flush.size",hbase.hregion.max.filesize")，该 Region 就会进行拆分，其中 R 为当前 Region Server 中属于该 Table 的个数（0.94 版本之后）。
 
-<img src="HBase学习.assets\image-20200805164824790.png" alt="image-20200805164824790" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200805164824790.png" alt="image-20200805164824790" style="zoom:80%;" />
 
 # 4 HBase API
 
@@ -1085,7 +1085,7 @@ String rowName = "1002";     getVersion("student01",rowName.getBytes(),"info","n
 
 控制台输出结果：
 
-<img src="HBase学习.assets\image-20200806161423550.png" alt="image-20200806161423550" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200806161423550.png" alt="image-20200806161423550" style="zoom:80%;" />
 
 ## 4.3 与MapReduce交互
 
@@ -1108,11 +1108,11 @@ export HADOOP_HOME=/home/zookeeper/software/hadoop-2.7.2
 export HADOOP_CLASSPATH=$HADOOP_CLASSPATH:/home/zookeeper/software/hbase-1.3.1/lib/*
 ```
 
-<img src="HBase学习.assets\image-20200809110205447.png" alt="image-20200809110205447" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200809110205447.png" alt="image-20200809110205447" style="zoom:67%;" />
 
 其中，上图中的`export HADOOP_CLASSPATH`写错，导致报错：
 
-<img src="HBase学习.assets\image-20200809114631099.png" alt="image-20200809114631099" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200809114631099.png" alt="image-20200809114631099" style="zoom:80%;" />
 
 2、运行官方的 MapReduce 任务
 
@@ -1125,7 +1125,7 @@ export HADOOP_CLASSPATH=$HADOOP_CLASSPATH:/home/zookeeper/software/hbase-1.3.1/l
 
 输出结果：
 
-<img src="HBase学习.assets\image-20200809114840050.png" alt="image-20200809114840050" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200809114840050.png" alt="image-20200809114840050" style="zoom:67%;" />
 
 （2）使用 MapReduce 将本地数据导入到 HBase 
 
@@ -1175,7 +1175,7 @@ hdfs://hadoop101:9000//input_fruit/test.txt
 scan 'fruit'
 ```
 
-<img src="HBase学习.assets\image-20200809154144799.png" alt="image-20200809154144799" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200809154144799.png" alt="image-20200809154144799" style="zoom:80%;" />
 
 ### 2、 HBase的数据存储到HDFS
 
@@ -1298,7 +1298,7 @@ public class HBase2HDFS implements Tool {
 
 （1）打包
 
-<img src="HBase学习.assets\image-20200809231659858.png" alt="image-20200809231659858" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200809231659858.png" alt="image-20200809231659858" style="zoom:80%;" />
 
 （2）上传到Linux服务器
 
@@ -1312,7 +1312,7 @@ export HADOOP_CLASSPATH=$HADOOP_CLASSPATH:$HBASE_HOME/lib/*
 
 （4）在HBase中创建t2表
 
-<img src="HBase学习.assets\image-20200809231955835.png" alt="image-20200809231955835" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200809231955835.png" alt="image-20200809231955835" style="zoom:80%;" />
 
 （5）执行
 
@@ -1324,7 +1324,7 @@ export HADOOP_CLASSPATH=$HADOOP_CLASSPATH:$HBASE_HOME/lib/*
 
 4、执行结果
 
-<img src="HBase学习.assets\image-20200809231942168.png" alt="image-20200809231942168" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200809231942168.png" alt="image-20200809231942168" style="zoom:80%;" />
 
 可以将t2表中的值拿到。
 
@@ -1685,7 +1685,7 @@ public void firstKeyOnlyFilter() throws Exception {
 
 1、应用场景
 
-<img src="HBase学习.assets\image-20200809220425346.png" alt="image-20200809220425346" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200809220425346.png" alt="image-20200809220425346" style="zoom:80%;" />
 
 2、HBase中布隆过滤器的应用
 
@@ -1697,9 +1697,9 @@ public void firstKeyOnlyFilter() throws Exception {
 
 1、概述
 
-<img src="HBase学习.assets\image-20200810104910812.png" alt="image-20200810104910812" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200810104910812.png" alt="image-20200810104910812" style="zoom:80%;" />
 
-<img src="HBase学习.assets\image-20200810105128335.png" alt="image-20200810105128335" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200810105128335.png" alt="image-20200810105128335" style="zoom:80%;" />
 
 2、创建协处理类
 
@@ -1762,7 +1762,7 @@ enable 'guanzhu'
 put 'guanzhu','canglaoshi','cf:name','xiaoxi'
 ```
 
-<img src="HBase学习.assets\image-20200810115915727.png" alt="image-20200810115915727" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200810115915727.png" alt="image-20200810115915727" style="zoom:80%;" />
 
 网上的协处理卸载，可以参考，未测试：
 
@@ -1776,4 +1776,4 @@ enable 'mytable'
 
 1、简单介绍
 
-<img src="HBase学习.assets\image-20200810120121442.png" alt="image-20200810120121442" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200810120121442.png" alt="image-20200810120121442" style="zoom:80%;" />

@@ -1043,5 +1043,539 @@ group by t.deptno;
 
 Hive 支持通常的 SQL JOIN 语句，但是只支持等值连接，不支持非等值连接。
 
+2、笛卡尔积
 
+（1）产生条件
+
+省略连接条件 ，连接条件无效 ，所有表中的所有行互相连接。
+
+（2）案例
+
+```sql
+hive >  select empno, dname from emp, dept;
+```
+
+3、连接谓词中不支持 or
+
+```sql
+-- 会报错
+select * from emp e join dept d on
+e.deptno=d.deptno or e.ename=d.dname;
+```
+
+### 5、排序
+
+1、介绍
+
+使用order by子句排序
+
+```sql
+ASC（ascend）: 升序（默认）
+DESC（descend）: 降序
+```
+
+案例1：多个列排序-按照部门和工资升序排序
+
+```sql
+hive > select ename, deptno, sal from emp order by deptno,sal ;
+```
+
+2、Sort by排序
+
+Sort By：每个 Reducer 内部进行排序，对全局结果集来说不是排序。
+
+```sql
+-- 设置 reduce 个数
+hive > set mapreduce.job.reduces=3;
+-- 查看设置 reduce 个数
+hive > set mapreduce.job.reduces;
+-- 根据部门编号降序查看员工信息
+hive > select * from emp sort by empno desc;
+-- 将查询结果导入到文件中（按照部门编号降序排序）
+hive > insert overwrite local directory
+'/opt/module/datas/sortby-result'
+select * from emp sort by deptno desc;
+```
+
+但是，我们推荐使用下面的方式（加上分区排序）进行排序。
+
+3、分区排序（Distribute By）
+
+Distribute By：类似 MR 中 partition，进行分区，结合 sort by 使用。 
+
+注意，Hive 要求 DISTRIBUTE BY 语句要写在 SORT BY 语句之前。 
+
+对于 distribute by 进行测试，一定要分配多 reduce 进行处理，否则无法看到 distribute by 的效果。
+
+案例：先按照部门编号分区，再按照员工编号降序排序。
+
+```sql
+hive > set mapreduce.job.reduces=3;
+
+hive > insert overwrite local directory
+'/opt/module/datas/distribute-result' select * from emp
+distribute by deptno sort by empno desc;
+```
+
+4、 Cluster By
+
+当 distribute by 和 sorts by 字段相同时，可以使用 cluster by 方式。 
+
+cluster by 除了具有 distribute by 的功能外还兼具 sort by 的功能。但是排序只能是升序排 序，不能指定排序规则为 ASC 或者 DESC。
+
+```sql
+hive > select * from emp cluster by deptno;
+hive > select * from emp distribute by deptno sort by deptno;
+```
+
+### 6、分桶及抽样查询
+
+1、介绍
+
+分区针对的是数据的存储路径；分桶针对的是数据文件。
+
+分区提供一个隔离数据和优化查询的便利方式。不过，并非所有的数据集都可形成合理的分区，特别是之前所提到过的要确定合适的划分大小这个疑虑。
+
+ 分桶是将数据集分解成更容易管理的若干部分的另一个技术。
+
+2、创建分桶表，数据通过子查询的方式导入
+
+（1）创建一个普通的stu表
+
+```sql
+create table stu(id int, name string)
+row format delimited fields terminated by '\t';
+```
+
+（2）向stu 表中导入数据
+
+```sql
+load data local inpath '/opt/module/datas/student.txt' into table stu;
+```
+
+（3）清空stu_buck表中数据
+
+```sql
+-- stu_buck表结构和stu同
+truncate table stu_buck;
+select * from stu_buck;
+```
+
+（4）通过子查询的方式，导入数据到分桶表
+
+```sql
+insert into table stu_buck
+select id, name from stu;
+```
+
+（5）设置分桶表属性
+
+```sql
+hive > set hive.enforce.bucketing=true;
+hive > set mapreduce.job.reduces=-1;
+hive > insert into table stu_buck
+select id, name from stu;
+```
+
+可以在前端界面中看到，stu_buck已经分成了4个文件。
+
+3、分桶抽样查询
+
+对于非常大的数据集，有时用户需要使用的是一个具有代表性的查询结果而不是全部结果。Hive 可以通过对表进行抽样来满足这个需求。
+
+查询表 stu_buck 中的数据：
+
+```sql
+-- ：tablesample 是抽样语句，语法：TABLESAMPLE(BUCKET x OUT OF y) 。
+hive > select * from stu_buck tablesample(bucket 1 out of 4 on id);
+```
+
+x 表示从哪个 bucket 开始抽取，y决定了抽多少个bucket。
+
+y 必须是 table 总 bucket 数的倍数或者因子。hive 根据 y 的大小，决定抽样的比例。
+
+例 如，table 总共分了 4 份，当 y=2 时，抽取(4/2=)2 个 bucket 的数据，当 y=8 时，抽取(4/8=)1/2 个 bucket 的数据。
+
+如果需要取多个分区，以后的分区号为当前分区号加上y。例如，table 总 bucket 数为 4，tablesample(bucket 1 out of 2)，表示总共抽取（4/2=）2 个 bucket 的数据，抽取第 1(x)个和第 3(x+y)个 bucket 的数据（后一个是x + 2y）。
+
+其中，x 的值必须小于等于 y 的值，否则会报出下面的错误：
+
+```
+FAILED: SemanticException [Error 10061]: Numerator should not be bigger than denominator in sample clause for table stu_buck
+```
+
+### 7、其他常用函数
+
+1、空字段赋值
+
+（1）基本语法
+
+```sql
+-- 如果员工的 comm 为 NULL，则用-1 代替
+hive > select nvl(comm,-1) from emp;
+```
+
+NVL：给值为 NULL 的数据赋值，它的格式是 NVL( string1, replace_with)。它的功能是如果 string1 为 NULL，则 NVL 函数返回 replace_with 的值。
+
+2、时间类
+
+（1）date_format:格式化时间
+
+```sql
+ select date_format('2019-06-29','yyyy-MM-dd');
+```
+
+（2）date_add:时间跟天数相加
+
+```sql
+-- 天数为-5表示时间相减
+select date_add('2019-06-29',5);
+```
+
+3、case when
+
+（1）需求
+
+求出下面数据中不同部门的男女各多少人，结果如下：
+
+```
+A 2 1
+B 1 2
+```
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200914184810562.png" alt="image-20200914184810562" style="zoom:80%;" />
+
+（2）将下面的数据添加到emp_sex.txt文件中
+
+```
+悟空	A	男
+大海	A	男
+宋宋	B	男
+凤姐	A	女
+婷姐	B	女
+婷婷	B	女
+```
+
+（3）创建hive表并导入数据
+
+```sql
+create table emp_sex(
+name string,
+dept_id string,
+sex string)
+row format delimited fields terminated by "\t";
+
+
+load data local inpath '/home/zookeeper/software/emp_sex.txt' into table emp_sex;
+```
+
+（4）按照要求查询数据
+
+```sql
+select
+ dept_id,
+ sum(case sex when '男' then 1 else 0 end) male_count,
+ sum(case sex when '女' then 1 else 0 end) female_count
+from
+ emp_sex
+group by
+ dept_id;
+```
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200914185646820.png" alt="image-20200914185646820" style="zoom:80%;" />
+
+4、行转列
+
+（1）介绍
+
+CONCAT(string A/col, string B/col…)：返回输入字符串连接后的结果，支持任意个输入 字符串。
+
+CONCAT_WS(separator, str1, str2,...)：它是一个特殊形式的 CONCAT()。第一个参数剩表示参数间的分隔符。分隔符可以是与剩余参数一样的字符串。如果分隔符是 NULL， 返回值也将为 NULL。这个函数会跳过分隔符参数后的任何 NULL 和空字符串。分隔符将被加到被连接的字符串之间。
+
+COLLECT_SET(col)：函数只接收基本数据类型，它的主要作用是将某字段的值进行去重汇总，产生 array 类型字段。
+
+（2）需求
+
+把星座和血型一样的人归类到一起。数据如下：
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200914190046779.png" alt="image-20200914190046779" style="zoom:80%;" />
+
+结果如下：
+
+```
+射手座,A	大海|凤姐
+白羊座,A	孙悟空|猪八戒
+白羊座,B	宋宋
+```
+
+（3）创建本地文件 constellation.txt
+
+```
+孙悟空	白羊座	A
+大海	射手座	A
+宋宋	白羊座	B
+猪八戒	白羊座	A
+凤姐	射手座	A
+```
+
+（4）创建hive表并导入数据
+
+```sql
+create table person_info(
+name string,
+constellation string,
+blood_type string)
+row format delimited fields terminated by "\t";
+
+load data local inpath "/home/zookeeper/software/constellation.txt" into table person_info;
+```
+
+（5）按需求查询数据
+
+```sql
+select name,concat(constellation, ",", blood_type) 
+ from person_info;
+ -- 首先得到的结果如下：
+射手座,A	大海
+射手座,A 凤姐
+白羊座,A	孙悟空
+白羊座,A 猪八戒
+白羊座,B	宋宋
+
+-- 将得到的结果进行嵌套，得到图示的结果
+select
+ t1.base,concat_ws('|', collect_set(t1.name)) name
+from
+ (select name,concat(constellation, ",", blood_type) base
+ from person_info) t1
+group by
+ t1.base;
+```
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200914190730860.png" alt="image-20200914190730860" style="zoom:80%;" />
+
+5、列转行
+
+（1）介绍
+
+EXPLODE(col)：将 hive 一列中复杂的 array 或者 map 结构拆分成多行。
+
+```sql
+LATERAL VIEW ：LATERAL VIEW udtf(expression) tableAlias AS columnAlias 
+```
+
+解释：用于和 split, explode 等 UDTF 一起使用，它能够将一列数据拆成多行数据，在此基础上可以对拆分后的数据进行聚合。
+
+（2）将电影分类中的数组数据展开，输入如下：
+
+![image-20200914191559824](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200914191559824.png)
+
+结果如下：
+
+```
+《疑犯追踪》	悬疑
+《疑犯追踪》	动作
+《疑犯追踪》	科幻
+《疑犯追踪》	剧情
+《Lie to me》	悬疑
+《Lie to me》	警匪
+《Lie to me》	动作
+《Lie to me》	心理
+《Lie to me》	剧情
+《战狼 2》	战争
+《战狼 2》	动作
+《战狼 2》	灾难
+```
+
+（3）创建本地movie.txt，导入下面的数据
+
+```
+《疑犯追踪》	悬疑,动作,科幻,剧情
+《Lie to me》	悬疑,警匪,动作,心理,剧情
+《战狼 2》	战争,动作,灾难
+```
+
+（4）创建 hive 表并导入数据
+
+```sql
+create table movie_info(
+ movie string,
+ category array<string>)
+row format delimited fields terminated by "\t"
+collection items terminated by ",";
+
+
+load data local inpath "/home/zookeeper/software/movie.txt" into table
+movie_info;
+```
+
+（5）按照需求查询数据
+
+```sql
+select
+ movie,
+ category_name
+from
+ movie_info lateral view explode(category) table_tmp as
+category_name;
+```
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200914192214041.png" alt="image-20200914192214041" style="zoom:67%;" />
+
+6、窗口函数
+
+（1）介绍
+
+```
+OVER()：指定分析函数工作的数据窗口大小，这个数据窗口大小可能会随着行的变化而变化；
+CURRENT ROW：当前行；
+n PRECEDING：往前 n 行数据；
+n FOLLOWING：往后 n 行数据；
+UNBOUNDED：起点，UNBOUNDED PRECEDING 表示从前面的起点，UNBOUNDED FOLLOWING 表示到后面的终点；
+LAG(col,n)：往前第 n 行数据；
+LEAD(col,n)：往后第 n 行数据；
+NTILE(n)：把有序分区中的行分发到指定数据的组中，各个组有编号，编号从 1 开始，
+对于每一行，NTILE 返回此行所属的组的编号。注意：n 必须为 int 类型。
+```
+
+（2）创建本地 business.txt，并导入下面的数据
+
+```
+jack,2017-01-01,10
+tony,2017-01-02,15
+jack,2017-02-03,23
+tony,2017-01-04,29
+jack,2017-01-05,46
+jack,2017-04-06,42
+tony,2017-01-07,50
+jack,2017-01-08,55
+mart,2017-04-08,62
+mart,2017-04-09,68
+neil,2017-05-10,12
+mart,2017-04-11,75
+neil,2017-06-12,80
+mart,2017-04-13,94
+```
+
+（3）创建 hive 表并导入数据
+
+```sql
+create table business(
+name string,
+orderdate string,
+cost int
+) ROW FORMAT DELIMITED FIELDS TERMINATED BY ',';
+
+load data local inpath "/home/zookeeper/software/business.txt" into table
+business;
+```
+
+（4）需求1-查询在 2017 年 4 月份购买过的顾客及总人数
+
+```sql
+-- over ()写在聚合函数后面，为每一条数据开窗
+select name,count(*) over ()
+from business
+where substring(orderdate,1,7) = '2017-04'
+group by name;
+
+-- 去掉 over ()，输出结果如下：
+jack 1
+mark 4
+-- 去掉 group by name，输出结果如下：
+jack 5
+mark 5
+mark 5
+mark 5
+mark 5
+```
+
+![image-20200914195654282](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200914195654282.png)
+
+over ()表示开窗，开窗的作用范围，仅仅是给count(*)使用，当执行到mart时开一个窗，输出结果为2（此时就是mart和jack两个数据）。
+
+（5）需求2-查询顾客的购买明细及购买总额，并将 cost 按照日期进行累加。
+
+```sql
+-- 对每一个数据都开了一个独立的窗口
+select orderdate,cost,sum(cost) over(order by orderdate)
+from business;
+```
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200914202235733.png" alt="image-20200914202235733" style="zoom:80%;" />
+
+（6）需求3-将每个人的购买明细累加
+
+```sql
+select name,orderdate,cost,sum(cost) over(distribute by name sort by orderdate) from business;
+```
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200914203007580.png" alt="image-20200914203007580" style="zoom:80%;" />
+
+7、Rank排名函数
+
+（1）介绍
+
+```
+RANK() 排序相同时会重复，总数不会变
+DENSE_RANK() 排序相同时会重复，总数会减少
+ROW_NUMBER() 会根据顺序计算
+```
+
+举例如下：
+
+| 成绩 | RANK()排序 | DENSE_RANK()排序 | ROW_NUMBER()排序 |
+| ---- | ---------- | ---------------- | ---------------- |
+| 84   | 1          | 1                | 1                |
+| 84   | 1          | 1                | 2                |
+| 78   | 3          | 2                | 3                |
+| 76   | 4          | 3                | 4                |
+
+（2）需求
+
+计算英语学科成绩排名。
+
+（a）将下面的数据插入到grade.txt中。
+
+```
+孙悟空	英语	68
+大海	英语	84
+宋宋	英语	84
+婷婷	英语	78
+
+select name,
+subject,
+score,
+rank() over(partition by subject order by score desc) rp,
+dense_rank() over(partition by subject order by score desc) drp,
+row_number() over(partition by subject order by score desc) rmp
+from score;
+```
+
+（b）创建 hive 表并导入数据
+
+```sql
+create table score(
+name string,
+subject string,
+score int)
+row format delimited fields terminated by "\t";
+
+hive> load data local inpath '/home/zookeeper/software/grade.txt' into table score;
+```
+
+（c）按需求查询数据
+
+```sql
+-- 按照sroce排序进行累计，order by是个默认的开窗函数，按照subject分区。
+select name,
+subject,
+score,
+rank() over(partition by subject order by score desc) rp,
+dense_rank() over(partition by subject order by score desc) drp,
+row_number() over(partition by subject order by score desc) rmp
+from score;
+```
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200914204421891.png" alt="image-20200914204421891" style="zoom:80%;" />
 
