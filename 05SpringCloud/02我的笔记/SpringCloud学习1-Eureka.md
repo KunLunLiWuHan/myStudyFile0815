@@ -404,7 +404,7 @@ http://localhost/consumer/payment/get/2
 2. 将其他模块中的公共类给删除。
 3. 在maven中clear工程重构项目，然后install。
 
-​		执行mvn clean可将根目录下生成的target文件移除，maven通过install将本地工程打包成jar包，放入到本地仓库中，再通过pom.xml配置依赖引入到当前工程。
+执行mvn clean可将根目录下生成的target文件移除，maven通过install将本地工程打包成jar包，放入到本地仓库中，再通过pom.xml配置依赖引入到当前工程。
 
 1. 其他模块中引入该模块，即在其他模块的pom文件中添加下面的代码。
 
@@ -442,9 +442,9 @@ http://localhost/consumer/payment/get/2
 
 ​		Eureka包含两个组件：Eureka server 和 Eureka client。
 
- 		其中，Eureka server提供服务注册服务，各个微服务节点通过配置启动后，会在Eureka server 中进行注册，这样Eureka server 中的服务注册表将会存储所欲可用服务节点的信息，服务节点的信息可以在界面中直观看到。
+其中，Eureka server提供服务注册服务，各个微服务节点通过配置启动后，会在Eureka server 中进行注册，这样Eureka server 中的服务注册表将会存储所欲可用服务节点的信息，服务节点的信息可以在界面中直观看到。
 
- 		Eureka client通过注册中心进行访问。这是一个Java客户端，可以简化Eureka server的交互，客户端同时也具备一个内置的、使用轮询（round-robin）负载算法的负载均衡器。在应用启动之后，将会向Eureka server发送心跳（默认周期为30秒），如果Eureka server在多个心跳周期内没有接到某个节点的心跳，Eureka server将会从服务注册表中将这个服务节点删除（默认90秒）。
+Eureka client通过注册中心进行访问。这是一个Java客户端，可以简化Eureka server的交互，客户端同时也具备一个内置的、使用轮询（round-robin）负载算法的负载均衡器。在应用启动之后，将会向Eureka server发送心跳（默认周期为30秒），如果Eureka server在多个心跳周期内没有接到某个节点的心跳，Eureka server将会从服务注册表中将这个服务节点删除（默认90秒）。
 
 4、Eureka集群原理说明
 
