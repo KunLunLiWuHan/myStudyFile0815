@@ -71,21 +71,24 @@ default：所有未指定命名空间的表都自动进入该命名空间(默认
 
 具体的话，参考下面的博客：
 
+```http
 https://blog.csdn.net/lavorange/article/details/82775275
-
 https://www.jianshu.com/p/53864dc3f7b4
+```
 
 1、架构角色
 
 （1）Region   Server  
 
-​		`Region Server` 为 `Region` 的管理者，其实现类为 `HRegionServer`，主要作用如下: 
+`Region Server` 为 `Region` 的管理者，其实现类为 `HRegionServer`，主要作用如下: 
+
 （a）对于**数据**的操作：`get, put（增，改）, delete`； 
+
 （b）对于 Region 的操作：`splitRegion（切分）、compactRegion（合并）`。 
 
 （2）Master
 
-​		Master 是所有 Region Server 的管理者，其实现类为 HMaster，主要作用如下： 
+Master 是所有 Region Server 的管理者，其实现类为 HMaster，主要作用如下： 
 
 （a）对于**表**的操作：`create, delete, alter` 
 
@@ -93,11 +96,11 @@ https://www.jianshu.com/p/53864dc3f7b4
 
 （3） Zookeeper  
 
-​		`HBase` 通过 `Zookeeper` 来做 `Master` 的高可用、`RegionServer` 的监控、元数据的入口以及集群配置的维护等工作。 
+`HBase` 通过 `Zookeeper` 来做 `Master` 的高可用、`RegionServer` 的监控、元数据的入口以及集群配置的维护等工作。 
 
 （4） HDFS  
 
-​		`HDFS` 为 `HBase` 提供最终的底层数据存储服务，同时为 `HBase` 提供高可用的支持。 
+`HDFS` 为 `HBase` 提供最终的底层数据存储服务，同时为 `HBase` 提供高可用的支持。 
 
 # 2 HBase安装和部署
 
@@ -300,7 +303,7 @@ hbase(main):007:0> put 'student01','1002','info:age','20'
 （3）扫描查看表结构
 
 ```ini
-hbase(main):008:0> scan 'student'
+hbase(main):008:0> scan 'student01'
 ```
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200805151732525.png" alt="image-20200805151732525" style="zoom:80%;" />
@@ -377,7 +380,7 @@ f1:name    timestamp=1482820567560, value=c
 
 ```shell
 #假设VERSIONS=>4，获取的数据还是如下，因为，在alter中更改为3,即最大只能为3。
-#假设VERSIONS=>4，获取的数据只有最新的value=c(b)两行。
+#假设VERSIONS=>2，获取的数据只有最新的value=c(b)两行。
 hbase(main):002:0> get 't1','1002',{COLUMN=>'f1:name',VERSIONS=>3}
 COLUMN                           CELL                       
 f1:name timestamp=1482820567560,value=c           
@@ -457,8 +460,9 @@ hbase(main):022:0>  get 'student01','1001',{COLUMN=>'info:name',VERSIONS=>3}
 
 ![image-20200805155747920](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200805155747920.png)
 
-写流程： 
-（1）Client 先访问 zookeeper，获取 hbase:meta 表位于哪个 Region Server。 
+写流程：
+
+ （1）Client 先访问 zookeeper，获取 hbase:meta 表位于哪个 Region Server。 
 
 （2）访问对应的 Region Server，获取 hbase:meta 表，根据读请求的 namespace:table/rowkey，查询出目标数据位于哪个 Region Server 中的哪个 Region 中。并将该 table 的 region 信息以及 meta 表的位置信息缓存在客户端的 meta cache，方便下次访问。 
 
@@ -477,6 +481,7 @@ hbase(main):022:0>  get 'student01','1001',{COLUMN=>'info:name',VERSIONS=>3}
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200805163123432.png" alt="image-20200805163123432" style="zoom:80%;" />
 
 MemStore  刷写时机： 
+
 1、 当某个 `memstroe` 的大小达到了 `hbase.hregion.memstore.flush.size` （默认值 128M ），其所在 region 的所有 memstore 都会刷写。 
 当 memstore 的大小达到了 
 
@@ -651,10 +656,10 @@ public class HBaseUtil {
 		}
 	}
 
-	public static Admin getAdmin() {
+	public static HBaseAdmin getAdmin() {
 		//异常在这里进行处理，不要抛出去
 		try {
-			//提取核心对象 admin
+			//提取核心对象 admin，使用该类，可以执行管理员任务
 			HBaseAdmin admin = (HBaseAdmin) connection.getAdmin();
 			return admin;
 		} catch (IOException e) {
@@ -664,16 +669,17 @@ public class HBaseUtil {
 	}
 
 	public static Table getTable() {
-		//获取发哦默认的表
+		//获取默认的表
 		return getTable("DefaultTable");
 	}
 
 	public static Table getTable(String tableName) {
 		Table table = null;
 		try {
-
-			//如果为空，返回为null
-			if (StringUtils.isEmpty(tableName)) return null;
+			//如果为空(""或者null)，返回为null
+			if (StringUtils.isEmpty(tableName)){
+        return null;
+      } 
 
 			//获取table对象
 			table = connection.getTable(TableName.valueOf(tableName));
@@ -726,24 +732,24 @@ public static void showScan(Table table, Scan scan) {
 }
 
 //showResult
-	private static void showResult(Result result) {
-		//表格扫描器
-		CellScanner cellScanner = result.cellScanner();
-		try {
-			//遍历扫描器
-			while (cellScanner.advance()) {
-				//获取一个表格
-				Cell cell = cellScanner.current();
-				//行键 列族 列名 列值
-				System.out.println(new String(CellUtil.cloneRow(cell), "utf-8") + "\t" +
-						new String(CellUtil.cloneFamily(cell), "utf-8")
-						+ "\t" + new String(CellUtil.cloneQualifier(cell), "utf-8") + "\t" +
-						new String(CellUtil.cloneValue(cell), "utf-8"));
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+private static void showResult(Result result) {
+  //表格扫描器
+  CellScanner cellScanner = result.cellScanner();
+  try {
+    //遍历扫描器
+    while (cellScanner.advance()) {
+      //获取一个表格
+      Cell cell = cellScanner.current();
+      //行键 列族 列名 列值
+      System.out.println(new String(CellUtil.cloneRow(cell), "utf-8") + "\t" +
+                         new String(CellUtil.cloneFamily(cell), "utf-8")
+                         + "\t" + new String(CellUtil.cloneQualifier(cell), "utf-8") + "\t" +
+                         new String(CellUtil.cloneValue(cell), "utf-8"));
+    }
+  } catch (IOException e) {
+    e.printStackTrace();
+  }
+}
 ```
 
 再次重构HBaseUtil：
@@ -831,24 +837,53 @@ static {
 ### 3、判断表是否存在
 
 ```java
-  //判断表是否存在
-    public static boolean isTableExist(String tableName) throws Exception {
-        //在 HBase 中管理、访问表需要先创建 HBaseAdmin 对象
-        Connection connection = ConnectionFactory.createConnection(conf);
+//判断表是否存在
+public static boolean isTableExist(String tableName) throws Exception {
+  //在 HBase 中管理、访问表需要先创建 HBaseAdmin 对象
+  Connection connection = ConnectionFactory.createConnection(conf);
 
-        //获取管理员对象
-//        HBaseAdmin admin = new HBaseAdmin(conf); //过时方法
-        HBaseAdmin admin = (HBaseAdmin) connection.getAdmin();
-        boolean exist = admin.tableExists(tableName);
+  //获取管理员对象
+  //  HBaseAdmin admin = new HBaseAdmin(conf); //过时方法
+  HBaseAdmin admin = (HBaseAdmin) connection.getAdmin();
+  boolean exist = admin.tableExists(tableName);
 
-        //关闭连接
-        admin.close();
-        return exist;
-    }
+  //关闭连接
+  admin.close();
+  return exist;
+}
 
 //main测试
  //1、测试表student01是否存在
  System.out.println(isTableExist("student01"));
+```
+
+使用工具类书写：
+
+```java
+package com.xiaolun.demoTest03;
+
+import org.apache.hadoop.hbase.client.HBaseAdmin;
+
+import java.io.IOException;
+
+public class Demo01 {
+   public static void main(String[] args) {
+      System.out.println(isTableExist("fruit"));
+   }
+
+   public static boolean isTableExist(String tableName) {
+      //获取管理员对象
+      boolean exist = false;
+      try {
+       //执行到这里的时候，就是可以进入static中的方法，那么在其他类中就不用写conf方法了
+         HBaseAdmin admin = HBaseUtil.getAdmin();
+         exist = admin.tableExists(tableName);
+      } catch (IOException e) {
+         e.printStackTrace();
+      }
+      return exist;
+   }
+}
 ```
 
 ### 4、创建表
@@ -904,17 +939,17 @@ createTable("student02", "info1", "info2");
 ### 5、删除表
 
 ```java
-  //删除表
-    public static void dropTable(String tableName) throws Exception {
-        HBaseAdmin admin = new HBaseAdmin(conf);
-        if (isTableExist(tableName)) {
-            admin.disableTable(tableName);
-            admin.deleteTable(tableName);
-            System.out.println("表" + tableName + "删除成功！");
-        } else {
-            System.out.println("表" + tableName + "不存在！");
-        }
-    }
+//删除表
+public static void dropTable(String tableName) throws Exception {
+  HBaseAdmin admin = new HBaseAdmin(conf);
+  if (isTableExist(tableName)) {
+    admin.disableTable(tableName);
+    admin.deleteTable(tableName);
+    System.out.println("表" + tableName + "删除成功！");
+  } else {
+    System.out.println("表" + tableName + "不存在！");
+  }
+}
 
 //删除表测试
 dropTable("student02");
@@ -1087,9 +1122,38 @@ String rowName = "1002";     getVersion("student01",rowName.getBytes(),"info","n
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200806161423550.png" alt="image-20200806161423550" style="zoom:80%;" />
 
+### 10、更改表-alter
+
+```java
+/**
+ * @desc modify table
+ * @param tableName
+ */
+public static void alter(String tableName){
+   HBaseAdmin admin = HBaseUtil.getAdmin();
+   //创建表的描述器
+   try {
+      HTableDescriptor tableDescriptor = admin.getTableDescriptor(TableName.valueOf(tableName));
+      //添加列族
+      HColumnDescriptor hColumnDescriptor = new HColumnDescriptor("f1");
+      tableDescriptor.addFamily(hColumnDescriptor);
+      admin.modifyTable(tableName, tableDescriptor);
+   } catch (IOException e) {
+      e.printStackTrace();
+   }finally {
+      HBaseUtil.close(admin);
+   }
+}
+
+//测试
+alter("fruit");
+```
+
+可以为已经已经创建的表添加一个新的列族f1。
+
 ## 4.3 与MapReduce交互
 
-​		通过 HBase 的相关 JavaAPI，我们可以实现伴随 HBase 操作的 MapReduce 过程，比如使用MapReduce 将数据从本地文件系统导入到 HBase 的表中，比如我们从 HBase 中读取一些原始数据后使用 MapReduce 做数据分析。 
+通过 HBase 的相关 JavaAPI，我们可以实现伴随 HBase 操作的 MapReduce 过程，比如使用MapReduce 将数据从本地文件系统导入到 HBase 的表中，比如我们从 HBase 中读取一些原始数据后使用 MapReduce 做数据分析。 
 
 ### 1、官方 HBase-MapReduce
 
