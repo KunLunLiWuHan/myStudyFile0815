@@ -24,7 +24,9 @@
 
 （6）官网
 
+```http
 https://cloud.spring.io/spring-cloud-static/spring-cloud-config/2.2.1.RELEASE/reference/html/
+```
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112041.png" alt="image-20200821120223258" style="zoom:67%;" />
 
@@ -144,7 +146,13 @@ public class ConfigCenterMain3344 {
 
 5、测试
 
-​		启动cloud-eureka-Server7001，然后cloud-config-center-3344，输入网址：http://config-3344.com:3344/master/config-dev.yml，可以从从Github上获取配置内容。
+​		启动cloud-eureka-Server7001，然后cloud-config-center-3344，输入网址：
+
+```http
+http://config-3344.com:3344/master/config-dev.yml
+```
+
+可以从从Github上获取配置内容。
 
 ### 3、配置读取规则
 
@@ -318,7 +326,19 @@ public class ConfigClientController {
 
 5、测试
 
-​		启动cloud-eureka-Server7001，然后cloud-config-center-3344，最后启动cloud-config-client-3355，首先输入网址：http://config-3344.com:3344/master/config-dev.yml为cloud-config-center-3344做自测，然后客户端cloud-config-client-3355输入网址：http://localhost:3355/configInfo来访问cloud-config-center-3344，可以从从Github上获取配置内容。
+​		启动cloud-eureka-Server7001，然后cloud-config-center-3344，最后启动cloud-config-client-3355，首先输入网址：
+
+```http
+http://config-3344.com:3344/master/config-dev.yml
+```
+
+为cloud-config-center-3344做自测，然后客户端cloud-config-client-3355输入网址：
+
+```http
+http://localhost:3355/configInfo
+```
+
+来访问cloud-config-center-3344，可以从从Github上获取配置内容。
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112047.png" alt="image-20200821153729551" style="zoom:50%;" />
 
@@ -326,17 +346,17 @@ public class ConfigClientController {
 
 ### 1、介绍
 
-​		Linux运维修改GitHub上的配置文件内容做调整，刷新cloud-config-center-3344，发现ConfigServer配置中心立刻响应，刷新cloud-config-client-3355，发现ConfigServer客户端没有任何响应，除非自己重启或者重新加载。避免每次更新配置都要重启客户端微服务cloud-config-client-3355，我们应该对该模块重新配置。
+Linux运维修改GitHub上的配置文件内容做调整，刷新cloud-config-center-3344，发现ConfigServer配置中心立刻响应，刷新cloud-config-client-3355，发现ConfigServer客户端没有任何响应，除非自己重启或者重新加载。避免每次更新配置都要重启客户端微服务cloud-config-client-3355，我们应该对该模块重新配置。
 
 ### 2、重构cloud-config-client-3355
 
 1、pom中引入actuator监控
 
 ```xml
-   <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
 ```
 
 2、修改bootstrap.yml,暴露监控端口
@@ -363,7 +383,7 @@ curl -X POST "http://localhost:3355/actuator/refresh"
 
 5、测试
 
-​		启动cloud-eureka-Server7001，然后cloud-config-center-3344，最后启动cloud-config-client-3355。运维人员修改Github，然后进行第4步的刷新cloud-config-client-3355操作（访问http://localhost:3355/configInfo），在客户端cloud-config-client-3355能够刷新到最新配置内容，避免了服务的重启。
+启动cloud-eureka-Server7001，然后cloud-config-center-3344，最后启动cloud-config-client-3355。运维人员修改Github，然后进行第4步的刷新cloud-config-client-3355操作（访问http://localhost:3355/configInfo），在客户端cloud-config-client-3355能够刷新到最新配置内容，避免了服务的重启。
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112048.png" alt="image-20200821154943723" style="zoom:80%;" />
 
@@ -409,7 +429,11 @@ https://www.bilibili.com/video/av55976700?from=search&seid=15010075915728605208
 
 1、安装Erlang
 
-下载地址：http://erlang.org/download/otp_win64_21.3.exe
+下载地址：
+
+```http
+http://erlang.org/download/otp_win64_21.3.exe
+```
 
 步骤：
 
@@ -423,7 +447,11 @@ https://www.bilibili.com/video/av55976700?from=search&seid=15010075915728605208
 
 2、安装RabbitMQ
 
-下载地址：https://dl.bintray.com/rabbitmq/all/rabbitmq-server/3.7.14/rabbitmq-server-3.7.14.exe
+下载地址：
+
+```http
+https://dl.bintray.com/rabbitmq/all/rabbitmq-server/3.7.14/rabbitmq-server-3.7.14.exe
+```
 
 步骤：
 
