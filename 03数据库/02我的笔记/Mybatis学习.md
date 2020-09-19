@@ -924,7 +924,7 @@ public class UsersServiceImpl implements UsersService {
 @Controller
 @RequestMapping("/users")
 public class UsersController {
-	@Autowired
+	@Autowired //导入的是一个接口
 	private UsersService usersService;
 	//页面跳转
 	@RequestMapping("/{page}")
@@ -1428,7 +1428,7 @@ public class User {
 ```java
 public interface UserDao {
     List <User> getUserList();
-      List<User> getUserLike(String value); //模糊查询，通配符
+    List<User> getUserLike(String value); //模糊查询，通配符
     
     int addUser(User user); //增加用户
     int addUser2(Map<String,Object> map); //使用Map来执行添加
@@ -1828,28 +1828,28 @@ Mapped Statements collection does not contain value for com.xiaolun.dao.userDao.
 3. **测试**
 
 ```java
- @Test //测试foreach标签
-    public void queryForeach(){
+@Test //测试foreach标签
+public void queryForeach(){
 
-        SqlSession sqlSession = MybatisUtils.getSqlSession();
+  SqlSession sqlSession = MybatisUtils.getSqlSession();
 
-        UserDao mapper = sqlSession.getMapper(UserDao.class);
-        Map<String, List<Integer>> map = new HashMap<String, List<Integer>>();
-        List<Integer> ids = new ArrayList<Integer>();
+  UserDao mapper = sqlSession.getMapper(UserDao.class);
+  Map<String, List<Integer>> map = new HashMap<String, List<Integer>>();
+  List<Integer> ids = new ArrayList<Integer>();
 
-        ids.add(1);
-        ids.add(2);
-        ids.add(3);
-        map.put("ids", ids);
+  ids.add(1);
+  ids.add(2);
+  ids.add(3);
+  map.put("ids", ids);
 
-        List<User> userList = mapper.queryForeach(map);
+  List<User> userList = mapper.queryForeach(map);
 
-        for (User user:userList) {
-            System.out.println(user);
-        }
+  for (User user:userList) {
+    System.out.println(user);
+  }
 
-        sqlSession.close();
-    }
+  sqlSession.close();
+}
 ```
 
 + 控制台可以将id属于（1，2，3）范围i中的用户查找出来。
@@ -2071,18 +2071,18 @@ password = 123
 
 ```java
  @Test 
-    public void test2(){
+public void test2(){
 
-        SqlSession sqlSession = MybatisUtils.getSqlSession();
+  SqlSession sqlSession = MybatisUtils.getSqlSession();
 
-        StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
-        List<Student> studentList = mapper.getStudent();
-        for (Student student : studentList) {
-            System.out.println(student);
-        }
-        //关闭sqlSession
-        sqlSession.close();
-    }
+  StudentMapper mapper = sqlSession.getMapper(StudentMapper.class);
+  List<Student> studentList = mapper.getStudent();
+  for (Student student : studentList) {
+    System.out.println(student);
+  }
+  //关闭sqlSession
+  sqlSession.close();
+}
 ```
 
 + 控制台输出
@@ -2183,8 +2183,6 @@ public interface TeacherMapper {
         select *from student where tid = #{id}
     </select>
 ```
-
-
 
 + **测试类**
 

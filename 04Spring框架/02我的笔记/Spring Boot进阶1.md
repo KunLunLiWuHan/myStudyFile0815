@@ -879,61 +879,23 @@ public class Users {
     @Column(name = "address")
     private String address;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    @Override
-    public String toString() {
-        return "Users{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", address='" + address + '\'' +
-                '}';
-    }
+   // getter/setter/toString方法
 }
 ```
 
-+ `@Id`：导入的包要正确，即`import javax.persistence.Id`。
-+ 创建一个实体类，用于定义要存储到未定义表名的数据库中，成员属性要生成相应的`get()`和`set()`方法。
+`@Id`：导入的包要正确，即`import javax.persistence.Id`。
+
+创建一个实体类，用于定义要存储到未定义表名的数据库中，成员属性要生成相应的`get()`和`set()`方法。
 
 ### 5.2.4 编写DAO接口
 
 ```java
+// Integer表示实体类ID的类型
 public interface UsersRepository extends JpaRepository<Users, Integer> {
 }
 ```
 
-+ 要创建存储库，只需扩展 `JapRepository` 接口即可。它默认提供了很多方法，此接口无需实现。它可以直接注入并在服务类中使用。
+要创建存储库，只需扩展 `JapRepository` 接口即可。它默认提供了很多方法，此接口无需实现。它可以直接注入并在服务类中使用。
 
 ### 5.2.5 编写测试类
 
@@ -955,7 +917,7 @@ public class UsersRepositoryTest {
 }
 ```
 
-+ 结果是在`db2`数据库中可以看到数据被加入到表“`t_users`”中了，事先并没有创建表“`t_users`”。
+结果是在`db2`数据库中可以看到数据被加入到表“`t_users`”中了，事先并没有创建表“`t_users`”。
 
 ## 5.3 Spring Data JPA提供的核心接口
 
@@ -973,7 +935,7 @@ public interface UsersRepositoryByName extends Repository<Users,Integer> {
 }
 ```
 
-+ 方法的名称必须遵循驼峰式命名规则，`findBy`（关键字） + 属性名称（首字母要大写）+查询条件（首字母大写），比如：`findByNameEquals`()。
+方法的名称必须遵循驼峰式命名规则，`findBy`（关键字） + 属性名称（首字母要大写）+查询条件（首字母大写），比如：`findByNameEquals`()。
 
 1. 测试类代码
 
@@ -1214,17 +1176,13 @@ public void PagingAndSortingRepositoryTest(){
 List<Users> list = (List<Users>) this.usersRepositoryPagingAndSorting.findAll(sort);
 ```
 
-+ 对于排序的这个`findAll`()方法的返回值需要做强制类型转换，但是在使用`JpaRepository`接口时，就不需要强制类型转换，即“`List<Users> list = this. usersRepository.findAll(sort);`”
+对于排序的这个`findAll`()方法的返回值需要做强制类型转换，但是在使用`JpaRepository`接口时，就不需要强制类型转换，即“`List<Users> list = this. usersRepository.findAll(sort);`”
 
 ### 5.3.5 JpaSpecificationExectuor接口
 
 该接口主要是提供了多条件查询的支持，并且可以在查询中添加分页和排序。
 
 注意：该接口是单独存在的，完全独立。
-
-![image-20200413233830411](Spring Boot学习.assets/image-20200413233830411.png)
-
-​						图6.3 JpaSpecificationExectuor接口方法
 
 #### 5.3.5.1  DAO层代码
 

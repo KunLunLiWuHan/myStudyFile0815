@@ -405,8 +405,6 @@ Spring Cloud Bus配合Spring Cloud Config使用可以实现配置的动态刷新
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112049.png" alt="image-20200821160310303" style="zoom:50%;" />
 
-
-
 Bus支持两种消息代理：RabbitMQ和Kafka。
 
 （3）作用
