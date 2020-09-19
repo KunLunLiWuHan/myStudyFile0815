@@ -126,9 +126,9 @@ git config --global user.name "xiaolun" #名称
 git config --global user.email 3493826518@qq.com #邮箱
 ```
 
-​		只需要做一次这个设置，如果你传递了 --global选项，因为Git将总是会使用该信息来处理你在系统中所做的一切操作。
+只需要做一次这个设置，如果你传递了 --global选项，因为Git将总是会使用该信息来处理你在系统中所做的一切操作。
 
-​			如果你需要在一个特定的项目中使用不同的名称或者e-mail地址，你可以在该项目中运行命令而不使用--global选项。总之，--global为全局配置，不为某个项目的特定配置。
+如果你需要在一个特定的项目中使用不同的名称或者e-mail地址，你可以在该项目中运行命令而不使用--global选项。总之，--global为全局配置，不为某个项目的特定配置。
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134047.png" alt="image-20200414225455568" style="zoom:80%;" />
 
