@@ -1,8 +1,8 @@
 #   1 介绍
 
-​		Zookeeper是一个开源的分布式的，为分布式应用提供协调服务的Apache项目。
+Zookeeper是一个开源的分布式的，为分布式应用提供协调服务的Apache项目。
 
-​		Zookeeper从设计模式角度来理解：是一个基于观察者模式设计的分布式服务管理框架，它负责存储和管理数据，然后接受观察者的注册，一旦这些数据的状态发生变化，Zookeeper就对它上面已经注册的观察者做出相应的反应（通知）。
+Zookeeper从设计模式角度来理解：是一个基于观察者模式设计的分布式服务管理框架，它负责存储和管理数据，然后接受观察者的注册，一旦这些数据的状态发生变化，Zookeeper就对它上面已经注册的观察者做出相应的反应（通知）。
 
 结构图：观察者可以理解为客户端。
 
@@ -23,7 +23,7 @@
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130756.png" alt="image-20200711111332088" style="zoom:80%;" />
 
-​		Zookeeper数据模型的结构与Unix文件系统很类似，整体上可以看成是一棵树，每个节点称作一个ZNode（（即zookeeper node），一个znode可以有多个子节点。每个ZNode默认能够存储1MB的数据，每个ZNode都可以通过其路径唯一标识，比如/ns1/itcast/mysql/schema1/table1，此处ns-1、itcast、mysql、schema1、table1分别是 根节点、2级节点、3级节点以及4级节点；其中ns-1是itcast的父节点，itcast是ns-1的子 节点，itcast是mysql的父节点，mysql是itcast的子节点，以此类推。
+Zookeeper数据模型的结构与Unix文件系统很类似，整体上可以看成是一棵树，每个节点称作一个ZNode（（即zookeeper node），一个znode可以有多个子节点。每个ZNode默认能够存储1MB的数据，每个ZNode都可以通过其路径唯一标识，比如/ns1/itcast/mysql/schema1/table1，此处ns-1、itcast、mysql、schema1、table1分别是 根节点、2级节点、3级节点以及4级节点；其中ns-1是itcast的父节点，itcast是ns-1的子 节点，itcast是mysql的父节点，mysql是itcast的子节点，以此类推。
 
 ​		znode，兼具文件和目录两种特点。既像文件一样维护着数据、元信息、ACL、时间戳等数据结构，又像目录一样可以作为路径标识的一部分。
 
@@ -35,7 +35,7 @@
 
  **节点状态stat的属性**
 
-​		在zookeeper安装成功之后，我们可以在在zookeeper shell中使用get命令查看指定路径节点的data、stat信息：
+在zookeeper安装成功之后，我们可以在在zookeeper shell中使用get命令查看指定路径节点的data、stat信息：
 
 ```ini
 [zk: localhost:2181(CONNECTED) 7] get /ns-1/tenant
@@ -67,22 +67,22 @@ numChildren = 2
 + dataLength：数据内容的长度 
 + numChildren：数据节点当前的子节点个数
 
-​		对于节点各个属性，其中一个重要的概念是 Zxid(ZooKeeper Transaction Id)，ZooKeeper 节点的每一次更改都具有唯一的 Zxid，如果 Zxid1 小于 Zxid2，则 Zxid1 的更改发生在 Zxid2 更改之前。
+对于节点各个属性，其中一个重要的概念是 Zxid(ZooKeeper Transaction Id)，ZooKeeper 节点的每一次更改都具有唯一的 Zxid，如果 Zxid1 小于 Zxid2，则 Zxid1 的更改发生在 Zxid2 更改之前。
 
 节点类型:
 
-​		zookeeper中的节点有两种，分别为临时节点和永久节点。节点的类型在创建时即 被确定，并且不能改变。 
+zookeeper中的节点有两种，分别为临时节点和永久节点。节点的类型在创建时即 被确定，并且不能改变。 
 
 + 临时节点：该节点的生命周期依赖于创建它们的会话。一旦会话(Session)结束，临 时节点将被自动删除，当然可以也可以手动删除。虽然每个临时的Znode都会绑定到 一个客户端会话，但他们对所有的客户端还是可见的。另外，ZooKeeper的临时节点不允许拥有子节点。 
 + 持久化节点：该节点的生命周期不依赖于会话，并且只有在客户端显示执行删除操作 的时候，他们才能被删除
 
 ## 1.3 应用场景
 
-​		提供的服务包括：统一命名服务、统一配置管理、统一集群管理、服务器节点动态上下线、软负载均衡等。
+提供的服务包括：统一命名服务、统一配置管理、统一集群管理、服务器节点动态上下线、软负载均衡等。
 
 ### 1、统一命名服务
 
-​		在分布式环境下，经常需要对应用/服务进行统一命名，便于识别。例如：IP不容易记住，而域名容易记住。
+在分布式环境下，经常需要对应用/服务进行统一命名，便于识别。例如：IP不容易记住，而域名容易记住。
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130757.png" alt="image-20200711111939429" style="zoom:80%;" />
 

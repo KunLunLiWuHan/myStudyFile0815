@@ -1,6 +1,6 @@
 # 1 介绍
 
-​		HBase是一种分布式，可扩展，支持海量数据村塾的NoSQL数据库。从HBase的底层物理存储结果（k-v）来看，HBase更像一个`multi-dimensional map`。
+HBase是一种分布式，可扩展，支持海量数据村塾的NoSQL数据库。从HBase的底层物理存储结果（k-v）来看，HBase更像一个`multi-dimensional map`。
 
 ## 1.1 Hbase逻辑结构
 
@@ -12,13 +12,13 @@
 
 ## 1.3 数据模型
 
-1、Name   Space  
+1、Name Space 
 
 （1）命名空间
 
-​		类似于关系型数据库的 DatabBase 概念，每个命名空间下有多个表。HBase有两个自带的命名空间，分别是 hbase 和 default，hbase 中存放的是 HBase 内置的表，default 表是用户默认使用的命名空间。 
+类似于关系型数据库的 DatabBase 概念，每个命名空间下有多个表。HBase有两个自带的命名空间，分别是 hbase 和 default，hbase 中存放的是 HBase 内置的表，default 表是用户默认使用的命名空间。 
 
-​		表和命名空间的隶属关系在创建的时候通过如下的方式决定：
+表和命名空间的隶属关系在创建的时候通过如下的方式决定：
 
 ```shell
 #Create a namespace
@@ -41,29 +41,29 @@ default：所有未指定命名空间的表都自动进入该命名空间(默认
 
 2、 Region  
 
-​		类似于关系型数据库的表概念。不同的是，HBase 定义表时只需要声明列族即可，不需要声明具体的列。
+类似于关系型数据库的表概念。不同的是，HBase 定义表时只需要声明列族即可，不需要声明具体的列。
 
-​		这意味着，往 HBase 写入数据时，字段可以动态、按需指定。因此，和关系型数据库相比，HBase 能够轻松应对字段变更的场景。
+这意味着，往 HBase 写入数据时，字段可以动态、按需指定。因此，和关系型数据库相比，HBase 能够轻松应对字段变更的场景。
 
-​		一个命名空间或者一张表，可以被固定到一组RegionServers上。
+一个命名空间或者一张表，可以被固定到一组RegionServers上。
 
 3、Row  
 
-​		HBase 表中的每行数据都由一个  `RowKey`  和多个  `Column`（列）组成，数据是按照 RowKey的字典顺序存储的， 并且查询数据时只能根据 `RowKey` 进行检索， 所以 `RowKey` 的设计十分重要。 
+HBase 表中的每行数据都由一个  `RowKey`  和多个  `Column`（列）组成，数据是按照 RowKey的字典顺序存储的， 并且查询数据时只能根据 `RowKey` 进行检索， 所以 `RowKey` 的设计十分重要。 
 
 4、Column  
 
-​		HBase 中的每个列都由 `Column Family`(列族)和 `Column Qualifier`（列限定符）进行限定，例如 info：name，info：age。建表时，只需指明列族，而列限定符无需预先定义。 
+HBase 中的每个列都由 `Column Family`(列族)和 `Column Qualifier`（列限定符）进行限定，例如 info：name，info：age。建表时，只需指明列族，而列限定符无需预先定义。 
 
 5、Time   Stamp 
 
-​		用于标识数据的不同版本（version），每条数据写入时，如果不指定时间戳，系统会自动为其加上该字段，其值为写入 HBase 的时间。
+用于标识数据的不同版本（version），每条数据写入时，如果不指定时间戳，系统会自动为其加上该字段，其值为写入 HBase 的时间。
 
-​		每个单元格都保存着同一份数据的多个版本，这些版本采用时间戳进行索引。
+每个单元格都保存着同一份数据的多个版本，这些版本采用时间戳进行索引。
 
 6、 Cell
 
-​		由`{rowkey, column Family：column Qualifier, time Stamp}` 唯一确定的单元。cell 中的数据是没有类型的，全部是字节码形式存贮。
+由`{rowkey, column Family：column Qualifier, time Stamp}` 唯一确定的单元。cell 中的数据是没有类型的，全部是字节码形式存贮。
 
 ## 1.4 HBase基本架构
 
@@ -119,7 +119,7 @@ Master 是所有 Region Server 的管理者，其实现类为 HMaster，主要�
  bin/zkServer.sh start
 ```
 
-2、hadoop正常部署
+2、hadoop正常部署并启动之
 
 ```ini
 [zookeeper@hadoop101 hadoop-2.7.2]$ sbin/start-dfs.sh 
@@ -158,7 +158,7 @@ export HBASE_MANAGES_ZK=false
    <value>true</value> 
   </property> 
  
-   <!-- 0.98 后的新变动，之前版本没有.port,默认端口为 60000 --> 
+<!-- 0.98 后的新变动，之前版本没有.port,默认端口为 60000 --> 
   <property> 
    <name>hbase.master.port</name> 
    <value>16000</value> 
@@ -166,13 +166,19 @@ export HBASE_MANAGES_ZK=false
  
   <property>    
    <name>hbase.zookeeper.quorum</name> 
-   <value>hadoop102,hadoop103,hadoop101</value>
+   <value>hadoop101,hadoop102,hadoop103</value>
   </property> 
  
   <property>    
    <name>hbase.zookeeper.property.dataDir</name> 
-      <value>/home/zookeeper/software/zookeeper-3.4.10/HBaseData</value> 
+   <value>/home/zookeeper/software/zookeeper-3.4.10/HBaseData</value> 
   </property> 
+  
+  <property>
+    <name>zookeeper.znode.parent</name>
+    <value>/hbase</value>
+	</property>
+  
 </configuration> 
 ```
 
@@ -184,7 +190,7 @@ hadoop103
 hadoop104
 ```
 
-（d）软连接 hadoop 配置文件到 HBase： 
+（d）软连接 hadoop 配置文件到 HBase
 
 ```ini
 ln -s /home/zookeeper/software/hadoop-2.7.2/etc/hadoop/core-site.xml  /home/zookeeper/software/hbase-1.3.1/conf/core-site.xml
@@ -253,7 +259,9 @@ HRegionServer
 
 （2）通过“host:port”的方式来访问 HBase 管理页面
 
+```http
 http://hadoop101:16010
+```
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200805145435561.png" alt="image-20200805145435561" style="zoom:80%;" />
 
@@ -446,15 +454,15 @@ hbase(main):022:0>  get 'student01','1001',{COLUMN=>'info:name',VERSIONS=>3}
 
 1、StoreFile
 
-​		保存实际数据的物理文件，StoreFile 以 HFile 的形式存储在 HDFS 上。每个 Store 会有一个或多个 StoreFile（HFile），数据在每个 StoreFile 中都是有序的。 
+保存实际数据的物理文件，StoreFile 以 HFile 的形式存储在 HDFS 上。每个 Store 会有一个或多个 StoreFile（HFile），数据在每个 StoreFile 中都是有序的。 
 
 2、MemStore
 
-​		写缓存，由于 HFile 中的数据要求是有序的，所以数据是先存储在 MemStore 中，排好序后，等到达刷写时机才会刷写到 HFile，每次刷写都会形成一个新的 HFile。 
+写缓存，由于 HFile 中的数据要求是有序的，所以数据是先存储在 MemStore 中，排好序后，等到达刷写时机才会刷写到 HFile，每次刷写都会形成一个新的 HFile。 
 
 3、WAL
 
-​		由于数据要经 MemStore 排序后才能刷写到 HFile，但把数据保存在内存中会有很高的概率导致数据丢失，为了解决这个问题，数据会先写在一个叫做 Write-Ahead logfile （预写入日志）的文件中，然后再写入 MemStore 中。所以在系统出现故障的时候，数据可以通过这个日志文件重建。 
+由于数据要经 MemStore 排序后才能刷写到 HFile，但把数据保存在内存中会有很高的概率导致数据丢失，为了解决这个问题，数据会先写在一个叫做 Write-Ahead logfile （预写入日志）的文件中，然后再写入 MemStore 中。所以在系统出现故障的时候，数据可以通过这个日志文件重建。 
 
 ## 3.2、写流程
 
@@ -581,6 +589,8 @@ C:\Windows\System32\drivers\etc\hosts
 
 3、连接到HBase服务器
 
+（1）配置属性连接服务器
+
 ```java
 //测试连接
 public class HBase_connect {
@@ -600,6 +610,56 @@ public class HBase_connect {
       } catch (IOException e) {
          e.printStackTrace();
       }finally {
+         try {
+            admin.close();
+         } catch (IOException e) {
+            e.printStackTrace();
+         }
+      }
+   }
+}
+```
+
+（2）配置文件连接服务器
+
+（a）在resources文件中导入hbase-site.xml配置文件，该文件一般从集群中的配置文件中复制而来。
+
+（b）连接hbase服务器
+
+```java
+package com.xiaolun.demoTest01;
+
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.hbase.HBaseConfiguration;
+import org.apache.hadoop.hbase.TableName;
+import org.apache.hadoop.hbase.client.Admin;
+import org.apache.hadoop.hbase.client.Connection;
+import org.apache.hadoop.hbase.client.ConnectionFactory;
+
+import java.io.IOException;
+
+//测试连接
+public class HBase_connect {
+   public static void main(String[] args) throws Exception {
+
+      // 0.先获取HadoopAPI中的Configuration对象
+      //Configuration hconf = new Configuration();
+      // 1.获取HBaseConfiguration对象
+      //Configuration conf = HBaseConfiguration.create(hconf);
+     
+     //简单方式来连接
+     Configuration conf = HBaseConfiguration.create();
+      // 2.获取Connection对象
+      Connection connection = ConnectionFactory.createConnection(conf);
+      // 3.获取Admin对象
+      Admin admin = connection.getAdmin();
+      try {
+         //4、通过Admin来测试（表fruit是否存在）
+         boolean exists = admin.tableExists(TableName.valueOf("fruit"));
+         System.out.println("exists --> " + exists); //exists --> true
+      } catch (IOException e) {
+         e.printStackTrace();
+      } finally {
          try {
             admin.close();
          } catch (IOException e) {

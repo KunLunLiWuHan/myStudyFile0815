@@ -27,7 +27,7 @@
 server:
   port: 8004
 
-#服务别名 --- 注册zookeeper的 注册中心名称
+#服务别名 --- 注册zookeeper的注册中心名称
 #使用下面的39.96.161.64的地址并开通端口号，可以进行服务器的注册
 spring:
   application:
@@ -41,7 +41,7 @@ spring:
 
 ```java
 /**
- * @EnableDiscoveryClient
+ *  @EnableDiscoveryClient
  *  此时不用添加Eureka
  *  该注解用于向使用consul或者zookeeper作为注册中心时注册服务
  */
@@ -79,7 +79,7 @@ public class PaymentController {
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111022.png" alt="image-20200817101518444" style="zoom: 50%;" />
 
-​		这是因为我们服务器上使用的zookeeper的版本是3.4.10，而IDEA中导入的依赖中的版本是3.5.3，导致zookeeper版本jar包冲突。
+这是因为我们服务器上使用的zookeeper的版本是3.4.10，而IDEA中导入的依赖中的版本是3.5.3，导致zookeeper版本jar包冲突。
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111023.png" alt="image-20200817225351688" style="zoom:80%;" />
 
@@ -114,7 +114,13 @@ public class PaymentController {
 
 7、测试
 
-（1）输入http://localhost:8004/payment/zk，会在网页上返回一个端口和一串流水号。
+（1）输入下面的网址：
+
+```http
+http://localhost:8004/payment/zk
+```
+
+会在网页上返回一个端口和一串流水号。
 
 （2）获得json串后用在线工具查看。
 
@@ -213,13 +219,21 @@ public class OrderZKController {
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111026.png" alt="image-20200817230538582" style="zoom: 50%;" />
 
-（2）输入网址：http://localhost:8004/payment/zk
+（2）输入网址：
+
+```http
+http://localhost:8004/payment/zk
+```
 
 会在网页上返回一个端口和一串流水号。
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111027.png" alt="image-20200817231032580" style="zoom:80%;" />
 
-（3）输入网址：http://localhost/consumer/payment/zk
+（3）输入网址：
+
+```http
+http://localhost/consumer/payment/zk
+```
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111028.png" alt="image-20200817231502460" style="zoom:80%;" />
 
@@ -229,9 +243,17 @@ public class OrderZKController {
 
 1、网址
 
-介绍网址：https://www.consul.io/intro/index.html
+介绍网址：
 
-下载网址：https://www.consul.io/downloads.html
+```http
+https://www.consul.io/intro/index.html
+```
+
+下载网址：
+
+```http
+https://www.consul.io/downloads.html
+```
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111029.png" alt="image-20200817231701528" style="zoom: 50%;" />
 
@@ -265,7 +287,11 @@ consul --version
 consul agent -dev
 ```
 
-（2）通过以下地址可以访问Consul的首页：http://localhost:8500
+（2）通过以下地址可以访问Consul的首页：
+
+```http
+http://localhost:8500
+```
 
 （3）结果页面
 
@@ -329,7 +355,19 @@ public class PaymentController {
 
 5、测试
 
-​		输入网址：http://localhost:8006/payment/consul，将会有一个端口号+ 一串流水号；输入网址：http://localhost:8500将会弹出下面的界面：
+​		输入网址：
+
+```http
+http://localhost:8006/payment/consul
+```
+
+将会有一个端口号+ 一串流水号；输入网址：
+
+```http
+http://localhost:8500
+```
+
+将会弹出下面的界面：
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111033.png" alt="image-20200817232546649" style="zoom: 50%;" />
 
@@ -407,7 +445,13 @@ public class OrderConsulController {
 
 5、测试
 
-（1）输入网址：http://localhost:8500，将会弹出下面的界面：
+（1）输入网址：
+
+```http
+http://localhost:8500
+```
+
+将会弹出下面的界面：
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111035.png" alt="image-20200817233015020" style="zoom: 67%;" />
 
@@ -507,7 +551,9 @@ CAP理论关注粒度是数据，而不是整体系统设计的策略。
 
 （1）官网
 
+```http
 https://docs.spring.io/spring-framework/docs/5.2.2.RELEASE/javadoc-api/org/springframework/web/client/RestTemplate.html
+```
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111052.png" alt="image-20200820085727229" style="zoom:67%;" />
 
@@ -570,7 +616,13 @@ public class OrderMain80 {
 
 （5）测试
 
-输入网址：http://localhost/consumer/payment/get/5，可以随机访问。
+输入网址：
+
+```http
+http://localhost/consumer/payment/get/5
+```
+
+可以随机访问。
 
 ## 4、手写负载均衡算法
 
@@ -660,7 +712,13 @@ private DiscoveryClient discoveryClient;
 
 （e）测试
 
-输入网址：http://localhost/consumer/payment/lb，浏览器输出：
+输入网址：
+
+```http
+http://localhost/consumer/payment/lb
+```
+
+浏览器输出：
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111102.png" alt="image-20200820105142930" style="zoom:80%;" />
 
@@ -674,9 +732,13 @@ private DiscoveryClient discoveryClient;
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111103.png" alt="image-20200820105358611" style="zoom:80%;" />
 
-​		Feign是一个声明式的web服务客户端，让编写web服务客户端变得非常容易，只需创建一个接口并在接口上添加注解即可。
+Feign是一个声明式的web服务客户端，让编写web服务客户端变得非常容易，只需创建一个接口并在接口上添加注解即可。
 
-GitHub：https://github.com/spring-cloud/spring-cloud-openfeign
+GitHub：
+
+```http
+https://github.com/spring-cloud/spring-cloud-openfeign
+```
 
 2、作用
 
@@ -751,7 +813,7 @@ public interface PaymentFeignService {
 }
 ```
 
-​		注解`@FeignClient`是一个使用的标识，在启动类的注解`@EnableFeignClients`是一个启用标识。
+注解`@FeignClient`是一个使用的标识，在启动类的注解`@EnableFeignClients`是一个启用标识。
 
 （2）添加controller
 
@@ -771,15 +833,19 @@ public class OrderFeignController {
 
 5、测试
 
-​		先启动2个eureka集群cloud-eureka-Server7001/7002，再启动2个微服务cloud-provider-payment8001/8002，最后启动cloud-consumer-feign-order80启动，输入地址：http://localhost/consumer/payment/get/5，
+先启动2个eureka集群cloud-eureka-Server7001/7002，再启动2个微服务cloud-provider-payment8001/8002，最后启动cloud-consumer-feign-order80启动，输入地址：
+
+```http
+http://localhost/consumer/payment/get/5
+```
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111107.png" alt="image-20200820113647003" style="zoom:67%;" />
 
-​		可以发现`Feign`自带负载均衡配置项，上图中的端口号8001/8002来回切换。
+可以发现`Feign`自带负载均衡配置项，上图中的端口号8001/8002来回切换。
 
 执行逻辑：
 
-​		`cloud-consumer-feign-order80`模块此时作为消费者，当客户端输入地址后，地址首先会进入到`cloud-consumer-feign-order80`模块中`controller`中，即`OrderFeignController`的方法，执行完成后，该方法会到接口类`PaymentFeignService`中执行`@GetMapping`的方法，这样通过`OpenFeign`就可以调用`cloud-provider-payment8001/8002`，即消费者到服务者之间的网路就打通了。
+`cloud-consumer-feign-order80`模块此时作为消费者，当客户端输入地址后，地址首先会进入到`cloud-consumer-feign-order80`模块中`controller`中，即`OrderFeignController`的方法，执行完成后，该方法会到接口类`PaymentFeignService`中执行`@GetMapping`的方法，这样通过`OpenFeign`就可以调用`cloud-provider-payment8001/8002`，即消费者到服务者之间的网路就打通了。
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111108.png" alt="image-20200820114749976" style="zoom:80%;" />
 
@@ -819,7 +885,13 @@ public String paymentFeignTimeout(){
 
 （4）测试
 
-​		先启动2个eureka集群cloud-eureka-Server7001/7002，再启动2个微服务cloud-provider-payment8001/8002，最后启动cloud-consumer-feign-order80启动，输入地址：http://localhost/consumer/payment/feign/timeout，会有下面的错误界面
+​		先启动2个eureka集群cloud-eureka-Server7001/7002，再启动2个微服务cloud-provider-payment8001/8002，最后启动cloud-consumer-feign-order80启动，输入地址：
+
+```http
+http://localhost/consumer/payment/feign/timeout
+```
+
+会有下面的错误界面：
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111109.png" alt="image-20200820144238384" style="zoom:67%;" />
 

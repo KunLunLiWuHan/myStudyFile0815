@@ -1212,12 +1212,14 @@ LinkedBlockingDeque：由链表组成的双向阻塞队列。
 3、主要特点为：线程复用;控制最大并发数;管理线程。
 
 （1）降低资源消耗。通过重复利用已创建的线程降低线程创建和销毁造成的销耗。
+
 （2）提高响应速度。当任务到达时，任务可以不需要等待线程创建就能立即执行。
-（3）提高线程的可管理性。线程是稀缺资源，如果无限制的创建，不仅会销耗系统资源，还会降低系统的稳定性，使用线程池可以进行统一的分配，调优和监控。
+
+（3）提高线程的可管理性。线程是稀缺资源，如果无限制的创建，不仅会消耗系统资源，还会降低系统的稳定性，使用线程池可以进行统一的分配，调优和监控。
 
 ## 2、架构说明
 
-​		Java中的线程池是通过Executor框架实现的，该框架中用到了Executor，Executors，ExecutorService，ThreadPoolExecutor这几个类。
+Java中的线程池是通过Executor框架实现的，该框架中用到了Executor，Executors，ExecutorService，ThreadPoolExecutor这几个类。
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085028.png" alt="image-20200811173424832" style="zoom:80%;" />
 
@@ -1227,7 +1229,7 @@ LinkedBlockingDeque：由链表组成的双向阻塞队列。
 
 （1）Executors.newFixedThreadPool(int)
 
-​		执行长期任务性能好，创建一个线程池，一池有N个固定的线程，有固定线程数的线程。
+执行长期任务性能好，创建一个线程池，一池有N个固定的线程，有固定线程数的线程。
 
 ```java
 public static ExecutorService newFixedThreadPool(int nThreads) {
@@ -1237,7 +1239,7 @@ public static ExecutorService newFixedThreadPool(int nThreads) {
 }
 ```
 
-​		newFixedThreadPool创建的线程池corePoolSize和maximumPoolSize值是相等的，它使用的是LinkedBlockingQueue
+newFixedThreadPool创建的线程池corePoolSize和maximumPoolSize值是相等的，它使用的是LinkedBlockingQueue
 
 （2）Executors.newSingleThreadExecutor()
 
@@ -1252,11 +1254,11 @@ public static ExecutorService newSingleThreadExecutor() {
 }
 ```
 
-​		newSingleThreadExecutor 创建的线程池corePoolSize和maximumPoolSize值都是1，它使用的是LinkedBlockingQueue。
+newSingleThreadExecutor 创建的线程池corePoolSize和maximumPoolSize值都是1，它使用的是LinkedBlockingQueue。
 
 （3）Executors.newCachedThreadPool()
 
-​		执行很多短期异步任务，线程池根据需要创建新线程，但在先前构建的线程可用时将重用它们。可扩容，遇强则强。
+执行很多短期异步任务，线程池根据需要创建新线程，但在先前构建的线程可用时将重用它们。可扩容，遇强则强。
 
 ```java
 public static ExecutorService newCachedThreadPool() {
@@ -1266,7 +1268,7 @@ public static ExecutorService newCachedThreadPool() {
 }
 ```
 
-​		newCachedThreadPool创建的线程池将corePoolSize设置为0，将maximumPoolSize设置为Integer.MAX_VALUE，它使用的是SynchronousQueue，也就是说来了任务就创建线程运行，当线程空闲超过60秒，就销毁线程。
+newCachedThreadPool创建的线程池将corePoolSize设置为0，将maximumPoolSize设置为Integer.MAX_VALUE，它使用的是SynchronousQueue，也就是说来了任务就创建线程运行，当线程空闲超过60秒，就销毁线程。
 
 2、代码
 
@@ -1379,8 +1381,7 @@ public class MyThreadPoolDemo01 {
 ```java
 public class DiyThreadPoolDemo01 {
 	public static void main(String[] args) {
-		//打印出12个cpu核数
-		System.out.println(Runtime.getRuntime().availableProcessors());
+		//打印出12个cpu核数		System.out.println(Runtime.getRuntime().availableProcessors());
 		int number = Runtime.getRuntime().availableProcessors();
 		ExecutorService threadPool = new ThreadPoolExecutor(
 				2,
@@ -1413,7 +1414,7 @@ public class DiyThreadPoolDemo01 {
 
 3、线程池的拒绝策略
 
-​		等待队列已经排满了，再也塞不下新任务了同时，线程池中的max线程也达到了，无法继续为新任务服务，这个是时候我们就需要拒绝策略机制合理的处理这个问题。我们可以使用JDK内置的拒绝策略（该内置策略均实现了`RejectedExecutionHandle`接口）：
+等待队列已经排满了，再也塞不下新任务了同时，线程池中的max线程也达到了，无法继续为新任务服务，这个是时候我们就需要拒绝策略机制合理的处理这个问题。我们可以使用JDK内置的拒绝策略（该内置策略均实现了`RejectedExecutionHandle`接口）：
 
 （1）AbortPolicy(默认)：直接抛出`RejectedExecutionException`异常阻止系统正常运行。
 
@@ -1422,3 +1423,4 @@ public class DiyThreadPoolDemo01 {
 （3）DiscardOldestPolicy：抛弃队列中等待最久的任务，然后把当前任务加入队列中尝试再次提交当前任务。
 
 （4）DiscardPolicy：该策略默默地丢弃无法处理的任务，不予任何处理也不抛出异常。如果允许任务丢失，这是最好的一种策略。
+

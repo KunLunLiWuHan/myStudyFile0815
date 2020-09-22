@@ -86,7 +86,38 @@ public class Driver2 {
 }
 ```
 
+1、韩老师讲授
+
+只要是在类中用到了对方，那么他们之间就存在依赖关系。如果没有对方，连编绎都通过不了。情况如下：
+
+（1）类中用到了对方
+
+（2）如果是类的成员属性
+
+（3）如果是方法的返回类型 
+
+（4）是方法接收的参数类型
+
+（5）方法中使用到
+
+```java
+public class PersonServiceBean {
+private PersonDao personDao;//类
+public void save(Person person){}
+public IDCard getIDCard(Integer personid){}
+public void modify(){
+Department department = new Department();
+}
+}
+public class PersonDao{}
+public class IDCard{}
+public class Person{}
+public class Department{}
+```
+
 ### 2.1.2 关联(Association)
+
+关联关系实际上就是类与类之间的联系，他是依赖关系的特例。
 
 使用实线+箭头，箭头指向被关联的类的方式进行表示。表示了一个类A与另一个类B之间的联系，使类A知道类B的属性和方法。通常类B会以私有成员变量的形式存在于类A中。可以通过get/set函数进行赋值。
 
@@ -126,6 +157,8 @@ public class Shop {
 
 ### 2.1.3 聚合(Aggregation)
 
+聚合关系（Aggregation）表示的是整体和部分的关系，整体与部分可以分开。聚 合关系是关联关系的特例，所以他具有关联的导航性与多重性。 如：一台电脑由键盘(keyboard)、显示器(monitor)，鼠标等组成；组成电脑的各个 配件是可以从电脑上分离出来的。
+
 使用空心菱形+实线+箭头，箭头指向个体方式进行表示。比一般关联具有更强的关联关系，是关联关系的一种特例。一般关联关系的两个类处于同一个层次上，聚合关系的两个类处于不同的层次上，强调整体和个体之间的关系。
 
 ```java
@@ -154,11 +187,15 @@ public class Book {
 
 ### 2.1.4 组合Composition)
 
+组合关系：也是整体与部分的关系，但是整体与部分不可以分开。
+
 使用实心菱形+实线+箭头，箭头指向个体方式进行表示。比聚合关系更强的关联关系，是关联关系的一种特例。要求代表整体的对象也代表个体的对象的生命周期。当删除整体类时，要级联删除其下的个体。比如人体和四肢之间的关系。
 
 带实心菱形的实线,菱形指向整体
 
 ### 2.1.5 继承（泛化关系Generalization）
+
+泛化关系实际上就是继承关系，他是依赖关系的特例。
 
 使用实线+空心三角形，三角形指向父类的方式进行表示。
 
@@ -179,6 +216,8 @@ public class Child extends Parent {
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200503110740448.png" alt="image-20200503110740448" style="zoom:150%;" />
 
 ### 2.1.6 实现（Realization）
+
+实现关系实际上就是A类实现B接口，他是依赖关系的特例。
 
 使用虚线+空心三角形，三角形指向接口的方式进行表示。
 

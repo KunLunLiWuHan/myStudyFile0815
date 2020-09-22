@@ -1227,7 +1227,7 @@ public class TestPing {
 }
 ```
 
-​		返回结果：pong，即连接正常。
+返回结果：pong，即连接正常。
 
 2. 主从复制
 
@@ -1252,13 +1252,13 @@ public class TestMS {
 }
 ```
 
-​		6379,6380启动，先各自先独立，然后再启动程序。
+​		依次启动6379,6380，在其独立运行一段时间后，然后再启动上面的程序。
 
 ## 9.1 JedisPool
 
-​		获取`Jedis`实例需要从`JedisPool`中获取，用完`Jedis`实例需要返还给`JedisPool`。如果`Jedis`在使用过程中出错，则也需要还给`JedisPool`。
+获取`Jedis`实例需要从`JedisPool`中获取，用完`Jedis`实例需要返还给`JedisPool`。如果`Jedis`在使用过程中出错，则也需要还给`JedisPool`。
 
-1. 工具类
+1、工具类
 
 ```java
 public class JedisPoolUtil {
@@ -1296,9 +1296,9 @@ public class JedisPoolUtil {
 }
 ```
 
-​		配置成单例模式。
+将连接池配置成单例模式，全局唯一。
 
-2. 测试
+2、测试
 
 ```java
 public class TestPool {
@@ -1318,9 +1318,8 @@ public class TestPool {
 }
 ```
 
-​		运行结束后，我们可以再管理员通过下面指令获得设置的值“bb”，表明测试成功。
+运行结束后，我们可以再管理员通过下面指令获得设置的值“bb”，表明测试成功。
 
 ```ini
 get aa
 ```
-
