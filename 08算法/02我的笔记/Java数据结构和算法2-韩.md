@@ -1073,6 +1073,347 @@ public class QuickSort {
 }
 ```
 
+## 7、归并排序（merge sort）
+
+### 1、介绍
+
+1、概述
+
+归并排序是利用归并的思想实现的排序方法，该算法采用经典的分治（divide-and-conquer）策略（分治法将问题分(divide)成一些小的问题然后递归求解，而治(conquer)的阶段则将分的阶段得到的各答案"修补"在一起，即分而治之)。
+
+2、基本思路
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200928112401494.png" alt="image-20200928112401494" style="zoom:80%;" />
+
+3、示意图
+
+再来看看治阶段，我们需要将两个已经有序的子序列合并成一个有序序列，比如上图中的最后一次合并，要将[4,5,7,8]和[1,2,3,6]两个已经有序的子序列，合并为最终序列[1,2,3,4,5,6,7,8]，来看下实现步骤：
+
+![image-20200928112453627](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200928112453627.png)
+
+### 2、代码
+
+```java
+package com.xiaolun.sort;
+
+import java.util.Arrays;
+
+//归并排序
+public class MergetSort {
+   public static void main(String[] args) {
+      //测试1：从小到大排序
+//    int arr[] = {8, 4, 5, 7, 1, 3, 6, 2};
+      int arr[] = {8, 4, 5, 7};
+      //归并排序，需要额外的时间开销
+      int temp[] = new int[arr.length];
+      mergeSort(arr, 0, arr.length - 1, temp);
+      System.out.println(Arrays.toString(arr));
+
+      //测试2：运行时间测试
+//    int[] arr = new int[8000000];
+//    for (int i = 0; i < 8000000; i++) {
+//       arr[i] = (int) (Math.random() * 8000000);
+//    }
+//
+//    Date data1 = new Date();
+//    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//    String date1Str = simpleDateFormat.format(data1);
+//    System.out.println("排序前时间=" + date1Str);
+//
+//    int temp[] = new int[arr.length]; //?鲢????????????????
+//    mergeSort(arr, 0, arr.length - 1, temp);
+//
+//    Date data2 = new Date();
+//    String date2Str = simpleDateFormat.format(data2);
+//    System.out.println("排序后时间=" + date2Str);
+   }
+
+   /**
+    * 分+合方法
+    * 1、首先分解到的是 8 4 ，然后是 5 7
+    * 2、分解到8 4 之后，会在 if (left < right)中不满足条件而跳出循环，即此时已经弹出栈
+    * 然后程序会继续往下运行 mergeSort(arr, mid + 1, right, temp);
+    * @param arr
+    * @param left
+    * @param right
+    * @param temp
+    */
+   public static void mergeSort(int[] arr, int left, int right, int[] temp) {
+      if (left < right) {
+         int mid = (left + right) / 2; //中间索引
+         //向左递归进行分解
+         mergeSort(arr, left, mid, temp);
+         //向右递归进行分解,分解到最后 8 4 5 7 1 3 6 2
+         mergeSort(arr, mid + 1, right, temp);
+         //合并
+         merge(arr, left, mid, right, temp);
+      }
+   }
+
+   /**
+    * 合并的方法
+    *
+    * @param arr   排序的原始数组
+    * @param left  左边右序序列的初始索引
+    * @param mid   中间索引
+    * @param right 右边索引
+    * @param temp  做中转的数组
+    */
+   public static void merge(int[] arr, int left, int mid, int right, int[] temp) {
+      int i = left; // 初始化i,左边有序序列的初始索引
+      int j = mid + 1; //初始化j,右边有序序列的初始索引
+      int t = 0; // 指向temp数组的当前索引
+
+      //(一)
+      //先把左右两边（有序）的数据按照规则填充到temp数组
+      //直到左右两边的有序序列，有一边处理完毕为止
+      while (i <= mid && j <= right) {//继续
+         /**
+          * 如果左边的有序序列的当前元素，小于等于右边序列的当前元素
+          * 即将左边的当前元素，填充到temp数组中
+          * 然后 t++,i++
+          */
+         if (arr[i] <= arr[j]) {
+            temp[t] = arr[i];
+            t += 1;
+            i += 1;
+         } else { //反之，将右边的有序序列的当前元素，填充到temp数组
+            temp[t] = arr[j];
+            t += 1;
+            j += 1;
+         }
+      }
+
+      //(二)
+      //把有剩余数据一边的数据全部填充到temp
+      while (i <= mid) { //左边的有序序列还有剩余的元素，就全部填充到temp
+         temp[t] = arr[i];
+         t += 1;
+         i += 1;
+      }
+
+      while (j <= right) { //右边的有序序列还有剩余的元素，就全部填充到temp
+         temp[t] = arr[j];
+         t += 1;
+         j += 1;
+      }
+
+      //(三)
+      /**
+       * 将temp数组的元素拷贝到arr。注意：并不是每次拷贝所有
+       * 第一次合并 tempLeft = 0 , right = 1
+       * 第二次合并 tempLeft = 2  right = 3
+       * 第三次合并 tempLeft=0    right = 3(将上面两个合并的再拷贝过去)
+       * ...
+       * 最后一次合并 tempLeft = 0  right = 7
+       */
+      t = 0;
+      int tempLeft = left;
+      while (tempLeft <= right) {
+         arr[tempLeft] = temp[t];
+         t += 1;
+         tempLeft += 1;
+      }
+   }
+}
+```
+
+## 8、基数排序（radix sort）
+
+### 1、介绍
+
+1、概述
+
+（1）基数排序）属于“分配式排序”（distribution sort），又称“桶子法”（bucket sort）或bin sort，顾名思义，它是通过键值的各个位的值，将要排序的元素分配至某些“桶”中，达到排序的作用。
+
+（2）基数排序法是属于稳定性的排序，基数排序法的是效率高的稳定性排序法。
+
+（3）有负数的数组，我们不用基数排序来进行排序**,** 如果要支持负数
+
+```http
+https://code.i-harness.com/zh-CN/q/e98fa9 
+```
+
+2、基本思想
+
+将所有待比较数值统一为同样的数位长度，数位较短的数前面补零。然后，从最低位开始，依次进行一次排序。这样从最低位排序一直到最高位排序完成以后, 数列就变成一个有序序列。
+
+3、示意图
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200928153156758.png" alt="image-20200928153156758" style="zoom: 50%;" />
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200928153222766.png" alt="image-20200928153222766" style="zoom:50%;" />
+
+### 2、代码
+
+```java
+package com.xiaolun.sort;
+
+import java.util.Arrays;
+
+//基数排序
+public class RadixSort {
+   public static void main(String[] args) {
+      int arr[] = {53, 3, 542, 748, 14, 214};
+      radixSort(arr);
+      System.out.println(Arrays.toString(arr));
+   }
+
+   public static void radixSort(int[] arr) {
+      //1.得到数组中最大的数的位数
+      int max = arr[0]; //假设第一个数就是最大数
+      for (int i = 1; i < arr.length; i++) {
+         if (arr[i] > max) {
+            max = arr[i];
+         }
+      }
+      //得到最大数是几位数
+      int maxLength = (max + "").length();
+
+      //定义一个二维数组，表示10个桶，每一个桶就是一个一维数组
+      //1. 二维数组包含10个一维数组
+      //2. 为了防止在放入数的时候，数据溢出，则每个一维数组（桶），大小定义为arr.length
+      //3. 基数排序使用空间换时间的经典算法
+      int[][] bucket = new int[10][arr.length];
+
+      /**
+       * 为了记录每个桶中，实际放了多少个数据，我们定义一个一维数组
+       * 来记录每个桶的每次放入数据个数
+       * 比如：
+       * bucketElementCounts[0]记录的就是bucket[0]桶放入数据的个数
+       */
+      int[] bucketElementCounts = new int[10];
+
+      for (int i = 0, n = 1; i < maxLength; i++, n *= 10) {
+         //（针对每个元素的对应位进行排序处理），第一个是个位，依次是十位，百位
+         for (int j = 0; j < arr.length; j++) {
+            //取出每个元素对应位的值
+            int digitOfElement = arr[j] / n % 10;
+            //放入对应的桶中
+            bucket[digitOfElement][bucketElementCounts[digitOfElement]] = arr[j];
+            bucketElementCounts[digitOfElement]++;
+         }
+         //按照桶的顺序（一维数组的下标依次取出数据，放入原来数组）
+         int index = 0;
+         //遍历每一桶，并将桶中的数据放入到原数组
+         for (int k = 0; k < bucketElementCounts.length; k++) {
+            //如果桶中有数据，我们才放入原数组
+            if (bucketElementCounts[k] != 0) {
+               //循环该桶即第K个桶（即第k个一维数组），放入
+               for (int l = 0; l < bucketElementCounts[k]; l++) {
+                  //将元素取出放入到arr
+                  arr[index++] = bucket[k][l];
+               }
+            }
+            //第i+1轮处理后，需要将每个bucketElementCounts[k] = 0 ！！
+            bucketElementCounts[k] = 0;
+         }
+      }
+      
+      /*
+      //第1轮（针对每个元素的个位进行排序处理）
+      for(int j = 0; j < arr.length; j++) {
+         //取出每个元素的个位的值
+         int digitOfElement = arr[j] / 1 % 10;
+         //放入对应的桶中
+         bucket[digitOfElement][bucketElementCounts[digitOfElement]] = arr[j];
+         bucketElementCounts[digitOfElement]++;
+      }
+      //按照桶的顺序（一维数组的下标依次取出数据，放入原来数组）
+      int index = 0;
+      for(int k = 0; k < bucketElementCounts.length; k++) {
+         if(bucketElementCounts[k] != 0) {
+            for(int l = 0; l < bucketElementCounts[k]; l++) {
+               arr[index++] = bucket[k][l];
+            }
+         }
+         bucketElementCounts[k] = 0;
+      }
+      System.out.println("第一轮处理后 arr =" + Arrays.toString(arr));
+
+     //第2轮（针对每个元素的十位进行排序处理）
+      for (int j = 0; j < arr.length; j++) {
+         int digitOfElement = arr[j] / 10  % 10; //748 / 10 => 74 % 10 => 4
+         bucket[digitOfElement][bucketElementCounts[digitOfElement]] = arr[j];
+         bucketElementCounts[digitOfElement]++;
+      }
+      index = 0;
+      for (int k = 0; k < bucketElementCounts.length; k++) {
+         if (bucketElementCounts[k] != 0) {
+            for (int l = 0; l < bucketElementCounts[k]; l++) {
+               arr[index++] = bucket[k][l];
+            }
+         }
+         bucketElementCounts[k] = 0;
+      }
+      System.out.println("第一轮处理后 arr =" + Arrays.toString(arr));
+      */
+   }
+}
+```
+
+## 9、总结
+
+1、常用排序算法对比
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200928153424779.png" alt="image-20200928153424779" style="zoom:67%;" />
+
+```
+稳定：如果a原本在b前面，而a=b，排序之后a仍然在b的前面；
+不稳定：如果a原本在b的前面，而a=b，排序之后a可能会出现在b的后面；
+内排序：所有排序操作都在内存中完成；
+外排序：由于数据太大，因此把数据放在磁盘中，而排序通过磁盘和内存的数据传输才能进行；
+
+时间复杂度： 一个算法执行所耗费的时间。
+空间复杂度：运行完一个程序所需内存的大小。
+n: 数据规模
+k: “桶”的个数
+In-place:    不占用额外内存
+Out-place: 占用额外内存
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
