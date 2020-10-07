@@ -1,4 +1,4 @@
-# 面向对象编程
+# 1 面向对象编程
 
 ## 1.1 介绍
 
@@ -10,7 +10,7 @@
 
 2、scala语言是面向对象的
 
-​		Java是面向对象的编程语言，由于历史原因，Java中还存在着非面向对象的内容:基本类型 ，null，静态方法等。 
+Java是面向对象的编程语言，由于历史原因，Java中还存在着非面向对象的内容:基本类型 ，null，静态方法等。 
 
 ## 1.2 类和对象
 
@@ -26,7 +26,7 @@
 
 2、属性
 
-属性是类的一个组成部分，一般是值数据类型,也可是引用类型。
+属性是类的一个组成部分，一般是值数据类型，也可是引用类型。
 
 **细节说明**
 
@@ -41,15 +41,17 @@ var name:String = "xiaohong"
 
 （2）属性的定义类型可以为任意类型，包含值类型或引用类型。
 
-（3）Scala中声明一个属性,必须显示的初始化，然后根据初始化数据的类型自动推断，属性类型可以省略。
+（3）Scala中声明一个属性，必须显式的初始化，然后根据初始化数据的类型自动推断，属性类型可以省略。
 
-（4）如果赋值为null,则一定要加类型，因为不加类型, 那么该属性的类型就是Null类型。
+（4）如果赋值为null，则一定要加类型，因为不加类型，那么该属性的类型就是Null类型。
 
 ```scala
+//不加类型，address类型为null,即address : Null
+var address= null 
 var address : String = null 
 ```
 
-（5）5)如果在定义属性时，暂时不赋值，也可以使用符号_(下划线)，让系统分配默认值，此时属性必须指定类型。
+（5）如果在定义属性时，暂时不赋值，也可以使用符号_(下划线)，让系统分配默认值，此时属性必须指定类型。
 
 | **类型**             | **_** **对应的值** |
 | -------------------- | ------------------ |
@@ -58,7 +60,7 @@ var address : String = null
 | String 和  引用类型  | null               |
 | Boolean              | false              |
 
-（6）不同对象的属性是独立，互不影响，一个对象对属性的更改，不影响另外一个。
+（6）不同对象的属性是独立的，互不影响，一个对象对属性的更改，不影响另外一个。
 
 3、创建对象
 
@@ -70,8 +72,9 @@ val | var 对象名 [：类型]  = new 类型()
 
 说明：
 
-+ 如果我们不希望改变对象的引用(即：内存地址), 应该声明为val 性质的，否则声明为var, scala设计者推荐使用**val** ,因为一般来说，在程序中，我们只是改变对象属性的值，而不是改变对象的引用。
-+ scala在声明对象变量时，可以根据创建对象的类型自动推断，所以类型声明（[：类型]去掉）可以省略，**但当类型和后面 `new` 对象类型有继承关系即多态时，就必须写了。**
+（1）如果我们不希望改变对象的引用(即：内存地址), 应该声明为val 性质的，否则声明为var, scala设计者推荐使用**val** ,因为一般来说，在程序中，我们只是改变对象属性的值，而不是改变对象的引用。
+
+（2）scala在声明对象变量时，可以根据创建对象的类型自动推断，所以类型声明（[：类型]去掉）可以省略，**但当类型和后面 `new` 对象类型有继承关系即多态时，就必须写了。**
 
 ```scala
 object CreateObj {
@@ -81,9 +84,9 @@ object CreateObj {
     //如果我们希望子类对象交给父类的引用，这时就需要加上类型
     //此时emp2类型是Person
     val emp2:Person = new Emp
-
   }
 }
+
 class Person{
 }
 class Emp extends Person{
@@ -97,6 +100,9 @@ class Emp extends Person{
  p1.name = "jack"
  p1.age = 30
  val p2 = p1 //内存布局
+
+//通过创建一个新对象时，其内存地址是单独的两份，当p1改变时，不影响p3
+ val p3 = new Person
 ```
 
 内存布局如下：
@@ -123,7 +129,7 @@ def 方法名(参数列表) [：返回值类型] = {
 
 2、方法的调用机制原理
 
-（1）) 当我们scala开始执行时，先在栈区开辟一个main栈。main栈是最后被销毁。
+（1）当我们的scala开始执行时，先在栈区开辟一个main栈。main栈是最后被销毁。
 
 （2）当scala程序在执行到一个方法时，总会开一个新的栈。
 
@@ -133,7 +139,7 @@ def 方法名(参数列表) [：返回值类型] = {
 
 ## 1.4 构造器
 
-​		构造器(constructor)又叫构造方法，是类的一种特殊的方法，它的主要作用是完成对新对象的初始化。
+构造器(constructor)又叫构造方法，是类的一种特殊的方法，它的主要作用是完成对新对象的初始化。
 
 1、Java构造器基本语法
 
@@ -151,9 +157,9 @@ def 方法名(参数列表) [：返回值类型] = {
 
 （3）一旦定义了自己的构造方法（构造器）,默认的构造方法就覆盖了，就不能再使用默认的无参构造方法，除非**显式的定义一下**,即: Person(){}。
 
-### 1.4.1 主构造器和辅助构造器
+### 主构造器和辅助构造器
 
-​		和Java一样，Scala构造对象也需要调用构造方法，并且可以有任意多个构造方法（即scala中构造器也支持重载）。
+和Java一样，Scala构造对象也需要调用构造方法，并且可以有任意多个构造方法（即scala中构造器也支持重载）。
 
 Scala类的构造器包括： 主构造器 和 辅助构造器。
 
@@ -231,6 +237,10 @@ class Person(inName: String,inAge: Int){
      * 1、辅助构造器，必须在第一行显式调用主构造器（这点和java一样）
      * 2、（先执行主构造器的内容，后执行辅助构造器的内容，假如主构造器A继承B类，程序会先B，再主构造器A，后辅助构造器A）
      * 其根本原因是实现子类（主构造器A）和父类（B）的关系。
+     * 3、无参构造器的写法如下：
+           def this(){
+							this("jack01",20)
+           }
      */
     this("jack01",20)
     this.name = name
@@ -244,7 +254,7 @@ class Person(inName: String,inAge: Int){
 class Person private(inName: String,inAge: Int)
 ```
 
-（7）6)辅助构造器的声明不能和主构造器的声明一致,会发生错误(即构造器名重复)。
+（7）辅助构造器的声明不能和主构造器的声明一致,会发生错误(即构造器名重复)。
 
 ## 1.5 属性高级
 
@@ -279,9 +289,9 @@ class Test01(val inName: String ){
 
 2、Bean属性
 
-​		JavaBeans规范定义了Java的属性是像getXxx（）和setXxx（）的方法。许多Java工具（框架）都依赖这个命名习惯。
+JavaBeans规范定义了Java的属性是像getXxx（）和setXxx（）的方法。许多Java工具（框架）都依赖这个命名习惯。
 
-​		为了Java的互操作性，将Scala字段加**@BeanProperty**时，这样会自动生成规范的 `setXxx/getXxx` 方法。这时可以使用 对象.setXxx() 和 对象.getXxx() 来调用属性。
+为了Java的互操作性，将Scala字段加**@BeanProperty**时，这样会自动生成规范的 `setXxx/getXxx` 方法。这时可以使用 对象.setXxx() 和 对象.getXxx() 来调用属性。
 
 1、细节说明
 
@@ -464,7 +474,7 @@ package com.xiaolun {
 
 （1）底层实现机制
 
-​		当创建包对象后，在该包下生成 `public final class package` 和 `public final class package$`，然后通过 `package$` 的一个**静态实例**完成对包对象中的属性和方法的调用。
+当创建包对象后，在该包下生成 `public final class package` 和 `public final class package$`，然后通过 `package$` 的一个**静态实例**完成对包对象中的属性和方法的调用。
 
 6、包的可见性
 
@@ -601,13 +611,13 @@ var map = new HashMap()
 
 ## 1、抽象
 
-​		实际上就是把一类事物的共有的属性和行为提取出来，形成一个物理模型(模板)。这种研究问题的方法称为抽象。
+实际上就是把一类事物的共有的属性和行为提取出来，形成一个物理模型(模板)。这种研究问题的方法称为抽象。
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831133343.png" alt="image-20200721222605029" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831133343.png" alt="image-20200721222605029" style="zoom: 67%;" />
 
 ## 2、封装
 
-​		封装(encapsulation)就是把抽象出的**数据和对数据的操作**封装在一起,数据被保护在内部,程序的其它部分只有通过**被授权的操作**(成员方法),才能对数据进行操作。
+封装(encapsulation)就是把抽象出的**数据和对数据的操作**封装在一起,数据被保护在内部,程序的其它部分只有通过**被授权的操作**(成员方法),才能对数据进行操作。
 
 1、好处
 
@@ -622,6 +632,7 @@ var map = new HashMap()
 （2）提供一个公共的set方法，用于对属性判断并赋值。
 
 ```scala
+//使用这个方法更快捷：@BeanProperty var name: String = null
 def setXxx (参数名: 类型): Unit = {
     //待加入数据验证的业务逻辑
   	属性 = 参数名
@@ -648,6 +659,8 @@ def getXxx() [: 返回类型] = {
 
 ## 3、继承
 
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831133345.png" alt="image-20200731183404541" style="zoom: 67%;" />
+
 ### 1、基本语法
 
 ```scala
@@ -666,7 +679,7 @@ class 子类名 extends 父类名  {
 
 ### 3、重写方法
 
-​		scala明确规定，重写一个非抽象方法需要用**override**修饰符，调用超类的方法使用**super**关键字 。
+scala明确规定，重写一个非抽象方法需要用**override**修饰符，调用超类的方法使用**super**关键字 。
 
 ```scala
 object MethodOverride01 {
@@ -843,13 +856,13 @@ class Emp (name: String) extends Person(name) {
 
 ### 6、覆写字段
 
-​		在Scala中，子类改写父类的字段，我们称为覆写/重写字段。覆写字段需使用 override修饰。
+在Scala中，子类改写父类的字段，我们称为覆写/重写字段。覆写字段需使用 override修饰。
 
 （a）Java中字段的覆写
 
-​		在Java中只有方法的重写，没有属性/字段的重写，准确的讲，是隐藏字段代替了重写。在Java中，父类和子类定义了一个同名的字段，不会报错。**但是对于同一个对象，用父类的引用去取值，会取到父类字段的值，用子类的引用去取值，取到子类字段的值。**
+在Java中只有方法的重写，没有属性/字段的重写，准确的讲，是隐藏字段代替了重写。在Java中，父类和子类定义了一个同名的字段，不会报错。**但是对于同一个对象，用父类的引用去取值，会取到父类字段的值，用子类的引用去取值，取到子类字段的值。**
 
-​		在实际开发中，要尽量避免子类和父类使用相同的字段名，否则很容易引入一些不容易发现的bug。
+在实际开发中，要尽量避免子类和父类使用相同的字段名，否则很容易引入一些不容易发现的bug。
 
 ```java
 public class JavaFiledOverride {
@@ -874,14 +887,6 @@ class Super {
 class sub1 extends Super {
     String s = "sub";
 }
-```
-
-控制台输出：
-
-```java
-super
-sub
-super
 ```
 
 （b）动态绑定机制
@@ -1047,7 +1052,7 @@ class sub_A01 extends A01{
 }
 ```
 
-### 7、 抽象类
+### 7、抽象类
 
 ​		在Scala中，通过`abstract`关键字标记不能被实例化的类。方法**不用标记**`abstract`，只要省掉方法体即可。抽象类可以拥有抽象字段，抽象字段/属性就是没有初始值的字段
 
@@ -1129,7 +1134,6 @@ object NoNameDemo01 {
     println(monster.name)
     monster.cry()
   }
-
 }
 
 abstract class Monster {
@@ -1170,11 +1174,9 @@ public static 返回值类型  方法名(参数列表) {方法体}
 
 （2）Scala中静态的概念-伴生对象
 
-​		Scala语言是完全面向对象(万物皆对象)的语言，所以并没有静态的操作(即在Scala中没有静态的概念)。
+Scala语言是完全面向对象(万物皆对象)的语言，所以并没有静态的操作(即在Scala中没有静态的概念)。但是为了能够和Java语言交互(因为Java中有静态概念)，就产生了一种特殊的对象来模拟类对象，我们称之为类的**伴生对象**。
 
-​		但是为了能够和Java语言交互(因为Java中有静态概念)，就产生了一种特殊的对象来模拟类对象，我们称之为类的**伴生对象**。
-
-​		这个类的所有静态内容都可以放置在它的伴生对象中声明和调用。
+这个类的所有静态内容都可以放置在它的伴生对象中声明和调用。
 
 ## 2、快速入门
 
@@ -1210,11 +1212,9 @@ object ScalaPerson {
 }
 ```
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831133345.png" alt="image-20200731183404541" style="zoom: 67%;" />
-
 ## 3、伴生对象小结
 
-（1）Scala中伴生对象采用object关键字声明，伴生对象中声明的全是 静态内容，可以通过伴生对象名称直接调用。
+（1）Scala中伴生对象采用object关键字声明，伴生对象中声明的全是静态内容，可以通过伴生对象名称直接调用。
 
 （2）伴生对象对应的类称之为伴生类，伴生对象的名称应该和伴生类名一致。
 
@@ -1289,9 +1289,9 @@ class 类名 implements 接口名1，接口2
 
 ## 2、Scala接口的介绍
 
-​		从面向对象来看，接口并不属于面向对象的范畴，Scala是纯面向对象的语言，在Scala中，没有接口。
+从面向对象来看，接口并不属于面向对象的范畴，Scala是纯面向对象的语言，在Scala中，没有接口。
 
-​		Scala语言中，采用特质`trait`（特征）来代替接口的概念，也就是说，多个类具有相同的特征（特征）时，就可以将这个特质（特征）独立出来，采用关键字`trait`声明。 理解trait 等价于`(interface + abstract class)`。
+Scala语言中，采用特质`trait`（特征）来代替接口的概念，也就是说，多个类具有相同的特征（特征）时，就可以将这个特质（特征）独立出来，采用关键字`trait`声明。 理解trait 等价于`(interface + abstract class)`。
 
 ![image-20200801095645113](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831133346.png)
 
@@ -1306,7 +1306,7 @@ trait 特质名 {
 }
 ```
 
-​		Serializable： 就是scala的一个特质。在scala中，java中的接口可以当做特质使用。
+Serializable： 就是scala的一个特质。在scala中，java中的接口可以当做特质使用。
 
 ```java
 //trait Serializable extends Any with java.io.Serializable
@@ -1317,7 +1317,7 @@ object T1 extends Serializable {
 
 （2）Scala中trait的使用
 
-​		一个类具有某种特质（特征），就意味着这个类满足了这个特质（特征）的所有要素，所以在使用时，也采用了extends关键字，如果有多个特质或存在父类，那么需要采用with关键字连接。
+一个类具有某种特质（特征），就意味着这个类满足了这个特质（特征）的所有要素，所以在使用时，也采用了extends关键字，如果有多个特质或存在父类，那么需要采用with关键字连接。
 
 语法：
 
@@ -1374,7 +1374,7 @@ class E extends D with trait1 {
 class F extends D {}
 ```
 
-## 4、特t质trait 的再说明
+## 4、特质trait 的再说明
 
 （1）Scala提供了特质（trait），特质可以同时拥有抽象方法和具体方法，一
 个类可以实现/继承多个特质。

@@ -69,7 +69,7 @@ val arr1 = new Array[Int](10)
 arr1(1) = 7 
 ```
 
-​		这里的数组等同于Java中的数组,中括号的类型就是数组的类型
+这里的数组等同于Java中的数组,中括号的类型就是数组的类型
 
 ```scala
 object ArrayDemo01 {
@@ -231,7 +231,7 @@ object MultiplyArray {
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831133524.png" alt="image-20200722094313801" style="zoom:80%;" />
 
-#### 4、Scala数组与Java的List的互转
+### 4、Scala数组与Java的List的互转
 
 （1）Scala数组转Java的List
 
@@ -266,7 +266,7 @@ println(scalaArr)
 
 ### 1、介绍
 
-​		元组也是可以理解为一个**容器**，可以存放各种相同或不同类型的数据。说的简单点，就是将多个无关的数据封装为一个整体，称为元组, 最多的特点灵活和松散，对数据没有过多的约束。
+元组也是可以理解为一个**容器**，可以存放各种相同或不同类型的数据。说的简单点，就是将多个无关的数据封装为一个整体，称为元组, 最多的特点灵活和松散，对数据没有过多的约束。
 
 注意：元组中最大只能有22个元素。
 
@@ -290,7 +290,7 @@ object TupleDemo01 {
 
 ### 3、元组数据的访问
 
-​		访问元组中的数据,可以采用顺序号（_顺序号），也可以通过索引（productElement）访问。
+访问元组中的数据,可以采用顺序号（_顺序号），也可以通过索引（productElement）访问。
 
 ```scala
 def main(args: Array[String]): Unit = {
@@ -316,7 +316,7 @@ def main(args: Array[String]): Unit = {
 
 ## 1.3 List
 
-​		Scala中的List 和Java List 不一样，在Java中List是一个接口，真正存放数据是ArrayList，**而Scala的List可以直接存放数据，就是一个object**，默认情况下Scala的List是**不可变**的，List属于序列Seq。
+Scala中的List 和Java List 不一样，在Java中List是一个接口，真正存放数据是ArrayList，**而Scala的List可以直接存放数据，就是一个object**，默认情况下Scala的List是**不可变**的，List属于序列Seq。
 
 ```scala
 val List = scala.collection.immutable.List
@@ -364,7 +364,7 @@ val value1 = list1(1)
 
 ### 2、元素的追加
 
-​		向列表中增加元素, 会返回新的列表/集合对象（并没有破坏不可变的特性）。注意：Scala中List元素的追加形式非常独特，和Java不一样。
+向列表中增加元素, 会返回新的列表/集合对象（并没有破坏不可变的特性）。注意：Scala中List元素的追加形式非常独特，和Java不一样。
 
 （1）方式1-在列表的最后增加数据
 
@@ -849,11 +849,13 @@ for(x <- set03) {
 
 # 2 数据结构下
 
-## 2.1 集合元素的映射
+## 1、 集合元素的映射
 
 ### 1、引入
 
-（1）需求：将List(3,5,7) 中的所有元素都 * 2 ，将其结果放到一个新的集合中返回，即返回一个新的List(6,10,14),
+（1）需求
+
+将List(3,5,7) 中的所有元素都 * 2 ，将其结果放到一个新的集合中返回，即返回一个新的List(6,10,14)。
 
 （2）传统方式
 
@@ -872,17 +874,17 @@ object Demo01 {
 
 缺点：
 
-（a）不够简洁和高效。
+不够简洁和高效。
 
-（b）没有体现函数式编程的特点。（集合 -》函数-》新的集合-》函数..）
+没有体现函数式编程的特点。（集合 -》函数-》新的集合-》函数..）。
 
-（c）不利于处理复杂的数据处理业务
+不利于处理复杂的数据处理业务。
 
 ### 2、高阶函数和Map映射
 
 （1）上面提出的问题，其实就是一个关于集合元素映射操作的问题。
 
-​		在Scala中可以通过**map映射**操作来解决：将集合中的每一个元素通过指定功能（函数）映射（转换）成新的结果集合这里其实就是所谓的将函数作为参数传递给另外一个函数,这是函数式编程的特点。
+在Scala中可以通过**map映射**操作来解决：将集合中的每一个元素通过指定功能（函数）映射（转换）成新的结果集合，这里其实就是所谓的将函数作为参数传递给另外一个函数，这是函数式编程的特点。
 
 以HashSet为例说明：
 
@@ -959,7 +961,6 @@ object HigOrderFunDemo02 {
   def sayOK() = {
     println("sayOKKK...")
   }
-
 }
 ```
 
@@ -1035,7 +1036,6 @@ object FlatMapDemo01 {
      * 2、List(A, L, I, C, E, B, O, B, N, I, C, K)
      */
     println(names.flatMap(upper))
-
   }
 }
 ```
@@ -1091,7 +1091,7 @@ object ReduceDemo01 {
 }
 ```
 
-**reduceLefft(_ + _)**（接收一个函数时，也可以直接传入一个匿名函数；类似于Java中传入匿名对象）这个函数的执行逻辑如图：
+reduceLeft(_ + _)(reduceByKey(__+_)*是*reduceByKey((x,y) => x+y)）（接收一个函数时，也可以直接传入一个匿名函数；类似于Java中传入匿名对象）这个函数的执行逻辑如图：
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831133525.png" alt="image-20200802092801904" style="zoom:80%;" />
 
@@ -1101,7 +1101,6 @@ object ReduceDemo01 {
 object ReduceDemo02 {
   def main(args: Array[String]): Unit = {
     val list = List(1, 2, 3, 4, 5)
-
 
     //((((1-2)-3)-4)-5) = -13
     println(list.reduceLeft(minus)) // -13
@@ -1130,11 +1129,11 @@ object ReduceDemo02 {
 
 6、折叠
 
-​		fold函数将上一步返回的值作为函数的第一个参数继续传递参与运算，直到list中的所有元素被遍历。
+fold函数将上一步返回的值作为函数的第一个参数继续传递参与运算，直到list中的所有元素被遍历。
 
 （1）理解
 
-​		可以把reduceLeft看做简化版的foldLeft。reduceLeft就是调用的foldLeft[ B ] (head)并且是默认从集合的head元素开始操作的。
+可以把reduceLeft看做简化版的foldLeft。reduceLeft就是调用的foldLeft[ B ] (head)并且是默认从集合的head元素开始操作的。
 ​		相关函数：fold，foldLeft，foldRight，可以参考reduce的相关方法理解
 
 ```scala
@@ -1155,7 +1154,6 @@ object FoldDemo01 {
      */
     println(list.foldLeft(5)(minus)) // 函数的柯里化
     println(list.foldRight(5)(minus))
-
   }
 }
 ```
@@ -1170,7 +1168,7 @@ var i6 = (1 /: list4) (minus) // =等价=> list4.foldLeft(1)(minus)
 
 7 、扫描
 
-​		扫描，即对某个集合的所有元素做fold操作，但是会把产生的所有中间结果放置于一个集合中保存。
+扫描，即对某个集合的所有元素做fold操作，但是会把产生的所有中间结果放置于一个集合中保存。
 
 ```scala
 object ScanDemo01 {
@@ -1242,7 +1240,7 @@ object ZipDemo01 {
 
 ### 2、迭代器
 
-​		通过iterator方法从集合获得一个迭代器，通过while循环和for表达式对集合进行遍历。
+通过iterator方法从集合获得一个迭代器，通过while循环和for表达式对集合进行遍历。
 
 ```scala
 object IteratorDemo01 {
@@ -1290,7 +1288,7 @@ def iterator: Iterator[A] = new AbstractIterator[A] {
 
 ### 3、流Stream
 
-​		stream是一个集合。这个集合，可以用于存放无穷多个元素，但是这无穷个元素并不会一次性生产出来，而是需要用到多大的区间，就会动态的生产，末尾元素遵循lazy规则(即：要使用结果才进行计算的) 。
+stream是一个集合。这个集合，可以用于存放无穷多个元素，但是这无穷个元素并不会一次性生产出来，而是需要用到多大的区间，就会动态的生产，末尾元素遵循lazy规则(即：要使用结果才进行计算的) 。
 
 ```scala
 object StreamDemo01 {
@@ -1400,7 +1398,7 @@ SynchronizedStack
 2、主要用到的算法有： 
  		Divide and conquer : 分治算法，Scala通过splitters(分解器)，combiners（组合器）等抽象层来实现，主要原理是将计算工作分解很多任务，分发给一些处理器去完成，并将它们处理结果合并返回。
 
-​		Work stealin算法，主要用于任务调度负载均衡（load-balancing），通俗点完成自己的所有任务之后，发现其他人还有活没干完，主动（或被安排）帮他人一起干，这样达到尽早干完的目的。
+Work stealin算法，主要用于任务调度负载均衡（load-balancing），通俗点完成自己的所有任务之后，发现其他人还有活没干完，主动（或被安排）帮他人一起干，这样达到尽早干完的目的。
 
 3、案例
 
@@ -1424,7 +1422,7 @@ object ParDemo01 {
 
 ### 7、操作符
 
-​		这部分内容没有必要刻意去理解和记忆，语法使用的多了，自然就会熟练的使用，该部分内容了解一下即可。
+这部分内容没有必要刻意去理解和记忆，语法使用的多了，自然就会熟练的使用，该部分内容了解一下即可。
 
 1、如果想在变量名、类名等定义中使用语法关键字（保留字），可以配合反引号反引号 。
 
@@ -1493,4 +1491,3 @@ class Dog1 {
   }
 }
 ```
-

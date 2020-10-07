@@ -1,4 +1,4 @@
-## 1、Java比较器
+# 1、Java比较器
 
 1、介绍
 
@@ -12,7 +12,7 @@ Java实现对象排序的方式有两种：
 
 一般来说，Java中通过接口实现两个对象的比较，比较常用就是Comparable接口和Comparator接口。首先类要实现接口，并且使用泛型规定要进行比较的对象所属的类，然后在该类类实现了接口后，还需要实现接口定义的比较方法，在这些方法中传入需要比较大小的另一个对象，通过**选定的成员变量**与之比较，如果大于则返回1，小于返回-1，相等返回0。
 
-### 2、Comparable
+## 1、Comparable
 
 1、自然排序
 
@@ -121,7 +121,7 @@ public static void test2() {
 [User{name='xiaomiMouse', price=10}, User{name='dellMouse', price=20}, User{name='huaweiMouse', price=30}, User{name='lenovoMouse', price=40}]
 ```
 
-### 3、Comparator
+## 2、Comparator
 
 1、介绍
 
@@ -159,7 +159,7 @@ public static void test2() {
 
 Comparable接口的方式一旦一定，就可以保证该接口实现类的对象在任何位置都可以比较大小。Compatator接口只是一个临时性的比较，什么时候需要什么时候创建，优先级比Comparable接口高。
 
-## 2、String
+# 2、String
 
 1、String相关转换测试
 
@@ -231,7 +231,7 @@ public class Test05 {
 }
 ```
 
-## 3、枚举类
+# 3、枚举类
 
 1、介绍
 
@@ -408,3 +408,174 @@ public class Test05 {
    }
 }
 ```
+
+# 4、对象流
+
+1、介绍
+
+（1）概述
+
+ObjectInputStream和OjbectOutputSteam：用于存储和读取基本数据类型数据或对象对象的处理流。它的强大之处就是可以把Java中的对象写入到数据源中，也能把对象从数据源中还原回来。
+
+对象序列化机制允许把内存中的Java对象转换成平台无关的二进制流，从
+而允许把这种二进制流持久地保存在磁盘上，或通过网络将这种二进制流传
+输到另一个网络节点。//当其它程序获取了这种二进制流，就可以恢复成原
+来的Java对象。
+
+ 序列化：用ObjectOutputStream类保存保存基本类型数据或对象的机制。序列化的好处在于可将任何实现了Serializable接口的对象转化为字节数据字节数据，使其在保存和传输时可被还原。
+
+序列化是 RMI（Remote Method Invoke – 远程方法调用）过程的参数和返
+回值都必须实现的机制，而 RMI 是 JavaEE 的基础。因此序列化机制是
+JavaEE 平台的基础
+
+反序列化：用ObjectInputStream类读取读取基本类型数据或对象的机制。
+
+（2）注意事项
+
+ObjectOutputStream和ObjectInputStream不能序列化static和transient修饰的成员变量。
+
+（3）对象的序列化
+
+凡是实现Serializable接口的类都有一个表示序列化版本标识符的静态变量。
+
+```java
+private static final long serialVersionUID
+```
+
+serialVersionUID用来表明类的不同版本间的兼容性。简言之，其目的是以序列化对象进行版本控制，有关各版本反序列化时是否兼容。
+
+如果类没有显示定义这个静态常量，它的值是Java运行时环境根据类的内部细节自动生成的。若类的实例变量做了修改serialVersionUID 可能发生变化，那么在反序列化端就无法成功接收反序列化的二进制流。故建议，显式声明。
+
+（4）序列化过程分析
+
+简单来说，Java的序列化机制是通过在运行时判断类的serialVersionUID来验证版本一致性的。在进行反序列化时，JVM会把传来的字节流中的serialVersionUID与本地相应实体类的serialVersionUID进行比较，如果相同就认为是一致的，可以进行反序列化，否则就会出现序列化版本不一致的异常。(InvalidCastException)
+
+（5）序列化/反序列化对象流的步骤
+
+```
+1、序列化对象流的步骤
+（1）创建一个 ObjectOutputStream。
+（2）调用 ObjectOutputStream 对象的 writeObject(对象对象) 方法输出可序列化对象。
+（3）注意写出一次，操作flush()一次。
+
+2、反序列化对象流的步骤
+（1）创建一个 ObjectInputStream
+（2）调用调用 readObject() 方法读取流中的对象
+```
+
+2、代码
+
+（1）pom文件
+
+```xml
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <version>1.18.12</version>
+</dependency>
+<dependency>
+    <groupId>junit</groupId>
+    <artifactId>junit</artifactId>
+    <version>4.12</version>
+</dependency>
+```
+
+(2)实体类
+
+```java
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
+
+/**
+ * @time: 2020-10-04 21:15
+ * @author: likunlun
+ * @description: 对象流测试
+  对象必须实现序列化，否则会报错。
+ */
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class Person implements Serializable {
+   public static final long serialVersionUID = 1111111111L;
+   private String name;
+   private int age;
+   private String sex;
+
+   public Person(String name, int age) {
+      this.name = name;
+      this.age = age;
+   }
+}
+```
+
+Person需要满足如下的要求，才可以序列化：
+
++ 需要实现接口：Serializable。
++ 为当前类提供一个全局变量：SerialVersionUID。
++ 除了当前Person类需要实现Serializable接口之外，还必须保证内部所有属性必须是可序列化的。
+
+（3）对象流
+
+```java
+import org.junit.Test;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
+/**
+ * @time: 2020-10-04 21:19
+ * @author: likunlun
+ * @description: 对象流测试
+ */
+public class ObjectInputOutStreamTest {
+
+   /**
+    * 序列化：将内存中的java对象保存到磁盘中或者通过网络传输出去
+    *
+    * @throws Exception
+    */
+   @Test
+   public void testObjectOutputStream() throws Exception {
+      ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("object.dat"));
+      oos.writeObject("我爱北京天安门");
+      oos.flush(); //刷新操作
+      Person person = new Person("xiaolun", 18);
+      oos.writeObject(person);
+      oos.flush();
+      oos.close();
+   }
+
+   /**
+    * 反序列化：将磁盘文件中的对象还原成内存中的一个java对象
+    *
+    * @throws Exception
+    */
+   @Test
+   public void testObjectInputStream() throws Exception {
+      ObjectInputStream ois = new ObjectInputStream(new FileInputStream("object.dat"));
+      Object in = ois.readObject();
+      String str = (String)in;
+
+      Person person= (Person)ois.readObject();
+      System.out.println(str);
+      System.out.println(person);
+      ois.close();
+   }
+}
+```
+
+
+
+
+
+
+
+
+
+
+

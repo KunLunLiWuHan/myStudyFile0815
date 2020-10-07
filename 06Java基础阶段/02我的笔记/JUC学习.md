@@ -221,9 +221,9 @@ new Thread(() -> {for (int i = 0; i < 40; i++) ticket.sale();},"C").start();
 
 ## 3、Lambda表达式
 
-​		Lambda 是一个匿名函数，我们可以把 Lambda表达式理解为是一段可以传递的代码（将代码像数据一样进行传递）。可以写出更简洁、更灵活的代码。作为一种更紧凑的代码风格，使Java的语言表达能力得到了提升。
+Lambda 是一个匿名函数，我们可以把 Lambda表达式理解为是一段可以传递的代码（将代码像数据一样进行传递）。可以写出更简洁、更灵活的代码。作为一种更紧凑的代码风格，使Java的语言表达能力得到了提升。
 
-​		Lambda 表达式在Java 语言中引入了一个新的语法元素和操作符。这个操作符为 “->” ， 该操作符被称为 Lambda 操作符或剪头操作符。它将 Lambda 分为两个部分：
+Lambda 表达式在Java 语言中引入了一个新的语法元素和操作符。这个操作符为 “->” ， 该操作符被称为 Lambda 操作符或剪头操作符。它将 Lambda 分为两个部分：
 左侧：指定了 Lambda 表达式需要的所有参数
 右侧：指定了 Lambda 体，即 Lambda 表达式要执行的功能
 
@@ -231,10 +231,10 @@ new Thread(() -> {for (int i = 0; i < 40; i++) ticket.sale();},"C").start();
 
 ```java
 /**
- * 1、Java不但重视函数式编程还重视下面的接口是编程
+ * 1、Java不但重视函数式编程还重视接口编程
  * 2、下面只有唯一一个方法，可以使用匿名内部类
  * 3、使用Lambda表达式解决了匿名内部类代码冗余的问题
- * Lambda口诀 ： 拷贝小括号，落地大括号,写死右箭头。
+ * Lambda口诀：拷贝小括号，落地大括号,写死右箭头。
  */
 interface Foo{
 // public void sayHello();
@@ -277,6 +277,22 @@ public class LambdaExpressDemo2 {
 }
 ```
 
+Lambda的省略规则如下：
+
++ 小括号内参数的类型可以省略；
+
++ 如果小括号内有且仅有一个参，则小括号可以省略；
+
++ 如果大括号内有且仅有一个语句，则无论是否有返回值，都可以省略大括号、return关键字及语句分号。
+
+```java
+//对应上面省略规则的第三条
+public static void main(String[] args) {
+		Foo foo = (x,y) -> (x + y);
+		System.out.println(foo.add(1, 2));
+}
+```
+
 2、函数式接口
 
 ```java
@@ -286,7 +302,13 @@ interface Foo{
 }
 ```
 
-​		lambda表达式，必须是函数式接口，必须只有一个方法如果接口只有一个方法java默认它为函数式接口。为了正确使用Lambda表达式，需要给接口加个注解：@FunctionalInterface如有两个方法，立刻报错
+lambda表达式，必须是函数式接口，必须只有一个方法如果接口只有一个方法java默认它为函数式接口。为了正确使用Lambda表达式，需要给接口加个注解：
+
+```java
+@FunctionalInterface
+```
+
+如有两个方法，立刻报错
 
 3、接口里的实现方法
 
@@ -342,7 +364,7 @@ listNotSafe();
 
 （1）原因
 
-​		ArrayList在迭代的时候如果同时对其进行修改，就会抛出并发修改异常。所有的线程都在争操作该List的那一把锁。
+ArrayList在迭代的时候如果同时对其进行修改，就会抛出并发修改异常。所有的线程都在争操作该List的那一把锁。
 
 （2）原理
 
@@ -382,9 +404,9 @@ public synchronized boolean add(E e) {
 List<String> list = Collections.synchronizedList(new ArrayList<>());
 ```
 
-​		Collections提供了方法synchronizedList保证list是同步线程安全的。
+Collections提供了方法synchronizedList保证list是同步线程安全的。
 
-​		那HashMap，HashSet也不是线程安全的，所以有同样的线程安全方法。
+那HashMap，HashSet也不是线程安全的，所以有同样的线程安全方法。
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085017.jpg" alt="image-20200811001207498" style="zoom:80%;" />
 
@@ -394,13 +416,13 @@ List<String> list = Collections.synchronizedList(new ArrayList<>());
 List<String> list = new CopyOnWriteArrayList<>();
 ```
 
-​		使用CopyOnWriteArrayList可以很好的可以保证数据一致性，又可以保证并发性。
+使用CopyOnWriteArrayList可以很好的可以保证数据一致性，又可以保证并发性。
 
 （a）对于CopyOnWrite的理解：
 
-​		CopyOnWriteArrayList是arraylist的一种线程安全变体，其中所有可变操作（add、set等）都是通过生成底层数组的新副本来实现的。
+CopyOnWriteArrayList是arraylist的一种线程安全变体，其中所有可变操作（add、set等）都是通过生成底层数组的新副本来实现的。
 
-​		CopyOnWrite容器即**写时复制**的容器。往一个容器添加元素的时候，不直接往当前容器Object[]添加，而是先将当前容器Object[]进行Copy，复制出一个新的容器Object[] newElements，然后向新的容器Object[] newElements里添加元素。添加元素后，再将原容器的引用指向新的容器setArray(newElements)。这样做的好处是可以对CopyOnWrite容器进行并发的读，而不需要加锁，因为当前容器不会添加任何元素。所以CopyOnWrite容器也是一种读写分离的思想，读和写不同的容器。
+CopyOnWrite容器即**写时复制**的容器。往一个容器添加元素的时候，不直接往当前容器Object[]添加，而是先将当前容器Object[]进行Copy，复制出一个新的容器Object[] newElements，然后向新的容器Object[] newElements里添加元素。添加元素后，再将原容器的引用指向新的容器setArray(newElements)。这样做的好处是可以对CopyOnWrite容器进行并发的读，而不需要加锁，因为当前容器不会添加任何元素。所以CopyOnWrite容器也是一种读写分离的思想，读和写不同的容器。
 
 （b）举例-名单那签到
 
@@ -1060,11 +1082,11 @@ Semaphore semaphore = new Semaphore(1);//模拟1个停车位
 
  在信号量上我们定义两种操作：
 
-​		acquire（获取） 当一个线程调用acquire操作时，它要么通过成功获取信号量（信号量减1），要么一直等下去，直到有线程释放信号量，或超时。
+acquire（获取） 当一个线程调用acquire操作时，它要么通过成功获取信号量（信号量减1），要么一直等下去，直到有线程释放信号量，或超时。
 
-​		release（释放）实际上会将信号量的值加1，然后唤醒等待的线程。
+release（释放）实际上会将信号量的值加1，然后唤醒等待的线程。
 
-​		信号量主要用于两个目的，一个是用于多个共享资源的互斥使用，另一个用于并发线程数的控制。
+信号量主要用于两个目的，一个是用于多个共享资源的互斥使用，另一个用于并发线程数的控制。
 
 # 7 读写锁
 

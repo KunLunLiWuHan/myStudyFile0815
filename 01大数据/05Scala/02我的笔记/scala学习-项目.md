@@ -8,7 +8,7 @@
 
 2、需求分析
 
-​		模拟实现基于文本界面的《客户信息管理软件》，该软件scala能够实现对客户对象的插入、修改和删除,显示，查询（用ArrayBuffer或者ListBuffer实现），并能够打印客户明细表。
+模拟实现基于文本界面的《客户信息管理软件》，该软件scala能够实现对客户对象的插入、修改和删除,显示，查询（用ArrayBuffer或者ListBuffer实现），并能够打印客户明细表。
 
 # 2 AKKA
 
@@ -96,7 +96,7 @@ receive 方法 {
 
 1、需求
 
-​		编写一个Actor, 名字叫SayHelloActor，然后使用SayHelloActor 可以给自己发送消息。
+编写一个Actor, 名字叫SayHelloActor，然后使用SayHelloActor 可以给自己发送消息。
 
 2、Actor通讯机制
 

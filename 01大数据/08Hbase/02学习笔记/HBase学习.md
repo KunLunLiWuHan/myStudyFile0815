@@ -119,7 +119,7 @@ Master 是所有 Region Server 的管理者，其实现类为 HMaster，主要�
  bin/zkServer.sh start
 ```
 
-2、hadoop正常部署并启动之
+2、**hadoop正常部署并启动之**
 
 ```ini
 [zookeeper@hadoop101 hadoop-2.7.2]$ sbin/start-dfs.sh 

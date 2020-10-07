@@ -1,10 +1,10 @@
 # 1 介绍
 
-​		Spark是一种快速、通用、可扩展的大数据分析引擎，2009年诞生于加州大学伯克利分校AMPLab，2010年开源，2013年6月成为Apache孵化项目，2014年2月成为Apache顶级项目。目前，Spark生态系统已经发展成为一个包含多个子项目的集合，其中包含SparkSQL、Spark Streaming、GraphX、MLlib等子项目，Spark是基于内存计算的大数据并行计算框架。
+Spark是一种快速、通用、可扩展的大数据分析引擎，2009年诞生于加州大学伯克利分校AMPLab，2010年开源，2013年6月成为Apache孵化项目，2014年2月成为Apache顶级项目。目前，Spark生态系统已经发展成为一个包含多个子项目的集合，其中包含SparkSQL、Spark Streaming、GraphX、MLlib等子项目，Spark是基于内存计算的大数据并行计算框架。
 
-​		Spark基于内存计算，提高了在大数据环境下数据处理的实时性，同时保证了高容错性和高可伸缩性，允许用户将Spark部署在大量廉价硬件之上，形成集群。
+Spark基于内存计算，提高了在大数据环境下数据处理的实时性，同时保证了高容错性和高可伸缩性，允许用户将Spark部署在大量廉价硬件之上，形成集群。
 
-​		Spark是MapReduce的替代方案，而且兼容HDFS、Hive，可融入Hadoop的生态系统，以弥补MapReduce的不足。
+Spark是MapReduce的替代方案，而且兼容HDFS、Hive，可融入Hadoop的生态系统，以弥补MapReduce的不足。
 
 ![image-20200729085739092](Spark学习.assets\image-20200729085739092.png)
 
@@ -12,25 +12,51 @@
 
 1、快
 
-​		与Hadoop的MapReduce相比，Spark基于内存的运算要快100倍以上，基于硬盘的运算也要快10倍以上。Spark实现了高效的DAG执行引擎，可以通过基于内存来高效处理数据流。
+与Hadoop的MapReduce相比，Spark基于内存的运算要快100倍以上，基于硬盘的运算也要快10倍以上。Spark实现了高效的DAG执行引擎，可以通过基于内存来高效处理数据流。
 
 2、易用
 
-​		Spark支持Java、Python和Scala的API，还支持超过80种高级算法，使用户可以快速构建不同的应用。而且Spark支持交互式的Python和Scala的shell，可以非常方便地在这些shell中使用Spark集群来验证解决问题的方法。
+Spark支持Java、Python和Scala的API，还支持超过80种高级算法，使用户可以快速构建不同的应用。而且Spark支持交互式的Python和Scala的shell，可以非常方便地在这些shell中使用Spark集群来验证解决问题的方法。
 
 3、通用
 
-​		Spark提供了统一的解决方案。Spark可以用于批处理、交互式查询（Spark SQL）、实时流处理（Spark Streaming）、机器学习（Spark MLlib）和图计算（GraphX）。这些不同类型的处理都可以在同一个应用中无缝使用。Spark统一的解决方案非常具有吸引力，毕竟任何公司都想用统一的平台去处理遇到的问题，减少开发和维护的人力成本和部署平台的物力成本。
+Spark提供了统一的解决方案。Spark可以用于批处理、交互式查询（Spark SQL）、实时流处理（Spark Streaming）、机器学习（Spark MLlib）和图计算（GraphX）。这些不同类型的处理都可以在同一个应用中无缝使用。Spark统一的解决方案非常具有吸引力，毕竟任何公司都想用统一的平台去处理遇到的问题，减少开发和维护的人力成本和部署平台的物力成本。
 
 4、兼容性
 
-​		Spark可以非常方便地与其他的开源产品进行融合。比如，Spark可以使用Hadoop的YARN和Apache Mesos作为它的资源管理和调度器，器，并且可以处理所有Hadoop支持的数据，包括HDFS、HBase和Cassandra等。这对于已经部署Hadoop集群的用户特别重要，因为不需要做任何数据迁移就可以使用Spark的强大处理能力。Spark也可以不依赖于第三方的资源管理和调度器，它实现了Standalone作为其内置的资源管理和调度框架，这样进一步降低了Spark的使用门槛，使得所有人都可以非常容易地部署和使用Spark。此外，Spark还提供了在EC2上部署Standalone的Spark集群的工具。
+Spark可以非常方便地与其他的开源产品进行融合。比如，Spark可以使用Hadoop的YARN和Apache Mesos作为它的资源管理和调度器，器，并且可以处理所有Hadoop支持的数据，包括HDFS、HBase和Cassandra等。这对于已经部署Hadoop集群的用户特别重要，因为不需要做任何数据迁移就可以使用Spark的强大处理能力。Spark也可以不依赖于第三方的资源管理和调度器，它实现了Standalone作为其内置的资源管理和调度框架，这样进一步降低了Spark的使用门槛，使得所有人都可以非常容易地部署和使用Spark。此外，Spark还提供了在EC2上部署Standalone的Spark集群的工具。
 
 # 2 安装
 
-## 2.1 单机版安装
+1、官网地址
 
-**说明**
+```http
+http://spark.apache.org/
+```
+
+2、文档查看地址
+
+```http
+https://spark.apache.org/docs/2.1.1/
+```
+
+3、下载地址
+
+```http
+https://spark.apache.org/downloads.html
+```
+
+## 2.1 单机版安装(Standalone)
+
+一、说明
+
+1、介绍
+
+构建一个由Master+Slave构成的Spark集群，Spark运行在集群中。
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20201002190711032.png" alt="image-20201002190711032" style="zoom: 50%;" />
+
+2、参数说明
 
 local模式就是运行在一台计算机上的模式。
 
@@ -42,7 +68,11 @@ local[*]：该模式直接按照cpu最多cores来设置线程数。
 
 参看博客：
 
+```ini
 https://www.cnblogs.com/dintalk/p/12234718.html
+```
+
+二、安装部署
 
 1、解压后重命名
 
@@ -106,7 +136,7 @@ log4j.rootCategory=WARN, console
 
 ![image-20200808113231316](Spark学习.assets\image-20200808113231316.png)
 
-## 2.2 集群安装
+## 2.2 集群安装（HA）
 
 1、架构图
 
@@ -172,9 +202,9 @@ http://node-4:8080/
 
 <img src="Spark学习.assets\image-20200729144423554.png" alt="image-20200729144423554" style="zoom:80%;" />		
 
-​		此外，也可以执行jps命令，主节点上（node-4,node-5）有Master进程，其他子节点上有Work进行。
+此外，也可以执行jps命令，主节点上（node-4,node-5）有Master进程，其他子节点上有Work进行。
 
-​		到此为止，Spark集群安装完毕，但是有一个很大的问题，那就是Master节点存在单点故障，要解决此问题，就要借助zookeeper，并且启动至少两个Master节点来实现高可靠，配置方式比较简单：
+到此为止，Spark集群安装完毕，但是有一个很大的问题，那就是Master节点存在单点故障，要解决此问题，就要借助zookeeper，并且启动至少两个Master节点来实现高可靠，配置方式比较简单：
 
 Spark集群规划：node-4，node-5是Master；node-6，node-7，node-8是Worker
 
@@ -221,7 +251,7 @@ bin/spark-submit --master spark://node-4:7077 --class org.apache.spark.examples.
 ```
 
 ```ini
-#指定通信的master和协议
+#指定通信的master和协议（表示指定要连接的集群的master）
 --master spark://node-4:7077
 
 #每个executor使用的内存大小
@@ -255,20 +285,32 @@ bin/spark-submit --master spark://node-4:7077 --class org.apache.spark.examples.
 /bigdata/spark-2.2.0-bin-hadoop2.7/bin/spark-shell --master spark://node-4:7077,node-5:7077
 ```
 
-​		上面是指定了master的地址，那么就会将任务提交到集群，开始时sparksubmit（客户端）要连接Master，并申请计算资源（内存和核数），Master进行资源调度（就是让那些Worker启动Executor），在准备工作时，这些进程都已经创建好了。
+上面是指定了master的地址，那么就会将任务提交到集群，开始时sparksubmit（客户端）要连接Master，并申请计算资源（内存和核数），Master进行资源调度（就是让那些Worker启动Executor），在准备工作时，这些进程都已经创建好了。
 
 3、用spark Shell完成WordCount计算
 
 ```scala
-#wc指hdfs上的一个文件，将其排序后输出
+//wc指hdfs上的一个文件，将其排序后输出
+#//如果是本地运行，将下面的地址改为：file:///home/zookeeper/software/input
 sc.textFile("hdfs://node-4:9000/wc").flatMap(_.split(" ")).map((_, 1)).reduceByKey(_+_).sortBy(_._2, false).collect
+
+//数据流分析
+textFile("input")：读取本地文件input文件夹数据；
+flatMap(_.split(" "))：压平操作，按照空格分割符将一行数据映射成一个个单词；
+map((_,1))：对每一个元素操作，将单词映射为元组；
+reduceByKey(_+_)：按照key将值进行聚合，相加；
+collect：将数据收集到Driver端展示。
 ```
+
+运行结果：
+
+![image-20201002173526594](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20201002173526594.png)
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20201002160244927.png" alt="image-20201002160244927" style="zoom:67%;" />
 
 启动HDFS(上传数据到hdfs)，sc是spark core（RDD）的执行入口。
 
-说明：
-
-在运行的时候，我们应该启动zookeeper、Hadoop和spark。
+说明：在运行的时候，我们应该启动zookeeper、Hadoop和spark。
 
 ### 2、IDEA方式
 
@@ -323,7 +365,7 @@ object ScalaWordCount {
     val conf = new SparkConf().setAppName("ScalaWordCount").setMaster("local[4]")
     //创建spark执行的入口
     val sc = new SparkContext(conf)
-    //读取本目录下的文件(一行一行读出来)
+    //读取本目录下的文件(一行一行读出来)，在当前的项目下创建一个文件夹in,并在其中添加文件1.txt。
     val lines: RDD[String] = sc.textFile("in/1.txt")
 
     /**
@@ -362,40 +404,29 @@ object ScalaWordCount {
 
 ![spark任务执行过程简介](Spark学习.assets\spark任务执行过程简介.png)
 
-## 2.6 Yarn和spark的对比
-
- Yarn和Spark的StandAlone调度模式对比
-
-| Yarn                              | Spark                                          | 描述                                                      |
-| --------------------------------- | ---------------------------------------------- | --------------------------------------------------------- |
-| ResouceManager                    | Master                                         | 管理子节点、资源调度、接收任务请求                        |
-| NodeManger                        | Worker                                         | 管理当前节点，并管理子进程                                |
-| YarnChild                         | Executor                                       | 运行真正的计算逻辑的（Task）                              |
-| Client（客户端）ApplicaitonMaster | SparkSubmit（=（Client + ApplicaitonMaster）） | 提交app，管理该任务的Executor，并将Task提交到（Executor） |
-
 # 3、RDD
 
-## 3.1 介绍
+## 1、介绍
 
-1、RDD（弹性分布式数据集）是一个基本的抽象，它里面并不存储真正要计算的数据，你对RDD进行操作，它会在Driver端转换成Task，下发到Executor来计算多台集群上的数据，操作RDD就像操作一个本地集合一样（类似代理），降低了编程的复杂度。
+1、RDD（ Resilient Distributed Dataset 弹性分布式数据集）是一个最基本的数据抽象，它里面并不存储真正要计算的数据，你对RDD进行操作，它会在Driver端转换成Task，下发到Executor来计算多台集群上的数据，操作RDD就像操作一个本地集合一样（类似代理），降低了编程的复杂度。
 
-​		代码中是一个抽象类，代码一个不可变（map等算子并不能改变RDD，只是创建了一个RDD），可分区（和后面的并行计算有关系），里面的元素可并行计算的集合。
+代码中是一个抽象类，代表一个不可变（map等算子并不能改变RDD，只是创建了一个RDD），可分区（和后面的并行计算有关系），里面的元素可并行计算的集合。
 
 （并行：多个cpu核并行计算；并发：线程指并发来抢占资源）
 
 2、Java Io回顾
 
-![image-20200808172629625](Spark学习.assets\image-20200808172629625.png)
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200808172629625.png" alt="image-20200808172629625" style="zoom: 50%;" />
 
 引入下面的IO：
 
-![image-20200808175134936](Spark学习.assets\image-20200808175134936.png)
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200808175134936.png" alt="image-20200808175134936" style="zoom:50%;" />
 
-<img src="Spark学习.assets\image-20200808174639042.png" alt="image-20200808174639042" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200808174639042.png" alt="image-20200808174639042" style="zoom:80%;" />
 
 3、RDD体现了装饰者设计模式（包装后有功能的扩展），将数据处理的逻辑进行封装（控制抽象，将封装好的逻辑传递给其他对象或函数）。
 
-![image-20200808175349475](Spark学习.assets\image-20200808175349475.png)
+![image-20200808175349475](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200808175349475.png)
 
 4、RDD属性
 
@@ -403,9 +434,9 @@ object ScalaWordCount {
 
 （2）一个计算每个分区的函数。
 
-（3）RDD之间的依赖关系
+（3）RDD之间的依赖关系。
 
-（4）一个Partioner,即RDD的分片函数。
+（4）一个Partioner，即RDD的分片函数。
 
 （5）一个列表，存储每个Partion的优先位置（preferred location）。
 
@@ -413,13 +444,13 @@ object ScalaWordCount {
 
 5、RDD的特点
 
-​		RDD表示只读的分区的数据集，对RDD进行改动，只能通过RDD的转换操作，由一个RDD得到一个新的RDD，新的RDD包含了从其他RDD衍生所必须的信息。RDD之间存在依赖，RDD的执行是按照血缘关系延时计算的，如果血缘关系比较长，可以通过持久化来切断血缘关系。
+RDD表示只读的分区的数据集，对RDD进行改动，只能通过RDD的转换操作，由一个RDD得到一个新的RDD，新的RDD包含了从其他RDD衍生所必须的信息。RDD之间存在依赖，RDD的执行是按照血缘关系延时计算的，如果血缘关系比较长，可以通过持久化来切断血缘关系。
 
 （1）分区
 
-​		RDD逻辑上是分区的，每个分区的数据是抽象存在的，计算的时候会通过一个compute函数得到每个分区的数据。
+RDD逻辑上是分区的，每个分区的数据是抽象存在的，计算的时候会通过一个compute函数得到每个分区的数据。
 
-​		如果RDD是通过已有的文件系统构建，则compute函数是读取指定文件系统中的数据；如果RDD是通过其他RDD转换而来，则compute函数是执行转换逻辑将其他RDD的数据进行转换。
+如果RDD是通过已有的文件系统构建，则compute函数是读取指定文件系统中的数据；如果RDD是通过其他RDD转换而来，则compute函数是执行转换逻辑将其他RDD的数据进行转换。
 
 <img src="Spark学习.assets\image-20200808182045280.png" alt="image-20200808182045280" style="zoom: 67%;" />
 
@@ -427,39 +458,126 @@ object ScalaWordCount {
 
 <img src="Spark学习.assets\image-20200808182305128.png" alt="image-20200808182305128" style="zoom:80%;" />
 
-​		由一个RDD转换成另一个RDD，可以通过丰富的操作算子（解决问题其实就是将问题的初始状态，通过一系列的操作（算子）对问题状态进行转换，然后达到完成状态。spark中的算子分为两类：转换算子和行动算子。）来实现，不再像MapReduce那样只能写map和reduce了，如下图所示：
+由一个RDD转换成另一个RDD，可以通过丰富的操作算子（解决问题其实就是将问题的初始状态，通过一系列的操作（算子）对问题状态进行转换，然后达到完成状态。spark中的算子分为两类：转换算子和行动算子。）来实现，不再像MapReduce那样只能写map和reduce了，如下图所示：
 
-​		<img src="Spark学习.assets\image-20200808183208395.png" alt="image-20200808183208395" style="zoom:80%;" />
+​		<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200808183208395.png" alt="image-20200808183208395" style="zoom:80%;" />
 
 （3）依赖
 
-​		依赖分为两种，一种是窄依赖，RDD之间是一一对应的；一种是宽依赖，下游RDD的每个分区与上游RDD（也称父RDD）的每个分区都有关，是多对多的关系。
+依赖分为两种，一种是窄依赖，RDD之间是一一对应的，即每一个父RDD的Partition最多被子RDD的一个Partition使用,窄依赖我们形象的比喻为独生子女。
 
-<img src="Spark学习.assets\image-20200808183354611.png" alt="image-20200808183354611" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20201005145209973.png" alt="image-20201005145209973" style="zoom:67%;" />
+
+
+
+另一种是宽依赖，下游RDD的每个分区与上游RDD（也称父RDD）的每个分区都有关，是多对多的关系，即多个子RDD的Partition会依赖同一个父RDD的Partition，会引起shuffle，总结：宽依赖我们形象的比喻为超生。
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20201005145328141.png" alt="image-20201005145328141" style="zoom: 67%;" />
 
 （4）缓存
 
-<img src="Spark学习.assets\image-20200808183541324.png" alt="image-20200808183541324" style="zoom:80%;" />
+RDD通过persist方法或cache方法可以将前面的计算结果缓存，默认情况下 persist() 会把数据以序列化的形式缓存在 JVM 的堆空间中。 
+
+但是并不是这两个方法被调用时立即缓存，而是触发后面的action时，该RDD将会被缓存在计算节点的内存中，并供后面重用。
+
+![image-20201005145729948](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20201005145729948.png)
+
+通过查看源码发现cache最终也是调用了persist方法，默认的存储级别都是仅在内存存储一份，Spark的存储级别还有好多种，存储级别在object StorageLevel中定义的。
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20201005145805221.png" alt="image-20201005145805221" style="zoom: 80%;" />
+
+在存储级别的末尾加上“_2”来把持久化数据存为两份。
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20201005145846950.png" alt="image-20201005145846950" style="zoom:67%;" />
+
+缓存有可能丢失，或者存储于内存的数据由于内存不足而被删除，RDD的缓存容错机制保证了即使缓存丢失也能保证计算的正确执行。通过基于RDD的一系列转换，丢失的数据会被重算，由于RDD的各个Partition是相对独立的，因此只需要计算丢失的部分即可，并不需要重算全部Partition。
+
+代码
+
+```scala
+val rdd = sc.makeRDD(Array("a"))
+
+//将RDD转换为携带当前时间戳不做缓存
+var nocache=rdd.map(_.toString+System.currentTimeMillis)
+
+//多次打印结果，显示的时间戳不同
+scala> nocache.collect
+res2: Array[String] = Array(a1601902624984)
+
+//将RDD转换为携带当前时间戳并做缓存
+ var nocache=rdd.map(_.toString+System.currentTimeMillis).cache
+
+//多次打印结果，显示的时间戳相同
+scala> nocache.collect
+res6: Array[String] = Array(a1601902692172)
+
+//打印血缘关系，有缓存分区存在
+scala> nocache.toDebugString
+res9: String =
+(4) MapPartitionsRDD[5] at map at <console>:26 [Memory Deserialized 1x Replicated]
+ |       CachedPartitions: 4; MemorySize: 144.0 B; ExternalBlockStoreSize: 0.0 B; DiskSize: 0.0 B
+ |  ParallelCollectionRDD[3] at makeRDD at <console>:24 [Memory Deserialized 1x Replicated]
+```
+
+（5）RDD CheckPoint
+
+Spark中对于数据的保存除了持久化操作之外，还提供了一种检查点的机制，检查点（本质是通过将RDD写入Disk做检查点）是为了通过lineage做容错的辅助，lineage过长会造成容错成本过高，这样就不如在中间阶段做检查点容错，如果之后有节点出现问题而丢失分区，从做检查点的RDD开始重做Lineage，就会减少开销。检查点通过将数据写入到HDFS文件系统实现了RDD的检查点功能。
+
+为当前RDD设置检查点。该函数将会创建一个二进制的文件，并存储到checkpoint目录中，该目录是用SparkContext.setCheckpointDir()设置的。在checkpoint的过程中，该RDD的所有依赖于父RDD中的信息将全部被移除。对RDD进行checkpoint操作并不会马上被执行，必须执行Action操作才能触发。
+
+```scala
+package RddProgram
+
+import org.apache.spark.rdd.RDD
+import org.apache.spark.{SparkConf, SparkContext}
+
+object Spark01_CheckPoint {
+  def main(args: Array[String]): Unit = {
+    val conf: SparkConf = new SparkConf().setMaster("local[*]").setAppName("checkPoint")
+    //创建Spark的上下文对象
+    val sc: SparkContext = new SparkContext(conf)
+    //设定检查点的保存目录
+    sc.setCheckpointDir("cp")
+
+    val rdd: RDD[Int] = sc.makeRDD(List(1, 2, 3, 4))
+    val mapRDD: RDD[(Int, Int)] = rdd.map((_, 1))
+    val reduceRDD: RDD[(Int, Int)] = mapRDD.reduceByKey(_ + _)
+    reduceRDD.checkpoint()
+
+    reduceRDD.foreach(println)
+    println(reduceRDD.toDebugString)
+  }
+}
+```
+
+血缘关系如下：
+
+```scala
+(12) ShuffledRDD[2] at reduceByKey at Spark01_CheckPoint.scala:21 []
+ |   ReliableCheckpointRDD[3] at foreach at Spark01_CheckPoint.scala:24 []
+```
 
 ### 创建RDD
 
-​		在Spark中创建RDD有三种方式：从集合中创建；从外部存储中创建；从其他RDD创建。
+在Spark中创建RDD有三种方式：从集合中创建；从外部存储中创建；从其他RDD创建。
 
 1、从外部存储中创建
 
 包括本地文件系统，还有Hadoop支持的数据集，比如HDFS,HBase等。
 
-<img src="Spark学习.assets\image-20200807185555976.png" alt="image-20200807185555976" style="zoom:80%;" />2、从集合中创建
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200807185555976.png" alt="image-20200807185555976" style="zoom:80%;" />
 
-​		将Driver的Scala集合通过并行化的方式编程RDD（做实验测试的时候用），Spark主要提供了两种函数：parallelize和makeRDD。
+2、从集合中创建
 
-<img src="Spark学习.assets\image-20200807185658091.png" alt="image-20200807185658091" style="zoom:80%;" />
+将Driver的Scala集合通过并行化的方式编程RDD（做实验测试的时候用），Spark主要提供了两种函数：parallelize和makeRDD。
 
-<img src="Spark学习.assets\image-20200807185959344.png" alt="image-20200807185959344" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200807185658091.png" alt="image-20200807185658091" style="zoom:80%;" />
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200807185959344.png" alt="image-20200807185959344" style="zoom:80%;" />
 
 并行化的第二种方式makeRDD：
 
-![image-20200807190143371](Spark学习.assets\image-20200807190143371.png)
+![image-20200807190143371](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200807190143371.png)
 
 使用IDEA创建：
 
@@ -490,9 +608,10 @@ object ScalaWordCount {
 3、调用一个已经存在了的RDD的Transformation，会生成一个新的RDD。
 
 RDD分区的数据取决于哪些因素：
+
 （1）如果是将Driver端的Scala集合并行化创建RDD，并且没有指定RDD的分区，RDD的分区就是为该app分配的中的核数。
 
-（2）如果是从hdfs中读取数据创建RDD，并且设置了最新分区数量是1，那么RDD的分区数据即使输入切片的数据，如果不设置最小分区的数量，即spark调用textFile时会默认传入2，那么RDD的分区数量会大于等于输入切片的数量。
+（2）如果是从hdfs中读取数据创建RDD，并且设置了最新分区数量是1，那么RDD的分区数据即是输入切片的数据，如果不设置最小分区的数量，即spark调用textFile时会默认传入2，那么RDD的分区数量会大于等于输入切片的数量。
 
 ### RDD分区
 
@@ -513,25 +632,25 @@ val listRDD: RDD[Int] = sc.makeRDD(List(1, 2, 3, 4),2)
 
 接下来我们来确认一下分区数为4个的原因：
 
-（1）、点击makeRDD
+（1）点击makeRDD
 
-<img src="Spark学习.assets\image-20200808211315985.png" alt="image-20200808211315985" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200808211315985.png" alt="image-20200808211315985" style="zoom:80%;" />
 
-(2)、点击并行度defaultParallelism
+（2）点击并行度defaultParallelism
 
-<img src="Spark学习.assets\image-20200808211337622.png" alt="image-20200808211337622" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200808211337622.png" alt="image-20200808211337622" style="zoom:80%;" />
 
-(3)、taskScheduler.defaultParallelism
+（3）taskScheduler.defaultParallelism
 
-<img src="Spark学习.assets\image-20200808211423779.png" alt="image-20200808211423779" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200808211423779.png" alt="image-20200808211423779" style="zoom:67%;" />
 
-(4)、查看抽象类具体实现
+（4）查看抽象类具体实现
 
-![image-20200808211532698](Spark学习.assets\image-20200808211532698.png)
+![image-20200808211532698](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200808211532698.png)
 
 (5)、找到函数
 
-<img src="Spark学习.assets\image-20200808211643308.png" alt="image-20200808211643308" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200808211643308.png" alt="image-20200808211643308" style="zoom:67%;" />
 
 2、从外部存储中创建保存文件
 
@@ -540,7 +659,7 @@ val listRDD: RDD[Int] = sc.makeRDD(List(1, 2, 3, 4),2)
     lines.saveAsTextFile("output1")
 
 //可以使用下面的方式指定分区
-// //读取文件时，传递的分区参数为最小分区数，但是不一定是这个分区数，取决于hadoop读取文件时的分片规则
+//读取文件时，传递的分区参数为最小分区数，但是不一定是这个分区数（可以大于3），取决于hadoop读取文件时的分片规则
  val lines: RDD[String] = sc.textFile("in/1.txt",3)
 ```
 
@@ -567,128 +686,20 @@ lines.saveAsTextFile("output2")
 
 ```
 12345
-
 ```
 
-​		计算分区和向分区里面存数据是两个不同的操作，将数据放到那个分区里面对应另外一套规则（hadoop切片规则）。
+计算分区和向分区里面存数据是两个不同的操作，将数据放到那个分区里面对应另外一套规则（hadoop切片规则）。
 
-​		计算分区规则：5/2 = 2，2，1。因此，对应三个分区。
+计算分区规则：5/2 = 2，2，1。因此，对应三个分区。
 
-​		规则：首先按照行来读取，此时读取数据为“12345”，然后将数据存到part-0000，接着读取下一行，后面的数据没有了，所以后面的数据存储的为空。
+规则：首先按照行来读取，此时读取数据为“12345”，然后将数据存到part-0000，接着读取下一行，后面的数据没有了，所以后面的数据存储的为空。
 
-## 3.2  算子
+## 2、算子
 
-**Driver和Excutor的关系**
+1、Driver和Excutor的关系
 
-<img src="Spark学习.assets\image-20200808231755967.png" alt="image-20200808231755967" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200808231755967.png" alt="image-20200808231755967" style="zoom: 67%;" />
 
-<img src="Spark学习.assets\image-20200808232009393.png" alt="image-20200808232009393" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200808232009393.png" alt="image-20200808232009393" style="zoom: 50%;" />
 
-1、mapPartitionsWithIndex 	<img src="Spark学习.assets\image-20200808224215682.png" alt="image-20200808224215682" style="zoom:80%;" />
-
-```scala
-val listRDD: RDD[Int] = sc.makeRDD(1 to 10)
-/**
- * 需求：创建一个RDD,使每个元素所在分区，形成一个
- * 元组进而组成一个新的RDD （数据，分区）
- * 1、使用模式匹配
- * case (num,datas) 中 num 是分区号，datas分区中的数据集合
- * 即传入的数据
- */
-val value: RDD[(Int, String)] = listRDD.mapPartitionsWithIndex {
-  case (num, datas) => {
-    //先考虑语法，后考虑实现逻辑。数据原样数据
-    //datas
-    // _表示datas中的每一条数据（1 -》 10），后面是分区号
-    datas.map((_, "分区号：" + num))
-  }
-}
-value.collect().foreach(println)
-```
-
-
-
-2、aggregate 
-
-3、aggregateByKey
-
-4、collect方法
-
-5、foldByKey方法
-
-6、foreach 和 foreachPartition 
-
-7、mapPartions(func)
-
-<img src="Spark学习.assets\image-20200808221026304.png" alt="image-20200808221026304" style="zoom:80%;" />
-
-​		下面是map和mapPartions的区别：
-
-![image-20200808221744471](Spark学习.assets\image-20200808221744471.png)
-
-<img src="Spark学习.assets\image-20200808221922816.png" alt="image-20200808221922816" style="zoom:80%;" />
-
-```scala
-val lsitRDD: RDD[Int] = sc.makeRDD(1 to 10)
-/**
- * 实现lsitRDD数据扩大2倍
- * 1、lsitRDD.mapPartitions(datas => datas) 返回1 - 10
- * 因为只有两个分区，所以(datas => datas)直走两次。
- * 2、但是我们想要每个数据乘以2后返回，所以对于每个分区中的数据需要遍历
- * 3、mapPartitions和map实现功能一致，但效率优于map，将一个分区中的数据，全部传给一个Executor，
- * 减少了数据传输交互次数
- * 4、缺点：可能会出现内存溢出情况。
- */
-//    val value: RDD[Int] = lsitRDD.mapPartitions(datas => datas)
-val value: RDD[Int] = lsitRDD.mapPartitions(datas => {
-  //datas 是 可迭代的集合。
-  //下面是一个整体发给Executor,进行计算
-  datas.map(data => data*2)
-})
-value.collect().foreach(println)
-```
-
-8、flatmap
-
-```scala
-val listRDD: RDD[List[Int]] = sc.makeRDD(Array(List(1, 2), List(3, 4)))
-//把 List(1, 2)，List(3, 4)两个元素，当成datas,进行拆解后返回1，2，3，4
-val value: RDD[Int] = listRDD.flatMap(datas => datas)
-value.collect().foreach(println)
-```
-
-9、glom
-
-```scala
-val ListRDD: RDD[Int] = sc.makeRDD(List(1, 2, 3, 4, 5), 2)
-val glomRDD: RDD[Array[Int]] = ListRDD.glom()
-//glom：将一个分区数据形成一个数组，形成新的类型RDD[Array[T]]
-glomRDD.collect().foreach(array => {
-  /**
-   * 1,2
-   * 3,4,5
-   */
-  println(array.mkString(","))
-```
-
-10、groupBy & filter
-
-<img src="Spark学习.assets\image-20200808235138346.png" alt="image-20200808235138346" style="zoom:80%;" />
-
-<img src="Spark学习.assets\image-20200808235229414.png" alt="image-20200808235229414" style="zoom:80%;" />
-
-```scala
-val ListRDD: RDD[Int] = sc.makeRDD(List(1, 2, 3, 4, 5))
-//(Int, Iterable[Int])  :前者i % 2的值，后者数据的结果
-val value: RDD[(Int, Iterable[Int])] = ListRDD.groupBy(i => i % 2)
-//形成一个元组（k,v），k表示分组的key,v表示分组后的数据集合
-//(0,CompactBuffer(2, 4))
-//(1,CompactBuffer(1, 3, 5))
-value.collect().foreach(println)
-```
-
-```scala
-//将2的倍数取出
-val value: RDD[Int] = ListRDD.filter(x => (x % 2 == 0))
-```
 
