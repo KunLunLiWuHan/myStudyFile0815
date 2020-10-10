@@ -751,7 +751,7 @@ public class Application { //测试类
 
 即：属性应该写成私有，通过`get/set`（提供一些可以操作属性的方法）来间接操作。
 
-**优点**
+优点
 
 + 提高程序的安全性，保护数据。
 + 隐藏代码的实现细节。
@@ -792,7 +792,7 @@ public class Application { //测试类
 }
 ```
 
-+ 控制台输出：
+控制台输出：
 
 ```java
 昆伦
@@ -837,7 +837,7 @@ public class Application {  //测试类
 }
 ```
 
-+ 控制台输出：
+控制台输出：
 
 ```java
 Student
@@ -845,7 +845,7 @@ Student
 Person
 ```
 
-+ 当父类中的`print()`方法使用`private`修饰时，在子类中是使用`super.print();`会报错，主要是因为，私有的方法无法被继承。
+当父类中的`print()`方法使用`private`修饰时，在子类中使用`super.print();`会报错，主要是因为，私有的方法无法被继承。
 
 **测试3**
 

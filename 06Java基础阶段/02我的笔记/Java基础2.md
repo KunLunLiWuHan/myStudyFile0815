@@ -569,6 +569,139 @@ public class ObjectInputOutStreamTest {
 }
 ```
 
+# 5、super关键字的使用
+
+1、介绍
+
+（1）概述
+
+super可以理解为 父类的... ，super可以用来调用：属性，方法和构造器。
+
+（2）普通使用
+
++ 我们在子类的方法或者构造器中，通过使用 “super.方法” 或者 “super.属性” 的方式，显式的调用父类中声明的属性或者方法。通常情况下，我们会省略关键字super。
++ 特殊情况1：当子类和父类定义了一个同名的属性时，我们要想在子类中调用父类声明的属性，必须显式的使用 “super.属性” 的方式，表明调用的是父类中声明的属性。
++ 特殊情况1：当子类重写了父类的方法后，我们想在子类的方法中调用父类被重写的方法时，则必须显式的使用使用 “super.方法” 的方式，表明调用的是父类中声明的被重写的方法。
+
+（3）构造器中使用
+
++ 我们可以在子类的构造器中显式的使用“super(形参列表)”的方式，调用父类中声明的指定的构造器。
++ “super(形参列表)”的使用，必须显式声明在子类构造器中的首行。
++ 我们在类的构造器中，针对“this(形参列表)”（表示使用本类中的构造器）或 "super(形参列表)"（表示使用父类的构造器）只能二选一，不能同时出现。
++ 在构造器的首行，没有显式的声明 “this(形参列表)” 或者 "super(形参列表)" ，则默认调用的是父类空参的构造器，即 super() 。
+
+（2）代码
+
+父类
+
+```java
+public class Person {
+   String name;
+   int age;
+   int id=1;
+
+   public Person(){
+
+   }
+
+   public Person(String name,int age){
+      this.name = name;
+      this.age = age;
+   }
+
+   public void eat(){
+      System.out.println("人，吃饭...............");
+   }
+
+}
+```
+
+子类
+
+```java
+public class Student extends Person {
+   String major;
+   int id = 2; //父类和子类有相同的id属性
+
+   public Student() {
+   }
+
+   public Student(String major) {
+      /**
+       * 1、这里没有super();，其实是省略掉了，通过该关键字，会调用父类中代码：
+       *     public Person(){ }
+       */
+      this.major = major;
+   }
+
+
+   /**
+    * 1、第三种构造方式
+    * 2、在该构造方式中，参数name,age都没有在本类中定义，使用的是
+    * 父类中属性。我们建议使用 super(name, age); 方式进行赋值。
+    */
+   public Student(String name, int age, String major, int id) {
+      super(name, age);
+      this.major = major;
+      this.id = id;
+   }
+
+   //重写父类的方法
+   @Override
+   public void eat() {
+      System.out.println("学生，吃饭................");
+      //使用 super.方法 的方式，调用父类被重写的方法。
+      super.eat();
+   }
+
+   public void study() {
+      System.out.println("学生，学习................");
+   }
+
+   public void show() {
+      System.out.println("this.id = " + this.id);
+      //使用 super.属性 的方式，调用父类的属性。
+      System.out.println("super.id = " + super.id);
+   }
+}
+```
+
+测试类
+
+```java
+public class SuperTest {
+   public static void main(String[] args) {
+      Student student = new Student();
+      //输出：学生，吃饭................
+      student.eat();
+      /**
+       * 输出：
+       * this.id = 2
+       * super.id = 1
+       */
+      student.show();
+   }
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
