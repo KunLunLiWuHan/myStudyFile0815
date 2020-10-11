@@ -28,11 +28,11 @@
 
 ### 2、发布/订阅模式
 
-​		即一对多，消费者消费数据之后不会清除消息。
+即一对多，消费者消费数据之后不会清除消息。
 
-​		消息生产者（发布）将消息发布到 `topic` 中，同时有多个消息消费者（订阅）消费该消息。和点对点方式不同，发布到 topic 的消息会被所有订阅者消费。
+消息生产者（发布）将消息发布到 `topic` 中，同时有多个消息消费者（订阅）消费该消息。和点对点方式不同，发布到 topic 的消息会被所有订阅者消费。
 
-​		其中，有两种模式，一种是消费者拉取模式，比较耗费时间，消费者一直维护一个常轮询，去到Topic中询问或者获取消息；一种是Topic推送模式，由于速率不匹配，可能会造成消费者崩溃或者资源的浪费。
+其中，有两种模式，一种是消费者拉取模式，比较耗费时间，消费者一直维护一个常轮询，去到Topic中询问或者获取消息；一种是Topic推送模式，由于速率不匹配，可能会造成消费者崩溃或者资源的浪费。
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200714215702216.png" alt="image-20200714220321149" style="zoom:80%;" />
 
@@ -53,7 +53,11 @@
 
 ## 1.3 安装
 
-网址：http://kafka.apache.org/downloads。
+网址
+
+```http
+http://kafka.apache.org/downloads
+```
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200715170805450.png" alt="image-20200715170805450" style="zoom: 50%;" />
 
@@ -110,7 +114,7 @@ source /etc/profile
 
 6. 启动集群
 
-​		(6.1) 依次在  hadoop101，hadoop102、hadoop103 节点上启动 kafka。注意，我们要事先启动zookeeper。
+(6.1) 依次在  hadoop101，hadoop102、hadoop103 节点上启动 kafka。注意，我们要事先启动zookeeper。
 
 ```ini
 # 1./home/zookeeper/software/kafka目录下启动
@@ -121,17 +125,17 @@ bin/kafka-server-start.sh -daemon config/server.properties
 bin/kafka-server-stop.sh stop
 ```
 
-​		(6.2) 输入下面指令后，将会有zookeeper和kafka两个进程。
+(6.2) 输入下面指令后，将会有zookeeper和kafka两个进程。
 
 ```ini
 jps
 ```
 
-​		(6.3) 创建 topic
+(6.3) 创建 topic
 
 ```ini
 #在第一次启动kafka集群的时候，我们使用下面命令创建一个主题
-bin/kafka-topics.sh --zookeeper hadoop101:2181 --topic first --create --replication-factor 3 --partitions 2
+bin/kafka-topics.sh --zookeeper hadoop101:2181  --create --replication-factor 3 --partitions 2 --topic first
 ```
 
 ```ini
@@ -155,9 +159,9 @@ bin/kafka-topics.sh --zookeeper hadoop101:2181 --topic first --create --replicat
 bin/kafka-topics.sh --zookeeper hadoop101:2181 --list
 ```
 
-​		如果下面有输出，就说明已经创建成功了。
+如果下面有输出，就说明已经创建成功了。
 
-### 1.3.1 命令行操作
+### 命令行操作
 
 1. 删除topic
 
@@ -165,7 +169,7 @@ bin/kafka-topics.sh --zookeeper hadoop101:2181 --list
 bin/kafka-topics.sh --zookeeper hadoop101:2181 --delete --topic first(主题名)
 ```
 
-​		需要 server.properties 中设置 delete.topic.enable=true 否则只是标记删除。
+需要 server.properties 中设置 delete.topic.enable=true 否则只是标记删除。
 
 2. 查看分区详情
 
@@ -204,17 +208,19 @@ bin/kafka-console-consumer.sh  --zookeeper hadoop102:2181 --topic first
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717082616899.png" alt="image-20200717082616899" style="zoom: 80%;" />
 
-​		topic 是逻辑上的概念，而 partition 是物理上的概念，每个 partition 对应于一个 log 文 件，该 log 文件中存储的就是 producer 生产的数据。			Producer 生产的数据会被不断追加到该 log 文件末端，且每条数据都有自己的 offset。消费者组中的每个消费者，都会实时记录自己消费到了哪个 offset，以便出错恢复时，从上次的位置继续消费。
+topic 是逻辑上的概念，而 partition 是物理上的概念，每个 partition 对应于一个 log 文 件，该 log 文件中存储的就是 producer 生产的数据。			
+
+Producer 生产的数据会被不断追加到该 log 文件末端，且每条数据都有自己的 offset。消费者组中的每个消费者，都会实时记录自己消费到了哪个 offset，以便出错恢复时，从上次的位置继续消费。
 
 ### 2.1.1 文件存储机制
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717084640708.png" alt="image-20200717084640708" style="zoom:80%;" />
 
-​		由于生产者生产的消息会不断追加到 log 文件末尾，为防止 log 文件过大导致数据定位 效率低下，Kafka 采取了分片和索引机制，将每个 partition 分为多个 segment。
+由于生产者生产的消息会不断追加到 log 文件末尾，为防止 log 文件过大导致数据定位 效率低下，Kafka 采取了分片和索引机制，将每个 partition 分为多个 segment。
 
-​		每个 segment 对应两个文件—`.index`文件和`.log`文件。这些文件位于一个文件夹下，该文件夹的命名 规则为：topic 名称+分区序号。例如，first 这个 topic 有三个分区，则其对应的文件夹为 first-0,first-1,first-2。
+每个 segment 对应两个文件—`.index`文件和`.log`文件。这些文件位于一个文件夹下，该文件夹的命名 规则为：topic 名称+分区序号。例如，first 这个 topic 有三个分区，则其对应的文件夹为 first-0,first-1,first-2。
 
-​		index 和 log 文件以当前 segment 的第一条消息的 offset 命名。下图为 index 文件和 log 文件的结构示意图。
+index 和 log 文件以当前 segment 的第一条消息的 offset 命名。下图为 index 文件和 log 文件的结构示意图。
 
 ​	<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717084823433.png" alt="image-20200717084823433" style="zoom:80%;" />
 
@@ -244,7 +250,7 @@ bin/kafka-console-consumer.sh  --zookeeper hadoop102:2181 --topic first
 
 ### 2.2.2 数据可靠性保证
 
-​		为保证 producer 发送的数据，能可靠的发送到指定的 topic，topic 的每个 partition 收到 producer 发送的数据后，都需要向 producer 发送 ack（acknowledgement 确认收到），如果 producer 收到 ack，就会进行下一轮的发送，否则重新发送数据。
+为保证 producer 发送的数据，能可靠的发送到指定的 topic，topic 的每个 partition 收到 producer 发送的数据后，都需要向 producer 发送 ack（acknowledgement 确认收到），如果 producer 收到 ack，就会进行下一轮的发送，否则重新发送数据。
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717090642397.png" alt="image-20200717090642397" style="zoom:80%;" />
 
@@ -289,75 +295,75 @@ Kafka 选择了第二种方案，原因如下：
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717095531884.png" alt="image-20200717095531884" style="zoom:80%;" />
 
-​		`HW`主要解决的是消费者消费数据的一致性。
+`HW`主要解决的是消费者消费数据的一致性。
 
-​		LEO：指的是每个副本最大的 offset。
+LEO：指的是每个副本最大的 offset。
 
-​		HW：**指的是消费者能见到的最大的 offset**，ISR 队列中最小的 LEO。
+HW：**指的是消费者能见到的最大的 offset**，ISR 队列中最小的 LEO。
 
-​		HW和LEO存在于`.log`文件中。
+HW和LEO存在于`.log`文件中。
 
 1. **follower 故障** 
 
-​		follower 发生故障后会被临时踢出 ISR，待该 follower 恢复后，follower 会读取本地磁盘记录的上次的 HW，并将 log 文件高于 HW 的部分截取掉，从 HW 开始向 leader 进行同步。 等该 follower 的 LEO 大于等于该 Partition 的 HW，即 follower 追上 leader 之后，就可以重新加入 ISR 了。
+follower 发生故障后会被临时踢出 ISR，待该 follower 恢复后，follower 会读取本地磁盘记录的上次的 HW，并将 log 文件高于 HW 的部分截取掉，从 HW 开始向 leader 进行同步。 等该 follower 的 LEO 大于等于该 Partition 的 HW，即 follower 追上 leader 之后，就可以重新加入 ISR 了。
 
 2. **leader 故障**
 
-​		leader 发生故障之后，会从 ISR 中选出一个新的 leader，之后，为保证多个副本之间的数据一致性，其余的 follower 会先将各自的 log 文件高于 HW 的部分截掉，然后从新的 leader 同步数据。
+leader 发生故障之后，会从 ISR 中选出一个新的 leader，之后，为保证多个副本之间的数据一致性，其余的 follower 会先将各自的 log 文件高于 HW 的部分截掉，然后从新的 leader 同步数据。
 
-​		**注意**：这只能保证副本之间的数据一致性，并不能保证数据不丢失或者不重复。
+**注意**：这只能保证副本之间的数据一致性，并不能保证数据不丢失或者不重复。
 
 #### 4、Exactly Once 语义
 
-​		将服务器的 ACK 级别设置为-1，可以保证 Producer 到 Server 之间不会丢失数据，即 **At Least Once** 语义。相对的，将服务器 ACK 级别设置为 0，可以保证生产者每条消息只会被 发送一次，即 **At Most Once** 语义。 
+将服务器的 ACK 级别设置为-1，可以保证 Producer 到 Server 之间不会丢失数据，即 **At Least Once** 语义。相对的，将服务器 ACK 级别设置为 0，可以保证生产者每条消息只会被 发送一次，即 **At Most Once** 语义。 
 
-​		At Least Once 可以保证数据不丢失，但是不能保证数据不重复；相对的，At Least Once 可以保证数据不重复，但是不能保证数据不丢失。但是，对于一些非常重要的信息，比如说交易数据，下游数据消费者要求数据既不重复也不丢失，即 **Exactly Once** 语义。
+At Least Once 可以保证数据不丢失，但是不能保证数据不重复；相对的，At Least Once 可以保证数据不重复，但是不能保证数据不丢失。但是，对于一些非常重要的信息，比如说交易数据，下游数据消费者要求数据既不重复也不丢失，即 **Exactly Once** 语义。
 
-​		在 0.11 版 本以前的 Kafka，对此是无能为力的，只能保证数据不丢失，再在下游消费者对数据做全局 去重。对于多个下游应用的情况，每个都需要单独做全局去重，这就对性能造成了很大影响。 
+在 0.11 版 本以前的 Kafka，对此是无能为力的，只能保证数据不丢失，再在下游消费者对数据做全局 去重。对于多个下游应用的情况，每个都需要单独做全局去重，这就对性能造成了很大影响。 
 
-​		0.11 版本的 Kafka，引入了一项重大特性：**幂等性**。所谓的幂等性就是指 Producer 不论 向 Server 发送多少次重复数据，Server 端都只会持久化一条。幂等性结合 At Least Once 语 义，就构成了 Kafka 的 Exactly Once 语义。即： 
+0.11 版本的 Kafka，引入了一项重大特性：**幂等性**。所谓的幂等性就是指 Producer 不论 向 Server 发送多少次重复数据，Server 端都只会持久化一条。幂等性结合 At Least Once 语 义，就构成了 Kafka 的 Exactly Once 语义。即： 
 
 ```ini
 At Least Once + 幂等性 = Exactly Once 
 ```
 
-​		要启用幂等性，只需要将 Producer 的参数中 **enable.idompotence** 设置为 **true** 即可(此时ack参数等于-1)。Kafka 的幂等性实现其实就是将原来下游需要做的**去重**放在了数据上游。
+要启用幂等性，只需要将 Producer 的参数中 **enable.idompotence** 设置为 **true** 即可(此时ack参数等于-1)。Kafka 的幂等性实现其实就是将原来下游需要做的**去重**放在了数据上游。
 
-​		开启幂等性的 Producer 在 初始化的时候会被分配一个 PID（produce ID），发往同一 Partition 的消息会附带 Sequence Number。而 Broker 端会对做<PID,Partition ,SeqNumber>缓存，当具有相同主键的消息提交时，Broker 只 会持久化一条。 
+开启幂等性的 Producer 在 初始化的时候会被分配一个 PID（produce ID），发往同一 Partition 的消息会附带 Sequence Number。而 Broker 端会对做<PID,Partition ,SeqNumber>缓存，当具有相同主键的消息提交时，Broker 只 会持久化一条。 
 
-​		但是 PID 重启就会变化，同时不同的 Partition 也具有不同主键，所以幂等性无法保证**跨分区跨会话**的 Exactly Once。
+但是 PID 重启就会变化，同时不同的 Partition 也具有不同主键，所以幂等性无法保证**跨分区跨会话**的 Exactly Once。
 
 ## 2.3 Kafka 消费者
 
 ### 2.3.1 消费方式
 
-​		consumer 采用 pull（拉）模式从 broker 中读取数据。		  
+consumer 采用 pull（拉）模式从 broker 中读取数据。		  
 
-​		push（推）模式很难适应消费速率不同的消费者，因为消息发送速率是由 broker决定的。 它的目标是尽可能以最快速度传递消息，但是这样很容易造成 consumer 来不及处理消息，典型的表现就是拒绝服务以及网络拥塞。而 pull 模式则可以根据 consumer 的消费能力以适当的速率消费消息。
+push（推）模式很难适应消费速率不同的消费者，因为消息发送速率是由 broker决定的。 它的目标是尽可能以最快速度传递消息，但是这样很容易造成 consumer 来不及处理消息，典型的表现就是拒绝服务以及网络拥塞。而 pull 模式则可以根据 consumer 的消费能力以适当的速率消费消息。
 
-​		pull 模式不足之处是，如果 kafka 没有数据，消费者可能会陷入循环中，一直返回空数据。针对这一点，Kafka 的消费者在消费数据时会传入一个时长参数 `timeout`，如果当前没有 数据可供消费，consumer 会等待一段时间之后再返回，这段时长即为 timeout。
+pull 模式不足之处是，如果 kafka 没有数据，消费者可能会陷入循环中，一直返回空数据。针对这一点，Kafka 的消费者在消费数据时会传入一个时长参数 `timeout`，如果当前没有 数据可供消费，consumer 会等待一段时间之后再返回，这段时长即为 timeout。
 
 ### 2.3.2 分区分配策略
 
-​		一个 consumer group 中有多个 consumer，一个 topic 有多个 partition，所以必然会涉及 到 partition 的分配问题，即确定那个 partition 由哪个 consumer 来消费。 
+一个 consumer group 中有多个 consumer，一个 topic 有多个 partition，所以必然会涉及 到 partition 的分配问题，即确定那个 partition 由哪个 consumer 来消费。 
 
-​		Kafka 有两种分配策略，一是 RoundRobin，一是 Range。
+Kafka 有两种分配策略，一是 RoundRobin，一是 Range。
 
 #### 1、RoundRobin方式
 
 情况1：
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717102917405.png" alt="image-20200717102917405" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717102917405.png" alt="image-20200717102917405" style="zoom: 67%;" />
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717103102250.png" alt="image-20200717103102250" style="zoom:67%;" />
 
 情况2：有可能会出现多个主题的情况：
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717103303974.png" alt="image-20200717103303974" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717103303974.png" alt="image-20200717103303974" style="zoom: 50%;" />
 
 #### 2、Range方式 
 
-​		Kafka中默认采取这种方式，根据主题topic来发送，优先看是谁订阅了主题，与消费者的组关系不大。
+Kafka中默认采取这种方式，根据主题topic来发送，优先看是谁订阅了主题，与消费者的组关系不大。
 
 情况1：
 
@@ -365,17 +371,17 @@ At Least Once + 幂等性 = Exactly Once
 
 情况2：有可能会出现多个主题的情况：
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717103918706.png" alt="image-20200717103918706" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717103918706.png" alt="image-20200717103918706" style="zoom: 50%;" />
 
 ​		当消费者重新加进来之后，分配策略会重新分配。
 
 情况3：
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717153652569.png" alt="image-20200717153652569" style="zoom: 67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717153652569.png" alt="image-20200717153652569" style="zoom: 50%;" />
 
-​		A，B是一个消费者组1，C单独是要给消费者组2，主题T1发给A，B，C,假如采用轮询方式的话，组1会将T1和T2看成一个整体，然后将数据轮询发给组1，此时A会收到T2的数据，不符合；需要采用Range方式发送数据。
+A，B是一个消费者组1，C单独是要给消费者组2，主题T1发给A，B，C,假如采用轮询方式的话，组1会将T1和T2看成一个整体，然后将数据轮询发给组1，此时A会收到T2的数据，不符合；需要采用Range方式发送数据。
 
-​		此时T2根据主题topic来发送，优先看是谁订阅了主题，然后再看组，与消费者的组的关系不大，对于T1会采用T1（0，1）给A，T2（2）给B，同时T1全部分区的数据都要给C。
+此时T2根据主题topic来发送，优先看是谁订阅了主题，然后再看组，与消费者的组的关系不大，对于T1会采用T1（0，1）给A，T2（2）给B，同时T1全部分区的数据都要给C。
 
 ### 2.3.3 offset 的维护
 
@@ -383,13 +389,13 @@ At Least Once + 幂等性 = Exactly Once
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717111612567.png" alt="image-20200717111612567" style="zoom:80%;" />
 
-​		由于 consumer 在消费过程中可能会出现断电宕机等故障，consumer 恢复后，需要从故障前的位置的继续消费，所以 consumer 需要实时记录自己消费到了哪个 offset，以便故障恢复后继续消费。
+由于 consumer 在消费过程中可能会出现断电宕机等故障，consumer 恢复后，需要从故障前的位置的继续消费，所以 consumer 需要实时记录自己消费到了哪个 offset，以便故障恢复后继续消费。
 
-​		Kafka 0.9 版本之前，consumer 默认将 offset 保存在 Zookeeper 中，从 0.9 版本开始， consumer 默认将 offset 保存在 Kafka 一个内置的 topic 中，该 topic 为__consumer_offsets。
+Kafka 0.9 版本之前，consumer 默认将 offset 保存在 Zookeeper 中，从 0.9 版本开始， consumer 默认将 offset 保存在 Kafka 一个内置的 topic 中，该 topic 为__consumer_offsets。
 
 **查看**
 
-​		使用zookeeper的方式接收消息，然后使用zkCli.sh登录zookeeper进行查看。
+使用zookeeper的方式接收消息，然后使用zkCli.sh登录zookeeper进行查看。
 
 ```ini
 bin/kafka-console-consumer.sh  --zookeeper hadoop102:2181 --topic second
@@ -401,17 +407,17 @@ bin/kafka-console-consumer.sh  --zookeeper hadoop102:2181 --topic second
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717145051919.png" alt="image-20200717145051919" style="zoom:80%;" />
 
-​		其中，**/brokers/ids**在Kafka集群中，每个broker都有一个唯一的id值用来区分彼此。Kafka在启动时会在zookeeper中/brokers/ids路径下创建一个与当前broker的id为名称的虚节点，Kafka的健康状态检查就依赖于此节点。进入创建一个集群。
+其中，**/brokers/ids**在Kafka集群中，每个broker都有一个唯一的id值用来区分彼此。Kafka在启动时会在zookeeper中/brokers/ids路径下创建一个与当前broker的id为名称的虚节点，Kafka的健康状态检查就依赖于此节点。进入创建一个集群。
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717145240090.png" alt="image-20200717145240090" style="zoom:80%;" />
 
-​		也就是使用一个组保存offsets，使用group（组）+topic（主题） + partition(分区)来保存一个数据内容。
+也就是使用一个组保存offsets，使用group（组）+topic（主题） + partition(分区)来保存一个数据内容。
 
 ### 2.3.4 消费者组案例
 
-​		测试同一个消费者组中的消费者，同一时刻只能有一个消费者消费。
+测试同一个消费者组中的消费者，同一时刻只能有一个消费者消费。
 
-​	（1）在 hadoop102、hadoop103 上修改/kafka/config/consumer.properties 配置 文件中的 group.id 属性为任意组名。	
+（1）在 hadoop102、hadoop103 上修改/kafka/config/consumer.properties 配置 文件中的 group.id 属性为任意组名。	
 
 ```ini
 #指令
@@ -421,28 +427,28 @@ vi consumer.properties
 group.id=xiaolun
 ```
 
-​	(2)在 hadoop102、hadoop103 上分别启动消费者
+（2）在 hadoop102、hadoop103 上分别启动消费者
 
 ```ini
 #注意：指定对应的消费者配置文件
 bin/kafka-console-consumer.sh  --bootstrap-server hadoop102:9092 --topic second --consumer.config config/consumer.properties
 ```
 
-​	（3）在 hadoop101 上启动生产者
+（3）在 hadoop101 上启动生产者
 
 ```ini
 bin/kafka-console-producer.sh --broker-list hadoop101:9092 --topic second
 ```
 
-​	（4）查看 hadoop102 和 hadoop103 的接收者。
+（4）查看 hadoop102 和 hadoop103 的接收者。
 
-​		可以发现：同一时刻只有一个消费者接收到消息（轮询），但是不是同一个组的话，可以同时和这个组接收消息。
+可以发现：同一时刻只有一个消费者接收到消息（轮询），但是不是同一个组的话，可以同时和这个组接收消息。
 
 ## 2.4 Kafka 高效读写数据
 
 1. **顺序写磁盘**
 
-​		Kafka 的 producer 生产数据，要写入到 log 文件中，写的过程是一直追加到文件末端， 为顺序写。官网有数据表明，同样的磁盘，顺序写能到 600M/s，而随机写只有 100K/s。这 与磁盘的机械机构有关，顺序写之所以快，是因为其省去了大量磁头寻址的时间。
+Kafka 的 producer 生产数据，要写入到 log 文件中，写的过程是一直追加到文件末端， 为顺序写。官网有数据表明，同样的磁盘，顺序写能到 600M/s，而随机写只有 100K/s。这 与磁盘的机械机构有关，顺序写之所以快，是因为其省去了大量磁头寻址的时间。
 
 2. **零复制技术**
 
@@ -472,7 +478,7 @@ bin/kafka-console-producer.sh --broker-list hadoop101:9092 --topic second
 
 ### 3.1.1 消息发送流程
 
-​		Kafka 的 Producer 发送消息采用的是**异步发送**的方式。在消息发送的过程中，涉及到了 两个线程—`main` 线程和 `Sender` 线程，以及一个线程共享变量—RecordAccumulator。 main 线程将消息发送给 RecordAccumulator，Sender 线程不断从 RecordAccumulator 中拉取消息发送到 Kafka broker。
+Kafka 的 Producer 发送消息采用的是**异步发送**的方式。在消息发送的过程中，涉及到了 两个线程—`main` 线程和 `Sender` 线程，以及一个线程共享变量—RecordAccumulator。 main 线程将消息发送给 RecordAccumulator，Sender 线程不断从 RecordAccumulator 中拉取消息发送到 Kafka broker。
 
 ​	KafkaProducer 发送消息流程如下：
 
@@ -554,15 +560,15 @@ public class MyProducer {
     }
 ```
 
-​		我们需要在centos中启动kafka集群，并创建一个消费者，当上面程序运行的时候，在消费者端接收数据为：
+我们需要在centos中启动kafka集群，并创建一个消费者，当上面程序运行的时候，在消费者端接收数据为：
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717171106332.png" alt="image-20200717171106332" style="zoom:80%;" />
 
 
 
-​		回调函数会在 producer 收到 ack 时调用，为异步调用，该方法有两个参数，分别是 RecordMetadata 和 Exception，如果 Exception 为 null，说明消息发送成功，如果 Exception 不为 null，说明消息发送失败。 
+回调函数会在 producer 收到 ack 时调用，为异步调用，该方法有两个参数，分别是 RecordMetadata 和 Exception，如果 Exception 为 null，说明消息发送成功，如果 Exception 不为 null，说明消息发送失败。 
 
-​		注意：消息发送失败会自动重试，不需要我们在回调函数中手动重试。
+注意：消息发送失败会自动重试，不需要我们在回调函数中手动重试。
 
 3、**带回调函数的 API**
 
@@ -588,9 +594,9 @@ public class MyProducer {
 
 4、**同步发送 API**
 
-​		同步发送的意思就是，一条消息发送之后，会阻塞当前线程，直至返回 ack（不是上面的acks参数，它的含义是告诉main线程，send线程已经做完了，你可以苏醒了）。 
+同步发送的意思就是，一条消息发送之后，会阻塞当前线程，直至返回 ack（不是上面的acks参数，它的含义是告诉main线程，send线程已经做完了，你可以苏醒了）。 
 
-​		由于 send 方法返回的是一个 Future 对象，根据 Futrue 对象的特点，我们也可以实现同步发送的效果（将main线程阻塞即可），只需在调用 Future 对象（和线程相关的类）的 get 发送即可。使用的比较少。
+由于 send 方法返回的是一个 Future 对象，根据 Futrue 对象的特点，我们也可以实现同步发送的效果（将main线程阻塞即可），只需在调用 Future 对象（和线程相关的类）的 get 发送即可。使用的比较少。
 
 ```java
 // 添加get方法 
@@ -601,11 +607,11 @@ for (int i = 0; i < 10; i++) {
 
 ## 3.3 消费者
 
-​		consumer 消费数据时的可靠性是很容易保证的，因为数据在 Kafka 中是持久化的，故不用担心数据丢失问题。 
+consumer 消费数据时的可靠性是很容易保证的，因为数据在 Kafka 中是持久化的，故不用担心数据丢失问题。 
 
-​		由于 consumer 在消费过程中可能会出现断电宕机等故障，consumer 恢复后，需要从故障前的位置的继续消费，所以 consumer 需要实时记录自己消费到了哪个 offset，以便故障恢复后继续消费。 
+由于 consumer 在消费过程中可能会出现断电宕机等故障，consumer 恢复后，需要从故障前的位置的继续消费，所以 consumer 需要实时记录自己消费到了哪个 offset，以便故障恢复后继续消费。 
 
-​		因此， offset 的维护是 Consumer 消费数据是必须考虑的问题。
+因此， offset 的维护是 Consumer 消费数据是必须考虑的问题。
 
 **需要用到的类**： 
 
@@ -613,7 +619,7 @@ for (int i = 0; i < 10; i++) {
 2. ConsumerConfig：获取所需的一系列配置参数 。
 3. ConsuemrRecord：每条数据都要封装成一个 ConsumerRecord 对象。
 
-​		为了使我们能够专注于自己的业务逻辑，Kafka 提供了自动提交 offset 的功能。 自动提交 offset 的相关参数：
+为了使我们能够专注于自己的业务逻辑，Kafka 提供了自动提交 offset 的功能。 自动提交 offset 的相关参数：
 
 + enable.auto.commit：是否开启自动提交 offset 功能。
 + auto.commit.interval.ms：自动提交 offset 的时间间隔。
