@@ -1,4 +1,4 @@
-# 1、创建Excel文件
+### 1、创建Excel文件
 
 1、代码
 
@@ -17,7 +17,7 @@ print("Done!")
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20201009213205140.png" alt="image-20201009213205140" style="zoom:80%;" />
 
-# 2、读取Excel文件
+### 2、读取Excel文件
 
 1、介绍
 
@@ -60,7 +60,7 @@ print(people.head(3))
 # print(people.tail(3))
 ```
 
-# 3、写数据
+### 3、写数据
 
 1、代码
 
@@ -97,7 +97,7 @@ df = pd.DataFrame({s1.name: s1, s2.name: s2, s3.name: s3})
 print(df)
 ```
 
-# 4、自动填充
+### 4、自动填充
 
 1、介绍
 
@@ -152,6 +152,101 @@ for i in books.index:
 
 print(books)
 ```
+
+### 5、函数填充，计算列
+
+1、代码
+
+```python
+import pandas as pd
+
+books = pd.read_excel("D:\\Books_price.xlsx", index_col='ID')
+# 指定数据范围计算
+# for i in range(5, 16):
+
+# for i in books.index:
+#     books["Price"].at[i] = books["ListPrice"].at[i] * books["Discount"].at[i]
+#
+# print(books)
+
+"""
+1、使用这种方式将ListPrice列 + 2
+2、比较简单，但是难以理解。
+"""
+# books["ListPrice"] += 2
+# print(books)
+
+
+# 我们也可以使用下面的方式来进行ListPrice + 2
+def add_2(x):
+    return x + 2
+
+
+books["ListPrice"] = books["ListPrice"].apply(add_2)
+print(books)
+```
+
+### 6、排序
+
+1、excel操作
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20201020173724976.png" alt="image-20201020173724976" style="zoom: 50%;" />
+
+2、代码
+
+```python
+import pandas as pd
+
+products = pd.read_excel('D:/List.xlsx', index_col='ID')
+# Worthy进行升序排列，Price进行降序排列
+products.sort_values(by=['Worthy', 'Price'], ascending=[True, False], inplace=True)
+print(products)
+```
+
+### 7、数据筛选，过滤
+
+1、Excel操作
+
+![image-20201020174712230](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20201020174712230.png)
+
+2、代码
+
+```python
+import pandas as pd
+
+
+def validate_age(a):
+    return 18 <= a <= 30
+
+
+def level_b(s):
+    return 60 <= s < 90
+
+
+students = pd.read_excel('D:/Students.xlsx', index_col='ID')
+students = students.loc[students['Age'].apply(validate_age)].loc[students.Score.apply(level_b)]
+print(students)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

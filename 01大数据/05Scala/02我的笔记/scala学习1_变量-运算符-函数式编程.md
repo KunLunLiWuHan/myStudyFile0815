@@ -916,7 +916,7 @@ def main(args: Array[String]): Unit = {
 
 ## 5.2 for循环控制
 
-​		Scala 也为for 循环这一常见的控制结构提供了非常多的特性，这些for 循环的特性被称为**for** **推导式**（for comprehension）或**for** **表达式**（for expression）。
+Scala 也为for 循环这一常见的控制结构提供了非常多的特性，这些for 循环的特性被称为**for** **推导式**（for comprehension）或**for** **表达式**（for expression）。
 
 1、**范围数据循环方式**
 
