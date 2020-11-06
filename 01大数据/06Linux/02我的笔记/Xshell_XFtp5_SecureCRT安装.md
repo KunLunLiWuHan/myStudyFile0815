@@ -1,6 +1,6 @@
 # 1 Xshell的安装
 
-​	 Xshell 是目前最好的远程登录到Linux操作的软件，流畅的速度并且完美解决了**中文乱码**的问题， 是目前程序员首选的软件。也可以在Windows界面下用来访问远端不同系统下的服务器，从而比较好的达到远程控制终端的目的。
+Xshell 是目前最好的远程登录到Linux操作的软件，流畅的速度并且完美解决了**中文乱码**的问题， 是目前程序员首选的软件。也可以在Windows界面下用来访问远端不同系统下的服务器，从而比较好的达到远程控制终端的目的。
 
 特别说明，如果安装好Xshell 就可以远程访问Linux系统的话，需要一个前提，那就是Linux启动了SSHD服务。服务器会监听22号端口。
 
@@ -24,7 +24,7 @@
 
 ## 1.2 连接到远程Linux主机
 
-1. 我们使用命令`ifconfig`找到Linux注解的ip地址：
+1. 我们使用命令`ifconfig`找到Linux注册的ip地址：
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831133143.png" alt="image-20200705105721177" style="zoom:80%;" />
 
@@ -42,7 +42,7 @@
 
 # 2 XFtp5的安装
 
-​		使用了 Xftp 以后，windows 用户能安全地在 UNIX/Linux 和 Windows PC 之间传输文件。
+使用了 Xftp 以后，windows 用户能安全地在 UNIX/Linux 和 Windows PC 之间传输文件。
 
 ##  2.1 安装步骤
 
@@ -72,7 +72,7 @@
 
 # 3 SecureCRT的安装
 
-​		该工具是用于远程登录Linux的软件。SecureCRT 也是一款常用的远程登录Linux的软件，在大数据开发中使用较多。
+该工具是用于远程登录Linux的软件。SecureCRT 也是一款常用的远程登录Linux的软件，在大数据开发中使用较多。
 
 **快捷键**
 
@@ -88,7 +88,7 @@ https://blog.csdn.net/weixin_41615494/article/details/79735869
 
 ## 3.1 安装
 
-​		该软件使用的是绿色安装版，我们只需要将文件拷贝到指定的目录就可以了。
+该软件使用的是绿色安装版，我们只需要将文件拷贝到指定的目录就可以了。
 
 ## 3.2 配置
 

@@ -4,6 +4,8 @@
 
 Shell是一个命令行解释器，它为用户提供了一个向Linux内核发送请求以便运行程序的界面系统级程序，用户可以用Shell来启动、挂起、停止甚至是编写一些程序。
 
+脚本程序，本质是一个文本文件。它是一个文本文件，具有可执行权限。Shell脚本，按Shell的语法写出来的脚本，是 Linux 自带的脚本语言。相当于Windows下的 DOS 批处理脚本。
+
 2、学习shell的原因
 
 （1）Linux运维工程师在进行服务器集群管理时，需要编写Shell程序来进行服务器管理。
@@ -46,7 +48,7 @@ env | more
 
 ```ini
 #文件名：myShell.sh(后缀名可以为sh或者其他)
-#!/bin/bash
+#!/bin/bash # 第一行必须声明解释器
 echo "hello world"
 ```
 
@@ -54,7 +56,7 @@ echo "hello world"
 
 （1）方式1：输出脚本的绝对路径或者相对路径
 
-+ （a）要赋予 myShell.sh 脚本的+x权限(可执行)
++ （a）要赋予 myShell.sh 脚本的+x权限(可执行权限)
 
 ```ini
 #推荐使用这种
@@ -104,7 +106,7 @@ echo "user=$USER"
 （1）基本语法
 
 ```ini
-#定义变量
+#定义变量（等号左右两侧不要多加空格）
 变量=值
 
 #撤销变量
@@ -120,6 +122,7 @@ readonly 变量
 
 ```ini
 A=100
+# 使用一个变量:${A}
 echo "A=$A"
 
 #撤销变量A
@@ -182,15 +185,26 @@ echo $RESULT2
 
 ## 1.3 设置环境变量
 
+环境变量，就是存在当前环境中的变量。环境变量的使用：可以在当前终端中使用，可以在 Shell脚本中调用。
+
+在命令行中定义的环境变量，只对当前SHELL终端有效，当关闭终端后，重启后就消失了。
+
 1、基本语法
 
 ```ini
 #1、将shell变量输出为环境变量
 export 变量名=变量值
+# 举例
+	export OUTDIR=/opt/
 #2、让修改后的配置信息立即生效
 source 配置文件
 #3、查询环境变量的值
 echo 变量名
+#举例（显示环境变量）
+	echo ${OUTDIR}
+
+# 查询所有环境变量
+printenv
 ```
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831131649.png" alt="image-20200724211551034" style="zoom:80%;" />

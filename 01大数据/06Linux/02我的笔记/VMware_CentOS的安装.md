@@ -65,11 +65,13 @@
 
 指定磁盘大小：
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132640.png" alt="image-20200701121252529" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132641.png" alt="image-20200701125950196" style="zoom:67%;" />
 
 完成后界面：
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132641.png" alt="image-20200701125950196" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132640.png" alt="image-20200701121252529" style="zoom:67%;" />
+
+
 
 之后，我们需要对新建立centos01进行设置：
 
@@ -129,7 +131,7 @@ CD/DVD(IDE)配置，在这里配置centos的安装文件：
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132652.png" alt="image-20200701143225834" style="zoom: 67%;" />
 
-​		然后是对于虚拟机的安装，双击虚拟机的安装界面，才能进入，假如想退出，我们Ctrl+Alt键就退出虚拟机（或者释放光标）了。
+然后是对于虚拟机的安装，双击虚拟机的安装界面，才能进入，假如想退出，我们Ctrl+Alt键就退出虚拟机（或者释放光标）了。
 
 之后检查界面我们选择`skip`，语言选择中文，键盘选择美国英语式即可。
 
@@ -157,13 +159,13 @@ Linux至少有三个分区,下面开始创建分区：
 
 ![image-20200701144932235](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132658.png)
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132659.png" alt="image-20200701145257285" style="zoom: 80%;" />
-
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132700.png" alt="image-20200701145636462" style="zoom: 80%;" />
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132701.png" alt="image-20200701145842321" style="zoom:80%;" />
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132702.png" alt="image-20200701150025339" style="zoom:80%;" />
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132659.png" alt="image-20200701145257285" style="zoom: 80%;" />
 
 之后进行下一步：
 
@@ -212,7 +214,11 @@ Linux至少有三个分区,下面开始创建分区：
 
 ## 2.3 克隆CentOS
 
-参考网址：https://www.cnblogs.com/tijun/p/7520611.html，https://www.cnblogs.com/lijiaman/p/10924761.html。
+参考网址：
+
+```http
+https://www.cnblogs.com/tijun/p/7520611.html，https://www.cnblogs.com/lijiaman/p/10924761.html
+```
 
 1. 在root的命令下进入系统，编辑下面的文件
 
@@ -225,7 +231,7 @@ Linux至少有三个分区,下面开始创建分区：
 vi /etc/udev/rules.d/70-persistent-net.rules
 ```
 
-​		![image-20200715094732974](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132714.png)
+![image-20200715094732974](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132714.png)
 
 2. 编辑下面的文件
 
@@ -244,7 +250,7 @@ service network restart
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132716.png" alt="image-20200715095232531" style="zoom:80%;" />
 
-​		我们需要使用命令`reboot`重启服务，然后使用上面的命令来重新查看网络配置。
+我们需要使用命令`reboot`重启服务，然后使用上面的命令来重新查看网络配置。
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132717.png" alt="image-20200715095450311" style="zoom:80%;" />
 
