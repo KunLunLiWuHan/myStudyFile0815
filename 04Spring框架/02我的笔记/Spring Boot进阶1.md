@@ -193,11 +193,9 @@ public class UserServiceTest {
 
 + 对业务层对象进行测试。
 
-+ @RunWith` :测试类启动器，其中`SpringJUnit4ClassRunner`：让`Junit`和S
++ @RunWith:测试类启动器，其中SpringJUnit4ClassRunner：让`Junit`和Spring环境进行整合。
 
-  pring环境进行整合。
-
-+ `@SpringBootTest(classes = {App.class})`：首先当前类为Sprign Boot测试类；其次是加载Spring Boot,启动 Spring Boot。
++ @SpringBootTest(classes = {App.class})：首先当前类为Spring Boot测试类；其次是加载Spring Boot,启动 Spring Boot。
 
 # 3 热部署
 

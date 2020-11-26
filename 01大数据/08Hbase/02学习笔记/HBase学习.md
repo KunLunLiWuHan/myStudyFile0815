@@ -123,7 +123,7 @@ Master 是所有 Region Server 的管理者，其实现类为 HMaster，主要�
 
 ```ini
 [zookeeper@hadoop101 hadoop-2.7.2]$ sbin/start-dfs.sh 
-[zookeeper@hadoop102 hadoop-2.7.2]$ sbin/start-yarn.sh 
+[zookeeper@hadoop102 hadoop-2.7.2]$ sbin/start-yarn.sh
 ```
 
 3、HBase安装
@@ -573,6 +573,8 @@ Region Split 时机：
 
 1、导入依赖
 
+并没有导入hadoop-2.7.1的依赖，也可以进行执行。
+
 ```xml
 <dependency>
     <groupId>org.apache.hbase</groupId>
@@ -585,6 +587,9 @@ Region Split 时机：
 
 ```ini
 C:\Windows\System32\drivers\etc\hosts
+
+# 下面的ip表示Linux的地址
+192.168.10.141 xiaolunserver
 ```
 
 3、连接到HBase服务器

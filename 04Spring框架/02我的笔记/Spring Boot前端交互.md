@@ -812,7 +812,7 @@ public class User {
 return new ObjectMapper().writeValueAsString(new User("xiaolun",3,"男"));
 ```
 
-+ `mpper`：这是一个jackson的对象映射器，就是一个类，使用它可以直接将对象转换为json字符串。
++ `mapper`：这是一个jackson的对象映射器，就是一个类，使用它可以直接将对象转换为json字符串。
 + `writeValueAsString`：Java对象转化为`json`字符串。
 + 正常情况下，访问“/json1”地址时，数据会走视图解析器，但是`json`需要返回的是一个字符串，由于使用了 @ResponseBody注解，将`str`以`json`的格式返回。
 

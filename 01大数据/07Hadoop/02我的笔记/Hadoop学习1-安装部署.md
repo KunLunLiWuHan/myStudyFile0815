@@ -190,9 +190,15 @@ MapReduce将计算过程分为两个阶段：Map和Reduce，如下图所示：
 
 ### 1、下载地址
 
+```http
 https://archive.apache.org/dist/hadoop/common/hadoop-2.7.2/
+```
 
-hadoop官网：http://hadoop.apache.org/
+hadoop官网：
+
+```http
+http://hadoop.apache.org/
+```
 
 ### 2、安装
 
@@ -426,7 +432,11 @@ jps
 
 也可以在浏览器端查看HDFS系统：
 
-网址：http://hadoop101:50070/dfshealth.html#tab-overview
+网址：
+
+```http
+http://hadoop101:50070/dfshealth.html#tab-overview
+```
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200722170859560.png" alt="image-20200722170859560" style="zoom:80%;" />
 
@@ -573,7 +583,11 @@ sbin/yarn-daemon.sh start nodemanager
 jps
 ```
 
-也可以通过YARN的浏览器页面查看，网址：http://hadoop101:8088/cluster
+也可以通过YARN的浏览器页面查看，网址：
+
+```http
+http://hadoop101:8088/cluster
+```
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200722181750018.png" alt="image-20200722181750018" style="zoom:67%;" />
 

@@ -114,7 +114,7 @@ test5 = np.array([[0, 1],
 #  [0 3]]
 test6 = test4 * test5
 
-# 举证真正的乘法
+# 矩阵真正的乘法
 # [[2 4]
 #  [2 3]]
 test_doc = np.dot(test4, test5)

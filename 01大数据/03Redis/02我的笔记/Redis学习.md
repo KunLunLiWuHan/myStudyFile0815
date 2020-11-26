@@ -15,8 +15,6 @@
 
 windows下开发确实简单，但是Redis推荐我们使用Linux去开发。
 
-
-
 # 1、NoSQL入门概述
 
 NoSQL(NoSQL = Not Only SQL )，意即“不仅仅是SQL”，泛指非关系型的数据库。随着互联网web2.0网站的兴起，传统的关系数据库在应付web2.0网站，特别是超大规模和高并发的SNS类型的web2.0纯动态网站已经显得力不从心，暴露了很多难以克服的问题，而非关系型的数据库则由于其本身的特点得到了非常迅速的发展。
@@ -159,6 +157,8 @@ Http://www.redis.cn/
 
 **2、安装**
 
+环境：Centos6.8。
+
 1. 解压
 
 以root用户（192.168.10.129）登录，下载获得redis-3.0.4.tar.gz后，将它放入我们的Linux目录/opt并解压。
@@ -167,9 +167,29 @@ Http://www.redis.cn/
 
 首先进入到redis-3.0.4目录下：
 
+分别执行`make,make install`命令（目录：[zookeeper@hadoop101 redis-3.0.4]$ ）。
+
+安装后之后，我们可以在下面的目录中看到redis选项。
+
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831131938.png" alt="image-20200718151547920" style="zoom:80%;" />
 
-分别执行`make,make install`命令（目录：[zookeeper@hadoop101 redis-3.0.4]$ ）。
+在ubuntu18.04上按照上面步骤进行安装，在执行`make`会遇到下面的问题：
+
+（1）缺少文件
+
+![image-20201108174657621](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20201108174657621.png)
+
+```shell
+sudo apt-get install libc6-dev
+```
+
+（2）libc不是默认的分配器
+
+![image-20201108174812984](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20201108174812984.png)
+
+```shell
+sudo make MALLOC=libc
+```
 
 3. 查看安装目录
 
@@ -229,9 +249,9 @@ redis-cli -p 6379 shutdown
 
 1. 单进程
 
-​		单进程模型来处理客户端的请求。对读写等事件的响应是通过对epoll函数的包装来做到的。Redis的实际处理速度完全依靠主进程的执行效率。
+单进程模型来处理客户端的请求。对读写等事件的响应是通过对epoll函数的包装来做到的。Redis的实际处理速度完全依靠主进程的执行效率。
 
-​		Epoll是Linux内核为处理大批量文件描述符而作了改进的epoll，是Linux下多路复用IO接口select/poll的增强版本，它能显著提高程序在大量并发连接中只有少量活跃的情况下的系统CPU利用率。
+Epoll是Linux内核为处理大批量文件描述符而作了改进的epoll，是Linux下多路复用IO接口select/poll的增强版本，它能显著提高程序在大量并发连接中只有少量活跃的情况下的系统CPU利用率。
 
 2. 默认16个数据库，类似数组下表从零开始，初始默认使用零号库。统一密码管理，16个库都是同样密码，要么都OK要么一个也连接不上。同时，Redis索引都是从零开始。
 
@@ -269,15 +289,15 @@ Flushall；
 
 ### 3、List
 
-​		Redis 的List(列表)是简单的字符串列表，按照插入顺序排序。你可以添加一个元素导列表的头部（左边）或者尾部（右边）。它的底层实际是个链表。
+Redis 的List(列表)是简单的字符串列表，按照插入顺序排序。你可以添加一个元素导列表的头部（左边）或者尾部（右边）。它的底层实际是个链表。
 
 ### 4、Set
 
-​		Redis的Set（集合）是string类型的无序集合。它是通过HashTable实现实现的。
+Redis的Set（集合）是string类型的无序集合。它是通过HashTable实现实现的。
 
 ### 5、zset
 
-​		Redis zset (sorted set：有序集合)和 set 一样也是string类型元素的集合,且不允许重复的成员。不同的是每个元素都会关联一个double类型的分数。
+Redis zset (sorted set：有序集合)和 set 一样也是string类型元素的集合,且不允许重复的成员。不同的是每个元素都会关联一个double类型的分数。
 ​		Redis正是通过分数来为集合中的成员进行从小到大的排序。zset的成员是唯一的,但分数(score)却可以重复。
 
 ## 3.2 数据操作
@@ -812,15 +832,15 @@ No:write后不会有fsync调用（从不同步），由操作系统自动调度�
 
 （2）No-appendfsync-on-rewrite
 
-​		重写时是否可以运用Appendfsync，用默认no即可，保证数据安全性。
+重写时是否可以运用Appendfsync，用默认no即可，保证数据安全性。
 
-​		如果该参数设置为no，是最安全的方式，不会丢失数据，但是要忍受阻塞的问题。如果设置为yes，这就相当于将appendfsync设置为no，这说明并没有执行磁盘操作，只是写入了缓冲区，因此这样并不会造成阻塞（因为没有竞争磁盘），但是如果这个时候redis挂掉，就会丢失数据。
+如果该参数设置为no，是最安全的方式，不会丢失数据，但是要忍受阻塞的问题。如果设置为yes，这就相当于将appendfsync设置为no，这说明并没有执行磁盘操作，只是写入了缓冲区，因此这样并不会造成阻塞（因为没有竞争磁盘），但是如果这个时候redis挂掉，就会丢失数据。
 
 （3）Auto-aof-rewrite-min-size/Auto-aof-rewrite-percentage
 
-​		设置重写的基准值。
+设置重写的基准值。
 
-​		auto-aof-rewrite-percentage：默认值为100。aof自动重写配置，当目前aof文件大小超过上一次重写的aof文件大小的百分之多少进行重写，即当aof文件增长到一定大小的时候，Redis能够调用bgrewriteaof对日志文件进行重写。当前AOF文件大小是上次日志重写得到AOF文件大小的二倍（设置为100）时，自动启动新的日志重写过程。
+auto-aof-rewrite-percentage：默认值为100。aof自动重写配置，当目前aof文件大小超过上一次重写的aof文件大小的百分之多少进行重写，即当aof文件增长到一定大小的时候，Redis能够调用bgrewriteaof对日志文件进行重写。当前AOF文件大小是上次日志重写得到AOF文件大小的二倍（设置为100）时，自动启动新的日志重写过程。
 
 ​		auto-aof-rewrite-min-size：64mb。设置允许重写的最小aof文件大小，避免了达到约定百分比但尺寸仍然很小的情况还要重写。
 
@@ -852,25 +872,25 @@ Redis-check-aof --fix appendonly.aof(文件)
 
 ### 4、Rewrite
 
-​		Rewrite是AOF采用文件追加方式，文件会越来越大为避免出现此种情况，新增了重写机制,当AOF文件的大小超过所设定的阈值时，Redis就会启动AOF文件的内容压缩，只保留可以恢复数据的最小指令集.可以使用命令**bgrewriteaof**。
+Rewrite是AOF采用文件追加方式，文件会越来越大为避免出现此种情况，新增了重写机制,当AOF文件的大小超过所设定的阈值时，Redis就会启动AOF文件的内容压缩，只保留可以恢复数据的最小指令集.可以使用命令**bgrewriteaof**。
 
-​		Rewrite的原理：
+Rewrite的原理：
 
-​		AOF文件持续增长而过大时，会fork出一条新进程来将文件重写(也是先写临时文件最后再rename)，遍历新进程的内存中数据，每条记录有一条的Set语句。重写aof文件的操作，并没有读取旧的aof文件，而是将整个内存中的数据库内容用命令的方式重写了一个新的aof文件，这点和快照有点类似。
+AOF文件持续增长而过大时，会fork出一条新进程来将文件重写(也是先写临时文件最后再rename)，遍历新进程的内存中数据，每条记录有一条的Set语句。重写aof文件的操作，并没有读取旧的aof文件，而是将整个内存中的数据库内容用命令的方式重写了一个新的aof文件，这点和快照有点类似。
 
-​		**触发机制**：
+**触发机制**：
 
-​		Redis会记录上次重写时的AOF大小，默认配置是当AOF文件大小是上次rewrite后大小的一倍且文件大于64M时触发。参考`Auto-aof-rewrite-min-size/Auto-aof-rewrite-percentage`参数。
+Redis会记录上次重写时的AOF大小，默认配置是当AOF文件大小是上次rewrite后大小的一倍且文件大于64M时触发。参考`Auto-aof-rewrite-min-size/Auto-aof-rewrite-percentage`参数。
 
 ### 5、优缺点
 
-​		对于相同数据集的数据而言，aof文件要远大于rdb文件，恢复速度慢于rdb；Aof运行效率要慢于rdb，每秒同步策略效率较好，不同步效率和rdb相同。
+对于相同数据集的数据而言，aof文件要远大于rdb文件，恢复速度慢于rdb；Aof运行效率要慢于rdb，每秒同步策略效率较好，不同步效率和rdb相同。
 
 ### 6、选择持久化策略
 
 1. 只做缓存
 
-​		如果你只希望你的数据在服务器运行的时候存在,你也可以不使用任何持久化方式。
+如果你只希望你的数据在服务器运行的时候存在,你也可以不使用任何持久化方式。
 
 2. 同时开启两种持久化方式
 
@@ -1188,9 +1208,9 @@ sentinel monitor 被监控数据库名字(自己起名字) 127.0.0.1 6379 1
 
 配置说明：		
 
-​		监控的主节点的名字、IP 和端口，最后一个count的意思是有几台 Sentinel 发现有问题，就会发生故障转移，例如 配置为2，代表至少有2个 Sentinel 节点认为主节点不可达，那么这个不可达的判定才是客观的。
+监控的主节点的名字、IP 和端口，最后一个count的意思是有几台 Sentinel 发现有问题，就会发生故障转移，例如 配置为2，代表至少有2个 Sentinel 节点认为主节点不可达，那么这个不可达的判定才是客观的。
 
-​		count设置的越小，那么达到下线的条件越宽松，反之越严格。**一般建议将其设置为 Sentinel 节点的一半加1**。
+count设置的越小，那么达到下线的条件越宽松，反之越严格。**一般建议将其设置为 Sentinel 节点的一半加1**。
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132045.png" alt="image-20200719111612095" style="zoom: 50%;" />
 
 **/myRedis/sentinel.conf**配置文件图示：

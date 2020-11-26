@@ -266,13 +266,13 @@ set /hadoop "3456" 1
 
 #### 3、删除节点
 
-​		基本语法如下：
+基本语法如下：
 
 ```ini
 delete path [version]
 ```
 
-​		和更新节点数据一样，也可以传入版本号，当你传入的数据版本号 (dataVersion) 和当前节点的数据版本号不符合时，zookeeper 不会执行删除操作。
+和更新节点数据一样，也可以传入版本号，当你传入的数据版本号 (dataVersion) 和当前节点的数据版本号不符合时，zookeeper 不会执行删除操作。
 
 ```ini
 delete /hadoop 1
@@ -280,7 +280,7 @@ delete /hadoop 1
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130810.png" alt="image-20200712094839667" style="zoom:80%;" />
 
-​		要想删除某个节点及其所有后代节点，可以使用递归删除，命令为 
+要想删除某个节点及其所有后代节点，可以使用递归删除，命令为 
 
 ```ini
 rmr path  --r:recursion(递归)
@@ -298,13 +298,13 @@ get path
 
 #### 5、查看节点状态
 
-​		可以使用 stat 命令查看节点状态，它的返回值和 get 命令类似，但不会返回节点数据。
+可以使用 stat 命令查看节点状态，它的返回值和 get 命令类似，但不会返回节点数据。
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130813.png" alt="image-20200712100825223" style="zoom:80%;" />
 
 #### 6、查看节点列表
 
-​		查看节点列表有 ls path 和 ls2 path 两个命令，后者是前者的增强，不仅可以查看指定路径下的所有节点，还可以查看当前节点的信息。
+查看节点列表有 ls path 和 ls2 path 两个命令，后者是前者的增强，不仅可以查看指定路径下的所有节点，还可以查看当前节点的信息。
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130814.png" alt="image-20200712101042158" style="zoom:80%;" />
 
@@ -320,13 +320,13 @@ stat path [watch]
 ls\ls2 path [watch]
 ```
 
-​		使用 get path [watch] 注册的监听器能够在**节点内容**发生改变的时候，向客户端发出通知。需要注意的是 zookeeper 的触发器是一次性的 (One-time trigger)，即触发一次后就会立即失效。
+使用 get path [watch] 注册的监听器能够在**节点内容**发生改变的时候，向客户端发出通知。需要注意的是 zookeeper 的触发器是一次性的 (One-time trigger)，即触发一次后就会立即失效。
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130816.png" alt="image-20200712102029163" style="zoom:80%;" />
 
-​		使用 stat path [watch] 注册的监听器能够在**节点状态**发生改变的时候，向客 户端发出通知。
+使用 stat path [watch] 注册的监听器能够在**节点状态**发生改变的时候，向客 户端发出通知。
 
-​		使用 ls path [watch] 或 ls2 path [watch] 注册的监听器能够监听**该节点下所有子节点**（不是当前节点）的增加和删除操作。
+使用 ls path [watch] 或 ls2 path [watch] 注册的监听器能够监听**该节点下所有子节点**（不是当前节点）的增加和删除操作。
 
 ### 2.2.3zookeeper的acl权限控制
 
@@ -361,7 +361,7 @@ ls\ls2 path [watch]
 
 ##### 1.2、授予权限
 
-​		create、delete、read、writer、admin也就是 增、删、改、查、管理权限， 这5种权限简写为cdrwa，注意:这5种权限中，delete是指对**子节点**的删除权限，其它4种权限指对自身节点的操作权限。
+create、delete、read、writer、admin也就是 增、删、改、查、管理权限， 这5种权限简写为cdrwa，注意:这5种权限中，delete是指对**子节点**的删除权限，其它4种权限指对自身节点的操作权限。
 
 |  权限  | ACL简写 |             描述             |
 | :----: | :-----: | :--------------------------: |
@@ -547,7 +547,7 @@ ZooKeeper(String connectionString, int sessionTimeout, Watcher watcher)
 
 1. 事先需要将jar包导进去：
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130832.png" alt="image-20200713090206329" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130833.png" alt="image-20200713090002774" style="zoom: 50%;" />
 
 ```java
 public class ZkConnection {
@@ -579,7 +579,7 @@ public class ZkConnection {
 
 控制台输出：
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130833.png" alt="image-20200713090002774" style="zoom: 50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831130832.png" alt="image-20200713090206329" style="zoom:50%;" />
 
 ## 3.2 新增节点
 

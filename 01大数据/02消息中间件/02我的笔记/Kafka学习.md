@@ -114,7 +114,7 @@ source /etc/profile
 
 6. 启动集群
 
-(6.1) 依次在  hadoop101，hadoop102、hadoop103 节点上启动 kafka。注意，我们要事先启动zookeeper。
+(6.1) 依次在  hadoop101，hadoop102、hadoop103 节点上启动 kafka。注意，**我们要事先启动zookeeper**。
 
 ```ini
 # 1./home/zookeeper/software/kafka目录下启动
@@ -201,6 +201,26 @@ bin/kafka-console-consumer.sh  --zookeeper hadoop102:2181 --topic first
 ```
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200716212222501.png" alt="image-20200716212222501" style="zoom:67%;" />
+
+6.查看kafka的消费组的group.id
+
+kafka/config目录下的consumer.properties中可以看到：
+
+![image-20201117110019348](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20201117110019348.png)
+
+7、查看主题的消费情况
+
+```shell
+# 命令
+root@xiaolunserver:/mykafka/kafka# bin/kafka-consumer-offset-checker.sh --zookeeper localhost:2181 --group group_id --topic topic_name
+
+# 举例
+bin/kafka-consumer-offset-checker.sh --zookeeper xiaolunserver:2181 --group test-consumer-group --topic test02
+```
+
+其中，group_id通过consumer.properties来查看得到：
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20201117113250160.png" alt="image-20201117113250160" style="zoom:80%;" />
 
 # 2 Kafka 架构深入
 
@@ -564,8 +584,6 @@ public class MyProducer {
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717171106332.png" alt="image-20200717171106332" style="zoom:80%;" />
 
-
-
 回调函数会在 producer 收到 ack 时调用，为异步调用，该方法有两个参数，分别是 RecordMetadata 和 Exception，如果 Exception 为 null，说明消息发送成功，如果 Exception 不为 null，说明消息发送失败。 
 
 注意：消息发送失败会自动重试，不需要我们在回调函数中手动重试。
@@ -576,7 +594,7 @@ public class MyProducer {
  for (int i = 0; i < 10; i++) {
             producer.send(new ProducerRecord<String, String>("second", "xiaolun:second-->" + i), new Callback() {
                 public void onCompletion(RecordMetadata recordMetadata, Exception e) {
-                    ////回调函数，该方法会在 Producer 收到 ack 时调用，为异步调用
+                    //回调函数，该方法会在 Producer 收到 ack 时调用，为异步调用
                     if (e == null) {
                         System.out.println("success:offset---->" + recordMetadata.offset());
                         System.out.println("success:partition" + recordMetadata.partition());
@@ -671,38 +689,38 @@ public class MyConsumer {
 }
 ```
 
-​		当生产者编写的`MyProducer`类运行的时（即输入数据的时候），该
+当生产者编写的`MyProducer`类运行的时（即输入数据的时候），该
 
 `MyConsumer`能够接收到来自生产者的数据。
 
-​		消费者Consumer导入的依赖很生产者Producer一样。
+消费者Consumer导入的依赖很生产者Producer一样。
 
-​		对于参数auto.offset.reset的理解：主要是针对当Kafka中没有初始偏移量（消费者组第一次消费，或者新换一个新组名（此时会初始偏移量会失效））或服务器上不再存在当前偏移量时（消费者的offset，在7天后删除的操作）的操作。
+对于参数auto.offset.reset的理解：主要是针对当Kafka中没有初始偏移量（消费者组第一次消费，或者新换一个新组名（此时会初始偏移量会失效））或服务器上不再存在当前偏移量时（消费者的offset，在7天后删除的操作）的操作。
 
 ```java
 props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG,"earliest ");
 ```
 
-​		earliest :当各分区下有已提交的offset时，从提交的offset开始消费；无提交的offset时，从头开始消费。
+earliest :当各分区下有已提交的offset时，从提交的offset开始消费；无提交的offset时，从头开始消费。
 ​		latest :当各分区下有已提交的offset时，从提交的offset开始消费；无提交的offset时，消费新产生的该分区下的数据。
 
 ```
 props.put("enable.auto.commit", "false");
 ```
 
-​		当我们关闭自动提交时，消费者启动的时候只会在存放到磁盘的文件中读取一次offset，然后的话，消费者在内存中维护一个offset(因为每次访问文件中的offset速度比较慢)。
+当我们关闭自动提交时，消费者启动的时候只会在存放到磁盘的文件中读取一次offset，然后的话，消费者在内存中维护一个offset(因为每次访问文件中的offset速度比较慢)。
 
-​		假设生产者每次发送10条数据，消费者每次消费10条数据，现在offset为90，下一次操作会消费91-100之间的数据，只是消费完成后，并没有把offset等于100这个值写入外部文件offset中，消费者会在一定的时间快速地拉取数据，但是控制台显示的界面在拉取数据后显示一直为空白，假如拉取的是外部文件中的offset（offset没有提交，此时offset仍然为90），那么控制台会一直显示91-100之间的数据。这说明，消费者获取的offset为内存中的offset。
+假设生产者每次发送10条数据，消费者每次消费10条数据，现在offset为90，下一次操作会消费91-100之间的数据，只是消费完成后，并没有把offset等于100这个值写入外部文件offset中，消费者会在一定的时间快速地拉取数据，但是控制台显示的界面在拉取数据后显示一直为空白，假如拉取的是外部文件中的offset（offset没有提交，此时offset仍然为90），那么控制台会一直显示91-100之间的数据。这说明，消费者获取的offset为内存中的offset。
 
-​		总之，当我们关闭自动提交，外部文件中的offset数据一直为一个固定值，没有增加，每次消费者启动时都是从（offset+1）开始拿数据。
+总之，当我们关闭自动提交，外部文件中的offset数据一直为一个固定值，没有增加，每次消费者启动时都是从（offset+1）开始拿数据。
 
 ### 2、手动提交 offset
 
-​		虽然自动提交 offset 十分简介便利，但由于其是基于时间提交的，开发人员难以把握 offset 提交的时机(生产者提交100条数据，消费者没有处理完，挂掉了，下次从101处开始读取，导致数据丢失)。因此 Kafka 还提供了手动提交 offset 的 API。 		
+虽然自动提交 offset 十分简介便利，但由于其是基于时间提交的，开发人员难以把握 offset 提交的时机(生产者提交100条数据，消费者没有处理完，挂掉了，下次从101处开始读取，导致数据丢失)。因此 Kafka 还提供了手动提交 offset 的 API。 		
 
-​		手动提交 offset 的方法有两种：分别是 commitSync（同步提交）和 commitAsync（异步 提交）。
+手动提交 offset 的方法有两种：分别是 commitSync（同步提交）和 commitAsync（异步 提交）。
 
-​		两者的相同点是，都会将**本次 poll 的一批数据最高的偏移量提交**；不同点是， commitSync 阻塞当前线程，一直到提交成功，并且会自动失败重试（由不可控因素导致， 也会出现提交失败）；而 commitAsync 则没有失败重试机制，故有可能提交失败。
+两者的相同点是，都会将**本次 poll 的一批数据最高的偏移量提交**；不同点是， commitSync 阻塞当前线程，一直到提交成功，并且会自动失败重试（由不可控因素导致， 也会出现提交失败）；而 commitAsync 则没有失败重试机制，故有可能提交失败。
 
 #### 2.1、同步提交
 
@@ -722,7 +740,7 @@ consumer.commitSync();
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200717223717180.png" alt="image-20200717223717180" style="zoom:80%;" />
 
-​		当前线程会阻塞直到 offset 提交成功，然后才会从生产者中拉取新的数据。
+当前线程会阻塞直到 offset 提交成功，然后才会从生产者中拉取新的数据。
 
 #### 2.2、异步提交 offset
 
