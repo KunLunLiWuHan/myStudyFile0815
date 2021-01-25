@@ -12,7 +12,11 @@ Spring Cloud Netflix项目进入维护模式
 
 2、概述
 
-官网：https://github.com/alibaba/spring-cloud-alibaba/blob/master/README-zh.md
+官网：
+
+```http
+https://github.com/alibaba/spring-cloud-alibaba/blob/master/README-zh.md
+```
 
 3、作用
 
@@ -41,9 +45,19 @@ Alibaba Cloud SMS: 覆盖全球的短信服务，友好、高效、智能的互�
 
 5、SpringCloud alibaba学习资料获取
 
-网址：https://spring.io/projects/spring-cloud-alibaba#overview
+网址：
 
-API：https://spring-cloud-alibaba-group.github.io/github-pages/greenwich/spring-cloud-alibaba.html
+```http
+https://spring.io/projects/spring-cloud-alibaba#overview
+```
+
+API：
+
+```http
+https://spring-cloud-alibaba-group.github.io/github-pages/greenwich/spring-cloud-alibaba.html
+```
+
+
 
 # 2 SpringCloud Alibaba Nacos服务注册和配置中心
 
@@ -51,37 +65,44 @@ API：https://spring-cloud-alibaba-group.github.io/github-pages/greenwich/spring
 
 1、概述
 
-​		Nacos（Nacos：Dynamic Naming and Configuration Service）的前四个字母分别为Naming和Configuration的前两个字母，最后的s为Service。
+Nacos（Nacos：Dynamic Naming and Configuration Service）的前四个字母分别为Naming和Configuration的前两个字母，最后的s为Service。
 
-​		一个更易于构建云原生应用的动态服务发现，配置管理和服务管理中心，Nacos就是注册中心+配置中心的组合，等价于Nacos = Eureka+Config+Bus。
+一个更易于构建云原生应用的动态服务发现，配置管理和服务管理中心，Nacos就是注册中心+配置中心的组合，等价于Nacos = Eureka+Config+Bus。
 
 2、下载地址
 
+```http
 https://github.com/alibaba/Nacos
-
 https://nacos.io/zh-cn/index.html
+```
 
 3、各种注册中心比较
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112353.png" alt="image-20200822084933671" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112355.png" alt="image-20200822091051942" style="zoom:80%;" />
 
 ## 2 安装并运行Nacos
 
 1、本地Java8+Maven环境已经OK，进入下面的官网下载
 
+```http
 https://github.com/alibaba/nacos/releases/tag/1.1.4
+```
 
 2、解压安装包，直接运行bin目录下的startup.cmd
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112354.png" alt="image-20200822090956847" style="zoom:80%;" />
+修改bin目录下的startup.cmd文件，将`set MODE="cluster"`一行改成`set MODE="standalone"`，然后直接运行startup.cmd。
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112353.png" alt="image-20200822084933671" style="zoom:67%;" />
 
 3、命令运行成功后直接访问下面的网址，输入默认的账号和密码nacos
 
-​		http://localhost:8848/nacos
+```http
+	http://localhost:8848/nacos
+```
 
-​		进入下面的界面
+​		进入下面的界面：
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112355.png" alt="image-20200822091051942" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112354.png" alt="image-20200822090956847" style="zoom:80%;" />
 
 ## 3 Nacos作为服务注册中心演示
 
@@ -199,8 +220,11 @@ public class PaymentController {
 
 6、测试
 
-​		依次启动cloudalibaba-provider-payment9001/9012，浏览器输入下面的网址：
-​		http://localhost:9011/payment/nacos/1
+依次启动cloudalibaba-provider-payment9001/9012，浏览器输入下面的网址：
+
+```http
+http://localhost:9011/payment/nacos/1
+```
 
 可以正常访问cloudalibaba-provider-payment9001中的服务。
 
@@ -330,13 +354,15 @@ public class OrderNacosController
 
 5、测试
 
-​		依次启动cloudalibaba-provider-payment9001/9012，cloudalibaba-consumer-nacos-order83，在nacos的可视化界面中，可以看到：
+依次启动cloudalibaba-provider-payment9001/9012，cloudalibaba-consumer-nacos-order83，在nacos的可视化界面中，可以看到：
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112359.png" alt="image-20200822111356555" style="zoom:50%;" />
 
 输入下面网址：
 
+```http
 http://localhost:83/consumer/payment/nacos/13
+```
 
 实现cloudalibaba-consumer-nacos-order83访问cloudalibaba-provider-payment9001/9002，轮询负载。
 
@@ -358,7 +384,7 @@ curl -X PUT '$NACOS_SERVER:8848/nacos/v1/ns/operator/switches?entry=serverMode&v
 
 项目结构：
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112402.png" alt="image-20200822144758391" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112404.png" alt="image-20200822145702282" style="zoom:50%;" />
 
 1、添加pom
 
@@ -468,9 +494,11 @@ public class ConfigClientController {
 
 官网： 
 
-​		https://nacos.io/zh-cn/docs/quick-start-spring-cloud.html
+```http
+	https://nacos.io/zh-cn/docs/quick-start-spring-cloud.html
+```
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112403.png" alt="image-20200822145209049" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112402.png" alt="image-20200822144758391" style="zoom:50%;" />
 
 公式：
 
@@ -482,7 +510,7 @@ ${spring.application.name}-${spring.profile.active}-&{spring.cloud.nacos.config.
 #file-exetension为配置内容的数据格式，可以通过配置项spring.cloud.nacos.config.file-extension配置
 ```
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112404.png" alt="image-20200822145702282" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112403.png" alt="image-20200822145209049" style="zoom:67%;" />
 
 （2）在默认的Group中新建Data Id
 
@@ -499,7 +527,7 @@ config:
 
 6、测试
 
-​		启动前需要在nacos客户端-配置管理-配置管理栏目下有没有对应的yaml配置文件，然后再启动cloud-config-nacos-client3377，输入下面的网址调用接口查看配置信息：
+启动前需要在nacos客户端-配置管理-配置管理栏目下有没有对应的yaml配置文件，然后再启动cloud-config-nacos-client3377，输入下面的网址调用接口查看配置信息：
 
 ```http
 http://localhost:3377/config/info
@@ -509,7 +537,7 @@ http://localhost:3377/config/info
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112407.png" alt="image-20200822145937218" style="zoom:67%;" />
 
-​		然后，修改下Nacos中的yaml配置文件，再次调用查看配置的接口，就会发现配置已经刷新-自带动态刷新。
+然后，修改下Nacos中的yaml配置文件，再次调用查看配置的接口，就会发现配置已经刷新-自带动态刷新。
 
 ### 2、分类配置
 
@@ -519,23 +547,27 @@ http://localhost:3377/config/info
 
 2、Namespace+Group+Data ID三者关系
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112409.png" alt="image-20200822150254900" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112414.png" alt="image-20200822152210889" style="zoom:50%;" />
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112410.png" alt="image-20200822150306364" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112411.png" alt="image-20200822151033675" style="zoom:50%;" />
+
+默认新增的所有配置都在public空间。
 
 3、DataID方案
 
 （1）指定spring.profile.active和配置文件的DataID来使不同环境下读取不同的配置。
 
-​		接下来我们新建dev/test配置DataID，此时就有这样的布局：默认空间+默认分组+新建dev和test两个DataID。
+接下来我们新建dev/test配置DataID，此时就有这样的布局：默认空间+默认分组+新建dev和test两个DataID。
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112411.png" alt="image-20200822151033675" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112412.png" alt="image-20200822151149909" style="zoom:50%;" />
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112409.png" alt="image-20200822150254900" style="zoom:67%;" />
 
 （2）测试
 
-​		通过spring.profile.active属性来进行多环境下配置文件的读取：
+通过spring.profile.active属性来进行多环境下配置文件的读取：
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112412.png" alt="image-20200822151149909" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112410.png" alt="image-20200822150306364" style="zoom:50%;" />
 
 输入网址：
 
@@ -555,11 +587,9 @@ http://localhost:3377/config/info
 
 在config下增加一条group的配置即可，比如这里配置为TEST_GROUP。
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112414.png" alt="image-20200822152210889" style="zoom:50%;" />
-
 （2）bootstrap+application文件中要开启对应配置
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112415.png" alt="image-20200822152342933" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112418.png" alt="image-20200822152737245" style="zoom:50%;" />
 
 5、Namespace方案
 
@@ -569,9 +599,11 @@ http://localhost:3377/config/info
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112417.png" alt="image-20200822152609431" style="zoom:67%;" />
 
+当然，我们也可以在每一个微服务之间互相隔离配置，每一个微服务都创建自己的命名空间，只加载自己命名空间下的所有配置。
+
 （2）回到服务管理-服务列表查看
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112418.png" alt="image-20200822152737245" style="zoom:50%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112415.png" alt="image-20200822152342933" style="zoom:50%;" />
 
 （3）在dev命名空间添加如下的配置
 
@@ -581,6 +613,8 @@ http://localhost:3377/config/info
 
 （4）bootstrap+application文件中要开启对应配置
 
+需要在bootstarp.yml文件中配置使用到了命名空间下的配置。
+
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112421.png" alt="image-20200822153225197" style="zoom:50%;" />
 
 ## 5、Nacos集群和持久化配置（重要）
@@ -589,19 +623,27 @@ http://localhost:3377/config/info
 
 1、官网架构图
 
+```http
 https://nacos.io/zh-cn/docs/cluster-mode-quick-start.html
+```
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112423.png" alt="image-20200822153500851" style="zoom: 67%;" />
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112422.png" alt="image-20200822153354472" style="zoom:50%;" />
 
+
+
 理解：
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112423.png" alt="image-20200822153500851" style="zoom: 67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112422.png" alt="image-20200822153354472" style="zoom:50%;" />
 
 2、说明
 
 官网：
 
+```http
 https://nacos.io/zh-cn/docs/deployment.html
+```
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831112424.png" alt="image-20200822153549909" style="zoom:50%;" />
 

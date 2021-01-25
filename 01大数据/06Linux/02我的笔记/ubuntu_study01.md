@@ -1,5 +1,43 @@
 # 1、安装
 
+参考博客：
+
+```http
+https://blog.csdn.net/weixin_45646929/article/details/105900778?utm_medium=distribute.pc_relevant.none-task-blog-title-7&spm=1001.2101.3001.4242
+```
+
+安装过程中注意的几个地方：
+
+（1）稍后安装操作系统
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20210108173735563.png" alt="image-20210108173735563" style="zoom:50%;" />
+
+
+
+（2）指定磁盘容量
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20210108173844648.png" alt="image-20210108173844648" style="zoom:50%;" />
+
+（3）自定义硬件
+
+将下载的ISO映像文件进行安装：
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20210108173929268.png" alt="image-20210108173929268" style="zoom:67%;" />
+
+（4）安装Ubuntu时下载更新
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20210108174032258.png" alt="image-20210108174032258" style="zoom:67%;" />
+
+（5）清除整个磁盘并安装Ubuntu
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20210108174113282.png" alt="image-20210108174113282" style="zoom:67%;" />
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20210108174135524.png" alt="image-20210108174135524" style="zoom:67%;" />
+
+（6）设置密码并登录
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20210108174239055.png" alt="image-20210108174239055" style="zoom:67%;" />
+
 # 2、操作
 
 ## 1、虚拟机操作
@@ -204,6 +242,8 @@ apt install openssh-server
 ufw disable
 #3 启动服务
 service ssh start
+#4、查看ssh-server是否正常启动
+ps -e | grep ssh
 ```
 
 注意，一定要关闭防火墙，不然在下次启动的时候我们的FinalShell连接不上服务器。

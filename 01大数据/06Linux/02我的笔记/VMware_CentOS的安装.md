@@ -2,19 +2,19 @@
 
 1. 需要在开机的时候进入BISO界面，开启虚拟化支持。我的联想Y7000P默认已经开启虚拟化支持。我们可以通过任务管理器查看：
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132629.png" alt="img" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132630.jpg" alt="image-20200701114818894" style="zoom:80%;" />
 
 双击下面的文件进行安装：
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132630.jpg" alt="image-20200701114818894" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132632.png" alt="image-20200701115029575" style="zoom:67%;" />
 
 自定义安装：
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132631.png" alt="image-20200701114938973" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132629.png" alt="img" style="zoom:67%;" />
 
 用户体验设置：
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132632.png" alt="image-20200701115029575" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132631.png" alt="image-20200701114938973" style="zoom:80%;" />
 
 桌面选择快捷方式：
 
@@ -49,15 +49,19 @@
 
 以**管理员方式**运行VMware软件，创建一片空间：
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132636.png" alt="image-20200701120401332" style="zoom:80%;" />![image-20200701120438639](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132637.png)
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132636.png" alt="image-20200701120401332" style="zoom:80%;" />
 
 稍后安装操作系统：
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132638.png" alt="image-20200701120654154" style="zoom:67%;" />
+
+
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132637.png" alt="image-20200701120438639" style="zoom:67%;" />
 
 选择客户端操作系统：
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132638.png" alt="image-20200701120654154" style="zoom:67%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132637.png" alt="image-20200701120438639" style="zoom:67%;" />
 
 虚拟机的命名：
 
@@ -87,7 +91,7 @@
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132645.png" alt="image-20200701141240837" style="zoom:67%;" />
 
-CD/DVD(IDE)配置，在这里配置centos的安装文件：
+CD/DVD(IDE)配置，在这里配置centos的镜像操作系统安装文件：
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132646.png" alt="image-20200701141627715" style="zoom:67%;" />
 
@@ -171,11 +175,9 @@ Linux至少有三个分区,下面开始创建分区：
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132703.png" alt="image-20200701150150249" style="zoom:80%;" />
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132704.png" alt="image-20200701150233448" style="zoom:80%;" />
-
 安装CentOs 6的一些需要的软件：
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132705.png" alt="image-20200701150347977" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132704.png" alt="image-20200701150233448" style="zoom:80%;" />
 
 点击下一步，我们进行选择我们所需要的服务：
 
@@ -186,21 +188,23 @@ Linux至少有三个分区,下面开始创建分区：
 
 选择完成之后点击进行下一步，进入下面的安装界面：
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132706.png" alt="image-20200701150956640" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132705.png" alt="image-20200701150347977" style="zoom:80%;" />
 
 安装成功界面：
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132707.png" alt="image-20200701151349119" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132706.png" alt="image-20200701150956640" style="zoom:80%;" />
 
 点击“重新引导”即可。引导完毕之后，会进入欢迎界面，此时我们还有一些东西要设置一下：
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132708.png" alt="image-20200701151645835" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132707.png" alt="image-20200701151349119" style="zoom:80%;" />
 
 不创建用户：
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132709.png" alt="image-20200701151809548" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132708.png" alt="image-20200701151645835" style="zoom:80%;" />
 
 启用Kdump：
+
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132709.png" alt="image-20200701151809548" style="zoom:80%;" />
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132710.png" alt="image-20200701152019169" style="zoom:80%;" />
 
@@ -224,14 +228,14 @@ https://www.cnblogs.com/tijun/p/7520611.html，https://www.cnblogs.com/lijiaman/
 
    首先，创建的全新的虚拟机文件名称为(我们使用的是完整克隆)：
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132713.png" alt="image-20200715083453619" style="zoom:67%;" />
+![image-20200715094732974](VMware_CentOS的安装.assets/20200831132714-1609470941672.png)
 
 ```ini
 #删除eth0的内容，复制ATTR的地址，并将eth1修改该为eth0
 vi /etc/udev/rules.d/70-persistent-net.rules
 ```
 
-![image-20200715094732974](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132714.png)
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132715.png" alt="image-20200715095022053" style="zoom:80%;" />
 
 2. 编辑下面的文件
 
@@ -240,7 +244,7 @@ vi /etc/udev/rules.d/70-persistent-net.rules
 vim /etc/sysconfig/network-scripts/ifcfg-eth0
 ```
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132715.png" alt="image-20200715095022053" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831132713.png" alt="image-20200715083453619" style="zoom:67%;" />
 
 3. 重启网卡查看配置是否正确
 

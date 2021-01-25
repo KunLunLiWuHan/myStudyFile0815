@@ -6,7 +6,7 @@ Spark基于内存计算，提高了在大数据环境下数据处理的实时性
 
 Spark是MapReduce的替代方案，而且兼容HDFS、Hive，可融入Hadoop的生态系统，以弥补MapReduce的不足。
 
-![image-20200729085739092](Spark学习.assets\image-20200729085739092.png)
+![image-20200729085739092](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200729085739092.png)
 
 ## 1.1 Spark特点
 

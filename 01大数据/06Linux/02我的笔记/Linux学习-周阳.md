@@ -93,7 +93,7 @@ service sshd status
 vi /etc/sysconfig/i18n
 ```
 
-​		如果安装系统为中文系统，则修改【LANG=“zh_CN.UTF-8”】，如果安装系统为英文系统，则修改【LANG=“en_US.UTF-8”】。
+如果安装系统为中文系统，则修改【LANG=“zh_CN.UTF-8”】，如果安装系统为英文系统，则修改【LANG=“en_US.UTF-8”】。
 保存文件。 断开SSH，重新登录。就正常了。
 
 ## 3、Linux启动和加载顺序

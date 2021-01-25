@@ -214,9 +214,9 @@ Redis-server：Redis服务器启动命令
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831131940.png" alt="image-20200718152312774" style="zoom:80%;" />
 
-​		（2）为了避免配置出错，将默认的`/opt/redis-3.0.4/redis.conf`拷贝到自己定义好的一个路径下，比如/myRedis中。
+（2）为了避免配置出错，将默认的`/opt/redis-3.0.4/redis.conf`拷贝到自己定义好的一个路径下，比如/myRedis中。
 
-​		（3）启动Redis时，运行自定义的/myRedis中的配置文件。
+（3）启动Redis时，运行自定义的/myRedis中的配置文件。
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831131941.png" alt="image-20200718152914239" style="zoom:80%;" />
 

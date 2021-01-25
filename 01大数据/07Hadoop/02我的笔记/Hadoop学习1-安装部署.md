@@ -494,7 +494,7 @@ bin/hdfs dfs -ls  /user/zookeeper/input/
 bin/hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.2.jar wordcount /user/zookeeper/input/ /user/zookeeper/output
 ```
 
-我们可以通过下面的指令进行查看文件内容：
+可以通过下面的指令进行查看文件内容：
 
 ```ini
 bin/hdfs dfs -cat /user/zookeeper/output/*
@@ -800,9 +800,9 @@ source /etc/profile
 
 #### 2、rsync 远程同步工具
 
-​		rsync主要用于备份和镜像（实现同步）。具有速度快、避免复制相同内容和支持符号链接的优点。
+rsync主要用于备份和镜像（实现同步）。具有速度快、避免复制相同内容和支持符号链接的优点。
 
-​		rsync和scp区别：用rsync做文件的复制要比scp的速度快，rsync只对**差异文件**做更新。scp是把所有文件都复制过去。
+rsync和scp区别：用rsync做文件的复制要比scp的速度快，rsync只对**差异文件**做更新。scp是把所有文件都复制过去。
 
 （1）基本语法
 
@@ -1035,7 +1035,11 @@ sbin/hadoop-daemon.sh start datanode
 jps
 ```
 
-也可以登录网址http://hadoop101:50070/dfshealth.html#tab-overview查看：
+也可以登录网址查看：
+
+```http
+http://hadoop101:50070/dfshealth.html#tab-overview
+```
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20200722213131166.png" alt="image-20200722213131166" style="zoom:67%;" />
 

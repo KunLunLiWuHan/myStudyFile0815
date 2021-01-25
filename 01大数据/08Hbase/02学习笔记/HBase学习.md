@@ -1038,7 +1038,7 @@ public static void addRowData(String tableName, String rowKey,
     //创建 HTable 对象
     HTable hTable = new HTable(conf, tableName);
     //向表中插入数据(字节数组)
-    Put put = new Put(Bytes.toBytes(rowKey)); //？
+    Put put = new Put(Bytes.toBytes(rowKey)); 
     //向 Put 对象中组装数据
     put.addColumn(Bytes.toBytes(columnFamily), Bytes.toBytes(column), Bytes.toBytes(value));
     hTable.put(put);

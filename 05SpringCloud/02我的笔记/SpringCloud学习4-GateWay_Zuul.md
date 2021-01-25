@@ -4,9 +4,17 @@
 
 1、官网
 
-上一代zuul1.x：https://github.com/Netflix/zuul/wiki
+上一代zuul1.x：
 
-当前gateway：https://cloud.spring.io/spring-cloud-static/spring-cloud-gateway/2.2.1.RELEASE/reference/html/
+```http
+https://github.com/Netflix/zuul/wiki
+```
+
+当前gateway：
+
+```http
+https://cloud.spring.io/spring-cloud-static/spring-cloud-gateway/2.2.1.RELEASE/reference/html/
+```
 
 2、概述
 
@@ -64,13 +72,15 @@
 
 ## 2、三大核心概念
 
-1、Route（路由）：路由是构建网关的基本模块，它由ID，目标URI，一系列的断言和过滤器组成，如果断言为true则匹配该路由。
+1、Route（路由）：路由是构建网关的基本模块，它由ID，目标URI，一系列的断言和过滤器组成。当我们发送一个请求给网关，网关会将请求路由到指定的服务，当匹配了断言（id，目的地uri及断言的集合）请求就会到达指定位置（路由匹配）。
 
 2、Predicate（断言）：参考的是java8的java.util.function.Predicate开发人员可以匹配HTTP请求中的所有内容（例如请求头或请求参数），如果请求与断言相匹配则进行路由。
 
 3、Filter(过滤)：指的是Spring框架中GatewayFilter的实例，使用过滤器，可以在请求被路由前或者之后对请求进行修改。
 
 4、总体
+
+客户端发请求给服务端。中间有网关，先交给映射器，如果能处理就交给handler处理，然后交给一系列filter，然后给指定的服务，再返回回来给客户端。
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831111845.png" alt="image-20200820225101712" style="zoom:80%;" />
 
@@ -152,11 +162,11 @@ spring:
   cloud:
   	#新增的网关配置
     gateway:
-      routes: #路由可以配置多个
+      routes: #路由可以配置多个, - id后面是一个完整对象，这是一个yaml的语法规则。
         - id: payment_routh            #路由的ID，没有固定规则但要求唯一，建议配合服务名
-          uri: http://localhost:8001   #匹配后提供服务的路由地址
+          uri: http://localhost:8001   #匹配后提供服务的路由地址（客户端想要去的那个网址）
           predicates:
-            - Path=/payment/get/**   #断言,路径相匹配的进行路由
+            - Path=/payment/get/**   #断言,路径相匹配的进行路由。成功之后才定位到上面uri对应的位置。
 
         - id: payment_routh2
           uri: http://localhost:8001
@@ -173,7 +183,7 @@ eureka:
       defaultZone: http://eureka7001.com:7001/eureka
 ```
 
-​		新增的网关配置，可以在cloud-provider-payment8001的访问地址外面包含一层9527，避免暴露接口，进而实现实现URL地址中无8001端口。
+新增的网关配置，可以在cloud-provider-payment8001的访问地址外面包含一层9527，避免暴露接口，进而实现实现URL地址中无8001端口。
 
 3、业务类无
 
@@ -191,9 +201,9 @@ public class GateWayMain9527 {
 
 5、测试
 
-​		首先启动cloud-eureka-Server7001，然后启动cloud-provider-payment8001，最后启动cloud-gateway-gateway9527。
+首先启动cloud-eureka-Server7001，然后启动cloud-provider-payment8001，最后启动cloud-gateway-gateway9527。
 
-​		在我们添加网关前，我们的输入网址如下：
+在添加网关前，我们的输入网址如下：
 
 ```http
 http://localhost:8001/payment/get/5

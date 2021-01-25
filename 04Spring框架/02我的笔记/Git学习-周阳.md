@@ -586,11 +586,11 @@ Revert：是撤销某次提交，这次撤销也会作为一次提交进行保�
 
 2、版本回退
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134421.png" alt="image-20200814225730665" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134422.png" alt="image-20200814225751110" style="zoom:80%;" />
 
 选择`hard`属性完全删除痕迹
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134422.png" alt="image-20200814225751110" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134421.png" alt="image-20200814225730665" style="zoom:80%;" />
 
 ## 4、创建分支并合并
 

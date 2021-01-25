@@ -247,7 +247,7 @@ layui.use(['layer', 'form'], function(){
 7)	class=”layui-inline”;表示不占一行，一般用于一项中存在多个form元素，使用该class进行包裹。
 ```
 
-+ `return false`阻止表单提交，因为表单提交后会刷新界面，一般使用`Ajax`提交表单数据，然后阻止表单提交。只有使用`layui`进行表单提交才能触发数据校验。即使用`layui`的表单提交事件，在事件中使用`Ajax`提交数据，然后阻止表单提交。
+`return false`阻止表单提交，因为表单提交后会刷新界面，一般使用`Ajax`提交表单数据，然后阻止表单提交。只有使用`layui`进行表单提交才能触发数据校验。即使用`layui`的表单提交事件，在事件中使用`Ajax`提交数据，然后阻止表单提交。
 
 ## 10.1 layui中下拉框的理解
 
@@ -310,7 +310,8 @@ layui.use(['layer', 'form'], function(){
         if(d.keyworkstepMark == "0"){return "<div>非关键工步</div>" }
         if(d.keyworkstepMark == "1"){return "<div style='color: red'>关键工步</div>"}
 }
-<!-- tomplet函数转义
+<!-- 
+tomplet函数转义
 style='color: red' 这个属性改变了字体颜色。
 -->
 ```
@@ -354,10 +355,6 @@ $('#exportBtn').click(function () {
         }
     });
 ```
-
-2. 导出全部的表格数据。
-
-
 
 # 12 文件上传
 

@@ -224,8 +224,10 @@ new Thread(() -> {for (int i = 0; i < 40; i++) ticket.sale();},"C").start();
 Lambda 是一个匿名函数，我们可以把 Lambda表达式理解为是一段可以传递的代码（将代码像数据一样进行传递）。可以写出更简洁、更灵活的代码。作为一种更紧凑的代码风格，使Java的语言表达能力得到了提升。
 
 Lambda 表达式在Java 语言中引入了一个新的语法元素和操作符。这个操作符为 “->” ， 该操作符被称为 Lambda 操作符或剪头操作符。它将 Lambda 分为两个部分：
-左侧：指定了 Lambda 表达式需要的所有参数
-右侧：指定了 Lambda 体，即 Lambda 表达式要执行的功能
+
+左侧：指定了 Lambda 表达式需要的所有参数;
+
+右侧：指定了 Lambda 体，即 Lambda 表达式要执行的功能。
 
 1、实现代码
 
@@ -1353,7 +1355,7 @@ public class MyThreadPoolDemo01 {
 
 3、keepAliveTime：多余的空闲线程的存活时间当前池中线程数量超过`corePoolSize`时，当空闲时间达到`keepAliveTime`时，也没有新的请求，多余线程会被销毁直到只剩下`corePoolSize`个线程为止（即线程池不但可以扩容，而且也可以缩容线程数）。
 
-​		`keepAliveTime`属性需要集合`unit`单位一起使用。
+`keepAliveTime`属性需要集合`unit`单位一起使用。
 
 4、`unit：keepAliveTime`的单位。
 
@@ -1394,7 +1396,7 @@ public class MyThreadPoolDemo01 {
 
 1、在工作中单一的/固定数的/可变的三种创建线程池的方法哪个用的多？
 
-​		答案是一个都不用，我们工作中只能使用自定义的。Executors中JDK已经给你提供了，为什么不用？
+答案是一个都不用，我们工作中只能使用自定义的。Executors中JDK已经给你提供了，为什么不用？
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085034.png" alt="image-20200811185111165" style="zoom:150%;" />
 

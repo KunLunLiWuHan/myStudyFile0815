@@ -275,7 +275,13 @@ public class PaymentController {
 
 （1）查询测试：
 
-​		`postman`中输入http://localhost:8001/payment/get/2，返回结果:
+​		`postman`中输入
+
+```http
+http://localhost:8001/payment/get/2
+```
+
+返回结果:
 
 ```json
 {
@@ -290,7 +296,13 @@ public class PaymentController {
 
 （2）插入测试：
 
-​		`postman`中输入http://localhost:8001/payment/create?serial=xiaopang，返回结果:
+​		`postman`中输入
+
+```http
+http://localhost:8001/payment/create?serial=xiaopang
+```
+
+返回结果:
 
 ```json
 {
@@ -304,17 +316,21 @@ public class PaymentController {
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104136.png" style="zoom:80%;" />
 
-​		因为这里是消费者类,主要是消费,那么就没有service和dao,需要调用payment模块的方法。并且这里还没有微服务的远程调用，那么如果要调用另外一个模块，则需要使用基本的`api`调用。
+因为这里是消费者类,主要是消费,那么就没有service和dao,需要调用payment模块的方法。并且这里还没有微服务的远程调用，那么如果要调用另外一个模块，则需要使用基本的`api`调用。
 
-​		`RestTemplate`提供了多种便捷访问远程Http服务的方法，是一种简单便捷的访问`RestFul`服务模板类，是`Spring`提供的用于访问`Rest`服务的客户端模板工具类。
+`RestTemplate`提供了多种便捷访问远程Http服务的方法，是一种简单便捷的访问`RestFul`服务模板类，是`Spring`提供的用于访问`Rest`服务的客户端模板工具类。
 
-官网地址：https://docs.spring.io/spring-framework/docs/5.2.2.RELEASE/javadoc-api/org/springframework/web/client/RestTemplate.html
+官网地址：
+
+```http
+https://docs.spring.io/spring-framework/docs/5.2.2.RELEASE/javadoc-api/org/springframework/web/client/RestTemplate.html
+```
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104137.png" alt="image-20200710172957810" style="zoom:80%;" />
 
 **使用**
 
-​		使用`RestTemplate`访问Restful接口十分简单:
+使用`RestTemplate`访问Restful接口十分简单:
 
 ```ini
 (url,requestMap,ResponseBean.class)
@@ -364,7 +380,7 @@ public class OrderController {
 
 **测试**
 
-​		首先启动`cloud-provider-payment8001`，再启动`cloud-consumer-order80`。
+首先启动`cloud-provider-payment8001`，再启动`cloud-consumer-order80`。
 
 （1）插入数据网址：
 
@@ -424,23 +440,23 @@ http://localhost/consumer/payment/get/2
 
 ## 3.1 介绍
 
-​		当服务很多时,单靠代码手动管理是很麻烦的,需要一个公共组件,统一管理多服务,包括服务是否正常运行等。
+当服务很多时,单靠代码手动管理是很麻烦的,需要一个公共组件,统一管理多服务,包括服务是否正常运行等。
 
 1、服务治理
 
-​		SpringCloud封装了Metflix公司开发的Eureka模块来进行服务治理。在传统的rpc远程调用框架中，管理每个服务与服务之间的依赖关系比较复杂，管理比较复杂，所以需要服务治理，用于管理服务之间的依赖关系，可以实现服务调用、负载均衡、容错等，进而实现服务发现和注册。
+SpringCloud封装了Metflix公司开发的Eureka模块来进行服务治理。在传统的rpc远程调用框架中，管理每个服务与服务之间的依赖关系比较复杂，管理比较复杂，所以需要服务治理，用于管理服务之间的依赖关系，可以实现服务调用、负载均衡、容错等，进而实现服务发现和注册。
 
 2、服务注册
 
-​		Eureka采用CS的设计架构，Eureka Server作为服务注册功能的服务器，它是服务注册中心，而系统中的其他微服务，使用Eureka的客户端连接到Eureka Server 并维持心跳链接。这样系统的维护人员就可以通过Eureka Server来监控系统中的各个微服务是否正常运行。
+Eureka采用CS的设计架构，Eureka Server作为服务注册功能的服务器，它是服务注册中心，而系统中的其他微服务，使用Eureka的客户端连接到Eureka Server 并维持心跳链接。这样系统的维护人员就可以通过Eureka Server来监控系统中的各个微服务是否正常运行。
 
 3、介绍
 
-​		在服务注册和发现中，有一个注册中心，当服务启动的时候，会把当前自己服务器的信息（比如服务器地址通讯地址等）以别名的方式注册到注册中心上，另一方（消费者|服务提供者）以该别名的方式去注册中心上获取到实际的服务通讯地址，然后再实现本地PC掉用RPC远程调用，框架的核心设计思想：在于注册中心，因为使用注册中心管理每个服务与服务之间关系的依赖（服务治理理念）。在任何rpc远程框架中，都会有一个注册中心（存放服务地址相关信息（接口地址））。
+在服务注册和发现中，有一个注册中心，当服务启动的时候，会把当前自己服务器的信息（比如服务器地址通讯地址等）以别名的方式注册到注册中心上，另一方（消费者|服务提供者）以该别名的方式去注册中心上获取到实际的服务通讯地址，然后再实现本地PC掉用RPC远程调用，框架的核心设计思想：在于注册中心，因为使用注册中心管理每个服务与服务之间关系的依赖（服务治理理念）。在任何rpc远程框架中，都会有一个注册中心（存放服务地址相关信息（接口地址））。
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104144.png" alt="image-20200710203333432" style="zoom:67%;" />
 
-​		Eureka包含两个组件：Eureka server 和 Eureka client。
+Eureka包含两个组件：Eureka server 和 Eureka client。
 
 其中，Eureka server提供服务注册服务，各个微服务节点通过配置启动后，会在Eureka server 中进行注册，这样Eureka server 中的服务注册表将会存储所欲可用服务节点的信息，服务节点的信息可以在界面中直观看到。
 
@@ -450,7 +466,7 @@ Eureka client通过注册中心进行访问。这是一个Java客户端，可以
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831104145.png" alt="image-20200817213414837" style="zoom: 50%;" />
 
-​		微服务RPC远程服务最核心的是高可用，假如注册中心只有一个（only one），当其出现故障时，会导致整个服务环境不可用。因此，我们要搭建Eureka注册中心集群，实现负载均衡+故障容错。
+微服务RPC远程服务最核心的是高可用，假如注册中心只有一个（only one），当其出现故障时，会导致整个服务环境不可用。因此，我们要搭建Eureka注册中心集群，实现负载均衡+故障容错。
 
 ## 3.2 Eureka Server服务端安装
 
@@ -497,7 +513,7 @@ public class EurekaMain7001 {
 
 3. **测试**
 
-​		因此此时Eureka对应的是一个单机版的配置，所以此时只启动cloud-eureka-Server7001模块进行如下的测试。
+因此此时Eureka对应的是一个单机版的配置，所以此时只启动cloud-eureka-Server7001模块进行如下的测试。
 
 输入下面的网址：
 

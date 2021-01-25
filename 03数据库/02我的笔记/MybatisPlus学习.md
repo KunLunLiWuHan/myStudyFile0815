@@ -2,9 +2,13 @@
 
 **介绍**
 
-官网：https://mp.baomidou.com/
+官网：
 
-[MyBatis-Plus](https://github.com/baomidou/mybatis-plus)（简称 MP）是一个 [MyBatis](http://www.mybatis.org/mybatis-3/) 的增强工具，在 MyBatis 的基础上只做增强不做改变，为简化开发、提高效率而生。
+```http
+https://mp.baomidou.com/
+```
+
+MyBatis-Plus（简称 MP）是一个 MyBatis的增强工具，在 MyBatis 的基础上只做增强不做改变，为简化开发、提高效率而生。
 
 **步骤**
 
@@ -64,7 +68,7 @@ INSERT INTO user (id, name, age, email) VALUES
         </dependency>
 ```
 
-+ 说明：我们使用mybatis-plus可以节省大量的代码，尽量不要mybatis和mybatisplus同时导入。
+说明：我们使用mybatis-plus可以节省大量的代码，尽量不要mybatis和mybatisplus同时导入。
 
 3. **连接数据库**
 
@@ -75,7 +79,7 @@ spring.datasource.username=root
 spring.datasource.password=123
 ```
 
-+ 在这里并没有配置相应的数据表，而是实体类的名字需要和数据库中的表明相对应，才能查到相应的表。
+在这里并没有配置相应的数据表，而是实体类的名字需要和数据库中的表明相对应，才能查到相应的表。
 
 4. **连接mybatis**
 
@@ -85,7 +89,7 @@ spring.datasource.password=123
 
 传统的方式为`pojo-dao(连接mybatis，还有十分繁琐的配置mapper.xml文件)-service-controller`，现在的连接步骤如下：
 
-+ **编写pojo**
+（1）编写pojo
 
 ```java
 @Data
@@ -101,7 +105,7 @@ public class User {
 }
 ```
 
-+ **mapper接口**
+（2）mapper接口
 
 ```java
 //在对应的mapper上面实现一个基本的接口BaseMapper就可以了
@@ -111,9 +115,9 @@ public interface UserMapper extends BaseMapper<User> {
 }
 ```
 
-`BaseMapper`中传入的泛型为`User`对象，`BaseMapper`接口中封装了许多方法，可以对传入的对象进行操作。所以，我们在程序中看不到CRUD操作。（并没有在mapper中使用CRUD操作）
+`BaseMapper`中传入的泛型为`User`对象，`BaseMapper`接口中封装了许多方法，可以对传入的对象进行操作。所以，在程序中看不到CRUD操作。（并没有在mapper中使用CRUD操作）
 
-+ **进行测试**
+（3）测试
 
 ```java
 @SpringBootTest
@@ -140,7 +144,7 @@ class MybatisPlusApplicationTests {
 }
 ```
 
-在测试之前，需要在启动类上添加扫描文件操作，即：@MapperScan("com.xiaolun.mapper") ，此时控制台输出：
+在测试之前，需要在启动类上添加扫描文件操作，即：@MapperScan("com.xiaolun.mapper") ，此时控制台输出如下，表示可以将数据库中的数据全部查出来。
 
 ```java
 User(id=1, name=Jone, age=18, email=test1@baomidou.com)
@@ -150,11 +154,7 @@ User(id=4, name=Sandy, age=21, email=test4@baomidou.com)
 User(id=5, name=Billie, age=24, email=test5@baomidou.com)
 ```
 
-表示可以将数据库中的数据全部查出来。
-
-**注：**
-
-不知道什么原因，在测试时加载jar包时间过长。
+注：不知道什么原因，在测试时加载jar包时间过长。
 
 # 2 配置日志
 
@@ -167,7 +167,7 @@ User(id=5, name=Billie, age=24, email=test5@baomidou.com)
 mybatis-plus.configuration.log-impl=org.apache.ibatis.logging.stdout.StdOutImpl
 ```
 
-+ 再次测试，控制台输出：
+再次测试，控制台输出：
 
 ![image-20200610223820462](https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831113204.png)
 
@@ -212,7 +212,11 @@ public enum IdType {
 
 **雪花算法**
 
-分布式系统唯一id:https://www.cnblogs.com/haoxinyue/p/5208136.html
+分布式系统唯一id:
+
+```http
+https://www.cnblogs.com/haoxinyue/p/5208136.html
+```
 
 snowflake是Twitter开源的分布式ID生成算法，结果是一个long型的ID。其核心思想是：使用41bit作为毫秒数，10bit作为机器的ID（5个bit是数据中心，5个bit的机器ID），12bit作为毫秒内的流水号（意味着每个节点在每毫秒可以产生 4096 个 ID），最后还有一个符号位，永远是0。
 
@@ -231,21 +235,21 @@ snowflake是Twitter开源的分布式ID生成算法，结果是一个long型的I
     private Long id;
 ```
 
-+ 一旦手动输入之后，就需要自己配置Id了。
+一旦手动输入之后，就需要自己配置Id了。
 
 ## 3.2 update更新
 
 ```java
- @Test //更新测试
-    public void testUpdate(){
-        User user = new User();
-        user.setId(5L); //将要更新的id值传进去
-        //通过条件拼接动态SQL
-        user.setName("xiaopang");
-        //传进去的参数是一个对象
-        int result = userMapper.updateById(user);
-        System.out.println("user-------->"+user);
-    }
+@Test //更新测试
+public void testUpdate(){
+  User user = new User();
+  user.setId(5L); //将要更新的id值传进去
+  //通过条件拼接动态SQL
+  user.setName("xiaopang");
+  //传进去的参数是一个对象
+  int result = userMapper.updateById(user);
+  System.out.println("user-------->"+user);
+}
 ```
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831113206.png" alt="image-20200611083318814" style="zoom:80%;" />
@@ -415,49 +419,49 @@ public class MybatisConfig {
 
 ```java
 @Test
-    public void testSelect(){
-        //批量查询
-        List<User> userList = userMapper.selectBatchIds(Arrays.asList(1, 2, 3));
-        for (User user: userList) {
-            System.out.println("user------>" + user);
-        }
-    }
+public void testSelect(){
+  //批量查询
+  List<User> userList = userMapper.selectBatchIds(Arrays.asList(1, 2, 3));
+  for (User user: userList) {
+    System.out.println("user------>" + user);
+  }
+}
 
-    @Test //条件查询
-    public void testSelect2(){
-        //自定义要查询的条件
-        Map<String, Object> map = new HashMap<>();
-        map.put("name", "xiaolun");
-        List<User> userList = userMapper.selectByMap(map);
-        for (User user: userList) {
-            System.out.println("user------>" + user);
-        }
-    }
+@Test //条件查询
+public void testSelect2(){
+  //自定义要查询的条件
+  Map<String, Object> map = new HashMap<>();
+  map.put("name", "xiaolun");
+  List<User> userList = userMapper.selectByMap(map);
+  for (User user: userList) {
+    System.out.println("user------>" + user);
+  }
+}
 ```
 
 ### 3.3.1 分页查询
 
-1. **导入分页插件**
+1、导入分页插件
 
 ```java
- @Bean //配置分页插件(在MybatisConfig配置类中)
-    public PaginationInterceptor paginationInterceptor() {
-        return new PaginationInterceptor();
-    }
+@Bean //配置分页插件(在MybatisConfig配置类中)
+public PaginationInterceptor paginationInterceptor() {
+  return new PaginationInterceptor();
+}
 ```
 
-2. **测试**
+2、测试
 
 ```java
 @Test //分页
-    public void testPage(){
-        //1. 参数1：当前页；参数2：当前页。即第一页每页只需要3个数据
-        Page<User> page = new Page<>(1,3);
-        userMapper.selectPage(page,null);
-        for (User record : page.getRecords()) {
-            System.out.println(record);
-        }
-    }
+public void testPage(){
+  //参数1：当前页；参数2：当前页。即第一页每页只需要3个数据
+  Page<User> page = new Page<>(1,3);
+  userMapper.selectPage(page,null);
+  for (User record : page.getRecords()) {
+    System.out.println(record);
+  }
+}
 ```
 
 ## 3.4 delete删除
@@ -553,42 +557,42 @@ spring.profiles.active=dev
 
 # 5 条件构造器 Wrapper
 
-  **测试1**
+ 1、 测试1
 
 ```java
- @Test
-    public void Test1(){
-        //查询name、邮箱字段不为空，而且年龄大于等于12的用户
-        QueryWrapper<User> wrapper = new QueryWrapper<>();
-        wrapper
-                .isNotNull("name")
-                .isNotNull("email")
-                .ge("age", "12");
-        List<User> userList = userMapper.selectList(wrapper);
-        userList.forEach(System.out::println);
-    }
+@Test
+public void Test1(){
+  //查询name、邮箱字段不为空，而且年龄大于等于12的用户
+  QueryWrapper<User> wrapper = new QueryWrapper<>();
+  wrapper
+    .isNotNull("name")
+    .isNotNull("email")
+    .ge("age", "12");
+  List<User> userList = userMapper.selectList(wrapper);
+  userList.forEach(System.out::println);
+}
 ```
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831113218.png" alt="image-20200611160103477" style="zoom:80%;" />
 
-**测试2**
+2、测试2
 
 ```java
-    @Test
-    public void Test2(){
-        //查询名字为xiaopang3的用户
-        QueryWrapper<User> wrapper = new QueryWrapper<>();
-        wrapper
-                .eq("name","xiaopang3");
-        //查询一个数据，出现多个结果使用List或者Map
-        User user = userMapper.selectOne(wrapper);
-        System.out.println(user);
-    }
+@Test
+public void Test2(){
+  //查询名字为xiaopang3的用户
+  QueryWrapper<User> wrapper = new QueryWrapper<>();
+  wrapper
+    .eq("name","xiaopang3");
+  //查询一个数据，出现多个结果使用List或者Map
+  User user = userMapper.selectOne(wrapper);
+  System.out.println(user);
+}
 ```
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831113219.png" alt="image-20200611160533816" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831113221.png" alt="image-20200611162802493" style="zoom:80%;" />
 
-**测试3**
+3、测试3
 
 ```java
  @Test
@@ -604,7 +608,7 @@ spring.profiles.active=dev
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831113220.png" alt="image-20200611161824820" style="zoom:80%;" />
 
-**测试4**
+4、测试4
 
 ```java
  @Test //模糊查询
@@ -621,7 +625,7 @@ spring.profiles.active=dev
     }
 ```
 
-<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831113221.png" alt="image-20200611162802493" style="zoom:80%;" />
+<img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831113219.png" alt="image-20200611160533816" style="zoom:80%;" />
 
 **测试5**
 

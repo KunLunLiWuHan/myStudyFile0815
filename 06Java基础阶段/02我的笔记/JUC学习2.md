@@ -152,7 +152,7 @@ public class StreamDemo01 {
 ## 1、原理
 
 Fork：把一个复杂任务进行分拆，大事化小。
-Join：把分拆任务的结果进行合并。
+		Join：把分拆任务的结果进行合并。
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200901085046.png" alt="image-20200812174341306" style="zoom:80%;" />
 

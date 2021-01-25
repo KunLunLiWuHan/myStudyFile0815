@@ -222,6 +222,12 @@ bin/kafka-consumer-offset-checker.sh --zookeeper xiaolunserver:2181 --group test
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/image-20201117113250160.png" alt="image-20201117113250160" style="zoom:80%;" />
 
+第二种方式：使用下面的方式来进行查看主题的消费情况
+
+```shell
+bin/kafka-consumer-groups.sh --bootstrap-server 192.168.1.65:9092 --describe --group group01
+```
+
 # 2 Kafka 架构深入
 
 ## 2.1 工作流程
@@ -476,21 +482,21 @@ Kafka 的 producer 生产数据，要写入到 log 文件中，写的过程是�
 
 ## 2.5 Zookeeper 在 Kafka 中的作用
 
-​		Kafka 集群中有一个 broker 会被选举为 Controller，负责管理集群 broker 的上下线，所 有 topic 的分区副本分配和 leader 选举等工作。 Controller 的管理工作都是依赖于 Zookeeper 的。
+Kafka 集群中有一个 broker 会被选举为 Controller，负责管理集群 broker 的上下线，所 有 topic 的分区副本分配和 leader 选举等工作。 Controller 的管理工作都是依赖于 Zookeeper 的。
 
 ## 2.6 事务
 
-​		Kafka 从 0.11 版本开始引入了事务支持。事务可以保证 Kafka 在 Exactly Once 语义的基础上，生产和消费可以跨分区和会话，要么全部成功，要么全部失败。
+Kafka 从 0.11 版本开始引入了事务支持。事务可以保证 Kafka 在 Exactly Once 语义的基础上，生产和消费可以跨分区和会话，要么全部成功，要么全部失败。
 
 ### 1、Producer 事务
 
-​		为了实现跨分区跨会话的事务，需要引入一个全局唯一的 `Transaction ID`（客户端给的），并将 Producer 获得的PID 和Transaction ID 绑定。这样当Producer 重启后就可以通过正在进行的 Transaction ID 获得原来的 PID。 
+为了实现跨分区跨会话的事务，需要引入一个全局唯一的 `Transaction ID`（客户端给的），并将 Producer 获得的PID 和Transaction ID 绑定。这样当Producer 重启后就可以通过正在进行的 Transaction ID 获得原来的 PID。 
 
-​		为了管理 Transaction，Kafka 引入了一个新的组件 Transaction Coordinator（事务协调器）。Producer 就是通过和 Transaction Coordinator 交互获得 Transaction ID 对应的任务状态。Transaction Coordinator 还负责将事务所有写入 Kafka 的一个内部 Topic，这样即使整个服务重启，由于事务状态得到保存，进行中的事务状态可以得到恢复，从而继续进行。
+为了管理 Transaction，Kafka 引入了一个新的组件 Transaction Coordinator（事务协调器）。Producer 就是通过和 Transaction Coordinator 交互获得 Transaction ID 对应的任务状态。Transaction Coordinator 还负责将事务所有写入 Kafka 的一个内部 Topic，这样即使整个服务重启，由于事务状态得到保存，进行中的事务状态可以得到恢复，从而继续进行。
 
 ### 2、Consumer 事务
 
-​		上述事务机制主要是从 Producer 方面考虑，对于 Consumer 而言，事务的保证就会相对较弱(主要解决Exactly Once问题，这方面内容很少提)，尤其时无法保证 Commit 的信息被精确消费。这是由于 Consumer 可以通过 offset访 问任意信息，而且不同的 Segment File 生命周期不同，同一事务的消息可能会出现重启后被删除的情况。
+上述事务机制主要是从 Producer 方面考虑，对于 Consumer 而言，事务的保证就会相对较弱(主要解决Exactly Once问题，这方面内容很少提)，尤其时无法保证 Commit 的信息被精确消费。这是由于 Consumer 可以通过 offset访 问任意信息，而且不同的 Segment File 生命周期不同，同一事务的消息可能会出现重启后被删除的情况。
 
 # 3 Kafka API
 
@@ -718,7 +724,7 @@ props.put("enable.auto.commit", "false");
 
 虽然自动提交 offset 十分简介便利，但由于其是基于时间提交的，开发人员难以把握 offset 提交的时机(生产者提交100条数据，消费者没有处理完，挂掉了，下次从101处开始读取，导致数据丢失)。因此 Kafka 还提供了手动提交 offset 的 API。 		
 
-手动提交 offset 的方法有两种：分别是 commitSync（同步提交）和 commitAsync（异步 提交）。
+手动提交 offset 的方法有两种：分别是 commitSync（同步提交）和 commitAsync（异步提交）。
 
 两者的相同点是，都会将**本次 poll 的一批数据最高的偏移量提交**；不同点是， commitSync 阻塞当前线程，一直到提交成功，并且会自动失败重试（由不可控因素导致， 也会出现提交失败）；而 commitAsync 则没有失败重试机制，故有可能提交失败。
 
@@ -744,7 +750,7 @@ consumer.commitSync();
 
 #### 2.2、异步提交 offset
 
-​		虽然同步提交 offset 更可靠一些，但是由于其会阻塞当前线程，直到提交成功。因此吞 吐量会收到很大的影响。因此更多的情况下，会选用异步提交 offset 的方式。
+虽然同步提交 offset 更可靠一些，但是由于其会阻塞当前线程，直到提交成功。因此吞 吐量会收到很大的影响。因此更多的情况下，会选用异步提交 offset 的方式。
 
 **编码步骤**：
 
@@ -777,7 +783,7 @@ while (true){
 
 #### 2.3 、数据漏消费和重复消费分析
 
-​		无论是同步提交还是异步提交 offset，都有可能会造成数据的漏消费或者重复消费。先提交 offset 后消费，有可能造成数据的漏消费；而先消费后提交 offset，有可能会造成数据的重复消费。
+无论是同步提交还是异步提交 offset，都有可能会造成数据的漏消费或者重复消费。先提交 offset 后消费，有可能造成数据的漏消费；而先消费后提交 offset，有可能会造成数据的重复消费。
 
 #### 2.4 、自定义存储 offset
 
