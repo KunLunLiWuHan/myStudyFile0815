@@ -139,7 +139,7 @@ git reset --hard 7位版本号
 
 <img src="https://gitee.com/whlgdxlkl/my-picture-bed/raw/master/uploadPicture/20200831134319.png" alt="image-20200813222543043" style="zoom:80%;" />
 
-​		Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD。
+Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD。
 
 2、文件向Git版本库添加的执行过程
 

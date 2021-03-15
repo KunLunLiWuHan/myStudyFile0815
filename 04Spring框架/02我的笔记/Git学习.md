@@ -67,9 +67,17 @@ Git是分布式版本控制系统，没有中央服务器，每个人的电脑�
 
 1. **下载**
 
-打开git官网https://git-scm.com/，下载git对应操作系统的版本。
+打开git官网，下载git对应操作系统的版本。
 
-使用镜像地址下载：https://cdn.npm.taobao.org/dist/git-for-windows/v2.26.0.windows.1/Git-2.26.0-64-bit.exe
+```http
+https://git-scm.com/
+```
+
+使用镜像地址下载：
+
+```http
+https://cdn.npm.taobao.org/dist/git-for-windows/v2.26.0.windows.1/Git-2.26.0-64-bit.exe
+```
 
 2. **卸载**
 
@@ -119,7 +127,7 @@ Git GUI：图形界面的Git，不建议初学者使用，尽量先熟悉常用�
 
 1. 设置用户名和邮箱（用户标识）
 
-​		当你安装Git后首先要做的事情就是设置你用户名称和e-mail地址，这时非常重要的，因为，每次Git提交都会使用该信息。它会被永远的嵌入到你的提交中：
+当你安装Git后首先要做的事情就是设置你用户名称和e-mail地址，这时非常重要的，因为，每次Git提交都会使用该信息。它会被永远的嵌入到你的提交中：
 
 ```java
 git config --global user.name "xiaolun" #名称
@@ -325,9 +333,9 @@ git push origin --delete [brance]
 git branch -dr[remote/branch]
 ```
 
-​		如果一个文件在合并分支时都被修改了则会引起冲突;解决方法是我们修改冲突文件后重新提交。
+如果一个文件在合并分支时都被修改了则会引起冲突;解决方法是我们修改冲突文件后重新提交。
 
-​		master主分支非常稳定，用来发布新版本，一般情况下不允许在上面工作，工作一般情况下再新建一个`dev`后，比如上要发布，或者说`dev`分支代码稳定后可以合并到主分支`master`上来。
+master主分支非常稳定，用来发布新版本，一般情况下不允许在上面工作，工作一般情况下再新建一个`dev`后，比如上要发布，或者说`dev`分支代码稳定后可以合并到主分支`master`上来。
 
 # 8 SourceTree
 
